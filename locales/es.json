@@ -1,0 +1,217 @@
+{
+  "app": {
+    "title": "Gmail Filter Builder",
+    "subtitle": "Construye búsquedas avanzadas de Gmail de forma visual, sin memorizar la sintaxis.",
+    "language_selector": "Idioma"
+  },
+  "nav": {
+    "builder":  "Constructor",
+    "preview":  "Vista previa",
+    "examples": "Ejemplos",
+    "help":     "Ayuda",
+    "guide":    "Guía"
+  },
+  "builder": {
+    "title": "Constructor de filtros",
+    "add_condition": "Añadir condición",
+    "clear_all": "Borrar todo",
+    "logic_and": "Y (AND)",
+    "logic_or": "O (OR)",
+    "logic_label": "Combinar con",
+    "group_label": "Agrupar en paréntesis",
+    "advanced_mode": "Editar consulta manualmente",
+    "visual_mode": "Volver al constructor visual",
+    "no_conditions": "Sin condiciones aún. Pulsa «Añadir condición» para empezar.",
+    "condition": {
+      "type_label": "Tipo de filtro",
+      "value_label": "Valor",
+      "remove": "Eliminar condición",
+      "negate": "Excluir (NOT)"
+    },
+    "types": {
+      "from": "De — remitente",
+      "to": "Para — destinatario",
+      "cc": "CC — con copia (visible)",
+      "bcc": "BCC — copia oculta (CCO)",
+      "subject": "Asunto del correo",
+      "body": "Cuerpo del mensaje contiene",
+      "has_attachment": "Tiene archivo adjunto",
+      "filename": "Nombre o tipo de adjunto",
+      "label": "Etiqueta propia de Gmail",
+      "in": "Carpeta del sistema (bandeja, spam…)",
+      "is_read": "Estado: leído",
+      "is_unread": "Estado: no leído",
+      "is_starred": "Estado: destacado (⭐)",
+      "is_important": "Estado: marcado como importante",
+      "date_after": "Recibido después de la fecha",
+      "date_before": "Recibido antes de la fecha",
+      "newer_than": "Más reciente que… (relativo)",
+      "older_than": "Más antiguo que… (relativo)",
+      "size_larger": "Tamaño mayor que",
+      "size_smaller": "Tamaño menor que"
+    },
+    "placeholders": {
+      "from": "alice@gmail.com  O  jefe@empresa.com",
+      "to": "equipo@empresa.com  O  boletin@servicio.io",
+      "cc": "responsable@empresa.com",
+      "bcc": "archivo@empresa.com  O  cumplimiento@firma.com",
+      "subject": "factura  O  \"informe trimestral\"  -borrador",
+      "body": "acción requerida  O  \"adjunto encontrarás\"",
+      "filename": "pdf  O  *.docx  O  *.xlsx",
+      "label": "facturas  O  trabajo  O  recibos",
+      "in": "inbox  O  spam  O  promotions  O  sent",
+      "newer_than": "7d  ·  2m  ·  1y   (d=días, m=meses, y=años)",
+      "older_than": "30d  ·  3m  ·  2y   (d=días, m=meses, y=años)",
+      "size_larger": "5M  ·  10M  ·  25M   (M = megabytes)",
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobytes, M = megabytes)"
+    },
+    "has_attachment_note": "Coincide con mensajes que tienen al menos un archivo adjunto (cualquier tipo).",
+    "is_read_note": "Coincide con mensajes que ya has abierto y leído.",
+    "is_unread_note": "Coincide con mensajes que aún no has abierto.",
+    "is_starred_note": "Coincide con mensajes que has destacado con una estrella (⭐) en Gmail.",
+    "is_important_note": "Coincide con mensajes que Gmail o tú habéis marcado como importantes (►)."
+  },
+  "preview": {
+    "title": "Búsqueda generada",
+    "empty": "La búsqueda aparecerá aquí a medida que añadas condiciones.",
+    "copy": "Copiar al portapapeles",
+    "copied": "¡Copiado!",
+    "open_gmail": "Abrir en Gmail",
+    "how_to_apply": "¿Cómo aplicarlo?",
+    "summary_title": "Qué hace este filtro",
+    "summary_empty": "Añade condiciones para ver un resumen en lenguaje natural.",
+    "char_count": "{{count}} caracteres"
+  },
+  "examples": {
+    "title": "Ejemplos de filtros",
+    "subtitle": "Pulsa «Cargar» para rellenar el constructor con cada ejemplo y personalizarlo.",
+    "load": "Cargar ejemplo",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "Facturas de remitentes concretos (último mes)",
+        "description": "Correos de dos remitentes específicos cuyo asunto contiene 'factura' pero no 'borrador', recibidos en los últimos 30 días.",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(factura -borrador) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "Correos de reunión donde estoy en CC",
+        "description": "Mensajes donde apareces en CC, el asunto contiene 'reunión' pero no 'cancelada'.",
+        "query": "cc:me subject:(reunión -cancelada)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "Adjuntos PDF de un remitente concreto",
+        "description": "Mensajes de un remitente con un archivo PDF adjunto.",
+        "query": "from:informes@empresa.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "Mensajes destacados sin leer",
+        "description": "Todos los mensajes que están destacados y sin leer — filtro rápido de bandeja prioritaria.",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "Boletines para darse de baja",
+        "description": "Correos en la categoría Promociones que contienen un enlace de baja en el cuerpo.",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Referencia de operadores de Gmail",
+    "intro": "A continuación se detallan los operadores soportados por el constructor.",
+    "operators": [
+      { "op": "from:", "desc": "Coincide con la dirección del remitente." },
+      { "op": "to:", "desc": "Coincide con el destinatario principal." },
+      { "op": "cc: / bcc:", "desc": "CC = con copia (visible). BCC = copia oculta/CCO (no visible para otros)." },
+      { "op": "subject:", "desc": "Busca dentro del asunto del mensaje." },
+      { "op": "has:attachment", "desc": "Mensajes con cualquier adjunto." },
+      { "op": "filename:", "desc": "Coincide con el nombre o extensión del adjunto (p. ej. pdf, *.docx)." },
+      { "op": "label:", "desc": "Mensajes con una etiqueta propia que tú hayas creado en Gmail." },
+      { "op": "in:", "desc": "Mensajes en una carpeta del sistema de Gmail: inbox, spam, trash, sent, promotions, updates, social." },
+      { "op": "is:read / is:unread", "desc": "Filtra por estado de lectura." },
+      { "op": "is:starred / is:important", "desc": "Filtra por estrella (⭐) o importancia (►)." },
+      { "op": "after: / before:", "desc": "Rango de fechas con formato AAAA/MM/DD." },
+      { "op": "newer_than: / older_than:", "desc": "Fecha relativa: 7d (7 días), 2m (2 meses), 1y (1 año)." },
+      { "op": "larger: / smaller:", "desc": "Tamaño del mensaje: 5M (5 MB), 500K (500 KB)." },
+      { "op": "OR", "desc": "Combina dos términos para que cualquiera coincida (debe ir en mayúsculas)." },
+      { "op": "-término", "desc": "Excluye mensajes que coincidan con el término (operador NOT)." },
+      { "op": "(…)", "desc": "Agrupa términos para que los operadores se apliquen al grupo completo." }
+    ],
+    "tips_title": "Consejos avanzados",
+    "tips": [
+      "Encierra valores de varias palabras entre comillas: subject:\"informe trimestral\"",
+      "Usa OR dentro de paréntesis para coincidir con varios valores: from:(a@x.com OR b@x.com)",
+      "Los operadores de Gmail son insensibles a mayúsculas, pero OR debe ir en mayúsculas.",
+      "Pega la búsqueda generada directamente en la barra de Gmail o en el campo «Tiene las palabras» al crear un filtro.",
+      "Combina newer_than y older_than para un rango preciso: newer_than:3m older_than:1m",
+      "label: busca etiquetas propias que hayas creado. in: busca en carpetas del sistema de Gmail (inbox, spam, promotions…)."
+    ]
+  },
+  "support": {
+    "toast_title": "☕ Apoya este proyecto",
+    "toast_desc": "Esta herramienta es gratuita y de código abierto. Si te ha ahorrado tiempo, una pequeña donación ayuda a mantenerla.",
+    "dismiss_permanent": "No volver a mostrar",
+    "header_title": "Apoya al desarrollador",
+    "footer_donate": "Donar",
+    "links": [
+      { "label": "☕ Invítame a un café", "url": "https://www.paypal.com/paypalme/SalmonidasDEV" }
+    ]
+  },
+  "guide": {
+    "tab":          "Guía",
+    "title":        "Cómo aplicar tu filtro en Gmail",
+    "intro":        "Una vez creada la búsqueda con esta herramienta, sigue estos pasos para convertirla en una regla automática permanente dentro de Gmail.",
+    "step1_title":  "Copia la búsqueda",
+    "step1_desc":   "Pulsa el botón [Copiar] en la sección «Búsqueda generada» de esta página. La consulta ya está en tu portapapeles.",
+    "step2_title":  "Abre Gmail",
+    "step2_desc":   "Ve a gmail.com en tu navegador e inicia sesión si aún no lo has hecho.",
+    "step3_title":  "Haz clic en la barra de búsqueda",
+    "step3_desc":   "Gmail tiene una barra de búsqueda ancha en la parte superior de la página. Haz clic en cualquier punto de ella.",
+    "step4_title":  "Pega la consulta",
+    "step4_desc":   "Pulsa Ctrl+V (Windows / Linux) o Cmd+V (Mac) para pegar. Verás la consulta aparecer en la barra de búsqueda.",
+    "step5_title":  "Haz clic en el icono de Opciones de búsqueda <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> al final de la barra",
+    "step5_desc":   "Mira con atención el borde derecho de la barra de búsqueda — hay un icono <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> con tres líneas horizontales y deslizadores (Opciones de búsqueda).",
+    "step5_tip":    "¡Este es el paso que más gente pasa por alto! El icono es muy discreto y está justo en el borde. En versiones antiguas de Gmail era una flecha ▼, pero ahora suele ser este icono de ajustes.",
+    "step6_title":  "Haz clic en «Crear filtro con esta búsqueda»",
+    "step6_desc":   "Se abrirá un panel con los detalles de la búsqueda. Al final del panel, haz clic en el botón azul «Crear filtro con esta búsqueda».",
+    "step7_title":  "Elige qué debe hacer Gmail automáticamente",
+    "step7_desc":   "Marca una o varias acciones — archivar, aplicar etiqueta, marcar como leído, eliminar, reenviar... luego haz clic en [Crear filtro] para confirmar.",
+    "done":         "¡Listo! Gmail aplicará esta regla automáticamente a todos los correos que coincidan — sin que tengas que hacer nada más.",
+    "tip_label":    "Paso clave"
+  },
+  "footer": {
+    "made_with": "Código abierto en",
+    "github": "GitHub",
+    "donate": "Donar",
+    "disclaimer": "Esta herramienta no está afiliada con Google ni Gmail."
+  },
+  "summary": {
+    "prefix": "Este filtro coincidirá con correos",
+    "from": "enviados por {{value}}",
+    "to": "enviados a {{value}}",
+    "cc": "con {{value}} en CC",
+    "bcc": "con {{value}} en BCC (copia oculta)",
+    "subject": "cuyo asunto contiene {{value}}",
+    "body": "que contienen {{value}} en el cuerpo",
+    "has_attachment": "que tienen un adjunto",
+    "filename": "con un adjunto llamado/de tipo {{value}}",
+    "label": "con la etiqueta {{value}}",
+    "in": "en la carpeta {{value}}",
+    "is_read": "que están leídos",
+    "is_unread": "que no están leídos",
+    "is_starred": "que están destacados (⭐)",
+    "is_important": "marcados como importantes",
+    "date_after": "recibidos después del {{value}}",
+    "date_before": "recibidos antes del {{value}}",
+    "newer_than": "recibidos en los últimos {{value}}",
+    "older_than": "con más de {{value}} de antigüedad",
+    "size_larger": "de más de {{value}}",
+    "size_smaller": "de menos de {{value}}",
+    "negate_prefix": "NO",
+    "and_connector": " Y ",
+    "or_connector": " O "
+  }
+}
