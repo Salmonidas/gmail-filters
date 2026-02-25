@@ -49,4 +49,4 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 
 ---
 
-[1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0
+[1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0 

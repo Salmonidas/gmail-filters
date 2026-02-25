@@ -58,4 +58,4 @@ Si eres programador y quieres alojar tu propia versión del portal, ayudar en el
 
 ---
 
-Licencia: MIT © 2026
+Licencia: MIT © 2026 

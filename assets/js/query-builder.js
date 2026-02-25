@@ -178,4 +178,4 @@ export function buildSummary(conditions, t) {
   });
 
   return `${prefix} ${descriptions.join('')}.`;
-}
+} 

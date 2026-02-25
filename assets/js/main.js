@@ -99,4 +99,4 @@ function navigateToSection(sectionId) {
   document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.section === sectionId));
 }
 
-boot();
+boot(); 

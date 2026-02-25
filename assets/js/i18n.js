@@ -52,4 +52,4 @@ const i18n = (() => {
   return { load, t, currentLocale, availableLocales, onChange };
 })();
 
-export default i18n;
+export default i18n; 

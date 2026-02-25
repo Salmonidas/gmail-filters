@@ -58,4 +58,4 @@ If you are a developer looking to host your own version, contribute to the codeb
 
 ---
 
-License: MIT © 2026
+License: MIT © 2026 

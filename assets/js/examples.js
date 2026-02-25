@@ -159,4 +159,4 @@ export function renderGuide(container, t) {
       </div>
     </div>
   `;
-}
+} 
