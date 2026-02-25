@@ -2,36 +2,35 @@
 
 **English** | [Español](README-es.md)
 
-> Build advanced Gmail search queries visually — no syntax memorisation required.
+> Build advanced Gmail search filters visually — no syntax memorisation needed. Real-time query generation, plain-English summary, copy-to-clipboard, and runs entirely in the browser. No backend, no build step. EN/ES.
 
-[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue?logo=github)](https://salmonidas.github.io/gmail-filters/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
----
-
-## What is this?
-
-**Gmail Filter Builder** is a free, open-source static web app that helps you construct powerful Gmail search queries using a visual, no-code interface.
-
-Instead of memorising Gmail's operator syntax, you select filter conditions from dropdowns, fill in values, and the tool generates the correct query in real time — ready to paste into Gmail's search bar or filter creation wizard.
+[![Use Now - Live Demo](https://img.shields.io/badge/Use_Now-Live_Demo-blue?logo=googlechrome)](https://salmonidas.github.io/gmail-filters/)
 
 ---
 
-## Features
+## 🛑 The Gmail Problem
+Gmail's search is incredibly powerful, but creating complex filters (e.g., "Emails with attachments, NOT from X person, with label Y") requires you to memorize a list of commands and symbols like `has:attachment -from:boss@company.com label:urgent`. Nobody has time to memorize that!
 
-- 🔍 **Visual condition builder** — add/remove rows, each with type + value + NOT toggle
-- 🔗 **AND / OR logic** — combine conditions with implicit AND or explicit OR
-- 📋 **One-click copy** — copy the query directly to the clipboard
-- 🔗 **Open in Gmail** — jump straight into Gmail with the query pre-filled
-- 💬 **Plain-English summary** — see a human-readable explanation of what the filter does
-- 🛠️ **Advanced editor** — switch to raw query editing and back to visual mode
-- 🌍 **i18n** — fully internationalised, ships with English and Spanish; easy to extend
-- ⭐ **Example presets** — 5 ready-made filters you can load and customise
-- 📖 **Operator reference** — built-in help table with all supported Gmail operators
+## ✨ The Solution
+**Gmail Filter Builder** is a free, secure tool that runs in your browser. It lets you create complex searches simply by clicking dropdown menus.
+
+1. **Add your rules:** Select what you want to filter by (Sender, Subject, Has attachment, Date...).
+2. **Copy the result:** The tool generates the exact Gmail code instantly.
+3. **Paste into Gmail:** Use the "Open in Gmail" button to test your search directly in your inbox, or use it to create an automated filter.
 
 ---
 
-## Gmail Operators Supported
+## 🚀 Main Features
+- **Visual Interface:** Add as many conditions as you need, click buttons to combine them with "AND / OR", or check the "Exclude (NOT)" box to specify what you don't want.
+- **Plain-English Summary:** As you build, the tool writes out a human-readable explanation of exactly which emails will match.
+- **100% Private:** No passwords required, it does not connect to your Google account, and it runs entirely in your own browser. Your data is perfectly safe.
+- **Step-by-step Guide:** Includes a dedicated "Guide" tab with screenshots showing you exactly where to paste this filter back into Gmail.
+- **Ready-to-use Examples:** Load common filters (like "Clean up heavy newsletters") with one click so you don't have to start from scratch.
+
+---
+
+## 📚 Supported Operators
+With this tool you can filter by:
 
 | Operator | Description |
 |---|---|
@@ -54,77 +53,9 @@ Instead of memorising Gmail's operator syntax, you select filter conditions from
 
 ---
 
-## Project Structure
-
-```
-gmail-filters/
-├── index.html               # Single-page app shell
-├── assets/
-│   ├── css/
-│   │   └── styles.css       # Material Design 3 stylesheet
-│   └── js/
-│       ├── main.js          # Entry point — boots i18n and binds everything
-│       ├── i18n.js          # Lightweight i18n engine (fetch + JSON)
-│       ├── query-builder.js # Pure query construction functions (stateless)
-│       ├── ui.js            # DOM manipulation and event handling
-│       └── examples.js      # Preset examples data and renderers
-├── locales/
-│   ├── en.json              # English strings
-│   └── es.json              # Spanish strings
-└── Utilidades/              # Project documentation (dev only)
-    ├── Contexto_Global.md
-    ├── Roadtrip.txt
-    ├── Funcional.txt
-    └── Commit.txt
-```
+## 🛠️ For Developers
+If you are a developer looking to host your own version, contribute to the codebase (Vanilla HTML/JS/CSS, no build step, no dependencies), or check out the lightweight i18n engine: all source code is open under the MIT license. Just clone the repo and explore!
 
 ---
 
-## Deploying to GitHub Pages
-
-1. Fork or clone this repository.
-2. Push to `main` (or your default branch).
-3. Go to **Settings → Pages** and set the source to `main` / `(root)`.
-4. Your site will be live at `https://salmonidas.github.io/gmail-filters/`.
-
-No build step required. Pure HTML/CSS/JS served directly.
-
----
-
-## Adding a New Language
-
-1. Copy `locales/en.json` → `locales/<code>.json` (e.g. `fr.json`).
-2. Translate all string values (keep keys intact).
-3. Open `assets/js/i18n.js` and add your locale to `AVAILABLE_LOCALES`:
-   ```js
-   { code: 'fr', label: 'Français' },
-   ```
-4. Done — the language selector will appear automatically.
-
----
-
-## Adding a New Condition Type
-
-1. Open `assets/js/query-builder.js` and add an entry to `CONDITION_TYPES`.
-2. Add translation keys under `builder.types.<key>` and `builder.placeholders.<key>` in each locale file.
-3. Add a summary description under `summary.<key>` in each locale file.
-
----
-
-## Configuring the Developer Support Banner
-
-Open `assets/js/main.js` and find the `CONFIG` object:
-
-```js
-const CONFIG = {
-  HIDE_SUPPORT: false,   // set true to hide the banner entirely
-};
-```
-
-Update the banner links in each locale file under `support.links[]`.
-
----
-
-## License
-
-MIT © 2026 — see [LICENSE](LICENSE).
+License: MIT © 2026
