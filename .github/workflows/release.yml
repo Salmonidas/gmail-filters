@@ -1,0 +1,68 @@
+name: Generate Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger for versions like v1.0.0
+      - '[0-9]+.[0-9]+.[0-9]+*' # Trigger for raw semver tags like 1.0.0
+
+permissions:
+  contents: write # Needed to create the release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Get Tag Name
+        id: get_version
+        run: |
+          # Strip 'refs/tags/' from the GITHUB_REF and optional 'v' prefix
+          RAW_TAG=${GITHUB_REF#refs/tags/}
+          CLEAN_VERSION=${RAW_TAG#v}
+          echo "VERSION=$CLEAN_VERSION" >> $GITHUB_ENV
+          echo "RAW_TAG=$RAW_TAG" >> $GITHUB_ENV
+
+      - name: Extract Release Notes from Changelogs
+        run: |
+          echo "Building notes for version: ${{ env.VERSION }}"
+          
+          # English Extraction
+          echo "## 🇬🇧 English Release Notes" > release_notes.md
+          echo "" >> release_notes.md
+          
+          if [ -f "CHANGELOG.md" ]; then
+            awk "/^## \\\[${{ env.VERSION }}\\\]/{flag=1;next} /^## \\\[/{flag=0} flag" CHANGELOG.md | sed -e '/^[[:space:]]*$/{
+              $d
+            }' >> release_notes.md
+          else
+            echo "_No English CHANGELOG.md found._" >> release_notes.md
+          fi
+          
+          echo "" >> release_notes.md
+          echo "---" >> release_notes.md
+          echo "" >> release_notes.md
+          
+          # Spanish Extraction
+          echo "## 🇪🇸 Notas de la Versión" >> release_notes.md
+          echo "" >> release_notes.md
+          
+          if [ -f "CHANGELOG-es.md" ]; then
+            awk "/^## \\\[${{ env.VERSION }}\\\]/{flag=1;next} /^## \\\[/{flag=0} flag" CHANGELOG-es.md | sed -e '/^[[:space:]]*$/{
+              $d
+            }' >> release_notes.md
+          else
+            echo "_No se encontró CHANGELOG-es.md._" >> release_notes.md
+          fi
+          
+          cat release_notes.md
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ env.RAW_TAG }}" \
+            --title "Release ${{ env.RAW_TAG }}" \
+            --notes-file release_notes.md
