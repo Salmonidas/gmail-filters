@@ -7,7 +7,7 @@
   "nav": {
     "builder":  "Constructor",
     "preview":  "Vista previa",
-    "examples": "Ejemplos",
+    "examples": "Biblioteca",
     "help":     "Ayuda",
     "guide":    "Guía"
   },
@@ -21,6 +21,7 @@
     "group_label": "Agrupar en paréntesis",
     "advanced_mode": "Editar consulta manualmente",
     "visual_mode": "Volver al constructor visual",
+    "advanced_note": "Edita la consulta directamente. Pulsa \"Volver al constructor visual\" para convertirla en condiciones.",
     "no_conditions": "Sin condiciones aún. Pulsa «Añadir condición» para empezar.",
     "condition": {
       "type_label": "Tipo de filtro",
@@ -80,7 +81,32 @@
     "how_to_apply": "¿Cómo aplicarlo?",
     "summary_title": "Qué hace este filtro",
     "summary_empty": "Añade condiciones para ver un resumen en lenguaje natural.",
-    "char_count": "{{count}} caracteres"
+    "char_count": "{{count}} caracteres",
+    "share": "Compartir enlace",
+    "share_copied": "¡Enlace copiado!",
+    "save": "Guardar filtro",
+    "saved_toast": "Guardado en Mis Filtros"
+  },
+  "saved_filters": {
+    "title": "Mis Filtros",
+    "subtitle": "Filtros que has guardado en tu navegador.",
+    "empty": "Aún no hay filtros guardados.",
+    "delete": "Eliminar",
+    "name_prompt": "Nombre para este filtro:",
+    "default_name": "Filtro personalizado",
+    "dialog_title": "Guardar filtro",
+    "dialog_hint": "Tu filtro aparecerá en la pestaña Biblioteca, dentro de Mis Filtros.",
+    "dialog_save": "Guardar",
+    "cancel": "Cancelar",
+    "snackbar_msg": "Filtro guardado en Mis Filtros",
+    "snackbar_action": "Ver",
+    "delete_confirm_title": "¿Borrar filtro?",
+    "delete_confirm_msg": "¿Estás seguro de que quieres borrar este filtro de tu biblioteca? Esta acción no se puede deshacer.",
+    "delete_cancel": "Cancelar",
+    "delete_confirm": "Borrar",
+    "empty_library_title": "Tu biblioteca está vacía",
+    "empty_library_desc": "Guarda tus búsquedas más frecuentes para encontrarlas aquí más tarde.",
+    "empty_library_cta": "Ir al Constructor"
   },
   "examples": {
     "title": "Ejemplos de filtros",
@@ -213,5 +239,13 @@
     "negate_prefix": "NO",
     "and_connector": " Y ",
     "or_connector": " O "
+  },
+  "pwa": {
+    "install_btn": "Instalar aplicación",
+    "install_title": "Instalar Gmail Filter Builder",
+    "install_desc": "Instala nuestra app en tu dispositivo para una experiencia más rápida y sin conexión.",
+    "ios_hint_title": "Instalar en iOS / Safari",
+    "ios_hint_steps": "1. Pulsa el botón compartir [icon] \n2. Selecciona 'Añadir a la pantalla de inicio'",
+    "installed_msg": "¡Aplicación instalada con éxito!"
   }
 } 

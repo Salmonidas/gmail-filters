@@ -7,6 +7,21 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [1.1.0] - 2026-02-27
+
+### Added
+- **Share Link**: Serialises the visual builder state (conditions, logic, values) to a compact Base64 fragment in the URL hash. Any shared URL automatically reconstructs the full filter on load.
+- **My Filters** (Saved Local Library): A "Save filter" button stores the current filter name, query, and conditions in `localStorage`. Saved filters appear as cards above the factory examples and can be loaded or deleted independently.
+- **Progressive Web App (PWA)**: Added `manifest.json` and a cache-first Service Worker (`sw.js`). The app is now fully installable on Android, iOS, and macOS (Chrome/Safari via manual hint).
+- **Modernized Library (Biblioteca)**: Renamed "Examples" to "Library" and added user-saved filters.
+- **Micro-animations**: Added smooth transitions for modals (fade+scale), snackbars (slide-up), and new library rows for a premium feel.
+- **UX Refinements**: Implemented a "Delete Confirmation" modal to prevent accidental data loss and a "Premium Empty State" for the Library.
+- Strict **Content Security Policy** (`Content-Security-Policy` meta tag) to block XSS payloads.
+- `apple-touch-icon` and iOS-specific PWA meta tags for a native-like experience.
+
+### Fixed
+- Implemented comprehensive CSS Media Queries for 100% mobile responsiveness (swipeable nav tabs, fluid tables, overflow-x protection).
+
 ## [1.0.0] - 2026-02-25
 
 ### Added
@@ -55,4 +70,5 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
-[1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0 
+[1.1.0]: https://github.com/Salmonidas/gmail-filters/compare/1.0.0...1.1.0
+[1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0

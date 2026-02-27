@@ -1,6 +1,6 @@
 import i18n            from './i18n.js';
 import { initUI }      from './ui.js';
-import { renderExamples, renderHelp, renderGuide } from './examples.js';
+import { renderExamples, renderHelp, renderGuide, renderSavedFilters } from './examples.js';
 
 const CONFIG = {
   INITIAL_LOCALE: null,
@@ -52,6 +52,14 @@ function initTheme() {
 async function boot() {
   initTheme();
 
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(err => {
+        console.warn('SW Registration failed:', err);
+      });
+    });
+  }
+
   try {
     await i18n.load(detectLocale());
   } catch {
@@ -60,12 +68,28 @@ async function boot() {
 
   const ui = initUI(i18n, state);
   ui.init();
+  ui.initPWAInstall();
 
-  const examplesContainer = document.getElementById('examples-grid');
+  const examplesContainer     = document.getElementById('examples-grid');
+  const savedFiltersContainer = document.getElementById('saved-filters-grid');
   const helpContainer     = document.getElementById('help-container');
   const guideContainer    = document.getElementById('guide-container');
 
+  function updateSavedLibrary() {
+    const saved = JSON.parse(localStorage.getItem('savedFilters') || '[]');
+    renderSavedFilters(savedFiltersContainer, saved, i18n.t.bind(i18n), conditions => {
+      ui.loadConditions(conditions);
+    }, id => {
+      ui.showDeleteConfirmation(() => {
+        const remaining = saved.filter(f => f.id !== id);
+        localStorage.setItem('savedFilters', JSON.stringify(remaining));
+        updateSavedLibrary();
+      });
+    });
+  }
+
   function refreshDynamicSections() {
+    updateSavedLibrary();
     renderExamples(examplesContainer, i18n.t.bind(i18n), conditions => {
       ui.loadConditions(conditions);
     });
@@ -74,12 +98,16 @@ async function boot() {
   }
 
   refreshDynamicSections();
+  
+  window.addEventListener('filters-updated', () => updateSavedLibrary());
   i18n.onChange(() => refreshDynamicSections());
 
   const yearEl = document.getElementById('current-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  navigateToSection(window.location.hash.slice(1) || 'builder');
+  const initialSection = window.location.hash.slice(1).split('?')[0] || 'builder';
+  navigateToSection(initialSection);
+
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -90,7 +118,8 @@ async function boot() {
   });
 
   window.addEventListener('hashchange', () => {
-    navigateToSection(window.location.hash.slice(1) || 'builder');
+    const currentSection = window.location.hash.slice(1).split('?')[0] || 'builder';
+    navigateToSection(currentSection);
   });
 }
 

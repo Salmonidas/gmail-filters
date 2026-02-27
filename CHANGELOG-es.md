@@ -7,6 +7,21 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 
 ---
 
+## [1.1.0] - 2026-02-27
+
+### Añadido (Added)
+- **Compartir enlace**: Serializa el estado del constructor visual (condiciones, lógica, valores) en un fragmento Base64 compacto en la URL. Cualquier enlace compartido reconstruye automáticamente el filtro completo al cargarse.
+- **Mis Filtros** (Biblioteca local guardada): El botón "Guardar filtro" almacena el nombre, la consulta y las condiciones del filtro actual en `localStorage`. Los filtros guardados aparecen como tarjetas sobre los ejemplos de fábrica y pueden cargarse o eliminarse de forma independiente.
+- **Progressive Web App (PWA)**: Se añaden `manifest.json` y un Service Worker (`sw.js`). La aplicación es ahora completamente instalable en Android, iOS y macOS (vía Chrome o Safari con el nuevo panel de ayuda).
+- **Biblioteca Modernizada**: Se ha renombrado la pestaña "Ejemplos" a "Biblioteca" y ahora integra tus filtros guardados.
+- **Micro-animaciones**: Transiciones suaves en Diálogos (fade+scale), Snackbars (deslizamiento) y nuevas filas para una sensación premium.
+- **Refinamientos UX**: Implementado un diálogo de "Confirmación de Borrado" para evitar pérdidas accidentales y un estado vacío premium para la Biblioteca.
+- **Content Security Policy** estricta para bloquear XSS.
+- Meta tags específicos para iOS para una experiencia 100% nativa.
+
+### Corregido (Fixed)
+- Implementadas y refactorizadas reglas CSS con Media Queries para lograr un diseño 100% responsivo en móviles (pestañas deslizables, tablas fluidas, protección estricta contra desbordamiento horizontal en pantallas pequeñas).
+
 ## [1.0.0] - 2026-02-25
 
 ### Añadido (Added)
@@ -49,4 +64,5 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 
 ---
 
-[1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0 
+[1.1.0]: https://github.com/Salmonidas/gmail-filters/compare/1.0.0...1.1.0
+[1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0

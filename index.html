@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'" />
   <title>Gmail Filter Builder</title>
   <meta name="description" content="Visual builder for advanced Gmail search filters. No syntax to memorise, no backend, no build step. EN/ES support." />
   <meta name="theme-color" content="#1A73E8" />
@@ -17,7 +18,12 @@
   <!-- <link rel="canonical" href="https://salmonidas.github.io/gmail-filters/" /> -->
 
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Gmail Filters" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=2" />
 </head>
 <body>
 
@@ -210,6 +216,18 @@
                   </svg>
                   <span data-i18n="preview.copy">Copy</span>
                 </button>
+                <button id="btn-save" class="md-btn md-btn-tonal">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon" aria-hidden="true">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>
+                  </svg>
+                  <span data-i18n="preview.save">Save filter</span>
+                </button>
+                <button id="btn-share" class="md-btn md-btn-tonal">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon" aria-hidden="true">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                  </svg>
+                  <span data-i18n="preview.share">Share link</span>
+                </button>
                 <a id="btn-open-gmail"
                    href="#"
                    target="_blank"
@@ -245,8 +263,28 @@
 
 
 
-    <!-- ─────────────────── EXAMPLES SECTION ─────────────────── -->
+    <!-- ─────────────────── EXAMPLES & SAVED SECTION ─────────────────── -->
     <section id="section-examples" class="main-section hidden" aria-labelledby="examples-heading">
+      
+      <!-- My Saved Filters -->
+      <div class="md-card" id="saved-filters-card" style="margin-bottom: 24px; display: none;">
+        <div class="card-header">
+          <div class="card-header-left">
+            <div class="card-header-icon" aria-hidden="true" style="background: var(--md-tertiary-container); color: var(--md-tertiary);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h2 class="card-title" data-i18n="saved_filters.title">My Filters</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="section-intro" data-i18n="saved_filters.subtitle"></p>
+          <div id="saved-filters-grid" class="examples-grid" role="list" aria-label="Saved filters"></div>
+        </div>
+      </div>
+
+      <!-- Factory Examples -->
       <div class="md-card">
         <div class="card-header">
           <div class="card-header-left">
@@ -286,7 +324,7 @@
         <div class="card-body">
           <p class="section-intro" data-i18n="help.intro"></p>
 
-          <div style="overflow-x: auto; margin-top: 16px;">
+          <div class="help-table-wrapper" style="margin-top: 16px;">
             <table class="help-table" aria-label="Gmail search operators">
               <thead>
                 <tr>
@@ -301,6 +339,18 @@
           <div style="margin-top: 28px;">
             <p class="help-tips-title" data-i18n="help.tips_title">Pro Tips</p>
             <ul class="tips-list help-tips-list" role="list"></ul>
+          </div>
+      </div>
+      
+      <div class="help-card" id="pwa-install-section">
+        <h3 data-i18n="pwa.install_title">Install App</h3>
+        <div id="pwa-install-container">
+          <p data-i18n="pwa.install_desc"></p>
+          <button id="btn-pwa-install" class="md-btn md-btn-primary hidden" data-i18n="pwa.install_btn">Install</button>
+          
+          <div id="ios-pwa-hint" class="ios-hint hidden">
+            <h4 data-i18n="pwa.ios_hint_title">Install on iOS</h4>
+            <p data-i18n="pwa.ios_hint_steps" style="white-space: pre-line;"></p>
           </div>
         </div>
       </div>
@@ -342,10 +392,60 @@
     <button class="toast-dismiss"></button>
   </div>
 
+  <!-- ══════════════ SAVE FILTER MODAL ══════════════ -->
+  <div id="save-filter-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="save-filter-title">
+    <div class="modal-card" role="document">
+      <div class="modal-header">
+        <div class="modal-header-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>
+          </svg>
+        </div>
+        <h2 id="save-filter-title" class="modal-title" data-i18n="saved_filters.dialog_title">Save Filter</h2>
+      </div>
+      <div class="modal-body">
+        <label class="modal-label" for="save-filter-name" data-i18n="saved_filters.name_prompt">Name this filter:</label>
+        <input id="save-filter-name" type="text" class="modal-input" autocomplete="off" />
+        <p class="modal-hint" data-i18n="saved_filters.dialog_hint"></p>
+      </div>
+      <div class="modal-actions">
+        <button id="save-filter-cancel" class="md-btn md-btn-tonal" data-i18n="saved_filters.cancel">Cancel</button>
+        <button id="save-filter-confirm" class="md-btn md-btn-primary" data-i18n="saved_filters.dialog_save">Save</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ══════════════ DELETE CONFIRM MODAL ══════════════ -->
+  <div id="delete-confirm-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="delete-confirm-title">
+    <div class="modal-card modal-card-danger" role="document">
+      <div class="modal-header">
+        <div class="modal-header-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          </svg>
+        </div>
+        <h2 id="delete-confirm-title" class="modal-title" data-i18n="saved_filters.delete_confirm_title">Delete Filter?</h2>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc" data-i18n="saved_filters.delete_confirm_msg"></p>
+      </div>
+      <div class="modal-actions">
+        <button id="delete-confirm-cancel" class="md-btn md-btn-tonal" data-i18n="saved_filters.delete_cancel">Cancel</button>
+        <button id="delete-confirm-btn" class="md-btn md-btn-danger" data-i18n="saved_filters.delete_confirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SAVE SUCCESS SNACKBAR ══════════════ -->
+  <div id="save-snackbar" class="snackbar hidden" role="status" aria-live="polite">
+    <span id="save-snackbar-msg" data-i18n="saved_filters.snackbar_msg"></span>
+    <button id="save-snackbar-action" class="snackbar-action" data-i18n="saved_filters.snackbar_action">View</button>
+  </div>
+
 </div><!-- /app-shell -->
 
 <!-- ── Entry point (ES module) ── -->
-<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/main.js?v=2"></script>
 
 </body>
 </html> 

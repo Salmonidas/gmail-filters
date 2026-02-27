@@ -27,6 +27,8 @@ export function initUI(i18n, state) {
     queryText:        document.getElementById('query-text'),
     charCount:        document.getElementById('char-count'),
     copyBtn:          document.getElementById('btn-copy'),
+    shareBtn:         document.getElementById('btn-share'),
+    saveBtn:          document.getElementById('btn-save'),
     openGmailBtn:     document.getElementById('btn-open-gmail'),
     summaryText:      document.getElementById('summary-text'),
     summaryEmpty:     document.getElementById('summary-empty'),
@@ -39,9 +41,150 @@ export function initUI(i18n, state) {
     footerDonateLink: document.getElementById('footer-donate-link'),
     toast:            document.getElementById('support-toast'),
     btnViewGuide:     document.getElementById('btn-view-guide'),
+    saveOverlay:      document.getElementById('save-filter-overlay'),
+    saveNameInput:    document.getElementById('save-filter-name'),
+    saveCancel:       document.getElementById('save-filter-cancel'),
+    saveConfirm:      document.getElementById('save-filter-confirm'),
+    saveSnackbar:     document.getElementById('save-snackbar'),
+    saveSnackbarMsg:  document.getElementById('save-snackbar-msg'),
+    saveSnackbarAct:  document.getElementById('save-snackbar-action'),
+    deleteOverlay:    document.getElementById('delete-confirm-overlay'),
+    deleteCancel:     document.getElementById('delete-confirm-cancel'),
+    deleteConfirm:    document.getElementById('delete-confirm-btn'),
+    pwaInstallBtn:    document.getElementById('btn-pwa-install'),
+    iosPwaHint:       document.getElementById('ios-pwa-hint'),
   };
 
   let isAdvancedMode = false;
+  let snackbarTimer  = null;
+
+  // ── Internal Helpers ───────────────────────────────────────────────────────
+  function showSaveDialog() {
+    if (!els.saveOverlay || !els.saveNameInput) return;
+    els.saveNameInput.value = '';
+    els.saveOverlay.classList.remove('hidden');
+    setTimeout(() => els.saveNameInput.focus(), 50);
+  }
+
+  function doSave() {
+    const title = els.saveNameInput?.value.trim() || i18n.t('saved_filters.default_name');
+    els.saveOverlay?.classList.add('hidden');
+    
+    // Save to localStorage
+    const saved = JSON.parse(localStorage.getItem('savedFilters') || '[]');
+    saved.push({ 
+      id: crypto.randomUUID(), 
+      title, 
+      query: state.currentQuery, 
+      conditions: JSON.parse(JSON.stringify(state.conditions)) 
+    });
+    localStorage.setItem('savedFilters', JSON.stringify(saved));
+    
+    // Notify app
+    window.dispatchEvent(new Event('filters-updated'));
+    showSnackbar();
+  }
+
+  function doCancel() {
+    els.saveOverlay?.classList.add('hidden');
+    els.deleteOverlay?.classList.add('hidden');
+  }
+
+  function showDeleteConfirmation(onConfirm) {
+    if (!els.deleteOverlay) return;
+    els.deleteOverlay.classList.remove('hidden');
+
+    const handleConfirm = () => {
+      onConfirm();
+      doCancel();
+      cleanup();
+    };
+
+    const handleCancel = () => {
+      doCancel();
+      cleanup();
+    };
+
+    function cleanup() {
+      els.deleteConfirm?.removeEventListener('click', handleConfirm);
+      els.deleteCancel?.removeEventListener('click', handleCancel);
+    }
+
+    els.deleteConfirm?.addEventListener('click', handleConfirm);
+    els.deleteCancel?.addEventListener('click', handleCancel);
+  }
+
+  let deferredPrompt = null;
+  function initPWAInstall() {
+    // 1. Detect iOS Safari
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+    if (isIOS && !isStandalone) {
+      els.iosPwaHint?.classList.remove('hidden');
+    }
+
+    // 2. Standard PWA Prompt (Chrome/Android/macOS Chrome)
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      els.pwaInstallBtn?.classList.remove('hidden');
+    });
+
+    els.pwaInstallBtn?.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        els.pwaInstallBtn?.classList.add('hidden');
+      }
+      deferredPrompt = null;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      els.pwaInstallBtn?.classList.add('hidden');
+    });
+  }
+
+  function showSnackbar() {
+    if (!els.saveSnackbar) return;
+    if (snackbarTimer) clearTimeout(snackbarTimer);
+    
+    // Update texts
+    if (els.saveSnackbarMsg) els.saveSnackbarMsg.textContent = i18n.t('saved_filters.snackbar_msg');
+    if (els.saveSnackbarAct) els.saveSnackbarAct.textContent = i18n.t('saved_filters.snackbar_action');
+    
+    // Show it
+    els.saveSnackbar.classList.remove('hidden');
+
+    // Clone & replace button to clear old listeners safely
+    if (els.saveSnackbarAct) {
+      const freshBtn = els.saveSnackbarAct.cloneNode(true);
+      els.saveSnackbarAct.replaceWith(freshBtn);
+      els.saveSnackbarAct = freshBtn; 
+      
+      els.saveSnackbarAct.addEventListener('click', () => {
+        els.saveSnackbar.classList.add('hidden');
+        const examplesLink = document.querySelector('[data-section="examples"]');
+        if (examplesLink) {
+          examplesLink.click();
+          setTimeout(() => {
+            const target = document.getElementById('saved-filters-card');
+            if (target) {
+              target.style.display = 'block';
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 250);
+        }
+      });
+    }
+
+    snackbarTimer = setTimeout(() => {
+      els.saveSnackbar?.classList.add('hidden');
+      snackbarTimer = null;
+    }, 5000);
+  }
 
   // ── Language selector ─────────────────────────────────────────────────────
   function buildLangSelect() {
@@ -273,6 +416,52 @@ export function initUI(i18n, state) {
     }
 
     if (isAdvancedMode && els.advancedInput) els.advancedInput.value = query;
+    syncStateToURL();
+  }
+
+  // ── URL State Sync ─────────────────────────────────────────────────────────
+  function syncStateToURL() {
+    if (isAdvancedMode) return;
+    if (state.conditions.length === 0) {
+      window.history.replaceState(null, '', window.location.pathname + (window.location.hash.split('?')[0] || ''));
+      return;
+    }
+    const mini = state.conditions.map(c => ({
+      t: c.type,
+      v: c.value,
+      n: c.negate ? 1 : 0,
+      l: c.logic === 'OR' ? 1 : 0
+    }));
+    try {
+      const b64 = btoa(encodeURIComponent(JSON.stringify(mini)));
+      const baseHash = window.location.hash.split('?')[0] || '#builder';
+      window.history.replaceState(null, '', `${baseHash}?q=${b64}`);
+    } catch(e) { console.error('Error syncing state', e); }
+  }
+
+  function loadStateFromURL() {
+    try {
+      const hash = window.location.hash;
+      if (!hash.includes('?q=')) return false;
+      
+      const q = new URLSearchParams(hash.split('?')[1]).get('q');
+      if (!q) return false;
+      
+      const mini = JSON.parse(decodeURIComponent(atob(q)));
+      if (!Array.isArray(mini)) return false;
+      
+      state.conditions = mini.map(m => ({
+        id: crypto.randomUUID(),
+        type: m.t || 'from',
+        value: m.v || '',
+        negate: !!m.n,
+        logic: m.l ? 'OR' : 'AND'
+      }));
+      return true;
+    } catch(e) {
+      console.error('Failed to parse URL state', e);
+      return false;
+    }
   }
 
   // ── Support toast ──────────────────────────────────────────────────────────
@@ -354,6 +543,21 @@ export function initUI(i18n, state) {
       }
     });
 
+    els.shareBtn?.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(window.location.href);
+      const label = els.shareBtn.querySelector('[data-i18n]');
+      if (label) {
+        const orig = label.textContent;
+        label.textContent = i18n.t('preview.share_copied');
+        setTimeout(() => { label.textContent = orig; }, 2000);
+      }
+    });
+
+    els.saveBtn?.addEventListener('click', () => {
+      if (!state.currentQuery || state.conditions.length === 0) return;
+      showSaveDialog();
+    });
+
     els.advancedToggle?.addEventListener('click', () => {
       isAdvancedMode = !isAdvancedMode;
       els.visualBuilder?.classList.toggle('hidden', isAdvancedMode);
@@ -389,6 +593,17 @@ export function initUI(i18n, state) {
     els.btnViewGuide?.addEventListener('click', () => {
       window.location.hash = '#guide';
     });
+
+    // Save Filter Modal Events (attached once)
+    els.saveConfirm?.addEventListener('click', doSave);
+    els.saveCancel?.addEventListener('click', doCancel);
+    els.saveOverlay?.addEventListener('click', e => {
+      if (e.target === els.saveOverlay) doCancel();
+    });
+    els.saveNameInput?.addEventListener('keydown', e => {
+      if (e.key === 'Enter')  doSave();
+      if (e.key === 'Escape') doCancel();
+    });
   }
 
   // ── Public API ─────────────────────────────────────────────────────────────
@@ -397,8 +612,11 @@ export function initUI(i18n, state) {
       buildLangSelect();
       translateUI();
       bindGlobalEvents();
+      
+      loadStateFromURL();
       renderAllConditions();
       renderPreview();
+      
       initToast();
       i18n.onChange(() => translateUI());
     },
@@ -409,7 +627,10 @@ export function initUI(i18n, state) {
       document.getElementById('section-builder')?.scrollIntoView({ behavior: 'smooth' });
     },
     renderPreview,
+    initPWAInstall,
+    showDeleteConfirmation,
   };
+
 }
 
 function escapeHtml(str) {

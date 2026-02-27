@@ -73,6 +73,74 @@ export function renderExamples(container, t, onLoad) {
 }
 
 /**
+ * Render the user's saved filters section cards.
+ *
+ * @param {HTMLElement} container  – the saved filters grid element
+ * @param {Array} savedItems       - array of saved filter objects from localStorage
+ * @param {Function} t             – i18n translation function
+ * @param {Function} onLoad        – callback(conditions[]) when user clicks "Load"
+ * @param {Function} onDelete      - callback(id) when user clicks "Delete"
+ */
+export function renderSavedFilters(container, savedItems, t, onLoad, onDelete) {
+  if (!container) return;
+  const cardContainer = document.getElementById('saved-filters-card');
+  
+  if (!savedItems || savedItems.length === 0) {
+    container.innerHTML = `
+      <div class="library-empty-card">
+        <div class="library-empty-icon">📂</div>
+        <h3 data-i18n="saved_filters.empty_library_title">${t('saved_filters.empty_library_title')}</h3>
+        <p data-i18n="saved_filters.empty_library_desc">${t('saved_filters.empty_library_desc')}</p>
+        <button class="md-btn md-btn-tonal" id="btn-library-to-builder" style="margin-top: 16px;">
+          ${t('saved_filters.empty_library_cta')}
+        </button>
+      </div>
+    `;
+    container.querySelector('#btn-library-to-builder')?.addEventListener('click', () => {
+      document.querySelector('[data-section="builder"]')?.click();
+    });
+    return;
+  }
+  
+  if (cardContainer) cardContainer.style.display = 'block';
+  container.innerHTML = '';
+
+  savedItems.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'example-card';
+    card.innerHTML = `
+      <div class="example-card-body">
+        <h3 class="example-card-title">${escapeHtml(item.title)}</h3>
+        <code class="example-card-query">${escapeHtml(item.query)}</code>
+      </div>
+      <div class="example-card-footer" style="display: flex; gap: 8px;">
+        <button class="md-btn md-btn-tonal example-load-btn" style="flex: 1; justify-content: center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          ${t('examples.load')}
+        </button>
+        <button class="md-btn md-btn-danger example-delete-btn" style="padding: 0 10px;" aria-label="${t('saved_filters.delete')}" title="${t('saved_filters.delete')}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon" style="margin: 0;">
+            <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/>
+          </svg>
+        </button>
+      </div>
+    `;
+    card.querySelector('.example-load-btn').addEventListener('click', () => onLoad(item.conditions));
+    card.querySelector('.example-delete-btn').addEventListener('click', () => onDelete(item.id));
+    container.appendChild(card);
+  });
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/**
  * Render the help / operator reference section.
  *
  * @param {HTMLElement} container
