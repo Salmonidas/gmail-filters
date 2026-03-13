@@ -182,9 +182,9 @@
     "dismiss_permanent": "No volver a mostrar",
     "header_title": "Apoya al desarrollador",
     "footer_donate": "Donar",
-    "links": [
-      { "label": "☕ Invítame a un café", "url": "https://www.paypal.com/paypalme/SalmonidasDEV" }
-    ]
+    "toast_cta": "☕ Invítame a un café",
+    "paused_msg": "Las donaciones están pausadas temporalmente. Pronto activaré GitHub Sponsors ☕. ¡Gracias por el apoyo!",
+    "links": []
   },
   "guide": {
     "tab":          "Guía",

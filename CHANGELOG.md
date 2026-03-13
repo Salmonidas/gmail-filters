@@ -7,6 +7,18 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [1.1.1] - 2026-03-13
+
+### Added
+- **Automated GitHub Sponsors Detection**: The "Sponsor" button now dynamically checks the GitHub API on click. If your Sponsors page is live, it redirects; otherwise, it shows a localized "Donations Paused" toast. Zero code changes required when going live.
+- **Localized Pause Toast**: Added bilingual (EN/ES) toast messages for paused donor status.
+
+### Changed
+- **Minimalist Footer**: Removed "Made with ♥" prefix for a cleaner, professional open-source look.
+
+### Removed
+- **PayPal Integration**: Removed all hardcoded PayPal links and references from the UI and metadata in favour of GitHub Sponsors.
+
 ## [1.1.0] - 2026-02-27
 
 ### Added
@@ -42,7 +54,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Hash-based navigation between Builder, Examples, and Help sections.
 - Developer support banner (configurable via `HIDE_SUPPORT` flag in `main.js`).
 - Floating support toast (bottom-right, 5 s delay, "Don't show again" via localStorage).
-- Header ❤️ donate button and footer donate link, both linking to PayPal.me.
+- Header ❤️ donate button and footer donate link for supporting the developer.
 - Material Design 3 inspired design system (CSS custom properties, tokens, elevation, shape).
 - Responsive layout for desktop and mobile.
 - GitHub Pages compatible structure (no build step, relative paths only).
@@ -62,7 +74,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Changed
 - Replaced header emojis (Donate ❤️ and Theme 🌙/☀️) with minimalist Material Design 3 SVG icons for a cleaner look.
-- Donation links consolidated to a single PayPal.me URL (`https://www.paypal.com/paypalme/SalmonidasDEV`).
+- Donation links consolidated to a single support URL.
 - Footer simplified (removed "Hecho con ♥ —" prefix; copyright notation updated to `YYYY ©`).
 
 ### Removed
@@ -70,5 +82,6 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+[1.1.1]: https://github.com/Salmonidas/gmail-filters/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Salmonidas/gmail-filters/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0

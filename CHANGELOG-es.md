@@ -7,6 +7,18 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 
 ---
 
+## [1.1.1] - 2026-03-13
+
+### Añadido (Added)
+- **Detección Automática de GitHub Sponsors**: Los botones de apoyo ahora consultan la API de GitHub en tiempo real al hacer clic. Si la página de Sponsors está activa, redirige; si no, muestra un aviso de "Donaciones Pausadas".
+- **Aviso de Pausa Localizado**: Mensajes de toast bilingües (ES/EN) para informar sobre el estado de las donaciones.
+
+### Modificado (Changed)
+- **Pie de Página Minimalista**: Se ha eliminado el prefijo "Hecho con ♥" para un estilo más limpio, profesional y centrado en el Código Abierto.
+
+### Eliminado (Removed)
+- **Integración con PayPal**: Eliminados todos los enlaces y referencias a PayPal en favor de GitHub Sponsors.
+
 ## [1.1.0] - 2026-02-27
 
 ### Añadido (Added)
@@ -41,7 +53,7 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 - Selector de idioma en forma de menú desplegable en la barra superior.
 - Navegación interna entre las secciones: Constructor, Ejemplos, Ayuda y Guía.
 - Banner flotante (toast) pidiendo apoyo al proyecto (esquina inferior derecha, 5 s de retardo, botón "No volver a mostrar" usando `localStorage`).
-- Botón ❤️ minimalista en la barra superior y enlace en el pie de página para donaciones (ambos apuntando a PayPal.me).
+- Botón ❤️ minimalista en la barra superior y enlace en el pie de página para apoyar al desarrollador.
 - Sistema de diseño inspirado en Material Design 3 (con variables CSS personalizadas, tokens de color, sombras y formas).
 - Diseño completamente responsivo adaptativo (móvil y escritorio).
 - Estructura compatible con GitHub Pages (sin pasos de construcción, solo rutas relativas HTML/CSS/JS puro).
@@ -56,7 +68,7 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 
 ### Modificado (Changed)
 - Los viejos y sosos emojis de (☀️/🌙) que servían para hacer honor al modo Oscuro/Claro y a las Donaciones/Apoyo (❤️) se han reemplazado elegantemente con verdaderos y afilados gráficos vectoriales (SVG) de Material Design 3.
-- Simplificados los links con peticiones de donación al URL PayPal.me público de `SalmonidasDEV`.
+- Simplificados los links de apoyo a una única URL de soporte al desarrollador.
 - Simplificado formalmente el final del sitio con los derechos de autor (el copyright se ha resumido concisamente con la leyenda `YYYY ©`).
 
 ### Eliminado (Removed)
@@ -64,5 +76,6 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 
 ---
 
+[1.1.1]: https://github.com/Salmonidas/gmail-filters/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Salmonidas/gmail-filters/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/Salmonidas/gmail-filters/releases/tag/1.0.0

@@ -182,9 +182,9 @@
     "dismiss_permanent": "Don't show this again",
     "header_title": "Support the developer",
     "footer_donate": "Donate",
-    "links": [
-      { "label": "☕ Buy me a coffee", "url": "https://www.paypal.com/paypalme/SalmonidasDEV" }
-    ]
+    "toast_cta": "☕ Buy me a coffee",
+    "paused_msg": "Donations are temporarily paused. GitHub Sponsors coming soon ☕ — thank you for your support!",
+    "links": []
   },
   "guide": {
     "tab":          "Guide",
@@ -209,7 +209,7 @@
     "tip_label":    "Key step"
   },
   "footer": {
-    "made_with": "Made with ♥ — Open Source on",
+    "made_with": "Open Source on",
     "github": "GitHub",
     "donate": "Donate",
     "disclaimer": "This tool is not affiliated with Google or Gmail."

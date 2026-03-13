@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gmail-builder-v1.1.0';
+const CACHE_NAME = 'gmail-builder-v1.1.1';
 
 const ASSETS = [
   './',
@@ -7,7 +7,7 @@ const ASSETS = [
   './favicon.png',
   './assets/img/icon-192.png',
   './assets/img/icon-512.png',
-  './assets/css/styles.css?v=2',
+  './assets/css/styles.css?v=3',
   './assets/js/main.js',
   './assets/js/ui.js',
   './assets/js/query-builder.js',

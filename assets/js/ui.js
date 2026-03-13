@@ -221,21 +221,68 @@ export function initUI(i18n, state) {
     buildLangSelect();
   }
 
-  // ── Donate links (header + footer) ────────────────────────────────────────
-  function updateDonateLinks() {
-    const links = i18n.t('support.links');
-    const primaryUrl = Array.isArray(links) && links[0] ? links[0].url : '#';
+  // ── Donate links (header + footer) ───────────────────────────────────────
+  // 🔗 The sponsors URL is hardcoded below. The button checks the GitHub API
+  //    on every click to detect whether the Sponsors page is live yet.
+  //    When you activate GitHub Sponsors on your account, the button
+  //    automatically starts redirecting — ZERO code changes needed.
+  const GITHUB_SPONSORS_URL = 'https://github.com/sponsors/Salmonidas';
+  const GITHUB_API_USER_URL = 'https://api.github.com/users/Salmonidas';
 
-    if (els.headerDonateBtn) {
-      els.headerDonateBtn.href  = primaryUrl;
-      els.headerDonateBtn.title = i18n.t('support.header_title');
-      els.headerDonateBtn.setAttribute('aria-label', i18n.t('support.header_title'));
-    }
-    if (els.footerDonateLink) {
-      els.footerDonateLink.href        = primaryUrl;
-      els.footerDonateLink.textContent = i18n.t('footer.donate');
+  function showDonationsPausedToast() {
+    const existing = document.getElementById('donations-paused-toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'donations-paused-toast';
+    toast.setAttribute('role', 'status');
+    toast.style.cssText = [
+      'position:fixed', 'bottom:88px', 'left:50%', 'transform:translateX(-50%)',
+      'background:var(--md-surface-variant)', 'color:var(--md-on-surface-variant)',
+      'padding:14px 20px', 'border-radius:12px', 'font-size:14px',
+      'max-width:min(92vw,460px)', 'text-align:center', 'line-height:1.5',
+      'box-shadow:0 4px 16px rgba(0,0,0,.28)', 'z-index:9999',
+      'animation:snackSlideUp .25s ease', 'pointer-events:none'
+    ].join(';');
+    toast.textContent = i18n.t('support.paused_msg');
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 5000);
+  }
+
+  async function handleDonateClick(e) {
+    e.preventDefault();
+    try {
+      const res  = await fetch(GITHUB_API_USER_URL, { headers: { Accept: 'application/vnd.github+json' } });
+      const data = await res.json();
+      if (data.has_sponsors_listing) {
+        window.open(GITHUB_SPONSORS_URL, '_blank', 'noopener,noreferrer');
+      } else {
+        showDonationsPausedToast();
+      }
+    } catch {
+      // Network error → fall back to toast (don't leave user stranded)
+      showDonationsPausedToast();
     }
   }
+
+  function updateDonateLinks() {
+    [els.headerDonateBtn, els.footerDonateLink].forEach(el => {
+      if (!el) return;
+
+      // Wipe stale listeners by swapping with a fresh clone
+      const fresh = el.cloneNode(true);
+      el.replaceWith(fresh);
+      if (el === els.headerDonateBtn) els.headerDonateBtn = fresh;
+      else                            els.footerDonateLink = fresh;
+
+      fresh.href = '#';
+      fresh.title = i18n.t('support.header_title');
+      fresh.setAttribute('aria-label', i18n.t('support.header_title'));
+      if (fresh === els.footerDonateLink) fresh.textContent = i18n.t('footer.donate');
+      fresh.addEventListener('click', handleDonateClick);
+    });
+  }
+
 
   // ── Condition rows ─────────────────────────────────────────────────────────
   function createConditionRow(cond) {
@@ -472,20 +519,25 @@ export function initUI(i18n, state) {
 
     // Populate toast content from i18n
     function renderToast() {
-      const titleEl = toast.querySelector('.toast-title');
-      const descEl  = toast.querySelector('.toast-desc');
-      const linksEl = toast.querySelector('.toast-links');
+      const titleEl   = toast.querySelector('.toast-title');
+      const descEl    = toast.querySelector('.toast-desc');
+      const linksEl   = toast.querySelector('.toast-links');
       const dismissEl = toast.querySelector('.toast-dismiss');
 
-      if (titleEl)   titleEl.textContent = i18n.t('support.toast_title');
-      if (descEl)    descEl.textContent  = i18n.t('support.toast_desc');
+      if (titleEl)   titleEl.textContent   = i18n.t('support.toast_title');
+      if (descEl)    descEl.textContent    = i18n.t('support.toast_desc');
       if (dismissEl) dismissEl.textContent = i18n.t('support.dismiss_permanent');
 
-      const links = i18n.t('support.links');
-      if (linksEl && Array.isArray(links)) {
-        linksEl.innerHTML = links.map(l =>
-          `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="toast-cta-link">${l.label}</a>`
-        ).join('');
+      // Always render the action button — it uses the same GitHub API check
+      // as the header/footer donate buttons (handleDonateClick).
+      if (linksEl) {
+        linksEl.innerHTML = '';
+        const btn = document.createElement('a');
+        btn.href      = '#';
+        btn.className = 'toast-cta-link';
+        btn.textContent = i18n.t('support.toast_cta');
+        btn.addEventListener('click', handleDonateClick);
+        linksEl.appendChild(btn);
       }
     }
 
