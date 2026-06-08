@@ -29,3 +29,6 @@ Utilidades/
 *.log
 *.tmp
  
+# ── Agents / Temp ──────────────────────────────────────────────
+.agents/
+catalog.json
