@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad - Gmail Filter Builder</title>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=3" />
+  <style>
+    .legal-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: var(--md-on-surface);
+      font-family: var(--font-base);
+    }
+    .legal-container h1 { font-size: 32px; margin-bottom: 24px; color: var(--md-primary); }
+    .legal-container h2 { font-size: 24px; margin-top: 32px; margin-bottom: 16px; }
+    .legal-container h3 { font-size: 18px; margin-top: 24px; margin-bottom: 12px; }
+    .legal-container p, .legal-container li { margin-bottom: 16px; font-size: 16px; }
+    .legal-container ul { padding-left: 24px; }
+    .legal-container a { color: var(--md-primary); text-decoration: none; }
+    .legal-container a:hover { text-decoration: underline; }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; color: var(--md-on-surface-variant); text-decoration: none; font-weight: 500; }
+    .back-btn:hover { color: var(--md-primary); }
+  </style>
+</head>
+<body>
+  <div class="legal-container">
+    <a href="../index.html" class="back-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Volver al inicio
+    </a>
+    
+    <h1>Política de Privacidad</h1>
+    <p><em>Última actualización: 2 de Julio de 2026</em></p>
+
+    <h2>1. Identidad del Responsable</h2>
+    <p>De conformidad con lo establecido en el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), le informamos que el responsable del tratamiento de los datos recabados en este sitio web es <strong>Salmonidas</strong>.</p>
+    <p>Para consultar los datos fiscales completos, domicilio de gestión y medios de contacto directo, por favor visite nuestro <strong><a href="#" id="hub-legal-link">Aviso Legal y de Identidad</a></strong>.</p>
+
+    <h2>2. Datos que recabamos y finalidad</h2>
+    <p><strong>Gmail Filter Builder</strong> es una herramienta diseñada bajo el principio de "privacidad por diseño" (Privacy by Design). Por defecto, la aplicación funciona de forma local en su navegador (<em>client-side</em>) y <strong>no recaba, no almacena y no transmite</strong> a nuestros servidores ninguna información sobre sus correos, búsquedas, filtros generados ni datos personales de uso.</p>
+    
+    <p>Únicamente se procesan datos en los siguientes casos explícitos:</p>
+    <ul>
+      <li><strong>Datos técnicos de conexión:</strong> Al visitar la web, nuestro proveedor de infraestructura (GitHub Pages) puede registrar temporalmente su dirección IP y el <em>User-Agent</em> del navegador por motivos de seguridad, prevención de ataques DDoS y rendimiento de la red.</li>
+      <li><strong>Donaciones / Pagos:</strong> Si decide realizar una aportación voluntaria para apoyar el proyecto mediante el sistema de donaciones, el pago será procesado íntegramente por plataformas de terceros (Lemon Squeezy o GitHub Sponsors). Nosotros no recabamos ni tenemos acceso a sus datos bancarios ni de tarjeta de crédito en ningún momento.</li>
+    </ul>
+
+    <h2>3. Destinatarios de los datos (Encargados de Tratamiento)</h2>
+    <p>Para poder prestar el servicio y habilitar las funciones de apoyo al desarrollo, compartimos datos estrictamente técnicos o delegamos el proceso en los siguientes proveedores, con los cuales existe el preceptivo acuerdo de encargo de tratamiento (DPA):</p>
+    <ul>
+      <li><strong>Microsoft Corporation (GitHub Pages):</strong> Proporciona el alojamiento web (hosting). Sus servidores pueden estar ubicados en Estados Unidos, operando bajo las cláusulas contractuales tipo (SCC) y el Marco de Privacidad de Datos UE-EE.UU. (DPF).</li>
+      <li><strong>Lemon Squeezy, LLC:</strong> Actúa como <em>Merchant of Record</em> para el procesamiento de pagos voluntarios. Si realiza una donación mediante tarjeta, Apple Pay o PayPal, Lemon Squeezy recabará su email e información de facturación bajo sus propias políticas de privacidad, actuando ellos como responsables de ese pago.</li>
+    </ul>
+
+    <h2>4. Tecnologías de IA (AI Act)</h2>
+    <p>Le informamos explícitamente que este sitio web <strong>NO utiliza</strong> motores de Inteligencia Artificial generativa ni sistemas de toma de decisiones automatizadas en sus funciones de creación de filtros. Todo el código generado se basa en lógica de programación determinista.</p>
+
+    <h2>5. Derechos del Usuario (ARSULIPO)</h2>
+    <p>Usted tiene derecho a obtener confirmación sobre si estamos tratando sus datos personales. Al no disponer de bases de datos de usuarios registrados, el ejercicio de derechos está inherentemente limitado a la naturaleza técnica de la web, pero en todo momento podrá ejercer sus derechos de <strong>Acceso, Rectificación, Supresión, Limitación, Portabilidad y Oposición</strong> dirigiendo un correo electrónico a la dirección de contacto especificada en el <a href="#" class="hub-legal-link-class">Aviso Legal Centralizado</a>.</p>
+    <p>Asimismo, si considera que no hemos tratado sus datos adecuadamente, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).</p>
+
+  </div>
+  <script>
+    // Configuración del HUB LEGAL (El usuario pondrá aquí su enlace final)
+    const CENTRAL_LEGAL_HUB_URL = "https://salmonidas-dev.vercel.app/legal-identity"; 
+    document.getElementById('hub-legal-link').href = CENTRAL_LEGAL_HUB_URL;
+    document.querySelectorAll('.hub-legal-link-class').forEach(el => el.href = CENTRAL_LEGAL_HUB_URL);
+  </script>
+</body>
+</html>

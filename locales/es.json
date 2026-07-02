@@ -183,7 +183,10 @@
     "header_title": "Apoya al desarrollador",
     "footer_donate": "Donar",
     "toast_cta": "☕ Invítame a un café",
-    "paused_msg": "Las donaciones están pausadas temporalmente. Pronto activaré GitHub Sponsors ☕. ¡Gracias por el apoyo!",
+    "modal_title": "Apoya este proyecto 💖",
+    "modal_desc": "Elige la opción que más cómoda te resulte. Cada granito de arena ayuda a mantener esta herramienta gratuita y de código abierto.",
+    "option_lemon": "Invítame a un café (Apple Pay, Tarjeta, PayPal)",
+    "option_github": "GitHub Sponsors (puntual o periódica)",
     "links": []
   },
   "guide": {
@@ -212,7 +215,10 @@
     "made_with": "Código abierto en",
     "github": "GitHub",
     "donate": "Donar",
-    "disclaimer": "Esta herramienta no está afiliada con Google ni Gmail."
+    "disclaimer": "Esta herramienta no está afiliada con Google ni Gmail.",
+    "privacy": "Política de Privacidad",
+    "cookies": "Política de Cookies",
+    "legal_notice": "Aviso Legal"
   },
   "summary": {
     "prefix": "Este filtro coincidirá con correos",

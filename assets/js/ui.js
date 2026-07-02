@@ -53,6 +53,7 @@ export function initUI(i18n, state) {
     deleteConfirm:    document.getElementById('delete-confirm-btn'),
     pwaInstallBtn:    document.getElementById('btn-pwa-install'),
     iosPwaHint:       document.getElementById('ios-pwa-hint'),
+    donationOverlay:  document.getElementById('donation-overlay'),
   };
 
   let isAdvancedMode = false;
@@ -112,6 +113,10 @@ export function initUI(i18n, state) {
 
     els.deleteConfirm?.addEventListener('click', handleConfirm);
     els.deleteCancel?.addEventListener('click', handleCancel);
+  }
+
+  function closeDonationModal() {
+    els.donationOverlay?.classList.add('hidden');
   }
 
   let deferredPrompt = null;
@@ -227,42 +232,46 @@ export function initUI(i18n, state) {
   //    When you activate GitHub Sponsors on your account, the button
   //    automatically starts redirecting — ZERO code changes needed.
   const GITHUB_SPONSORS_URL = 'https://github.com/sponsors/Salmonidas';
-  const GITHUB_API_USER_URL = 'https://api.github.com/users/Salmonidas';
+  const LEMON_CHECKOUT_URL  = 'https://salmonidas.lemonsqueezy.com/checkout/buy/61c04df0-3855-4fff-87ca-fe084713823e?embed=1';
 
-  function showDonationsPausedToast() {
-    const existing = document.getElementById('donations-paused-toast');
-    if (existing) existing.remove();
+  function openDonationModal(e) {
+    if (e) e.preventDefault();
+    if (!els.donationOverlay) return;
+    
+    els.donationOverlay.classList.remove('hidden');
 
-    const toast = document.createElement('div');
-    toast.id = 'donations-paused-toast';
-    toast.setAttribute('role', 'status');
-    toast.style.cssText = [
-      'position:fixed', 'bottom:88px', 'left:50%', 'transform:translateX(-50%)',
-      'background:var(--md-surface-variant)', 'color:var(--md-on-surface-variant)',
-      'padding:14px 20px', 'border-radius:12px', 'font-size:14px',
-      'max-width:min(92vw,460px)', 'text-align:center', 'line-height:1.5',
-      'box-shadow:0 4px 16px rgba(0,0,0,.28)', 'z-index:9999',
-      'animation:snackSlideUp .25s ease', 'pointer-events:none'
-    ].join(';');
-    toast.textContent = i18n.t('support.paused_msg');
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 5000);
+    // Only bind once
+    if (!els.donationOverlay.dataset.bound) {
+      els.donationOverlay.dataset.bound = 'true';
+      
+      const cancelBtn = document.getElementById('donation-cancel');
+      cancelBtn?.addEventListener('click', closeDonationModal);
+      els.donationOverlay.addEventListener('click', (ev) => {
+        if (ev.target === els.donationOverlay) closeDonationModal();
+      });
+
+      document.querySelector('.donation-option[data-choice="lemonsqueezy"]')?.addEventListener('click', handleLemonSqueezyClick);
+      document.querySelector('.donation-option[data-choice="github"]')?.addEventListener('click', handleGithubClick);
+    }
   }
 
-  async function handleDonateClick(e) {
-    e.preventDefault();
-    try {
-      const res  = await fetch(GITHUB_API_USER_URL, { headers: { Accept: 'application/vnd.github+json' } });
-      const data = await res.json();
-      if (data.has_sponsors_listing) {
-        window.open(GITHUB_SPONSORS_URL, '_blank', 'noopener,noreferrer');
-      } else {
-        showDonationsPausedToast();
+  function handleGithubClick() {
+    window.open(GITHUB_SPONSORS_URL, '_blank', 'noopener,noreferrer');
+    closeDonationModal();
+  }
+
+  function handleLemonSqueezyClick() {
+    if (typeof window !== 'undefined' && window.createLemonSqueezy) {
+      window.createLemonSqueezy();
+      if (window.LemonSqueezy) {
+        window.LemonSqueezy.Url.Open(LEMON_CHECKOUT_URL);
+        closeDonationModal();
+        return;
       }
-    } catch {
-      // Network error → fall back to toast (don't leave user stranded)
-      showDonationsPausedToast();
     }
+    // Fallback if adblocker blocks lemon.js
+    window.open(LEMON_CHECKOUT_URL, '_blank', 'noopener,noreferrer');
+    closeDonationModal();
   }
 
   function updateDonateLinks() {
@@ -279,7 +288,7 @@ export function initUI(i18n, state) {
       fresh.title = i18n.t('support.header_title');
       fresh.setAttribute('aria-label', i18n.t('support.header_title'));
       if (fresh === els.footerDonateLink) fresh.textContent = i18n.t('footer.donate');
-      fresh.addEventListener('click', handleDonateClick);
+      fresh.addEventListener('click', openDonationModal);
     });
   }
 
@@ -536,7 +545,7 @@ export function initUI(i18n, state) {
         btn.href      = '#';
         btn.className = 'toast-cta-link';
         btn.textContent = i18n.t('support.toast_cta');
-        btn.addEventListener('click', handleDonateClick);
+        btn.addEventListener('click', openDonationModal);
         linksEl.appendChild(btn);
       }
     }

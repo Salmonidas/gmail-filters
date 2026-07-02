@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.github.com" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://app.lemonsqueezy.com https://assets.lemonsqueezy.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://app.lemonsqueezy.com https://assets.lemonsqueezy.com https://salmonidas.lemonsqueezy.com" />
   <title>Gmail Filter Builder</title>
   <meta name="description" content="Visual builder for advanced Gmail search filters. No syntax to memorise, no backend, no build step. EN/ES support." />
   <meta name="theme-color" content="#1A73E8" />
@@ -24,6 +24,7 @@
   <meta name="apple-mobile-web-app-title" content="Gmail Filters" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="assets/css/styles.css?v=3" />
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 </head>
 <body>
 
@@ -378,6 +379,11 @@
         <span id="current-year"></span> ©
       </span>
       <span class="footer-disclaimer" data-i18n="footer.disclaimer">Not affiliated with Google.</span>
+      <div class="footer-legal" style="margin-top: 12px; font-size: 13px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="legal/privacidad.html" data-i18n="footer.privacy" style="color: var(--md-on-surface-variant); text-decoration: none;">Privacy Policy</a>
+        <a href="legal/cookies.html" data-i18n="footer.cookies" style="color: var(--md-on-surface-variant); text-decoration: none;">Cookie Policy</a>
+        <a href="https://salmonidas-dev.vercel.app/legal-identity" id="footer-hub-link" data-i18n="footer.legal_notice" target="_blank" style="color: var(--md-on-surface-variant); text-decoration: none;">Legal Notice</a>
+      </div>
     </div>
   </footer>
 
@@ -390,6 +396,36 @@
     <p class="toast-desc"></p>
     <div class="toast-links"></div>
     <button class="toast-dismiss"></button>
+  </div>
+
+  <!-- ══════════════ DONATION MODAL ══════════════ -->
+  <div id="donation-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="donation-title">
+    <div class="modal-card" role="document">
+      <div class="modal-header">
+        <div class="modal-header-icon donation-header-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+        <h2 id="donation-title" class="modal-title" data-i18n="support.modal_title"></h2>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc" data-i18n="support.modal_desc"></p>
+        <div class="donation-options">
+          <button class="donation-option donation-option-primary" data-choice="lemonsqueezy">
+            <span class="donation-option-emoji" aria-hidden="true">☕</span>
+            <span class="donation-option-text" data-i18n="support.option_lemon"></span>
+          </button>
+          <button class="donation-option donation-option-secondary" data-choice="github">
+            <span class="donation-option-emoji" aria-hidden="true">🐙</span>
+            <span class="donation-option-text" data-i18n="support.option_github"></span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="donation-cancel" class="md-btn md-btn-tonal" data-i18n="saved_filters.cancel">Cancel</button>
+      </div>
+    </div>
   </div>
 
   <!-- ══════════════ SAVE FILTER MODAL ══════════════ -->

@@ -924,6 +924,65 @@ a { color: var(--md-primary); }
   padding: var(--sp-3) var(--sp-5) var(--sp-5);
 }
 
+/* ── Donation Modal Options ───────────────────────────────── */
+.donation-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
+}
+.donation-option {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-base);
+  text-align: left;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+.donation-option:active {
+  transform: scale(0.98);
+}
+.donation-option-emoji {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.donation-option-text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.donation-option-primary {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  box-shadow: var(--shadow-1);
+}
+.donation-option-primary:hover {
+  box-shadow: var(--shadow-2);
+  background: color-mix(in srgb, var(--md-primary) 92%, black);
+}
+.donation-option-secondary {
+  background: transparent;
+  color: var(--md-on-surface);
+  border: 1px solid var(--md-outline);
+}
+.donation-option-secondary:hover {
+  background: var(--md-surface-variant);
+}
+.donation-header-icon {
+  background: #FCE8E6;
+  color: #D93025;
+}
+
+[data-theme="dark"] .donation-header-icon {
+  background: #4E1F1C;
+  color: #F28B82;
+}
+
 /* ── Save Snackbar ────────────────────────────────────────── */
 .snackbar {
   position: fixed;

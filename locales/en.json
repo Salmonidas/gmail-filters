@@ -183,7 +183,10 @@
     "header_title": "Support the developer",
     "footer_donate": "Donate",
     "toast_cta": "☕ Buy me a coffee",
-    "paused_msg": "Donations are temporarily paused. GitHub Sponsors coming soon ☕ — thank you for your support!",
+    "modal_title": "Support this project 💖",
+    "modal_desc": "Choose the option that works best for you. Every little bit helps keep this tool free and open source.",
+    "option_lemon": "Buy me a coffee (Apple Pay, Card, PayPal)",
+    "option_github": "GitHub Sponsors (one-time or recurring)",
     "links": []
   },
   "guide": {
@@ -212,7 +215,10 @@
     "made_with": "Open Source on",
     "github": "GitHub",
     "donate": "Donate",
-    "disclaimer": "This tool is not affiliated with Google or Gmail."
+    "disclaimer": "This tool is not affiliated with Google or Gmail.",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "legal_notice": "Legal Notice"
   },
   "summary": {
     "prefix": "This filter will match emails",
