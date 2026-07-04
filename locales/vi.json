@@ -235,7 +235,10 @@
     "modal_desc": "Chọn phương thức phù hợp nhất với bạn. Mọi đóng góp nhỏ đều giúp chúng tôi duy trì công cụ này miễn phí và nguồn mở.",
     "option_lemon": "Mua tặng tôi một ly cà phê (Apple Pay, Thẻ, PayPal)",
     "option_github": "GitHub Sponsors (một lần hoặc định kỳ)",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "Chúng tôi lắng nghe!",
+    "dismiss_dialog_desc": "Chúng tôi sẽ không làm phiền bạn nữa. Nếu trong tương lai bạn muốn hỗ trợ phát triển công cụ miễn phí này, bạn luôn có thể tìm thấy các nút Quyên góp ở đầu và cuối trang. Cảm ơn bạn đã sử dụng Gmail Filter Builder!",
+    "dismiss_dialog_ok": "Đã hiểu, cảm ơn!"
   },
   "guide": {
     "tab": "Hướng dẫn",
@@ -266,7 +269,8 @@
     "disclaimer": "Công cụ này không liên kết với Google hoặc Gmail.",
     "privacy": "Chính sách bảo mật",
     "cookies": "Chính sách cookie",
-    "legal_notice": "Thông báo pháp lý"
+    "legal_notice": "Thông báo pháp lý",
+    "developed_by": "Phát triển bởi"
   },
   "summary": {
     "prefix": "Bộ lọc này sẽ khớp với những thư",

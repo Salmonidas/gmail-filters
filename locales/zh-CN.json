@@ -235,7 +235,10 @@
     "modal_desc": "选择最适合您的方式。您的每一分支持都能帮助保持此工具免费和开源。",
     "option_lemon": "请我喝杯咖啡 (Apple Pay, 银行卡, PayPal)",
     "option_github": "GitHub Sponsors (单次或定期)",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "我们听到了！",
+    "dismiss_dialog_desc": "我们不会再打扰您了。如果您将来希望支持此免费工具的开发，您随时可以在页面顶部和底部找到捐赠按钮。感谢您使用 Gmail Filter Builder！",
+    "dismiss_dialog_ok": "明白了，谢谢！"
   },
   "guide": {
     "tab": "指南",
@@ -266,7 +269,8 @@
     "disclaimer": "本工具不隶属于 Google 或 Gmail。",
     "privacy": "隐私政策",
     "cookies": "Cookie 政策",
-    "legal_notice": "法律声明"
+    "legal_notice": "法律声明",
+    "developed_by": "开发者："
   },
   "summary": {
     "prefix": "此过滤器将匹配以下邮件：",

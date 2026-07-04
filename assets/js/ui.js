@@ -558,7 +558,35 @@ export function initUI(i18n, state) {
     }
     function hideToast(permanent = false) {
       toast.classList.remove('toast-visible');
-      if (permanent) localStorage.setItem('supportDismissed', 'permanent');
+      if (permanent) {
+        localStorage.setItem('supportDismissed', 'permanent');
+        showDismissConfirm();
+      }
+    }
+
+    function showDismissConfirm() {
+      const overlay  = document.getElementById('dismiss-confirm-overlay');
+      const titleEl  = document.getElementById('dismiss-confirm-title');
+      const descEl   = document.getElementById('dismiss-confirm-desc');
+      const okBtn    = document.getElementById('dismiss-confirm-ok');
+      if (!overlay) return;
+
+      titleEl.textContent = i18n.t('support.dismiss_dialog_title');
+      descEl.textContent  = i18n.t('support.dismiss_dialog_desc');
+      okBtn.textContent   = i18n.t('support.dismiss_dialog_ok');
+
+      overlay.classList.remove('hidden');
+
+      function close() {
+        overlay.classList.add('hidden');
+        okBtn.removeEventListener('click', close);
+        overlay.removeEventListener('click', handleOverlayClick);
+      }
+      function handleOverlayClick(e) {
+        if (e.target === overlay) close();
+      }
+      okBtn.addEventListener('click', close);
+      overlay.addEventListener('click', handleOverlayClick);
     }
 
     setTimeout(showToast, 5000);

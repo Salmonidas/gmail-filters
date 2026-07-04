@@ -235,7 +235,10 @@
     "modal_desc": "ご都合の良い方法を選択してください。ご支援は、このツールを無料でオープンソースとして維持するために役立てられます。",
     "option_lemon": "コーヒーをおごる（Apple Pay, カード, PayPal）",
     "option_github": "GitHub Sponsors（単発または継続）",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "了解しました！",
+    "dismiss_dialog_desc": "今後このメッセージは表示しません。将来この無料ツールの開発を支援したくなった場合は、ページの上部と下部にある寄付ボタンをいつでもご利用いただけます。Gmail Filter Builderをご利用いただきありがとうございます！",
+    "dismiss_dialog_ok": "了解、ありがとう！"
   },
   "guide": {
     "tab": "ガイド",
@@ -266,7 +269,8 @@
     "disclaimer": "当ツールは Google および Gmail とは提携・関係していません。",
     "privacy": "プライバシーポリシー",
     "cookies": "クッキーポリシー",
-    "legal_notice": "法的通知 (特定商取引法に基づく表記)"
+    "legal_notice": "法的通知 (特定商取引法に基づく表記)",
+    "developed_by": "開発者："
   },
   "summary": {
     "prefix": "このフィルタは、以下の条件を満たすメールに適用されます:",

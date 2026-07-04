@@ -235,7 +235,10 @@
     "modal_desc": "Choose the option that works best for you. Every little bit helps keep this tool free and open source.",
     "option_lemon": "Buy me a coffee (Apple Pay, Card, PayPal)",
     "option_github": "GitHub Sponsors (one-time or recurring)",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "We hear you!",
+    "dismiss_dialog_desc": "We shan't bother you again. Should you ever wish to support the development of this free tool in the future, you can always find the Donate buttons at the top and bottom of the page. Thank you for using Gmail Filter Builder!",
+    "dismiss_dialog_ok": "Understood, cheers!"
   },
   "guide": {
     "tab": "Guide",
@@ -266,7 +269,8 @@
     "disclaimer": "This tool is not affiliated with Google or Gmail.",
     "privacy": "Privacy Policy",
     "cookies": "Cookie Policy",
-    "legal_notice": "Legal Notice"
+    "legal_notice": "Legal Notice",
+    "developed_by": "Developed by"
   },
   "summary": {
     "prefix": "This filter will match emails",

@@ -235,7 +235,10 @@
     "modal_desc": "Pilih opsi yang paling sesuai untuk Anda. Setiap kontribusi kecil membantu menjaga alat ini tetap gratis dan open source.",
     "option_lemon": "Traktir saya kopi (Apple Pay, Kartu, PayPal)",
     "option_github": "GitHub Sponsors (sekali saja atau berulang)",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "Kami mendengarmu!",
+    "dismiss_dialog_desc": "Kami tidak akan mengganggumu lagi. Jika di masa depan kamu ingin mendukung pengembangan alat gratis ini, kamu selalu bisa menemukan tombol Donasi di bagian atas dan bawah halaman. Terima kasih telah menggunakan Gmail Filter Builder!",
+    "dismiss_dialog_ok": "Mengerti, terima kasih!"
   },
   "guide": {
     "tab": "Panduan",
@@ -266,7 +269,8 @@
     "disclaimer": "Alat ini tidak berafiliasi dengan Google atau Gmail.",
     "privacy": "Kebijakan Privasi",
     "cookies": "Kebijakan Cookie",
-    "legal_notice": "Pernyataan Hukum"
+    "legal_notice": "Pernyataan Hukum",
+    "developed_by": "Dikembangkan oleh"
   },
   "summary": {
     "prefix": "Filter ini akan mencocokkan email",

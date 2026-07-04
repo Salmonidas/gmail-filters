@@ -384,6 +384,13 @@
         <a href="legal/cookies.html" data-i18n="footer.cookies" style="color: var(--md-on-surface-variant); text-decoration: none;">Cookie Policy</a>
         <a href="https://salmonidas-dev.vercel.app/legal-identity" id="footer-hub-link" data-i18n="footer.legal_notice" target="_blank" style="color: var(--md-on-surface-variant); text-decoration: none;">Legal Notice</a>
       </div>
+      <div class="footer-author" style="margin-top: 16px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+        <span data-i18n="footer.developed_by" style="font-size: 13px;">Developed by</span>
+        <a href="https://salmonidas-dev.vercel.app/" target="_blank" rel="noopener noreferrer" class="author-pill" aria-label="Developer Portfolio">
+          <img src="assets/img/author-logo.png" alt="" aria-hidden="true">
+          <span>Salmónidas</span>
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -396,6 +403,26 @@
     <p class="toast-desc"></p>
     <div class="toast-links"></div>
     <button class="toast-dismiss"></button>
+  </div>
+
+  <!-- ══════════════ DISMISS SUPPORT CONFIRM DIALOG ══════════════ -->
+  <div id="dismiss-confirm-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="dismiss-confirm-title">
+    <div class="modal-card dismiss-confirm-card" role="document">
+      <div class="modal-header">
+        <div class="modal-header-icon dismiss-header-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+        </div>
+        <h2 id="dismiss-confirm-title" class="modal-title"></h2>
+      </div>
+      <div class="modal-body">
+        <p id="dismiss-confirm-desc" class="modal-desc"></p>
+      </div>
+      <div class="modal-actions">
+        <button id="dismiss-confirm-ok" class="md-btn md-btn-primary"></button>
+      </div>
+    </div>
   </div>
 
   <!-- ══════════════ DONATION MODAL ══════════════ -->

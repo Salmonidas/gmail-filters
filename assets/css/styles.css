@@ -839,6 +839,43 @@ a { color: var(--md-primary); }
 }
 .footer-disclaimer { font-style: italic; }
 
+.author-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 6px;
+  border-radius: 999px;
+  background-color: var(--md-surface-variant);
+  color: var(--md-on-surface-variant);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--md-outline-variant);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+.author-pill:hover,
+.author-pill:focus-visible {
+  background-color: var(--md-surface-container-high);
+  color: var(--md-on-surface);
+  border-color: var(--md-outline);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.author-pill img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+.author-pill:hover img {
+  transform: scale(1.05);
+}
+[data-theme="dark"] .author-pill img {
+  /* Only add a slight brightness boost in dark mode so colors pop more against the dark pill background */
+  filter: brightness(1.2);
+}
+
 /* ── Save Filter Modal ────────────────────────────────────── */
 .modal-overlay {
   position: fixed;
@@ -981,6 +1018,18 @@ a { color: var(--md-primary); }
 [data-theme="dark"] .donation-header-icon {
   background: #4E1F1C;
   color: #F28B82;
+}
+
+.dismiss-header-icon {
+  background: #FFF3E0;
+  color: #E65100;
+}
+[data-theme="dark"] .dismiss-header-icon {
+  background: #3E2723;
+  color: #FFB74D;
+}
+.dismiss-confirm-card {
+  max-width: 400px;
 }
 
 /* ── Save Snackbar ────────────────────────────────────────── */

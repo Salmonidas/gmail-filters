@@ -235,7 +235,10 @@
     "modal_desc": "Tria l'opció que prefereixis. Qualsevol aportació ajuda a mantenir esta eina gratuïta i de codi obert.",
     "option_lemon": "Convida'm a un cafè (Apple Pay, targeta, PayPal)",
     "option_github": "GitHub Sponsors (única o recurrent)",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "T'escoltem!",
+    "dismiss_dialog_desc": "No et tornarem a molestar. Si en el futur vols donar suport al desenvolupament d'esta ferramenta gratuïta, sempre pots trobar els botons de donació a la part superior i inferior de la pàgina. Gràcies per fer servir Gmail Filter Builder!",
+    "dismiss_dialog_ok": "Entés, gràcies!"
   },
   "guide": {
     "tab": "Guia",
@@ -266,7 +269,8 @@
     "disclaimer": "Esta eina no està afiliada amb Google ni Gmail.",
     "privacy": "Política de privacitat",
     "legal_notice": "Avís legal",
-    "cookies": "Política de galetes"
+    "cookies": "Política de galetes",
+    "developed_by": "Desenvolupat per"
   },
   "summary": {
     "prefix": "Este filtre coincidirà amb els correus",

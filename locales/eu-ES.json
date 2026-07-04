@@ -235,7 +235,10 @@
     "modal_desc": "Aukeratu zuretzat onena den bidea. Laguntza txiki orok tresna hau doakoa eta kode irekikoa izaten jarraitzen laguntzen du.",
     "option_lemon": "Gonbidatu niri kafe batera (Apple Pay, txartela, PayPal)",
     "option_github": "GitHub Sponsors (aldi bakarrekoa edo errepikakorra)",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "Entzun zaitugu!",
+    "dismiss_dialog_desc": "Ez zaitugu berriro molestatuko. Etorkizunean doako tresna honen garapenari lagundu nahi badiozu, betiere Donatu botoiak aurki ditzakezu orriaren goiko eta beheko aldean. Eskerrik asko Gmail Filter Builder erabiltzeagatik!",
+    "dismiss_dialog_ok": "Ulertuta, eskerrik asko!"
   },
   "guide": {
     "tab": "Gida",
@@ -266,7 +269,8 @@
     "disclaimer": "Tresna honek ez du loturarik Google edo Gmail-ekin.",
     "privacy": "Pribatutasun politika",
     "cookies": "Cookie politika",
-    "legal_notice": "Lege oharra"
+    "legal_notice": "Lege oharra",
+    "developed_by": "Garatzailea:"
   },
   "summary": {
     "prefix": "Iragazki honek mezu hauek hautatuko ditu",

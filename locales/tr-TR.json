@@ -235,7 +235,10 @@
     "modal_desc": "Size en uygun seçeneği belirleyin. Her küçük katkı bu aracı ücretsiz ve açık kaynaklı tutmamıza yardımcı olur.",
     "option_lemon": "Bana bir kahve ısmarla (Apple Pay, Kart, PayPal)",
     "option_github": "GitHub Sponsors (tek seferlik veya düzenli)",
-    "links": []
+    "links": [],
+    "dismiss_dialog_title": "Sizi duyuyoruz!",
+    "dismiss_dialog_desc": "Sizi bir daha rahatsız etmeyeceğiz. Gelecekte bu ücretsiz aracın geliştirilmesini desteklemek isterseniz, sayfanın üst ve alt kısmında Bağış butonlarını her zaman bulabilirsiniz. Gmail Filter Builder'ı kullandığınız için teşekkürler!",
+    "dismiss_dialog_ok": "Anladım, teşekkürler!"
   },
   "guide": {
     "tab": "Kılavuz",
@@ -266,7 +269,8 @@
     "disclaimer": "Bu araç Google veya Gmail ile ilişkili değildir.",
     "privacy": "Gizlilik Politikası",
     "cookies": "Çerez Politikası",
-    "legal_notice": "Künye (Legal Notice)"
+    "legal_notice": "Künye (Legal Notice)",
+    "developed_by": "Geliştiren"
   },
   "summary": {
     "prefix": "Bu filtre şu kriterlere uyan e-postalara uygulanır:",
