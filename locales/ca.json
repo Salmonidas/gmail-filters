@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Constructor de Filtres de Gmail",
+    "subtitle": "Crea consultes de cerca avançades per a Gmail de manera visual, sense memoritzar la sintaxi.",
+    "language_selector": "Idioma"
+  },
+  "nav": {
+    "builder": "Constructor",
+    "preview": "Previsualització",
+    "examples": "Biblioteca",
+    "help": "Ajuda",
+    "guide": "Guia"
+  },
+  "builder": {
+    "title": "Constructor de Filtres",
+    "add_condition": "Afegeix condició",
+    "clear_all": "Neteja-ho tot",
+    "logic_and": "I",
+    "logic_or": "O",
+    "logic_label": "Combina amb",
+    "group_label": "Agrupa entre parèntesis",
+    "advanced_mode": "Edita la consulta manualment",
+    "visual_mode": "Torna al constructor visual",
+    "advanced_note": "Edita la consulta directament. Fes clic a \"Torna al constructor visual\" per a tornar a desglossar-la en condicions.",
+    "no_conditions": "Encara no hi ha condicions. Fes clic a \"Afegeix condició\" per a començar a crear el teu filtre.",
+    "condition": {
+      "type_label": "Tipus de filtre",
+      "value_label": "Valor",
+      "remove": "Elimina condició",
+      "negate": "Exclou (NOT)"
+    },
+    "types": {
+      "from": "De — remitent",
+      "to": "Per a — destinatari",
+      "cc": "A/C — còpia de cortesia",
+      "bcc": "A/C/O — còpia oculta",
+      "subject": "Assumpte",
+      "body": "El cos conté",
+      "has_attachment": "Té fitxer adjunt",
+      "filename": "Nom / tipus de fitxer adjunt",
+      "label": "Etiqueta (les meves etiquetes)",
+      "in": "A la carpeta del sistema (bústia, spam...)",
+      "is_read": "Estat: llegit",
+      "is_unread": "Estat: no llegit",
+      "is_starred": "Estat: destacat (⭐)",
+      "is_important": "Estat: marcat com a important",
+      "date_after": "Rebut després del",
+      "date_before": "Rebut abans del",
+      "newer_than": "Rebut fa menys de... (relatiu)",
+      "older_than": "Més antic de... (relatiu)",
+      "size_larger": "Mida superior a",
+      "size_smaller": "Mida inferior a"
+    },
+    "placeholders": {
+      "from": "anna@gmail.com  O  cap@empresa.com",
+      "to": "equip@empresa.com  O  butlleti@servei.io",
+      "cc": "gerent@empresa.com",
+      "bcc": "arxiu@empresa.com  O  legal@empresa.com",
+      "subject": "factura  O  \"informe trimestral\"  -esborrany",
+      "body": "cal acció  O  \"adjuntem document\"",
+      "filename": "pdf  O  *.docx  O  *.xlsx",
+      "label": "factures  O  feina  O  rebuts",
+      "in": "inbox  O  spam  O  promotions  O  sent",
+      "newer_than": "7d  ·  2m  ·  1y   (d=dies, m=mesos, y=anys)",
+      "older_than": "30d  ·  3m  ·  2y   (d=dies, m=mesos, y=anys)",
+      "size_larger": "5M  ·  10M  ·  25M   (M = megabytes)",
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobytes, M = megabytes)"
+    },
+    "has_attachment_note": "Coincideix amb missatges que tenen almenys un fitxer adjunt (de qualsevol tipus).",
+    "is_read_note": "Coincideix amb missatges que ja has obert i llegit.",
+    "is_unread_note": "Coincideix amb missatges que encara no has obert.",
+    "is_starred_note": "Coincideix amb missatges que has destacat (⭐) a Gmail.",
+    "is_important_note": "Coincideix amb missatges que Gmail o tu heu marcat com a importants (►)."
+  },
+  "preview": {
+    "title": "Consulta Generada",
+    "empty": "La teva consulta apareixerà aquí a mesura que afegeixis condicions a dalt.",
+    "copy": "Copia al porta-retalls",
+    "copied": "Copiat!",
+    "open_gmail": "Obre a Gmail",
+    "how_to_apply": "Com aplicar-ho",
+    "summary_title": "Què fa aquest filtre",
+    "summary_empty": "Afegeix condicions a dalt per a veure un resum comprensible aquí.",
+    "char_count": "{{count}} caràcters",
+    "share": "Comparteix enllaç",
+    "share_copied": "Enllaç copiat!",
+    "save": "Desa el filtre",
+    "saved_toast": "Desat a Els meus filtres"
+  },
+  "saved_filters": {
+    "title": "Els meus filtres",
+    "subtitle": "Filtres que has desat al teu navegador.",
+    "empty": "Encara no hi ha filtres desats.",
+    "delete": "Elimina",
+    "name_prompt": "Anomena aquest filtre:",
+    "default_name": "Filtre personalitzat",
+    "dialog_title": "Desa el filtre",
+    "dialog_hint": "El teu filtre apareixerà a la pestanya Biblioteca, a la secció Els meus filtres.",
+    "dialog_save": "Desa",
+    "cancel": "Cancel·la",
+    "snackbar_msg": "Filtre desat a Els meus filtres",
+    "snackbar_action": "Mostra",
+    "delete_confirm_title": "Eliminar el filtre?",
+    "delete_confirm_msg": "Segur que vols eliminar aquest filtre de la teva biblioteca? Aquesta acció no es pot desfer.",
+    "delete_cancel": "Cancel·la",
+    "delete_confirm": "Elimina",
+    "empty_library_title": "La teva biblioteca està buida",
+    "empty_library_desc": "Desa les cerques que utilitzis més sovint per a trobar-les aquí més endavant.",
+    "empty_library_cta": "Ves al Constructor"
+  },
+  "examples": {
+    "title": "Filtres d'exemple",
+    "subtitle": "Fes clic a \"Carrega\" per a omplir el constructor amb l'exemple i personalitzar-lo.",
+    "load": "Carrega exemple",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "Factures de remitents específics (últim mes)",
+        "description": "Correus de dos remitents específics que contenen 'invoice' a l'assumpte però no 'draft', rebuts en els darrers 30 dies.",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "Correus de reunions on estic en còpia (CC)",
+        "description": "Correus on apareixes en còpia (CC), l'assumpte conté 'meeting', però no 'cancelled'.",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "Fitxers adjunts PDF d'un remitent específic",
+        "description": "Missatges d'un remitent particular que tenen un fitxer PDF adjunt.",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "Missatges destacats no llegits",
+        "description": "Tots els missatges que estan destacats i no llegits alhora: un filtre ràpid de bústia de prioritat.",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "Butlletins dels quals pots donar-te de baixa",
+        "description": "Correus de la categoria Promocions que contenen un enllaç per a donar-se de baixa (unsubscribe) al cos.",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Referència d'operadors de Gmail",
+    "intro": "A continuació es mostren els operadors compatibles amb el constructor i què signifiquen a Gmail.",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "Coincideix amb l'adreça de correu del remitent."
+      },
+      {
+        "op": "to:",
+        "desc": "Coincideix amb el destinatari principal."
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = còpia de cortesia (visible). BCC = còpia oculta (no visible)."
+      },
+      {
+        "op": "subject:",
+        "desc": "Cerca dins del camp de l'assumpte."
+      },
+      {
+        "op": "has:attachment",
+        "desc": "Missatges amb qualsevol fitxer adjunt."
+      },
+      {
+        "op": "filename:",
+        "desc": "Coincideix amb el nom o extensió de l'adjunt (ex. pdf, *.docx)."
+      },
+      {
+        "op": "label:",
+        "desc": "Missatges amb una etiqueta personalitzada de Gmail que hagis creat."
+      },
+      {
+        "op": "in:",
+        "desc": "Missatges en una carpeta del sistema de Gmail: inbox, spam, trash, sent, promotions..."
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "Filtra per estat de lectura."
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "Filtra per estat destacat (⭐) o d'importància (►)."
+      },
+      {
+        "op": "after: / before:",
+        "desc": "Interval de dates utilitzant el format AAAA/MM/DD."
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "Data relativa: 7d (7 dies), 2m (2 mesos), 1y (1 any)."
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "Mida del missatge: 5M (5 MB), 500K (500 KB)."
+      },
+      {
+        "op": "OR",
+        "desc": "Combina dos termes perquè coincideixi qualsevol dels dos (ha d'anar en majúscules)."
+      },
+      {
+        "op": "-terme",
+        "desc": "Exclou els missatges que coincideixen amb el terme (operador NOT)."
+      },
+      {
+        "op": "(…)",
+        "desc": "Agrupa termes perquè els operadors s'apliquin a tot el grup."
+      }
+    ],
+    "tips_title": "Consells professionals",
+    "tips": [
+      "Agrupa els valors de més d'una paraula entre cometes: subject:\"informe trimestral\"",
+      "Utilitza OR dins de parèntesis per coincidir amb diversos valors: from:(a@x.com OR b@x.com)",
+      "Els operadors de Gmail no distingeixen entre majúscules i minúscules, però OR ha d'anar en majúscules.",
+      "Enganxa la consulta generada directament al camp de cerca de Gmail o al camp 'Conté les paraules' en crear un filtre.",
+      "Combina newer_than i older_than per definir un interval de temps precís: newer_than:3m older_than:1m",
+      "label: cerca a les teves etiquetes personalitzades. in: cerca a les carpetes del sistema de Gmail (inbox, spam...)."
+    ]
+  },
+  "support": {
+    "toast_title": "☕ Dona suport al projecte",
+    "toast_desc": "Aquesta eina és gratuïta i de codi obert. Si t'ha estalviat temps, una petita donació ajuda a mantenir-la viva.",
+    "dismiss_permanent": "No ho tornis a mostrar",
+    "header_title": "Dona suport al desenvolupador",
+    "footer_donate": "Donar",
+    "toast_cta": "☕ Convida'm a un cafè",
+    "modal_title": "Dona suport a aquest projecte 💖",
+    "modal_desc": "Tria l'opció que prefereixis. Qualsevol aportació ajuda a mantenir aquesta eina gratuïta i de codi obert.",
+    "option_lemon": "Convida'm a un cafè (Apple Pay, targeta, PayPal)",
+    "option_github": "GitHub Sponsors (única o recurrent)",
+    "links": []
+  },
+  "guide": {
+    "tab": "Guia",
+    "title": "Com aplicar el teu filtre a Gmail",
+    "intro": "Una vegada hagis creat la teva consulta amb aquesta eina, segueix aquests passos per a convertir-la en una regla automàtica permanent a Gmail.",
+    "step1_title": "Copia la consulta",
+    "step1_desc": "Fes clic al botó [Copia al porta-retalls] a la targeta «Consulta Generada» d'aquesta pàgina.",
+    "step2_title": "Obre Gmail",
+    "step2_desc": "Ves a gmail.com al teu navegador i inicia la sessió si encara no ho has fet.",
+    "step3_title": "Fes clic a la barra de cerca superior",
+    "step3_desc": "Gmail té una barra de cerca ampla a la part superior (on diu «Cerca al correu»). Fes-hi clic a sobre.",
+    "step4_title": "Enganxa la consulta",
+    "step4_desc": "Prem Ctrl+V (Windows / Linux) o Cmd+V (Mac) per a enganxar-la. Veuràs com la consulta apareix a la barra.",
+    "step5_title": "Fes clic a la icona de paràmetres de cerca <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> a la part dreta de la barra",
+    "step5_desc": "Mira la icona <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> representada per tres línies horitzontals amb barres de desplaçament (Mostra les opcions de cerca) a la part dreta. Fes-hi clic per a obrir el panell avançat.",
+    "step5_tip": "Aquest és el pas que tothom sol ometre! La icona és discreta i es troba a la cantonada. En versions antigues podria ser una fletxa ▼, però ara sol ser aquesta icona de configuració.",
+    "step6_title": "Fes clic a «Crea un filtre»",
+    "step6_desc": "S'obrirà un panell amb els detalls de cerca. A la part inferior de la finestra, fes clic al botó que diu «Crea un filtre».",
+    "step7_title": "Tria què ha de fer Gmail automàticament",
+    "step7_desc": "Marca una o més accions: arxiva, aplica una etiqueta, marca com a llegit, suprimeix... i després fes clic a [Crea un filtre] per a confirmar.",
+    "done": "Fet! Gmail aplicarà aquesta regla automàticament a cada correu nou que coincideixi, sense cap esforç addicional per part teva.",
+    "tip_label": "Pas clau"
+  },
+  "footer": {
+    "made_with": "Codi obert a",
+    "github": "GitHub",
+    "donate": "Donar",
+    "disclaimer": "Aquesta eina no està afiliada amb Google ni Gmail.",
+    "privacy": "Política de privacitat",
+    "legal_notice": "Avís legal",
+    "cookies": "Política de galetes"
+  },
+  "summary": {
+    "prefix": "Aquest filtre coincidirà amb els correus",
+    "from": "enviats per {{value}}",
+    "to": "enviats a {{value}}",
+    "cc": "amb {{value}} a CC",
+    "bcc": "amb {{value}} a BCC",
+    "subject": "l'assumpte dels quals contingui {{value}}",
+    "body": "que continguin {{value}} al cos",
+    "has_attachment": "que tinguin un fitxer adjunt",
+    "filename": "amb un fitxer adjunt anomenat/de tipus {{value}}",
+    "label": "etiquetats amb {{value}}",
+    "in": "situats a la carpeta {{value}}",
+    "is_read": "que estiguin llegits",
+    "is_unread": "que estiguin no llegits",
+    "is_starred": "que estiguin destacats",
+    "is_important": "que estiguin marcats com a importants",
+    "date_after": "rebuts després de {{value}}",
+    "date_before": "rebuts abans de {{value}}",
+    "newer_than": "rebuts durant els darrers {{value}}",
+    "older_than": "més antics de {{value}}",
+    "size_larger": "de mida superior a {{value}}",
+    "size_smaller": "de mida inferior a {{value}}",
+    "negate_prefix": "NO",
+    "and_connector": " I ",
+    "or_connector": " O "
+  },
+  "pwa": {
+    "install_btn": "Instal·la l'aplicació",
+    "install_title": "Instal·la el Constructor de Filtres",
+    "install_desc": "Instal·la la nostra aplicació al teu dispositiu per a una experiència més ràpida i sense connexió.",
+    "ios_hint_title": "Instal·la a iOS / Safari",
+    "ios_hint_steps": "1. Toca el botó de compartir [icona] \n2. Selecciona 'Afegeix a la pantalla d'inici'",
+    "installed_msg": "Aplicació instal·lada correctament!"
+  },
+  "legal": {
+    "privacy_title": "Política de Privadesa - Gmail Filter Builder",
+    "back_home": "Tornar a l'inici",
+    "privacy": {
+      "h1": "Política de Privadesa",
+      "last_updated": "Darrera actualització: 2 de juliol de 2026",
+      "h2_1": "1. Identitat del Responsable",
+      "p_1_1": "De conformitat amb l'establert en el Reglament (UE) 2016/679 (RGPD) i la Llei Orgànica 3/2018 (LOPDGDD), us informem que el responsable del tractament de les dades recollides en aquest lloc web és <strong>Salmonidas</strong>.",
+      "p_1_2": "Per consultar les dades fiscals completes, domicili de gestió i mitjans de contacte directe, si us plau, visiteu el nostre <strong><a href=\"#\" id=\"hub-legal-link\">Avís Legal i d'Identitat</a></strong>.",
+      "h2_2": "2. Dades que recollim i finalitat",
+      "p_2_1": "<strong>Gmail Filter Builder</strong> és una eina dissenyada sota el principi de \"privadesa des del disseny\" (Privacy by Design). Per defecte, l'aplicació funciona de forma local al vostre navegador (<em>client-side</em>) i <strong>no recull, no emmagatzema i no transmet</strong> als nostres servidors cap informació sobre els vostres correus, cerques, filtres generats ni dades personals d'ús.",
+      "p_2_2": "Únicament es processen dades en els casos explícits següents:",
+      "li_2_1": "<strong>Dades tècniques de connexió:</strong> En visitar el web, el nostre proveïdor d'infraestructura (GitHub Pages) pot registrar temporalment la vostra adreça IP i el <em>User-Agent</em> del navegador per motius de seguretat, prevenció d'atacs DDoS i rendiment de la xarxa.",
+      "li_2_2": "<strong>Donacions / Pagaments:</strong> Si decidiu fer una aportació voluntària per donar suport al projecte mitjançant el sistema de donacions, el pagament serà processat íntegrament per plataformes de tercers (Lemon Squeezy o GitHub Sponsors). Nosaltres no recollim ni tenim accés a les vostres dades bancàries ni de targeta de crèdit en cap moment.",
+      "h2_3": "3. Destinataris de les dades (Encarregats de Tractament)",
+      "p_3_1": "Per poder prestar el servei i habilitar les funcions de suport al desenvolupament, compartim dades estrictament tècniques o deleguem el procés en els proveïdors següents, amb els quals existeix el preceptiu acord d'encàrrec de tractament (DPA):",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages):</strong> Proporciona l'allotjament web (hosting). Els seus servidors poden estar situats als Estats Units, operant sota les clàusules contractuals tipus (SCC) i el Marc de Privadesa de Dades UE-EUA (DPF).",
+      "li_3_2": "<strong>Lemon Squeezy, LLC:</strong> Actua com a <em>Merchant of Record</em> per al processament de pagaments voluntaris. Si feu una donació mitjançant targeta, Apple Pay o PayPal, Lemon Squeezy recollirà el vostre email i informació de facturació sota les seves pròpies polítiques de privadesa, actuant ells com a responsables d'aquell pagament.",
+      "h2_4": "4. Tecnologies d'IA (AI Act)",
+      "p_4_1": "Us informem explícitament que aquest lloc web <strong>NO utilitza</strong> motors d'Intel·ligència Artificial generativa ni sistemes de presa de decisions automatitzades en les seves funcions de creació de filtres. Tot el codi generat es basa en lògica de programació determinista.",
+      "h2_5": "5. Drets de l'Usuari (ARSULIPO)",
+      "p_5_1": "Teniu dret a obtenir confirmació sobre si estem tractant les vostres dades personals. En no disposar de bases de dades d'usuaris registrats, l'exercici de drets està inherentment limitat a la naturalesa tècnica del web, però en tot moment podreu exercir els vostres drets d'<strong>Accés, Rectificació, Supressió, Limitació, Portabilitat i Oposició</strong> adreçant un correu electrònic a l'adreça de contacte especificada a l' <a href=\"#\" class=\"hub-legal-link-class\">Avís Legal Centralitzat</a>.",
+      "p_5_2": "Així mateix, si considereu que no hem tractat les vostres dades adequadament, teniu dret a presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (AEPD)."
+    },
+    "cookies_title": "Política de Galetes - Gmail Filter Builder",
+    "cookies": {
+      "h1": "Política de Galetes i Emmagatzematge Local",
+      "last_updated": "Darrera actualització: 2 de juliol de 2026",
+      "alert": "<strong>Informació sobre exempció legal:</strong> En compliment amb les directrius de l'Agència Espanyola de Protecció de Dades (AEPD), us informem que aquest lloc web <strong>només utilitza tecnologies d'emmagatzematge estrictament tècniques i funcionals</strong>. No utilitzem galetes analítiques, de màrqueting, de rastreig ni publicitàries. Per tant, estem legalment exempts de l'obligació de demanar el vostre consentiment exprés mitjançant un panell interactiu (\"Acceptar/Rebutjar\").",
+      "h2_1": "1. Què són les galetes i l'emmagatzematge local?",
+      "p_1_1": "Les galetes són petits fitxers de text que els llocs web emmagatzemen al vostre dispositiu en visitar-los. A més de les galetes clàssiques, existeixen altres tecnologies similars com el <em>Local Storage</em> (emmagatzematge local) del vostre navegador, que compleixen propòsits idèntics de guardar informació per millorar la vostra experiència.",
+      "h2_2": "2. Tecnologies que utilitzem",
+      "p_2_1": "El nostre web utilitza exclusivament l'<strong>emmagatzematge local (localStorage)</strong> del vostre navegador per guardar les vostres preferències d'interfície d'usuari, garantint que tot el processament es mantingui de forma privada al vostre dispositiu.",
+      "th_name": "Nom (Clau)",
+      "th_type": "Tipus",
+      "th_purpose": "Finalitat (Estrictament Necessària)",
+      "th_duration": "Durada",
+      "td_type_local": "Local Storage",
+      "td_duration_persist": "Persistent",
+      "td_theme_desc": "Recorda si preferiu utilitzar el Mode Clar (☀️) o el Mode Fosc (🌙) per adaptar la interfície visual.",
+      "td_filters_desc": "Guarda la vostra biblioteca local personal de \"Els Meus Filtres\" generats, permetent-vos recuperar-los en futures visites sense usar bases de dades externes.",
+      "td_support_desc": "Evita molèsties recordant que heu decidit tancar i no tornar a veure el bàner informatiu de suport al desenvolupament.",
+      "h2_3": "3. Galetes de tercers (Opcionals)",
+      "p_3_1": "Si interactueu amb el botó de \"Convida'm a un cafè\" i s'obre la passarel·la de pagament superposada, el processador extern <strong>Lemon Squeezy</strong> podria carregar les seves pròpies galetes estrictament tècniques necessàries per processar la transacció de forma segura i evitar el frau electrònic. Aquestes galetes queden fora del nostre control i es regeixen per la política de privadesa i galetes de Lemon Squeezy.",
+      "h2_4": "4. Com esborrar aquesta informació?",
+      "p_4_1": "Tot i que no utilitzem tecnologies de rastreig, teniu en tot moment el control absolut sobre les dades guardades al vostre navegador. Si desitgeu esborrar els vostres filtres guardats i les vostres preferències visuals, podeu fer-ho fàcilment:",
+      "li_4_1": "Buidant la memòria cau i l'emmagatzematge de dades de llocs als ajustos del vostre navegador (Chrome, Firefox, Safari, Edge).",
+      "li_4_2": "Utilitzant el mode de \"Navegació Privada\" o \"Incògnit\", el qual esborrarà automàticament aquest emmagatzematge local en tancar la finestra.",
+      "p_4_2": "Per a més informació sobre qui som, visiteu el nostre <strong><a href=\"#\" id=\"hub-legal-link-2\">Avís Legal Centralitzat</a></strong>."
+    }
+  }
+}

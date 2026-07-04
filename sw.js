@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gmail-builder-v1.1.1';
+const CACHE_NAME = 'gmail-builder-v1.3.0';
 
 const ASSETS = [
   './',
@@ -8,13 +8,16 @@ const ASSETS = [
   './assets/img/icon-192.png',
   './assets/img/icon-512.png',
   './assets/css/styles.css?v=3',
-  './assets/js/main.js',
+  './assets/js/main.js?v=2',
   './assets/js/ui.js',
   './assets/js/query-builder.js',
   './assets/js/examples.js',
   './assets/js/i18n.js',
+  './assets/js/legal-i18n.js',
   './locales/en.json',
   './locales/es.json',
+  './locales/en-US.json',
+  './locales/es-ES.json',
   './assets/fonts/Roboto-Regular.ttf',
   './assets/fonts/Roboto-Medium.ttf',
   './assets/fonts/Roboto-Bold.ttf'
@@ -46,21 +49,40 @@ self.addEventListener('fetch', event => {
   // Only cache same-origin requests
   if (url.origin !== location.origin) return;
 
+  // Network-first for JS files and locale JSONs (so updates apply immediately)
+  const isJS = url.pathname.endsWith('.js') && !url.pathname.endsWith('sw.js');
+  const isLocale = url.pathname.includes('/locales/');
+  const isHTML = url.pathname.endsWith('.html') || url.pathname.endsWith('/');
+
+  if (isJS || isLocale || isHTML) {
+    // Network-first: try network, fall back to cache
+    event.respondWith(
+      fetch(event.request)
+        .then(networkResponse => {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Cache-first for static assets (fonts, images, CSS)
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
       if (cachedResponse) return cachedResponse;
-      
-      // Fallback to network
+
       return fetch(event.request).then(networkResponse => {
-        // Cache the dynamically fetched responses too
         const responseClone = networkResponse.clone();
         caches.open(CACHE_NAME).then(cache => {
           cache.put(event.request, responseClone);
         });
         return networkResponse;
       }).catch(() => {
-        // If both cache and network fail (e.g. offline and un-cached page)
-        // just fail silently or return offline.html if we had one
+        // Offline and not cached - fail silently
       });
     })
   );

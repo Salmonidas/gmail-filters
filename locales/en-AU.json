@@ -179,7 +179,7 @@
       },
       {
         "op": "in:",
-        "desc": "Messages in a Gmail system folder: inbox, spam, trash, sent, promotions, updates, social."
+        "desc": "Messages in a Gmail system folder: inbox, spam, bin, sent, promotions, updates, social."
       },
       {
         "op": "is:read / is:unread",

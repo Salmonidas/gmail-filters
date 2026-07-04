@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Gmail フィルタ作成ツール",
+    "subtitle": "構文を覚えることなく、視覚的に高度な Gmail 検索フィルタを作成できます。",
+    "language_selector": "言語"
+  },
+  "nav": {
+    "builder": "作成ツール",
+    "preview": "プレビュー",
+    "examples": "フィルタライブラリ",
+    "help": "ヘルプ",
+    "guide": "ガイド"
+  },
+  "builder": {
+    "title": "フィルタ作成ツール",
+    "add_condition": "条件を追加",
+    "clear_all": "すべてクリア",
+    "logic_and": "AND",
+    "logic_or": "OR",
+    "logic_label": "結合方法",
+    "group_label": "カッコでグループ化する",
+    "advanced_mode": "クエリを直接編集",
+    "visual_mode": "ビジュアルエディタに戻る",
+    "advanced_note": "クエリを直接編集します。「ビジュアルエディタに戻る」をクリックすると、再び条件行に分解されます。",
+    "no_conditions": "条件が設定されていません。「条件を追加」をクリックしてフィルタを作成してください。",
+    "condition": {
+      "type_label": "フィルタ項目",
+      "value_label": "値",
+      "remove": "条件を削除",
+      "negate": "除外する (NOT)"
+    },
+    "types": {
+      "from": "差出人 (from)",
+      "to": "宛先 (to)",
+      "cc": "CC (cc)",
+      "bcc": "BCC (bcc)",
+      "subject": "件名 (subject)",
+      "body": "本文に含む単語",
+      "has_attachment": "添付ファイルあり",
+      "filename": "添付ファイルのファイル名・種類",
+      "label": "ラベル (作成済みのカスタムラベル)",
+      "in": "システムフォルダ (受信トレイ、迷惑メールなど)",
+      "is_read": "ステータス: 既読",
+      "is_unread": "ステータス: 未読",
+      "is_starred": "ステータス: スター付き (⭐)",
+      "is_important": "ステータス: 重要マーク付き",
+      "date_after": "指定日以降に受信",
+      "date_before": "指定日以前に受信",
+      "newer_than": "指定期間内に受信 (相対指定)",
+      "older_than": "指定期間より前に受信 (相対指定)",
+      "size_larger": "サイズが次の値より大きい",
+      "size_smaller": "サイズが次の値より小さい"
+    },
+    "placeholders": {
+      "from": "alice@gmail.com  または  boss@company.com",
+      "to": "team@company.com  または  newsletter@service.io",
+      "cc": "manager@company.com",
+      "bcc": "archive@company.com  または  compliance@firm.com",
+      "subject": "請求書  または  \"四半期報告\"  -下書き",
+      "body": "要対応  または  \"添付ファイルをご確認ください\"",
+      "filename": "pdf  または  *.docx  または  *.xlsx",
+      "label": "請求書  または  仕事  Or  領収書",
+      "in": "inbox  または  spam  または  promotions  または  sent",
+      "newer_than": "7d  ·  2m  ·  1y   (d=日, m=月, y=年)",
+      "older_than": "30d  ·  3m  ·  2y   (d=日, m=月, y=年)",
+      "size_larger": "5M  ·  10M  ·  25M   (M = メガバイト)",
+      "size_smaller": "500K  ·  1M  ·  5M   (K = キロバイト, M = メガバイト)"
+    },
+    "has_attachment_note": "1つ以上の添付ファイル（形式不問）があるメールに一致します。",
+    "is_read_note": "既に開封して読んだメールに一致します。",
+    "is_unread_note": "まだ開封していない未読メールに一致します。",
+    "is_starred_note": "Gmailでスター（⭐）を付けたメールに一致します。",
+    "is_important_note": "Gmailシステムまたはあなた自身によって「重要」（►）と判定されたメールに一致します。"
+  },
+  "preview": {
+    "title": "生成されたクエリ",
+    "empty": "上に条件を追加すると、ここに検索クエリが生成されます。",
+    "copy": "クリップボードにコピー",
+    "copied": "コピーしました！",
+    "open_gmail": "Gmailで開く",
+    "how_to_apply": "適用方法",
+    "summary_title": "このフィルタの条件説明",
+    "summary_empty": "上に条件を追加すると、ここにわかりやすいフィルタの日本語説明が表示されます。",
+    "char_count": "{{count}} 文字",
+    "share": "リンクを共有",
+    "share_copied": "リンクをコピーしました！",
+    "save": "フィルタを保存",
+    "saved_toast": "「マイフィルタ」に保存しました"
+  },
+  "saved_filters": {
+    "title": "マイフィルタ",
+    "subtitle": "ブラウザに保存されたフィルタ一覧。",
+    "empty": "保存されたフィルタはまだありません。",
+    "delete": "削除",
+    "name_prompt": "フィルタの名前を入力してください:",
+    "default_name": "カスタムフィルタ",
+    "dialog_title": "フィルタを保存",
+    "dialog_hint": "保存したフィルタは「ライブラリ」タブの「マイフィルタ」に表示されます。",
+    "dialog_save": "保存",
+    "cancel": "キャンセル",
+    "snackbar_msg": "フィルタを「マイフィルタ」に保存しました",
+    "snackbar_action": "表示",
+    "delete_confirm_title": "フィルタを削除しますか？",
+    "delete_confirm_msg": "このフィルタをライブラリから削除してもよろしいですか？この操作は取り消せません。",
+    "delete_cancel": "キャンセル",
+    "delete_confirm": "削除",
+    "empty_library_title": "ライブラリが空です",
+    "empty_library_desc": "よく使う検索条件を保存しておくと、後からここで簡単に呼び出せます。",
+    "empty_library_cta": "作成ツールへ"
+  },
+  "examples": {
+    "title": "フィルタの作成例",
+    "subtitle": "「読み込む」をクリックして例を作成ツールに反映させ、カスタマイズできます。",
+    "load": "例を読み込む",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "特定送信者からの請求書メール（過去1ヶ月）",
+        "description": "過去30日以内に受信した、特定の送信者2名からのメールで、件名に「invoice」を含み、「draft」を含まないもの。",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "自分がCCに含まれる会議メール",
+        "description": "自分がCCに入っており、件名に「meeting」を含み、「cancelled」を含まないメール。",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "特定送信者からのPDFファイル添付メール",
+        "description": "特定の送信者から受信した、PDFファイルが添付されているメール。",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "未読のスター付きメール",
+        "description": "スター付きかつ未読のメールをすべて表示する、簡易版優先トレイフィルタ。",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "登録解除できるメルマガ",
+        "description": "プロモーションカテゴリのメールで、本文に「登録解除」や「unsubscribe」のテキストを含むもの。",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Gmail 検索演算子リファレンス",
+    "intro": "以下は、本ツールで対応しているGmail検索演算子と、そのGmail内での意味です。",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "送信者のメールアドレスで検索します。"
+      },
+      {
+        "op": "to:",
+        "desc": "メインの受信者で検索します。"
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = 写し（全員に見える）。BCC = 密かな写し（他の受信者には見えない）。"
+      },
+      {
+        "op": "subject:",
+        "desc": "件名の中のキーワードを検索します。"
+      },
+      {
+        "op": "has:attachment",
+        "desc": "添付ファイルがあるメールを検索します。"
+      },
+      {
+        "op": "filename:",
+        "desc": "添付ファイルのファイル名や拡張子（例: pdf, *.docx）を指定します。"
+      },
+      {
+        "op": "label:",
+        "desc": "自分で作成したカスタムGmailラベルを指定します。"
+      },
+      {
+        "op": "in:",
+        "desc": "システムフォルダを指定します: inbox（受信トレイ）, spam（迷惑メール）, trash（ゴミ箱）, sent（送信済み）, promotions（プロモーション）など。"
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "既読・未読ステータスでフィルタリングします。"
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "スター（⭐）や重要マーク（►）の有無でフィルタリングします。"
+      },
+      {
+        "op": "after: / before:",
+        "desc": "YYYY/MM/DD 形式で期間を指定します。"
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "期間の相対指定: 7d (7日間), 2m (2ヶ月間), 1y (1年間)。"
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "メールのサイズ指定: 5M (5MB), 500K (500KB)。"
+      },
+      {
+        "op": "OR",
+        "desc": "2つの条件のいずれかに一致すれば可とします（必ず大文字で書く必要があります）。"
+      },
+      {
+        "op": "-キーワード",
+        "desc": "そのキーワードを含むメールを除外します（NOT検索）。"
+      },
+      {
+        "op": "(…)",
+        "desc": "演算子の適用順序を制御するためにグループ化します。"
+      }
+    ],
+    "tips_title": "プロのテクニック",
+    "tips": [
+      "2語以上の単語を値に指定する場合はダブルクォーテーションで囲みます: subject:\"四半期報告\"",
+      "複数の送信者等のいずれかに一致させたい場合はカッコの中で OR を使います: from:(a@x.com OR b@x.com)",
+      "Gmail検索キーワードは大文字小文字を区別しませんが、OR は必ず大文字で指定します。",
+      "生成されたクエリは、Gmail上部の検索バーに貼り付けるか、フィルタ作成時の「含む」欄に直接貼り付けて使用します。",
+      "newer_than と older_than を組み合わせることで、特定の期間内を指定できます: newer_than:3m older_than:1m",
+      "label: は自作のラベルを検索します。in: は受信トレイやプロモーションなどの標準システムカテゴリを検索します。"
+    ]
+  },
+  "support": {
+    "toast_title": "☕ プロジェクトへの支援",
+    "toast_desc": "このツールは無料でオープンソースです。もし役立って時間を節約できたなら、少額の開発支援をいただけますと幸いです。",
+    "dismiss_permanent": "再表示しない",
+    "header_title": "開発者を支援する",
+    "footer_donate": "寄付する",
+    "toast_cta": "☕ コーヒーをおごる",
+    "modal_title": "プロジェクトを支援する 💖",
+    "modal_desc": "ご都合の良い方法を選択してください。ご支援は、このツールを無料でオープンソースとして維持するために役立てられます。",
+    "option_lemon": "コーヒーをおごる（Apple Pay, カード, PayPal）",
+    "option_github": "GitHub Sponsors（単発または継続）",
+    "links": []
+  },
+  "guide": {
+    "tab": "ガイド",
+    "title": "Gmailにフィルタを設定する方法",
+    "intro": "本ツールで作成した検索クエリを、Gmail内で自動的に処理される「常時適用ルール」に変換する手順です。",
+    "step1_title": "クエリをコピーする",
+    "step1_desc": "このページの「生成されたクエリ」カードにある [クリップボードにコピー] ボタンをクリックします。",
+    "step2_title": "Gmailを開く",
+    "step2_desc": "ブラウザで gmail.com にアクセスし、ログインします。",
+    "step3_title": "上部の検索バーをクリックする",
+    "step3_desc": "Gmail上部に「メールを検索」と書かれた広い入力エリアがあります。そこを1回クリックします。",
+    "step4_title": "クエリを貼り付ける",
+    "step4_desc": "Ctrl+V（Windows / Linux）または Cmd+V（Mac）キーを押して貼り付けます。検索バーにクエリが入ります。",
+    "step5_title": "検索バーの右端にある 検索オプション アイコン <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> をクリックする",
+    "step5_desc": "検索バーの右端をよく見ると、3本の横線につまみが付いたようなアイコン（検索オプションを表示） <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> があります。これをクリックして詳細設定パネルを開きます。",
+    "step5_tip": "ここは最も見落とされやすいステップです！アイコンは端に小さく表示されています。古いGmailでは小さな三角 ▼ でしたが、現在は通常この設定アイコンです。",
+    "step6_title": "「フィルタを作成」をクリックする",
+    "step6_desc": "詳細設定パネルが開きます。パネルの右下にある「フィルタを作成」ボタンをクリックします。",
+    "step7_title": "Gmailに自動で行わせたい処理を選択する",
+    "step7_desc": "「受信トレイをスキップ（アーカイブする）」、「ラベルを付ける」、「既読にする」、「削除する」など、行いたい自動処理にチェックを入れてから [フィルタを作成] をクリックして決定します。",
+    "done": "完了です！これで、新しく届くメールに対してGmailが自動的にこの条件ルールを適用するようになります。",
+    "tip_label": "重要なステップ"
+  },
+  "footer": {
+    "made_with": "オープンソース提供:",
+    "github": "GitHub",
+    "donate": "支援する",
+    "disclaimer": "当ツールは Google および Gmail とは提携・関係していません。",
+    "privacy": "プライバシーポリシー",
+    "cookies": "クッキーポリシー",
+    "legal_notice": "法的通知 (特定商取引法に基づく表記)"
+  },
+  "summary": {
+    "prefix": "このフィルタは、以下の条件を満たすメールに適用されます:",
+    "from": "送信者が {{value}}",
+    "to": "受信者が {{value}}",
+    "cc": "CCに {{value}} を含む",
+    "bcc": "BCCに {{value}} を含む",
+    "subject": "件名に {{value}} を含む",
+    "body": "本文に {{value}} を含む",
+    "has_attachment": "添付ファイルがある",
+    "filename": "添付ファイルのファイル名/種類が {{value}}",
+    "label": "ラベル「{{value}}」が付いている",
+    "in": "フォルダ「{{value}}」に格納されている",
+    "is_read": "開封済みの",
+    "is_unread": "未読の",
+    "is_starred": "スターが付いている",
+    "is_important": "重要とマークされている",
+    "date_after": "受信日時が {{value}} 以降",
+    "date_before": "受信日時が {{value}} 以前",
+    "newer_than": "受信日時が過去 {{value}} 以内",
+    "older_than": "受信日時が {{value}} より古い",
+    "size_larger": "サイズが {{value}} より大きい",
+    "size_smaller": "サイズが {{value}} より小さい",
+    "negate_prefix": "かつ次を含まない:",
+    "and_connector": " かつ ",
+    "or_connector": " または "
+  },
+  "pwa": {
+    "install_btn": "アプリをインストール",
+    "install_title": "Gmail フィルタ作成ツールをインストール",
+    "install_desc": "より速く、オフライン時でも利用できるように、お使いの端末にアプリをインストールしてください。",
+    "ios_hint_title": "iOS / Safari でのインストール",
+    "ios_hint_steps": "1. 共有ボタン [アイコン] をタップします \n2. 「ホーム画面に追加」を選択します",
+    "installed_msg": "アプリが正常にインストールされました！"
+  },
+  "legal": {
+    "privacy_title": "プライバシーポリシー - Gmail Filter Builder",
+    "cookies_title": "Cookie ポリシー - Gmail Filter Builder",
+    "back_home": "ホームに戻る",
+    "privacy": {
+      "h1": "プライバシーポリシー",
+      "last_updated": "最終更新：2026年7月2日",
+      "h2_1": "1. データ管理者の身元",
+      "p_1_1": "規則（EU）2016/679（GDPR）およびスペイン基本法 3/2018（LOPDGDD）の規定に従い、本ウェブサイトで収集されるデータの管理者が <strong>Salmonidas</strong> であることをお知らせします。",
+      "p_1_2": "税務上の詳細、管理住所、および直接の連絡方法については、<strong><a href=\"#\" id=\"hub-legal-link\">法的および身元に関する通知</a></strong> をご覧ください。",
+      "h2_2": "2. 当社が収集するデータとその目的",
+      "p_2_1": "<strong>Gmail Filter Builder</strong> は「プライバシー・バイ・デザイン」の原則に基づいて設計されたツールです。デフォルトでは、アプリケーションはブラウザ内でローカルに動作し（<em>クライアントサイド</em>）、電子メール、検索、生成されたフィルタ、または個人的な利用データに関するいかなる情報も<strong>収集、保存、または当社のサーバーに送信しません</strong>。",
+      "p_2_2": "データは以下の明示的な場合にのみ処理されます：",
+      "li_2_1": "<strong>技術的な接続データ：</strong>ウェブサイトにアクセスすると、セキュリティ、DDoS 攻撃の防止、ネットワークのパフォーマンスのために、インフラストラクチャプロバイダー（GitHub Pages）が一時的にIPアドレスとブラウザの <em>User-Agent</em> を記録する場合があります。",
+      "li_2_2": "<strong>寄付 / 支払い：</strong>寄付システムを通じてプロジェクトを支援するための自発的な貢献を選択した場合、支払いは完全にサードパーティのプラットフォーム（Lemon Squeezy または GitHub Sponsors）によって処理されます。当社は、いかなる場合もお客様の銀行データやクレジットカードデータを収集したり、アクセスしたりすることはありません。",
+      "h2_3": "3. データの受領者（データ処理者）",
+      "p_3_1": "サービスを提供し、開発サポート機能を有効にするために、当社は厳密に技術的なデータを共有するか、以下のプロバイダーに処理を委託します。これらのプロバイダーとは必須のデータ処理契約（DPA）が結ばれています：",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages)：</strong>ウェブホスティングを提供します。サーバーは米国にある場合があり、標準契約条項（SCC）およびEU-米国データプライバシーフレームワーク（DPF）の下で運用されています。",
+      "li_3_2": "<strong>Lemon Squeezy, LLC：</strong>自発的な支払いの処理における <em>Merchant of Record</em>（記録上の販売業者）として機能します。カード、Apple Pay、または PayPal で寄付する場合、Lemon Squeezy は自社のプライバシーポリシーに基づいて電子メールと請求情報を収集し、その支払いのデータ管理者として機能します。",
+      "h2_4": "4. AI 技術（AI 法）",
+      "p_4_1": "このウェブサイトは、フィルタ作成機能において生成 AI エンジンや自動意思決定システムを<strong>使用していない</strong>ことを明示的にお知らせします。生成されるすべてのコードは、決定論的なプログラミングロジックに基づいています。",
+      "h2_5": "5. ユーザーの権利（GDPR）",
+      "p_5_1": "お客様には、当社が個人データを処理しているかどうかの確認を得る権利があります。登録ユーザーのデータベースがないため、権利の行使は本質的にウェブサイトの技術的性質に限定されますが、<a href=\"#\" class=\"hub-legal-link-class\">集中化された法的通知</a>に指定された連絡先アドレスにメールを送信することで、いつでも<strong>アクセス、訂正、消去、制限、データポータビリティ、および異議申し立て</strong>の権利を行使することができます。",
+      "p_5_2": "同様に、当社がお客様のデータを適切に扱っていないと考える場合、スペインデータ保護局（AEPD）に苦情を申し立てる権利があります。"
+    },
+    "cookies": {
+      "h1": "Cookie およびローカルストレージポリシー",
+      "last_updated": "最終更新：2026年7月2日",
+      "alert": "<strong>法的免除に関する通知：</strong>スペインデータ保護局（AEPD）のガイドラインに従い、このウェブサイトは<strong>厳密に技術的および機能的なストレージテクノロジーのみを使用している</strong>ことをお知らせします。分析、マーケティング、トラッキング、または広告 Cookie は使用しません。したがって、対話型バナー（「同意する/拒否する」）を介して明示的な同意を収集する義務から法的に免除されています。",
+      "h2_1": "1. Cookie とローカルストレージとは何ですか？",
+      "p_1_1": "Cookie とは、ウェブサイトにアクセスした際にお使いのデバイスに保存される小さなテキストファイルです。従来の Cookie に加え、エクスペリエンスを向上させるための情報を保存するという同じ目的を果たす、ブラウザの <em>Local Storage</em>（ローカルストレージ）などの類似テクノロジーがあります。",
+      "h2_2": "2. 当社が使用する技術",
+      "p_2_1": "当社のウェブサイトは、ユーザーインターフェースの設定を保存するためにブラウザの<strong>ローカルストレージ (localStorage)</strong> を排他的に使用し、すべての処理がお使いのデバイス上でプライベートに保たれるようにします。",
+      "th_name": "名前 (キー)",
+      "th_type": "タイプ",
+      "th_purpose": "目的 (厳密に必要)",
+      "th_duration": "期間",
+      "td_type_local": "ローカルストレージ",
+      "td_duration_persist": "永続的",
+      "td_theme_desc": "視覚インターフェースを適応させるために、ライトモード (☀️) とダークモード (🌙) のどちらを好むかを記憶します。",
+      "td_filters_desc": "生成された「マイフィルタ」の個人のローカルライブラリを保存し、外部データベースを使用せずに今後の訪問時にそれらを取得できるようにします。",
+      "td_support_desc": "開発サポートの情報バナーを閉じることを決定し、二度と表示しないようにしたことを記憶することで、煩わしさを回避します。",
+      "h2_3": "3. サードパーティの Cookie（オプション）",
+      "p_3_1": "「コーヒーをおごる」ボタンを操作し、オーバーレイの支払いゲートウェイが開くと、外部のプロセッサである <strong>Lemon Squeezy</strong> は、トランザクションを安全に処理し電子的な詐欺を防ぐために必要な、自社の厳密な技術的 Cookie を読み込む場合があります。これらの Cookie は当社の管理外であり、Lemon Squeezy のプライバシーおよび Cookie ポリシーに準拠します。",
+      "h2_4": "4. この情報を削除するにはどうすればよいですか？",
+      "p_4_1": "当社はトラッキング技術を使用していませんが、お客様はブラウザに保存されたデータをいつでも完全に制御できます。保存されたフィルタと視覚的な設定を削除したい場合は、簡単に実行できます：",
+      "li_4_1": "ブラウザの設定（Chrome、Firefox、Safari、Edge）でキャッシュとサイトデータのストレージをクリアします。",
+      "li_4_2": "「プライベートブラウジング」または「シークレット」モードを使用します。ウィンドウを閉じると、このローカルストレージが自動的に削除されます。",
+      "p_4_2": "当社の詳細については、<strong><a href=\"#\" id=\"hub-legal-link-2\">集中化された法的通知</a></strong>をご覧ください。"
+    }
+  }
+}

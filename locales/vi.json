@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Trình tạo bộ lọc Gmail",
+    "subtitle": "Tạo các truy vấn tìm kiếm Gmail nâng cao một cách trực quan, không cần ghi nhớ cú pháp.",
+    "language_selector": "Ngôn ngữ"
+  },
+  "nav": {
+    "builder": "Trình tạo",
+    "preview": "Xem trước",
+    "examples": "Thư viện",
+    "help": "Trợ giúp",
+    "guide": "Hướng dẫn"
+  },
+  "builder": {
+    "title": "Trình tạo bộ lọc",
+    "add_condition": "Thêm điều kiện",
+    "clear_all": "Xóa tất cả",
+    "logic_and": "VÀ (AND)",
+    "logic_or": "HOẶC (OR)",
+    "logic_label": "Kết hợp bằng",
+    "group_label": "Nhóm trong ngoặc đơn",
+    "advanced_mode": "Chỉnh sửa truy vấn thủ công",
+    "visual_mode": "Quay lại trình tạo trực quan",
+    "advanced_note": "Chỉnh sửa truy vấn trực tiếp. Nhấp vào \"Quay lại trình tạo trực quan\" để phân tích nó thành các điều kiện trực quan.",
+    "no_conditions": "Chưa có điều kiện nào. Nhấp vào \"Thêm điều kiện\" để bắt đầu tạo bộ lọc của bạn.",
+    "condition": {
+      "type_label": "Loại bộ lọc",
+      "value_label": "Giá trị",
+      "remove": "Xóa điều kiện",
+      "negate": "Loại trừ (NOT)"
+    },
+    "types": {
+      "from": "Từ — người gửi",
+      "to": "Đến — người nhận",
+      "cc": "CC — đồng gửi",
+      "bcc": "BCC — đồng gửi ẩn",
+      "subject": "Tiêu đề",
+      "body": "Nội dung thư chứa",
+      "has_attachment": "Có tệp đính kèm",
+      "filename": "Tên / loại tệp đính kèm",
+      "label": "Nhãn (nhãn Gmail tùy chỉnh của tôi)",
+      "in": "Trong thư mục hệ thống (hộp thư đến, spam...)",
+      "is_read": "Trạng thái: đã đọc",
+      "is_unread": "Trạng thái: chưa đọc",
+      "is_starred": "Trạng thái: có gắn dấu sao (⭐)",
+      "is_important": "Trạng thái: được đánh dấu là quan trọng",
+      "date_after": "Nhận được sau ngày",
+      "date_before": "Nhận được trước ngày",
+      "newer_than": "Nhận được trong vòng... (tương đối)",
+      "older_than": "Nhận được trước đó hơn... (tương đối)",
+      "size_larger": "Kích thước lớn hơn",
+      "size_smaller": "Kích thước nhỏ hơn"
+    },
+    "placeholders": {
+      "from": "alice@gmail.com HOẶC boss@company.com",
+      "to": "team@company.com HOẶC newsletter@service.io",
+      "cc": "manager@company.com",
+      "bcc": "archive@company.com HOẶC compliance@firm.com",
+      "subject": "hóa đơn HOẶC \"báo cáo quý\" -bản nháp",
+      "body": "cần xử lý HOẶC \"vui lòng tìm tệp đính kèm\"",
+      "filename": "pdf HOẶC *.docx HOẶC *.xlsx",
+      "label": "hóa đơn HOẶC công việc HOẶC biên lai",
+      "in": "inbox HOẶC spam HOẶC promotions HOẶC sent",
+      "newer_than": "7d · 2m · 1y   (d=ngày, m=tháng, y=năm)",
+      "older_than": "30d · 3m · 2y   (d=ngày, m=tháng, y=năm)",
+      "size_larger": "5M · 10M · 25M   (M = megabyte)",
+      "size_smaller": "500K · 1M · 5M   (K = kilobyte, M = megabyte)"
+    },
+    "has_attachment_note": "Khớp với các thư có chứa ít nhất một tệp đính kèm (bất kỳ định dạng nào).",
+    "is_read_note": "Khớp với các thư bạn đã mở và đọc.",
+    "is_unread_note": "Khớp với các thư bạn chưa mở.",
+    "is_starred_note": "Khớp với các thư bạn đã gắn dấu sao (⭐) trong Gmail.",
+    "is_important_note": "Khớp với các thư được Gmail hoặc bạn đánh dấu là quan trọng (►)."
+  },
+  "preview": {
+    "title": "Truy vấn đã tạo",
+    "empty": "Truy vấn tìm kiếm của bạn sẽ xuất hiện ở đây khi bạn thêm điều kiện ở trên.",
+    "copy": "Sao chép vào bộ nhớ tạm",
+    "copied": "Đã sao chép!",
+    "open_gmail": "Mở trong Gmail",
+    "how_to_apply": "Cách áp dụng",
+    "summary_title": "Bộ lọc này làm gì",
+    "summary_empty": "Thêm điều kiện ở trên để xem mô tả bộ lọc bằng tiếng Việt dễ hiểu tại đây.",
+    "char_count": "{{count}} ký tự",
+    "share": "Chia sẻ liên kết",
+    "share_copied": "Đã sao chép liên kết!",
+    "save": "Lưu bộ lọc",
+    "saved_toast": "Đã lưu vào Bộ lọc của tôi"
+  },
+  "saved_filters": {
+    "title": "Bộ lọc của tôi",
+    "subtitle": "Các bộ lọc đã được lưu trên trình duyệt của bạn.",
+    "empty": "Chưa có bộ lọc nào được lưu.",
+    "delete": "Xóa",
+    "name_prompt": "Đặt tên cho bộ lọc này:",
+    "default_name": "Bộ lọc tùy chỉnh",
+    "dialog_title": "Lưu bộ lọc",
+    "dialog_hint": "Bộ lọc của bạn sẽ xuất hiện trong tab Thư viện dưới mục Bộ lọc của tôi.",
+    "dialog_save": "Lưu",
+    "cancel": "Hủy",
+    "snackbar_msg": "Bộ lọc đã được lưu vào Bộ lọc của tôi",
+    "snackbar_action": "Xem",
+    "delete_confirm_title": "Xóa bộ lọc này?",
+    "delete_confirm_msg": "Bạn có chắc chắn muốn xóa bộ lọc này khỏi thư viện? Hành động này không thể hoàn tác.",
+    "delete_cancel": "Hủy",
+    "delete_confirm": "Xóa",
+    "empty_library_title": "Thư viện của bạn đang trống",
+    "empty_library_desc": "Lưu các truy vấn tìm kiếm thường dùng để dễ dàng tìm lại chúng ở đây sau này.",
+    "empty_library_cta": "Đi tới Trình tạo"
+  },
+  "examples": {
+    "title": "Bộ lọc ví dụ",
+    "subtitle": "Nhấp vào \"Tải\" để nhập ví dụ vào trình tạo và tùy chỉnh nó.",
+    "load": "Tải ví dụ",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "Hóa đơn từ người gửi cụ thể (tháng trước)",
+        "description": "Thư điện tử từ hai người gửi cụ thể chứa từ 'invoice' trong tiêu đề nhưng không chứa từ 'draft', nhận được trong vòng 30 ngày qua.",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "Thư họp mà tôi được đồng gửi (CC)",
+        "description": "Thư bạn được đồng gửi (CC), tiêu đề chứa 'meeting' nhưng không chứa 'cancelled'.",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "Tệp đính kèm PDF từ một người gửi cụ thể",
+        "description": "Thư từ một người gửi cụ thể có đính kèm tệp tin định dạng PDF.",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "Thư chưa đọc có gắn dấu sao",
+        "description": "Tất cả các thư có gắn dấu sao và chưa đọc - một bộ lọc nhanh để quản lý hộp thư ưu tiên.",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "Thư đăng ký nhận tin muốn hủy đăng ký",
+        "description": "Thư trong danh mục Quảng cáo có chứa liên kết hủy đăng ký (unsubscribe) trong nội dung thư.",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Tài liệu tham khảo toán tử Gmail",
+    "intro": "Dưới đây là các toán tử tìm kiếm được trình tạo hỗ trợ và ý nghĩa của chúng trong Gmail.",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "Khớp với địa chỉ email của người gửi."
+      },
+      {
+        "op": "to:",
+        "desc": "Khớp với người nhận chính."
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = đồng gửi (công khai). BCC = đồng gửi ẩn (ẩn danh)."
+      },
+      {
+        "op": "subject:",
+        "desc": "Tìm kiếm trong dòng tiêu đề."
+      },
+      {
+        "op": "has:attachment",
+        "desc": "Thư có chứa bất kỳ tệp đính kèm nào."
+      },
+      {
+        "op": "filename:",
+        "desc": "Khớp với tên hoặc phần mở rộng của tệp đính kèm (vd: pdf, *.docx)."
+      },
+      {
+        "op": "label:",
+        "desc": "Thư có gắn nhãn Gmail tùy chỉnh do bạn tự tạo."
+      },
+      {
+        "op": "in:",
+        "desc": "Thư trong thư mục hệ thống: inbox (hộp thư đến), spam, trash (thùng rác), sent (thư đã gửi), promotions..."
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "Lọc theo trạng thái đã đọc/chưa đọc."
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "Lọc theo dấu sao (⭐) hoặc mức độ quan trọng (►)."
+      },
+      {
+        "op": "after: / before:",
+        "desc": "Phạm vi ngày sử dụng định dạng YYYY/MM/DD."
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "Ngày tương đối: 7d (7 ngày), 2m (2 tháng), 1y (1 năm)."
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "Kích thước thư: 5M (5 MB), 500K (500 KB)."
+      },
+      {
+        "op": "OR",
+        "desc": "Kết hợp hai điều kiện để khớp với một trong hai (bắt buộc phải viết hoa)."
+      },
+      {
+        "op": "-từ",
+        "desc": "Loại trừ thư chứa từ khóa đó (toán tử phủ định NOT)."
+      },
+      {
+        "op": "(…)",
+        "desc": "Nhóm các điều kiện để toán tử áp dụng cho toàn bộ nhóm."
+      }
+    ],
+    "tips_title": "Mẹo chuyên nghiệp",
+    "tips": [
+      "Đặt các giá trị chứa nhiều từ trong dấu ngoặc kép: subject:\"báo cáo quý\"",
+      "Sử dụng OR trong ngoặc đơn để khớp với một trong nhiều giá trị: from:(a@x.com OR b@x.com)",
+      "Các toán tử của Gmail không phân biệt chữ hoa chữ thường, nhưng OR bắt buộc phải viết hoa.",
+      "Dán trực tiếp truy vấn đã tạo vào thanh tìm kiếm của Gmail hoặc vào trường 'Có các từ này' khi tạo bộ lọc.",
+      "Kết hợp newer_than và older_than để lọc chính xác một khoảng thời gian: newer_than:3m older_than:1m",
+      "label: tìm kiếm trong các nhãn tùy chỉnh của bạn. in: tìm kiếm trong các thư mục hệ thống của Gmail (inbox, spam, promotions...)."
+    ]
+  },
+  "support": {
+    "toast_title": "☕ Hỗ trợ dự án",
+    "toast_desc": "Công cụ này miễn phí và mã nguồn mở. Nếu nó giúp bạn tiết kiệm thời gian, một khoản quyên góp nhỏ sẽ giúp duy trì dự án.",
+    "dismiss_permanent": "Không hiển thị lại",
+    "header_title": "Hỗ trợ nhà phát triển",
+    "footer_donate": "Quyên góp",
+    "toast_cta": "☕ Mua tặng tôi một ly cà phê",
+    "modal_title": "Ủng hộ dự án này 💖",
+    "modal_desc": "Chọn phương thức phù hợp nhất với bạn. Mọi đóng góp nhỏ đều giúp chúng tôi duy trì công cụ này miễn phí và nguồn mở.",
+    "option_lemon": "Mua tặng tôi một ly cà phê (Apple Pay, Thẻ, PayPal)",
+    "option_github": "GitHub Sponsors (một lần hoặc định kỳ)",
+    "links": []
+  },
+  "guide": {
+    "tab": "Hướng dẫn",
+    "title": "Cách áp dụng bộ lọc của bạn trong Gmail",
+    "intro": "Sau khi bạn đã xây dựng truy vấn của mình bằng công cụ này, hãy làm theo các bước sau để chuyển nó thành một quy tắc tự động vĩnh viễn trong Gmail.",
+    "step1_title": "Sao chép truy vấn",
+    "step1_desc": "Nhấp vào nút [Sao chép vào bộ nhớ tạm] trong thẻ «Truy vấn đã tạo» trên trang này.",
+    "step2_title": "Mở Gmail",
+    "step2_desc": "Truy cập gmail.com trên trình duyệt của bạn và đăng nhập nếu chưa thực hiện.",
+    "step3_title": "Nhấp vào thanh tìm kiếm ở trên cùng",
+    "step3_desc": "Gmail có một thanh tìm kiếm rộng ở đầu trang (nó ghi «Tìm kiếm trong thư»). Nhấp vào bất kỳ đâu trên đó.",
+    "step4_title": "Dán truy vấn",
+    "step4_desc": "Nhấn Ctrl+V (Windows / Linux) hoặc Cmd+V (Mac) để dán. Bạn sẽ thấy truy vấn xuất hiện trên thanh tìm kiếm.",
+    "step5_title": "Nhấp vào biểu tượng Tùy chọn tìm kiếm <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> ở cuối bên phải thanh tìm kiếm",
+    "step5_desc": "Nhìn kỹ vào cạnh phải của thanh tìm kiếm — ở đó có một biểu tượng <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> được thể hiện bằng ba đường nằm ngang với các nút trượt (Hiển thị tùy chọn tìm kiếm). Nhấp vào nó để mở bảng tùy chọn nâng cao.",
+    "step5_tip": "Đây là bước mà hầu hết mọi người đều bỏ qua! Biểu tượng này rất nhỏ và nằm ở sát cạnh. Trong các phiên bản Gmail cũ hơn, nó có thể là một mũi tên nhỏ ▼, nhưng bây giờ thường là biểu tượng cài đặt này.",
+    "step6_title": "Nhấp vào «Tạo bộ lọc»",
+    "step6_desc": "Một bảng chi tiết tìm kiếm sẽ mở ra. Ở dưới cùng của bảng này, nhấp vào nút có chữ «Tạo bộ lọc».",
+    "step7_title": "Chọn hành động tự động của Gmail",
+    "step7_desc": "Đánh dấu chọn một hoặc nhiều hành động – lưu trữ, áp dụng nhãn, đánh dấu đã đọc, xóa... sau đó nhấp vào [Tạo bộ lọc] để xác nhận.",
+    "done": "Xong! Từ nay Gmail sẽ tự động áp dụng quy tắc này cho mỗi thư mới phù hợp – bạn không cần thực hiện thêm thao tác nào nữa.",
+    "tip_label": "Bước quan trọng"
+  },
+  "footer": {
+    "made_with": "Mã nguồn mở trên",
+    "github": "GitHub",
+    "donate": "Quyên góp",
+    "disclaimer": "Công cụ này không liên kết với Google hoặc Gmail.",
+    "privacy": "Chính sách bảo mật",
+    "cookies": "Chính sách cookie",
+    "legal_notice": "Thông báo pháp lý"
+  },
+  "summary": {
+    "prefix": "Bộ lọc này sẽ khớp với những thư",
+    "from": "được gửi bởi {{value}}",
+    "to": "được gửi đến {{value}}",
+    "cc": "có {{value}} trong CC",
+    "bcc": "có {{value}} trong BCC",
+    "subject": "có tiêu đề chứa {{value}}",
+    "body": "chứa {{value}} trong nội dung thư",
+    "has_attachment": "có tệp đính kèm",
+    "filename": "có tệp đính kèm tên/định dạng {{value}}",
+    "label": "được gắn nhãn {{value}}",
+    "in": "nằm trong thư mục {{value}}",
+    "is_read": "đã đọc",
+    "is_unread": "chưa đọc",
+    "is_starred": "được gắn dấu sao",
+    "is_important": "được đánh dấu là quan trọng",
+    "date_after": "nhận được sau ngày {{value}}",
+    "date_before": "nhận được trước ngày {{value}}",
+    "newer_than": "nhận được trong vòng {{value}} gần đây",
+    "older_than": "nhận được trước đó hơn {{value}}",
+    "size_larger": "kích thước lớn hơn {{value}}",
+    "size_smaller": "kích thước nhỏ hơn {{value}}",
+    "negate_prefix": "KHÔNG",
+    "and_connector": " VÀ ",
+    "or_connector": " HOẶC "
+  },
+  "pwa": {
+    "install_btn": "Cài đặt ứng dụng",
+    "install_title": "Cài đặt Trình tạo bộ lọc Gmail",
+    "install_desc": "Cài đặt ứng dụng trên thiết bị của bạn để có trải nghiệm nhanh hơn và sẵn sàng sử dụng khi ngoại tuyến.",
+    "ios_hint_title": "Cài đặt trên iOS / Safari",
+    "ios_hint_steps": "1. Chạm vào nút chia sẻ [biểu tượng] \n2. Chọn 'Thêm vào màn hình chính'",
+    "installed_msg": "Cài đặt ứng dụng thành công!"
+  },
+  "legal": {
+    "privacy_title": "Chính sách Bảo mật - Gmail Filter Builder",
+    "cookies_title": "Chính sách Cookie - Gmail Filter Builder",
+    "back_home": "Trở về Trang chủ",
+    "privacy": {
+      "h1": "Chính sách Bảo mật",
+      "last_updated": "Cập nhật lần cuối: ngày 2 tháng 7 năm 2026",
+      "h2_1": "1. Danh tính của Bộ điều khiển Dữ liệu",
+      "p_1_1": "Theo quy định của Quy định (EU) 2016/679 (GDPR) và Luật Tổ chức Tây Ban Nha 3/2018 (LOPDGDD), chúng tôi xin thông báo với bạn rằng bộ điều khiển dữ liệu đối với dữ liệu được thu thập trên trang web này là <strong>Salmonidas</strong>.",
+      "p_1_2": "Để tham khảo đầy đủ chi tiết về thuế, địa chỉ quản lý và các phương thức liên hệ trực tiếp, vui lòng truy cập <strong><a href=\"#\" id=\"hub-legal-link\">Thông báo Pháp lý và Danh tính</a></strong> của chúng tôi.",
+      "h2_2": "2. Dữ liệu Chúng tôi Thu thập và Mục đích",
+      "p_2_1": "<strong>Gmail Filter Builder</strong> là một công cụ được thiết kế theo nguyên tắc \"Bảo mật từ trong Thiết kế\" (Privacy by Design). Theo mặc định, ứng dụng chạy cục bộ trong trình duyệt của bạn (<em>phía máy khách</em>) và <strong>không thu thập, lưu trữ hoặc truyền</strong> đến máy chủ của chúng tôi bất kỳ thông tin nào về email, tìm kiếm, bộ lọc đã tạo hoặc dữ liệu sử dụng cá nhân của bạn.",
+      "p_2_2": "Dữ liệu chỉ được xử lý trong các trường hợp rõ ràng sau:",
+      "li_2_1": "<strong>Dữ liệu kết nối kỹ thuật:</strong> Khi truy cập trang web, nhà cung cấp cơ sở hạ tầng của chúng tôi (GitHub Pages) có thể tạm thời ghi lại địa chỉ IP và <em>User-Agent</em> trình duyệt của bạn vì mục đích bảo mật, ngăn chặn tấn công DDoS và hiệu suất mạng.",
+      "li_2_2": "<strong>Quyên góp / Thanh toán:</strong> Nếu bạn chọn đóng góp tự nguyện để hỗ trợ dự án thông qua hệ thống quyên góp, khoản thanh toán sẽ được xử lý hoàn toàn bởi các nền tảng của bên thứ ba (Lemon Squeezy hoặc GitHub Sponsors). Chúng tôi không thu thập hoặc có quyền truy cập vào dữ liệu ngân hàng hoặc thẻ tín dụng của bạn bất cứ lúc nào.",
+      "h2_3": "3. Người nhận Dữ liệu (Người xử lý Dữ liệu)",
+      "p_3_1": "Để cung cấp dịch vụ và kích hoạt các tính năng hỗ trợ phát triển, chúng tôi chia sẻ dữ liệu hoàn toàn mang tính kỹ thuật hoặc ủy quyền xử lý cho các nhà cung cấp sau, những người mà chúng tôi đã có Thỏa thuận Xử lý Dữ liệu (DPA) bắt buộc:",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages):</strong> Cung cấp dịch vụ lưu trữ web. Máy chủ của họ có thể được đặt tại Hoa Kỳ, hoạt động theo Điều khoản Hợp đồng Tiêu chuẩn (SCCs) và Khung Bảo mật Dữ liệu EU-US (DPF).",
+      "li_3_2": "<strong>Lemon Squeezy, LLC:</strong> Đóng vai trò là <em>Merchant of Record</em> (Người bán Ghi nhận) để xử lý các khoản thanh toán tự nguyện. Nếu bạn quyên góp qua thẻ, Apple Pay hoặc PayPal, Lemon Squeezy sẽ thu thập email và thông tin thanh toán của bạn theo chính sách bảo mật của riêng họ, đóng vai trò là bộ điều khiển dữ liệu cho khoản thanh toán đó.",
+      "h2_4": "4. Công nghệ AI (Đạo luật AI)",
+      "p_4_1": "Chúng tôi thông báo rõ ràng với bạn rằng trang web này <strong>KHÔNG sử dụng</strong> các công cụ Trí tuệ Nhân tạo tạo sinh hoặc các hệ thống ra quyết định tự động trong các chức năng tạo bộ lọc của nó. Tất cả mã được tạo đều dựa trên logic lập trình xác định.",
+      "h2_5": "5. Quyền của Người dùng (GDPR)",
+      "p_5_1": "Bạn có quyền nhận được xác nhận về việc liệu chúng tôi có đang xử lý dữ liệu cá nhân của bạn hay không. Vì không có cơ sở dữ liệu người dùng đã đăng ký, việc thực hiện quyền vốn bị giới hạn bởi tính chất kỹ thuật của trang web, nhưng bất cứ lúc nào bạn cũng có thể thực hiện quyền <strong>Truy cập, Sửa chữa, Xóa, Hạn chế, Khả năng di chuyển và Phản đối</strong> của mình bằng cách gửi email đến địa chỉ liên hệ được chỉ định trong <a href=\"#\" class=\"hub-legal-link-class\">Thông báo Pháp lý Tập trung</a>.",
+      "p_5_2": "Tương tự, nếu bạn cho rằng chúng tôi đã không xử lý dữ liệu của bạn đúng cách, bạn có quyền nộp đơn khiếu nại lên Cơ quan Bảo vệ Dữ liệu Tây Ban Nha (AEPD)."
+    },
+    "cookies": {
+      "h1": "Chính sách Cookie và Bộ nhớ Cục bộ",
+      "last_updated": "Cập nhật lần cuối: ngày 2 tháng 7 năm 2026",
+      "alert": "<strong>Thông báo Miễn trừ Pháp lý:</strong> Tuân thủ các nguyên tắc từ Cơ quan Bảo vệ Dữ liệu Tây Ban Nha (AEPD), chúng tôi thông báo với bạn rằng trang web này <strong>chỉ sử dụng các công nghệ lưu trữ có tính chất kỹ thuật và chức năng nghiêm ngặt</strong>. Chúng tôi không sử dụng cookie phân tích, tiếp thị, theo dõi hoặc quảng cáo. Do đó, chúng tôi được miễn trừ pháp lý khỏi nghĩa vụ phải có sự đồng ý rõ ràng của bạn thông qua một biểu ngữ tương tác (\"Chấp nhận/Từ chối\").",
+      "h2_1": "1. Cookie và bộ nhớ cục bộ là gì?",
+      "p_1_1": "Cookie là các tệp văn bản nhỏ mà các trang web lưu trữ trên thiết bị của bạn khi bạn truy cập chúng. Ngoài các cookie cổ điển, còn có các công nghệ tương tự như <em>Local Storage</em> (Bộ nhớ cục bộ) của trình duyệt của bạn, phục vụ các mục đích tương tự là lưu thông tin để cải thiện trải nghiệm của bạn.",
+      "h2_2": "2. Các Công nghệ Chúng tôi Sử dụng",
+      "p_2_1": "Trang web của chúng tôi chỉ sử dụng <strong>bộ nhớ cục bộ (localStorage)</strong> của trình duyệt để lưu các tùy chọn giao diện người dùng của bạn, đảm bảo rằng tất cả quá trình xử lý đều được giữ riêng tư trên thiết bị của bạn.",
+      "th_name": "Tên (Khóa)",
+      "th_type": "Loại",
+      "th_purpose": "Mục đích (Hoàn toàn Cần thiết)",
+      "th_duration": "Thời lượng",
+      "td_type_local": "Bộ nhớ Cục bộ",
+      "td_duration_persist": "Liên tục",
+      "td_theme_desc": "Ghi nhớ xem bạn thích sử dụng Chế độ Sáng (☀️) hay Chế độ Tối (🌙) để điều chỉnh giao diện trực quan.",
+      "td_filters_desc": "Lưu thư viện cục bộ cá nhân của bạn gồm các \"Bộ lọc của tôi\" đã tạo, cho phép bạn truy xuất chúng trong các lần truy cập trong tương lai mà không cần sử dụng cơ sở dữ liệu bên ngoài.",
+      "td_support_desc": "Tránh gây phiền nhiễu bằng cách ghi nhớ rằng bạn đã quyết định đóng và không nhìn thấy biểu ngữ thông tin hỗ trợ phát triển nữa.",
+      "h2_3": "3. Cookie của Bên thứ ba (Tùy chọn)",
+      "p_3_1": "Nếu bạn tương tác với nút \"Mua cho tôi một ly cà phê\" và cổng thanh toán lớp phủ mở ra, bộ xử lý bên ngoài <strong>Lemon Squeezy</strong> có thể tải cookie hoàn toàn mang tính kỹ thuật của riêng họ cần thiết để xử lý giao dịch một cách an toàn và ngăn chặn gian lận điện tử. Những cookie này nằm ngoài tầm kiểm soát của chúng tôi và được điều chỉnh bởi chính sách quyền riêng tư và cookie của Lemon Squeezy.",
+      "h2_4": "4. Làm thế nào để xóa thông tin này?",
+      "p_4_1": "Mặc dù chúng tôi không sử dụng công nghệ theo dõi, bạn luôn có quyền kiểm soát tuyệt đối đối với dữ liệu được lưu trữ trong trình duyệt của mình. Nếu bạn muốn xóa các bộ lọc đã lưu và tùy chọn hình ảnh, bạn có thể thực hiện dễ dàng:",
+      "li_4_1": "Bằng cách xóa bộ nhớ cache và bộ nhớ dữ liệu trang web trong cài đặt trình duyệt của bạn (Chrome, Firefox, Safari, Edge).",
+      "li_4_2": "Bằng cách sử dụng chế độ \"Duyệt web riêng tư\" hoặc \"Ẩn danh\", chế độ này sẽ tự động xóa bộ nhớ cục bộ này khi bạn đóng cửa sổ.",
+      "p_4_2": "Để biết thêm thông tin về chúng tôi là ai, hãy truy cập <strong><a href=\"#\" id=\"hub-legal-link-2\">Thông báo Pháp lý Tập trung</a></strong> của chúng tôi."
+    }
+  }
+}

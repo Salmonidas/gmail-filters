@@ -494,7 +494,7 @@ a { color: var(--md-primary); }
   border-top: 5px solid var(--md-on-surface-variant);
   pointer-events: none;
 }
-.md-select { appearance: none; padding-right: 28px; cursor: pointer; }
+.md-select { appearance: none; padding-inline-end: 28px; cursor: pointer; }
 
 /* ── Chip ─────────────────────────────────────────────────── */
 .md-chip {
@@ -750,7 +750,7 @@ a { color: var(--md-primary); }
   font-size: 13px;
 }
 .help-table th {
-  text-align: left;
+  text-align: start;
   font-weight: 600;
   color: var(--md-on-surface-variant);
   font-size: 11px;
@@ -941,7 +941,7 @@ a { color: var(--md-primary); }
   border: none;
   cursor: pointer;
   font-family: var(--font-base);
-  text-align: left;
+  text-align: start;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 }
 .donation-option:active {

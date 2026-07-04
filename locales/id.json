@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Pembuat Filter Gmail",
+    "subtitle": "Buat kueri pencarian Gmail lanjutan secara visual, tanpa harus menghafal sintaks.",
+    "language_selector": "Bahasa"
+  },
+  "nav": {
+    "builder": "Pembuat",
+    "preview": "Pratinjau",
+    "examples": "Pustaka",
+    "help": "Bantuan",
+    "guide": "Panduan"
+  },
+  "builder": {
+    "title": "Pembuat Filter",
+    "add_condition": "Tambah Kondisi",
+    "clear_all": "Hapus Semua",
+    "logic_and": "DAN",
+    "logic_or": "ATAU",
+    "logic_label": "Gabungkan dengan",
+    "group_label": "Kelompokkan dalam kurung",
+    "advanced_mode": "Edit kueri secara manual",
+    "visual_mode": "Kembali ke pembuat visual",
+    "advanced_note": "Edit kueri pencarian secara langsung. Klik \"Kembali ke pembuat visual\" untuk mengurainya kembali menjadi kondisi terpisah.",
+    "no_conditions": "Belum ada kondisi. Klik \"Tambah Kondisi\" untuk mulai membuat filter Anda.",
+    "condition": {
+      "type_label": "Jenis filter",
+      "value_label": "Nilai",
+      "remove": "Hapus kondisi",
+      "negate": "Kecualikan (NOT)"
+    },
+    "types": {
+      "from": "Dari — pengirim",
+      "to": "Kepada — penerima",
+      "cc": "CC — tembusan",
+      "bcc": "BCC — tembusan tersembunyi",
+      "subject": "Subjek",
+      "body": "Isi pesan mengandung",
+      "has_attachment": "Memiliki lampiran",
+      "filename": "Nama / jenis berkas lampiran",
+      "label": "Label (label Gmail kustom saya)",
+      "in": "Di folder sistem (kotak masuk, spam...)",
+      "is_read": "Status: sudah dibaca",
+      "is_unread": "Status: belum dibaca",
+      "is_starred": "Status: berbintang (⭐)",
+      "is_important": "Status: ditandai penting",
+      "date_after": "Diterima setelah tanggal",
+      "date_before": "Diterima sebelum tanggal",
+      "newer_than": "Diterima dalam... terakhir (relatif)",
+      "older_than": "Diterima lebih lama dari... (relatif)",
+      "size_larger": "Ukuran lebih besar dari",
+      "size_smaller": "Ukuran lebih kecil dari"
+    },
+    "placeholders": {
+      "from": "alice@gmail.com ATAU boss@company.com",
+      "to": "team@company.com ATAU newsletter@service.io",
+      "cc": "manager@company.com",
+      "bcc": "archive@company.com ATAU compliance@firm.com",
+      "subject": "faktur ATAU \"laporan triwulanan\" -draf",
+      "body": "tindakan diperlukan ATAU \"silakan temukan lampiran\"",
+      "filename": "pdf ATAU *.docx ATAU *.xlsx",
+      "label": "faktur ATAU pekerjaan ATAU tanda terima",
+      "in": "inbox ATAU spam ATAU promotions ATAU sent",
+      "newer_than": "7d · 2m · 1y   (d=hari, m=bulan, y=tahun)",
+      "older_than": "30d · 3m · 2y   (d=hari, m=bulan, y=tahun)",
+      "size_larger": "5M · 10M · 25M   (M = megabyte)",
+      "size_smaller": "500K · 1M · 5M   (K = kilobyte, M = megabyte)"
+    },
+    "has_attachment_note": "Mencocokkan pesan yang memiliki setidaknya satu lampiran (jenis apa pun).",
+    "is_read_note": "Mencocokkan pesan yang sudah Anda buka dan baca.",
+    "is_unread_note": "Mencocokkan pesan yang belum Anda buka.",
+    "is_starred_note": "Mencocokkan pesan yang Anda beri bintang (⭐) di Gmail.",
+    "is_important_note": "Mencocokkan pesan yang ditandai penting oleh Gmail atau oleh Anda (►)."
+  },
+  "preview": {
+    "title": "Kueri yang Dihasilkan",
+    "empty": "Kueri pencarian Anda akan muncul di sini setelah Anda menambahkan kondisi di atas.",
+    "copy": "Salin ke papan klip",
+    "copied": "Disalin!",
+    "open_gmail": "Buka di Gmail",
+    "how_to_apply": "Cara menerapkan",
+    "summary_title": "Apa fungsi filter ini",
+    "summary_empty": "Tambahkan kondisi di atas untuk melihat ringkasan dalam bahasa Indonesia yang mudah dipahami di sini.",
+    "char_count": "{{count}} karakter",
+    "share": "Bagikan tautan",
+    "share_copied": "Tautan disalin!",
+    "save": "Simpan filter",
+    "saved_toast": "Disimpan ke Filter Saya"
+  },
+  "saved_filters": {
+    "title": "Filter Saya",
+    "subtitle": "Filter yang disimpan ke peramban Anda.",
+    "empty": "Belum ada filter yang disimpan.",
+    "delete": "Hapus",
+    "name_prompt": "Beri nama filter ini:",
+    "default_name": "Filter kustom",
+    "dialog_title": "Simpan filter",
+    "dialog_hint": "Filter Anda akan muncul di tab Pustaka di bawah Filter Saya.",
+    "dialog_save": "Simpan",
+    "cancel": "Batal",
+    "snackbar_msg": "Filter disimpan ke Filter Saya",
+    "snackbar_action": "Lihat",
+    "delete_confirm_title": "Hapus filter?",
+    "delete_confirm_msg": "Apakah Anda yakin ingin menghapus filter ini dari pustaka Anda? Tindakan ini tidak dapat dibatalkan.",
+    "delete_cancel": "Batal",
+    "delete_confirm": "Hapus",
+    "empty_library_title": "Pustaka Anda kosong",
+    "empty_library_desc": "Simpan kueri pencarian yang sering digunakan untuk menemukannya dengan mudah di sini nanti.",
+    "empty_library_cta": "Buka Pembuat"
+  },
+  "examples": {
+    "title": "Contoh Filter",
+    "subtitle": "Klik \"Muat\" untuk mengisi pembuat dengan contoh dan menyesuaikannya.",
+    "load": "Muat contoh",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "Faktur dari pengirim tertentu (bulan lalu)",
+        "description": "Email dari dua pengirim tertentu yang mengandung kata 'invoice' di subjek tetapi bukan 'draft', diterima dalam 30 hari terakhir.",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "Email rapat di mana saya di-CC",
+        "description": "Email di mana Anda muncul di CC, subjek mengandung 'meeting', tetapi bukan 'cancelled'.",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "Lampiran PDF dari pengirim tertentu",
+        "description": "Pesan dari pengirim tertentu yang memiliki berkas lampiran PDF.",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "Pesan berbintang yang belum dibaca",
+        "description": "Semua pesan yang berbintang sekaligus belum dibaca – filter kotak masuk prioritas cepat.",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "Buletin untuk berhenti berlangganan",
+        "description": "Email dalam kategori Promosi yang mengandung tautan berhenti berlangganan (unsubscribe) di dalam isi pesan.",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Referensi Operator Gmail",
+    "intro": "Berikut adalah operator pencarian yang didukung oleh pembuat dan artinya di Gmail.",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "Mencocokkan alamat email pengirim."
+      },
+      {
+        "op": "to:",
+        "desc": "Mencocokkan penerima utama."
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = tembusan (terlihat). BCC = tembusan tersembunyi (rahasia)."
+      },
+      {
+        "op": "subject:",
+        "desc": "Mencari di baris subjek."
+      },
+      {
+        "op": "has:attachment",
+        "desc": "Pesan dengan lampiran berkas apa pun."
+      },
+      {
+        "op": "filename:",
+        "desc": "Mencocokkan nama berkas atau ekstensi lampiran (misalnya pdf, *.docx)."
+      },
+      {
+        "op": "label:",
+        "desc": "Pesan dengan label Gmail kustom yang Anda buat."
+      },
+      {
+        "op": "in:",
+        "desc": "Pesan di folder sistem: inbox (kotak masuk), spam, trash (sampah), sent (terkirim), promotions..."
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "Memfilter berdasarkan status pembacaan."
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "Memfilter berdasarkan status bintang (⭐) atau kepentingan (►)."
+      },
+      {
+        "op": "after: / before:",
+        "desc": "Rentang tanggal menggunakan format YYYY/MM/DD."
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "Tanggal relatif: 7d (7 hari), 2m (2 bulan), 1y (1 tahun)."
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "Ukuran pesan: 5M (5 MB), 500K (500 KB)."
+      },
+      {
+        "op": "OR",
+        "desc": "Menggabungkan dua istilah agar salah satu cocok (harus huruf besar)."
+      },
+      {
+        "op": "-istilah",
+        "desc": "Mengecualikan pesan yang cocok dengan istilah tersebut (operator NOT)."
+      },
+      {
+        "op": "(…)",
+        "desc": "Mengelompokkan istilah agar operator berlaku untuk seluruh kelompok."
+      }
+    ],
+    "tips_title": "Tips Ahli",
+    "tips": [
+      "Apit nilai yang terdiri dari beberapa kata dengan tanda kutip: subject:\"laporan triwulanan\"",
+      "Gunakan OR di dalam tanda kurung untuk mencocokkan beberapa nilai: from:(a@x.com OR b@x.com)",
+      "Operator Gmail tidak sensitif terhadap huruf besar-kecil, tetapi OR harus ditulis dengan huruf besar.",
+      "Tempelkan kueri yang dihasilkan langsung ke bilah pencarian Gmail atau bidang 'Memiliki kata-kata' saat membuat filter.",
+      "Gabungkan newer_than dan older_than untuk menargetkan rentang waktu yang tepat: newer_than:3m older_than:1m",
+      "label: mencari di label kustom Anda sendiri. in: mencari di folder bawaan Gmail (inbox, spam, promotions...)."
+    ]
+  },
+  "support": {
+    "toast_title": "☕ Dukung proyek ini",
+    "toast_desc": "Alat ini gratis dan sumber terbuka. Jika ini membantu menghemat waktu Anda, donasi kecil membantu menjaganya tetap hidup.",
+    "dismiss_permanent": "Jangan tunjukkan lagi",
+    "header_title": "Dukung pengembang",
+    "footer_donate": "Donasi",
+    "toast_cta": "☕ Traktir saya kopi",
+    "modal_title": "Dukung proyek ini 💖",
+    "modal_desc": "Pilih opsi yang paling sesuai untuk Anda. Setiap kontribusi kecil membantu menjaga alat ini tetap gratis dan open source.",
+    "option_lemon": "Traktir saya kopi (Apple Pay, Kartu, PayPal)",
+    "option_github": "GitHub Sponsors (sekali saja atau berulang)",
+    "links": []
+  },
+  "guide": {
+    "tab": "Panduan",
+    "title": "Cara menerapkan filter Anda di Gmail",
+    "intro": "Setelah Anda membuat kueri dengan alat ini, ikuti langkah-langkah berikut untuk mengubahnya menjadi aturan otomatis permanen di Gmail.",
+    "step1_title": "Salin kueri pencarian",
+    "step1_desc": "Klik tombol [Salin ke papan klip] pada kartu «Kueri yang Dihasilkan» di halaman ini.",
+    "step2_title": "Buka Gmail",
+    "step2_desc": "Buka gmail.com di peramban Anda dan masuk jika Anda belum melakukannya.",
+    "step3_title": "Klik bilah pencarian di bagian atas",
+    "step3_desc": "Gmail memiliki bilah pencarian lebar di bagian atas halaman (bertuliskan «Telusuri email»). Klik di mana saja pada bilah tersebut.",
+    "step4_title": "Tempel kueri pencarian",
+    "step4_desc": "Tekan Ctrl+V (Windows / Linux) atau Cmd+V (Mac) untuk menempelkan. Anda akan melihat kueri muncul di bilah pencarian.",
+    "step5_title": "Klik ikon Opsi pencarian <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> di ujung kanan bilah pencarian",
+    "step5_desc": "Perhatikan baik-baik tepi kanan bilah pencarian — ada ikon yang diwakili oleh tiga garis horizontal dengan penggeser (Tampilkan opsi pencarian) <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span>. Klik ikon tersebut untuk membuka panel opsi lanjutan.",
+    "step5_tip": "Ini adalah langkah yang paling sering dilewatkan orang! Ikonnya kecil dan berada tepat di pinggir. Di versi Gmail yang lebih lama, ikon tersebut mungkin berupa panah kecil ▼, tetapi sekarang biasanya berupa ikon pengaturan ini.",
+    "step6_title": "Klik «Buat filter»",
+    "step6_desc": "Panel yang menunjukkan detail pencarian akan terbuka. Di bagian bawah panel ini, klik tombol yang bertuliskan «Buat filter».",
+    "step7_title": "Pilih tindakan otomatis Gmail",
+    "step7_desc": "Centang satu atau beberapa tindakan – arsipkan, terapkan label, tandai sebagai dibaca, hapus... lalu klik [Buat filter] untuk mengonfirmasi.",
+    "done": "Selesai! Gmail sekarang akan menerapkan aturan ini secara otomatis ke setiap email baru yang cocok – tanpa perlu tindakan tambahan dari Anda.",
+    "tip_label": "Langkah kunci"
+  },
+  "footer": {
+    "made_with": "Sumber Terbuka di",
+    "github": "GitHub",
+    "donate": "Donasi",
+    "disclaimer": "Alat ini tidak berafiliasi dengan Google atau Gmail.",
+    "privacy": "Kebijakan Privasi",
+    "cookies": "Kebijakan Cookie",
+    "legal_notice": "Pernyataan Hukum"
+  },
+  "summary": {
+    "prefix": "Filter ini akan mencocokkan email",
+    "from": "yang dikirim oleh {{value}}",
+    "to": "yang dikirim ke {{value}}",
+    "cc": "dengan {{value}} di CC",
+    "bcc": "dengan {{value}} di BCC",
+    "subject": "yang subjeknya mengandung {{value}}",
+    "body": "yang mengandung {{value}} di dalam pesan",
+    "has_attachment": "yang memiliki lampiran",
+    "filename": "dengan berkas lampiran bernama/berjenis {{value}}",
+    "label": "ditandai dengan label {{value}}",
+    "in": "berada di folder {{value}}",
+    "is_read": "yang sudah dibaca",
+    "is_unread": "yang belum dibaca",
+    "is_starred": "yang berbintang",
+    "is_important": "yang ditandai penting",
+    "date_after": "diterima setelah {{value}}",
+    "date_before": "diterima sebelum {{value}}",
+    "newer_than": "diterima dalam {{value}} terakhir",
+    "older_than": "lebih lama dari {{value}}",
+    "size_larger": "dengan ukuran lebih besar dari {{value}}",
+    "size_smaller": "dengan ukuran lebih kecil dari {{value}}",
+    "negate_prefix": "BUKAN",
+    "and_connector": " DAN ",
+    "or_connector": " ATAU "
+  },
+  "pwa": {
+    "install_btn": "Instal Aplikasi",
+    "install_title": "Instal Pembuat Filter Gmail",
+    "install_desc": "Instal aplikasi kami di perangkat Anda untuk pengalaman yang lebih cepat dan siap digunakan secara offline.",
+    "ios_hint_title": "Instal di iOS / Safari",
+    "ios_hint_steps": "1. Ketuk tombol bagikan [ikon] \n2. Pilih 'Tambahkan ke Layar Utama'",
+    "installed_msg": "Aplikasi berhasil diinstal!"
+  },
+  "legal": {
+    "privacy_title": "Kebijakan Privasi - Gmail Filter Builder",
+    "cookies_title": "Kebijakan Cookie - Gmail Filter Builder",
+    "back_home": "Kembali ke Beranda",
+    "privacy": {
+      "h1": "Kebijakan Privasi",
+      "last_updated": "Pembaruan terakhir: 2 Juli 2026",
+      "h2_1": "1. Identitas Pengendali Data",
+      "p_1_1": "Sesuai dengan ketentuan Peraturan (UE) 2016/679 (GDPR) dan Undang-Undang Organik Spanyol 3/2018 (LOPDGDD), kami menginformasikan kepada Anda bahwa pengendali data untuk data yang dikumpulkan di situs web ini adalah <strong>Salmonidas</strong>.",
+      "p_1_2": "Untuk berkonsultasi mengenai detail pajak lengkap, alamat manajemen, dan metode kontak langsung, silakan kunjungi <strong><a href=\"#\" id=\"hub-legal-link\">Pemberitahuan Hukum dan Identitas</a></strong> kami.",
+      "h2_2": "2. Data yang Kami Kumpulkan dan Tujuannya",
+      "p_2_1": "<strong>Gmail Filter Builder</strong> adalah alat yang dirancang di bawah prinsip \"Privasi berdasarkan Desain\" (Privacy by Design). Secara default, aplikasi berjalan secara lokal di browser Anda (<em>sisi klien</em>) dan <strong>tidak mengumpulkan, menyimpan, atau mengirimkan</strong> ke server kami informasi apa pun tentang email Anda, pencarian, filter yang dihasilkan, atau data penggunaan pribadi.",
+      "p_2_2": "Data diproses hanya dalam kasus eksplisit berikut:",
+      "li_2_1": "<strong>Data koneksi teknis:</strong> Saat mengunjungi situs web, penyedia infrastruktur kami (GitHub Pages) mungkin untuk sementara mencatat alamat IP dan <em>User-Agent</em> browser Anda untuk tujuan keamanan, pencegahan serangan DDoS, dan kinerja jaringan.",
+      "li_2_2": "<strong>Donasi / Pembayaran:</strong> Jika Anda memilih untuk memberikan kontribusi sukarela untuk mendukung proyek melalui sistem donasi, pembayaran akan diproses sepenuhnya oleh platform pihak ketiga (Lemon Squeezy atau GitHub Sponsors). Kami tidak mengumpulkan atau memiliki akses ke data bank atau kartu kredit Anda kapan pun.",
+      "h2_3": "3. Penerima Data (Pemroses Data)",
+      "p_3_1": "Untuk menyediakan layanan dan mengaktifkan fitur dukungan pengembangan, kami membagikan data yang sangat teknis atau mendelegasikan pemrosesan kepada penyedia berikut, yang dengannya terdapat Perjanjian Pemrosesan Data (DPA) wajib:",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages):</strong> Menyediakan hosting web. Server mereka mungkin berlokasi di Amerika Serikat, beroperasi di bawah Klausul Kontrak Standar (SCC) dan Kerangka Kerja Privasi Data UE-AS (DPF).",
+      "li_3_2": "<strong>Lemon Squeezy, LLC:</strong> Bertindak sebagai <em>Merchant of Record</em> untuk memproses pembayaran sukarela. Jika Anda berdonasi melalui kartu, Apple Pay, atau PayPal, Lemon Squeezy akan mengumpulkan email dan info penagihan Anda di bawah kebijakan privasi mereka sendiri, bertindak sebagai pengendali data untuk pembayaran tersebut.",
+      "h2_4": "4. Teknologi AI (Undang-Undang AI)",
+      "p_4_1": "Kami secara eksplisit menginformasikan kepada Anda bahwa situs web ini <strong>TIDAK menggunakan</strong> mesin Kecerdasan Buatan generatif atau sistem pengambilan keputusan otomatis dalam fungsi pembuatan filternya. Semua kode yang dihasilkan didasarkan pada logika pemrograman deterministik.",
+      "h2_5": "5. Hak Pengguna (GDPR)",
+      "p_5_1": "Anda berhak mendapatkan konfirmasi tentang apakah kami memproses data pribadi Anda. Karena tidak memiliki basis data pengguna terdaftar, pelaksanaan hak secara inheren terbatas pada sifat teknis situs web, tetapi Anda kapan saja dapat melaksanakan hak Anda atas <strong>Akses, Perbaikan, Penghapusan, Pembatasan, Portabilitas, dan Keberatan</strong> dengan mengirim email ke alamat kontak yang ditentukan di <a href=\"#\" class=\"hub-legal-link-class\">Pemberitahuan Hukum Terpusat</a>.",
+      "p_5_2": "Demikian pula, jika Anda menganggap bahwa kami belum menangani data Anda dengan benar, Anda berhak mengajukan klaim ke Badan Perlindungan Data Spanyol (AEPD)."
+    },
+    "cookies": {
+      "h1": "Kebijakan Cookie & Penyimpanan Lokal",
+      "last_updated": "Pembaruan terakhir: 2 Juli 2026",
+      "alert": "<strong>Pemberitahuan Pengecualian Hukum:</strong> Sesuai dengan pedoman dari Badan Perlindungan Data Spanyol (AEPD), kami menginformasikan kepada Anda bahwa situs web ini <strong>hanya menggunakan teknologi penyimpanan yang sangat teknis dan fungsional</strong>. Kami tidak menggunakan cookie analitik, pemasaran, pelacakan, atau periklanan. Oleh karena itu, kami secara hukum dibebaskan dari kewajiban untuk mendapatkan persetujuan eksplisit Anda melalui spanduk interaktif (\"Terima/Tolak\").",
+      "h2_1": "1. Apa itu cookie dan penyimpanan lokal?",
+      "p_1_1": "Cookie adalah file teks kecil yang disimpan situs web di perangkat Anda saat Anda mengunjunginya. Selain cookie klasik, ada teknologi serupa seperti <em>Local Storage</em> browser Anda, yang melayani tujuan identik untuk menyimpan informasi guna meningkatkan pengalaman Anda.",
+      "h2_2": "2. Teknologi yang Kami Gunakan",
+      "p_2_1": "Situs web kami secara eksklusif menggunakan <strong>penyimpanan lokal (localStorage)</strong> browser Anda untuk menyimpan preferensi antarmuka pengguna Anda, memastikan bahwa semua pemrosesan tetap pribadi di perangkat Anda.",
+      "th_name": "Nama (Kunci)",
+      "th_type": "Jenis",
+      "th_purpose": "Tujuan (Sangat Diperlukan)",
+      "th_duration": "Durasi",
+      "td_type_local": "Penyimpanan Lokal",
+      "td_duration_persist": "Persisten",
+      "td_theme_desc": "Mengingat apakah Anda lebih suka menggunakan Mode Terang (☀️) atau Mode Gelap (🌙) untuk menyesuaikan antarmuka visual.",
+      "td_filters_desc": "Menyimpan perpustakaan lokal pribadi Anda dari \"Filter Saya\" yang dihasilkan, memungkinkan Anda untuk mengambilnya pada kunjungan mendatang tanpa menggunakan basis data eksternal.",
+      "td_support_desc": "Menghindari gangguan dengan mengingat bahwa Anda telah memutuskan untuk menutup dan tidak melihat spanduk informasi dukungan pengembangan lagi.",
+      "h2_3": "3. Cookie Pihak Ketiga (Opsional)",
+      "p_3_1": "Jika Anda berinteraksi dengan tombol \"Belikan saya kopi\" dan hamparan gateway pembayaran terbuka, prosesor eksternal <strong>Lemon Squeezy</strong> dapat memuat cookie teknis mereka sendiri yang sangat diperlukan untuk memproses transaksi dengan aman dan mencegah penipuan elektronik. Cookie ini di luar kendali kami dan diatur oleh kebijakan privasi dan cookie Lemon Squeezy.",
+      "h2_4": "4. Bagaimana cara menghapus informasi ini?",
+      "p_4_1": "Meskipun kami tidak menggunakan teknologi pelacakan, Anda selalu memiliki kendali mutlak atas data yang disimpan di browser Anda. Jika Anda ingin menghapus filter yang disimpan dan preferensi visual, Anda dapat melakukannya dengan mudah:",
+      "li_4_1": "Dengan menghapus cache dan penyimpanan data situs di pengaturan browser Anda (Chrome, Firefox, Safari, Edge).",
+      "li_4_2": "Dengan menggunakan mode \"Penjelajahan Pribadi\" atau \"Incognito\", yang akan secara otomatis menghapus penyimpanan lokal ini saat Anda menutup jendela.",
+      "p_4_2": "Untuk informasi lebih lanjut tentang siapa kami, kunjungi <strong><a href=\"#\" id=\"hub-legal-link-2\">Pemberitahuan Hukum Terpusat</a></strong> kami."
+    }
+  }
+}

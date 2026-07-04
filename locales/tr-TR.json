@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Gmail Filtre Oluşturucu",
+    "subtitle": "Gmail gelişmiş arama sorgularını sözdizimini ezberlemeden görsel olarak oluşturun.",
+    "language_selector": "Dil"
+  },
+  "nav": {
+    "builder": "Oluşturucu",
+    "preview": "Önizleme",
+    "examples": "Kütüphane",
+    "help": "Yardım",
+    "guide": "Kılavuz"
+  },
+  "builder": {
+    "title": "Filtre Oluşturucu",
+    "add_condition": "Koşul Ekle",
+    "clear_all": "Hepsini Temizle",
+    "logic_and": "VE",
+    "logic_or": "VEYA",
+    "logic_label": "Şununla birleştir",
+    "group_label": "Parantez içinde grupla",
+    "advanced_mode": "Sorguyu manuel düzenle",
+    "visual_mode": "Görsel oluşturucuya dön",
+    "advanced_note": "Sorguyu doğrudan düzenleyin. Tekrar koşullara ayırmak için \"Görsel oluşturucuya dön\" butonuna tıklayın.",
+    "no_conditions": "Henüz koşul eklenmedi. Filtrenizi oluşturmaya başlamak için \"Koşul Ekle\" butonuna tıklayın.",
+    "condition": {
+      "type_label": "Filtre türü",
+      "value_label": "Değer",
+      "remove": "Koşulu kaldır",
+      "negate": "Hariç tut (NOT)"
+    },
+    "types": {
+      "from": "Kimden — gönderen",
+      "to": "Kime — alıcı",
+      "cc": "CC — karbon kopya",
+      "bcc": "BCC — gizli karbon kopya",
+      "subject": "Konu",
+      "body": "Metin şunları içeriyor",
+      "has_attachment": "Eki var",
+      "filename": "Dosya adı / uzantısı",
+      "label": "Etiket (özel Gmail etiketlerim)",
+      "in": "Sistem klasöründe (gelen kutusu, spam...)",
+      "is_read": "Durum: okunmuş",
+      "is_unread": "Durum: okunmamış",
+      "is_starred": "Durum: yıldızlı (⭐)",
+      "is_important": "Durum: önemli olarak işaretlenmiş",
+      "date_after": "Şu tarihten sonra gelen",
+      "date_before": "Şu tarihten önce gelen",
+      "newer_than": "Son ... içinde gelen (göreceli)",
+      "older_than": "... tarihinden önce gelen (göreceli)",
+      "size_larger": "Boyutu şundan büyük",
+      "size_smaller": "Boyutu şundan küçük"
+    },
+    "placeholders": {
+      "from": "ahmet@gmail.com  VEYA  patron@sirket.com",
+      "to": "ekip@sirket.com  VEYA  bulten@servis.io",
+      "cc": "yonetici@sirket.com",
+      "bcc": "arsiv@sirket.com  VEYA  hukuk@sirket.com",
+      "subject": "fatura  VEYA  \"ceyrek raporu\"  -taslak",
+      "body": "aksiyon gerekiyor  VEYA  \"ektedir\"",
+      "filename": "pdf  VEYA  *.docx  VEYA  *.xlsx",
+      "label": "faturalar  VEYA  is  VEYA  makbuzlar",
+      "in": "inbox  VEYA  spam  VEYA  promotions  VEYA  sent",
+      "newer_than": "7d  ·  2m  ·  1y   (d=gün, m=ay, y=yıl)",
+      "older_than": "30d  ·  3m  ·  2y   (d=gün, m=ay, y=yıl)",
+      "size_larger": "5M  ·  10M  ·  25M   (M = megabayt)",
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobayt, M = megabayt)"
+    },
+    "has_attachment_note": "Herhangi bir türde en az bir ek barındıran e-postalarla eşleşir.",
+    "is_read_note": "Daha önce açıp okuduğunuz e-postalarla eşleşir.",
+    "is_unread_note": "Henüz açmadığınız e-postalarla eşleşir.",
+    "is_starred_note": "Gmail'de yıldız eklediğiniz (⭐) e-postalarla eşleşir.",
+    "is_important_note": "Gmail tarafından veya sizin tarafınızdan önemli (►) olarak işaretlenen e-postalarla eşleşir."
+  },
+  "preview": {
+    "title": "Oluşturulan Sorgu",
+    "empty": "Yukarıda koşul ekledikçe arama sorgunuz burada görünecektir.",
+    "copy": "Panoya kopyala",
+    "copied": "Kopyalandı!",
+    "open_gmail": "Gmail'de aç",
+    "how_to_apply": "Nasıl uygulanır?",
+    "summary_title": "Bu filtre ne yapar?",
+    "summary_empty": "Burada anlaşılır bir özet görmek için yukarıda koşullar ekleyin.",
+    "char_count": "{{count}} karakter",
+    "share": "Bağlantıyı paylaş",
+    "share_copied": "Bağlantı kopyalandı!",
+    "save": "Filtreyi kaydet",
+    "saved_toast": "Filtrelerim'e kaydedildi"
+  },
+  "saved_filters": {
+    "title": "Filtrelerim",
+    "subtitle": "Tarayıcınıza kaydedilen filtreler.",
+    "empty": "Henüz kaydedilmiş filtre yok.",
+    "delete": "Sil",
+    "name_prompt": "Bu filtreye isim verin:",
+    "default_name": "Özel Filtre",
+    "dialog_title": "Filtreyi kaydet",
+    "dialog_hint": "Filtreniz Kütüphane sekmesindeki Filtrelerim altında görünecektir.",
+    "dialog_save": "Kaydet",
+    "cancel": "İptal",
+    "snackbar_msg": "Filtre Filtrelerim'e kaydedildi",
+    "snackbar_action": "Görüntüle",
+    "delete_confirm_title": "Filtre silinsin mi?",
+    "delete_confirm_msg": "Bu filtreyi kütüphanenizden silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+    "delete_cancel": "İptal",
+    "delete_confirm": "Sil",
+    "empty_library_title": "Kütüphaneniz boş",
+    "empty_library_desc": "Sık kullandığınız arama sorgularını daha sonra burada hızlıca bulmak için kaydedin.",
+    "empty_library_cta": "Oluşturucuya Git"
+  },
+  "examples": {
+    "title": "Örnek Filtreler",
+    "subtitle": "Oluşturucuyu örnek verilerle doldurmak ve özelleştirmek için \"Yükle\"ye tıklayın.",
+    "load": "Örneği yükle",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "Belirli göndericilerden gelen faturalar (son 1 ay)",
+        "description": "Son 30 gün içinde gelen, konusunda 'invoice' geçen ancak 'draft' geçmeyen belirli iki göndericiden gelen e-postalar.",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "CC'de olduğum toplantı e-postaları",
+        "description": "CC'de olduğunuz, konusu 'meeting' içeren ancak 'cancelled' içermeyen e-postalar.",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "Belirli bir göndericiden gelen PDF ekleri",
+        "description": "Belirli bir göndericiden gelen ve PDF dosyası ekli olan e-postalar.",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "Okunmamış yıldızlı e-postalar",
+        "description": "Hem yıldızlı hem de okunmamış olan tüm e-postalar – hızlı bir öncelikli gelen kutusu filtresi.",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "Abonelikten çıkılabilecek bültenler",
+        "description": "Tanıtımlar kategorisinde yer alan ve içeriğinde abonelikten çıkma (unsubscribe) bağlantısı içeren e-postalar.",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Gmail Operatörleri Başvuru Kartı",
+    "intro": "Aşağıda oluşturucu tarafından desteklenen arama operatörleri ve Gmail'deki anlamları listelenmiştir.",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "Gönderen e-posta adresiyle eşleşir."
+      },
+      {
+        "op": "to:",
+        "desc": "Birincil alıcıyla eşleşir."
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = karbon kopya (görünür). BCC = gizli karbon kopya (görünmez)."
+      },
+      {
+        "op": "subject:",
+        "desc": "E-postanın konu satırında arama yapar."
+      },
+      {
+        "op": "has:attachment",
+        "desc": "Herhangi bir eki olan e-postalar."
+      },
+      {
+        "op": "filename:",
+        "desc": "Ek dosya adı veya uzantısıyla eşleşir (örn: pdf, *.docx)."
+      },
+      {
+        "op": "label:",
+        "desc": "Oluşturduğunuz özel bir Gmail etiketine sahip e-postalar."
+      },
+      {
+        "op": "in:",
+        "desc": "Gmail sistem klasörlerindeki e-postalar: inbox (gelen kutusu), spam, trash (çöp kutusu), sent (gönderilenler), promotions..."
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "Okunma durumuna göre filtreler."
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "Yıldızlı (⭐) veya önemli (►) durumuna göre filtreler."
+      },
+      {
+        "op": "after: / before:",
+        "desc": "YYYY/AA/GG formatında tarih aralığı."
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "Göreceli tarih: 7d (7 gün), 2m (2 ay), 1y (1 yıl)."
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "E-posta boyutu: 5M (5 MB), 500K (500 KB)."
+      },
+      {
+        "op": "OR",
+        "desc": "İki koşuldan herhangi birinin eşleşmesini sağlar (büyük harfle yazılmalıdır)."
+      },
+      {
+        "op": "-terim",
+        "desc": "Terimi içeren e-postaları filtre dışında tutar (NOT operatörü)."
+      },
+      {
+        "op": "(…)",
+        "desc": "Operatörlerin tüm gruba uygulanması için koşulları gruplar."
+      }
+    ],
+    "tips_title": "Uzman İpuçları",
+    "tips": [
+      "Birden fazla kelime içeren değerleri tırnak içine alın: subject:\"ceyrek raporu\"",
+      "Farklı değerlerden herhangi biriyle eşleşmek için parantez içinde OR kullanın: from:(a@x.com OR b@x.com)",
+      "Gmail operatörleri büyük/küçük harfe duyarlı değildir, ancak OR büyük harfle yazılmalıdır.",
+      "Oluşturulan sorguyu doğrudan Gmail arama çubuğuna veya filtre oluştururken 'İçerdiği kelimeler' alanına yapıştırın.",
+      "Belirli bir zaman dilimini hedeflemek için newer_than ve older_than operatörlerini birleştirin: newer_than:3m older_than:1m",
+      "label: kendi oluşturduğunuz etiketlerde arar. in: Gmail sistem klasörlerinde arar (gelen kutusu, spam, tanıtımlar...)."
+    ]
+  },
+  "support": {
+    "toast_title": "☕ Projeyi Destekle",
+    "toast_desc": "Bu araç ücretsiz ve açık kaynaklıdır. Size zaman kazandırdıysa, küçük bir bağış projenin sürmesine yardımcı olur.",
+    "dismiss_permanent": "Bir daha gösterme",
+    "header_title": "Geliştiriciyi Destekle",
+    "footer_donate": "Bağış Yap",
+    "toast_cta": "☕ Bana bir kahve ısmarla",
+    "modal_title": "Bu Projeyi Destekleyin 💖",
+    "modal_desc": "Size en uygun seçeneği belirleyin. Her küçük katkı bu aracı ücretsiz ve açık kaynaklı tutmamıza yardımcı olur.",
+    "option_lemon": "Bana bir kahve ısmarla (Apple Pay, Kart, PayPal)",
+    "option_github": "GitHub Sponsors (tek seferlik veya düzenli)",
+    "links": []
+  },
+  "guide": {
+    "tab": "Kılavuz",
+    "title": "Filtrenizi Gmail'e Nasıl Uygularsınız?",
+    "intro": "Bu araçla sorgunuzu oluşturduktan sonra, onu Gmail içinde kalıcı bir otomatik kurala dönüştürmek için aşağıdaki adımları izleyin.",
+    "step1_title": "Sorguyu kopyalayın",
+    "step1_desc": "Bu sayfadaki «Oluşturulan Sorgu» kartında yer alan [Panoya kopyala] butonuna tıklayın.",
+    "step2_title": "Gmail'i açın",
+    "step2_desc": "Tarayıcınızda gmail.com adresine gidin ve gerekiyorsa oturum açın.",
+    "step3_title": "Üstteki arama çubuğuna tıklayın",
+    "step3_desc": "Gmail'in üst kısmında geniş bir arama çubuğu bulunur («E-posta arayın» yazar). Üzerine tıklayın.",
+    "step4_title": "Sorguyu yapıştırın",
+    "step4_desc": "Yapıştırmak için Ctrl+V (Windows / Linux) veya Cmd+V (Mac) tuşlarına basın. Sorgunun arama çubuğunda belirdiğini göreceksiniz.",
+    "step5_title": "Arama çubuğunun en sağındaki Arama seçenekleri simgesine <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> tıklayın",
+    "step5_desc": "Arama çubuğunun sağ kenarına dikkatlice bakın — orada üç yatay ayar çizgisi barındıran bir simge (Arama seçeneklerini göster) <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> bulunur. Gelişmiş seçenekler panelini açmak için buna tıklayın.",
+    "step5_tip": "Bu adım çoğu kişinin atladığı adımdır! Simge oldukça küçüktür ve en sağda yer alır. Eski Gmail sürümlerinde küçük bir ok ▼ olabilirdi, ancak artık genellikle bu ayar simgesidir.",
+    "step6_title": "«Filtre oluştur» seçeneğine tıklayın",
+    "step6_desc": "Arama detaylarını gösteren bir panel açılacaktır. Bu panelin en altında yer alan «Filtre oluştur» butonuna tıklayın.",
+    "step7_title": "Gmail'in otomatik olarak ne yapacağını seçin",
+    "step7_desc": "Bir veya birden fazla işlemi işaretleyin – arşivle, etiket uygula, okunmuş olarak işaretle, sil... ardından onaylamak için [Filtre oluştur] butonuna tıklayın.",
+    "done": "Tamamlandı! Gmail artık kriterlere uyan her yeni gelen e-postaya bu kuralı otomatik olarak uygulayacaktır – sizin bir şey yapmanıza gerek kalmaz.",
+    "tip_label": "Kritik adım"
+  },
+  "footer": {
+    "made_with": "Açık Kaynak Kod:",
+    "github": "GitHub",
+    "donate": "Bağış Yap",
+    "disclaimer": "Bu araç Google veya Gmail ile ilişkili değildir.",
+    "privacy": "Gizlilik Politikası",
+    "cookies": "Çerez Politikası",
+    "legal_notice": "Künye (Legal Notice)"
+  },
+  "summary": {
+    "prefix": "Bu filtre şu kriterlere uyan e-postalara uygulanır:",
+    "from": "gönderen kişi {{value}} olanlar",
+    "to": "alıcısı {{value}} olanlar",
+    "cc": "CC alanında {{value}} olanlar",
+    "bcc": "BCC alanında {{value}} olanlar",
+    "subject": "konusu {{value}} içerenler",
+    "body": "içeriğinde {{value}} kelimesi geçenler",
+    "has_attachment": "eki olanlar",
+    "filename": "eki {{value}} adında veya türünde olanlar",
+    "label": "{{value}} etiketiyle işaretlenmiş olanlar",
+    "in": "{{value}} klasöründe bulunanlar",
+    "is_read": "okunmuş olanlar",
+    "is_unread": "okunmamış olanlar",
+    "is_starred": "yıldızlı olanlar",
+    "is_important": "önemli olarak işaretlenmiş olanlar",
+    "date_after": "{{value}} tarihinden sonra gelenler",
+    "date_before": "{{value}} tarihinden önce gelenler",
+    "newer_than": "son {{value}} içinde gelenler",
+    "older_than": "{{value}} tarihinden daha eski olanlar",
+    "size_larger": "boyutu {{value}} değerinden büyük olanlar",
+    "size_smaller": "boyutu {{value}} değerinden küçük olanlar",
+    "negate_prefix": "HARIÇ",
+    "and_connector": " VE ",
+    "or_connector": " VEYA "
+  },
+  "pwa": {
+    "install_btn": "Uygulamayı Yükle",
+    "install_title": "Gmail Filtre Oluşturucu'yu Yükleyin",
+    "install_desc": "Daha hızlı ve çevrimdışı çalışabilen bir deneyim için uygulamamızı cihazınıza yükleyin.",
+    "ios_hint_title": "iOS / Safari'ye Yükleme",
+    "ios_hint_steps": "1. Paylaş düğmesine [simge] dokunun \n2. 'Ana Ekrana Ekle' seçeneğini seçin",
+    "installed_msg": "Uygulama başarıyla yüklendi!"
+  },
+  "legal": {
+    "privacy_title": "Gizlilik Politikası - Gmail Filter Builder",
+    "cookies_title": "Çerez Politikası - Gmail Filter Builder",
+    "back_home": "Ana Sayfaya Dön",
+    "privacy": {
+      "h1": "Gizlilik Politikası",
+      "last_updated": "Son güncelleme: 2 Temmuz 2026",
+      "h2_1": "1. Veri Sorumlusunun Kimliği",
+      "p_1_1": "2016/679 sayılı Yönetmelik (AB) (GDPR) ve 3/2018 sayılı İspanya Organik Kanunu (LOPDGDD) hükümleri uyarınca, bu web sitesinde toplanan veriler için veri sorumlusunun <strong>Salmonidas</strong> olduğunu bildiririz.",
+      "p_1_2": "Tam vergi ayrıntılarına, yönetim adresine ve doğrudan iletişim yöntemlerine başvurmak için lütfen <strong><a href=\"#\" id=\"hub-legal-link\">Yasal Uyarı ve Kimlik</a></strong> sayfamızı ziyaret edin.",
+      "h2_2": "2. Topladığımız Veriler ve Amacı",
+      "p_2_1": "<strong>Gmail Filter Builder</strong>, \"Tasarım Yoluyla Gizlilik\" (Privacy by Design) ilkesi altında tasarlanmış bir araçtır. Varsayılan olarak uygulama, tarayıcınızda yerel olarak (<em>istemci tarafı</em>) çalışır ve e-postalarınız, aramalarınız, oluşturulan filtreler veya kişisel kullanım verileriniz hakkında hiçbir bilgiyi <strong>toplamaz, saklamaz veya sunucularımıza iletmez</strong>.",
+      "p_2_2": "Veriler yalnızca aşağıdaki açık durumlarda işlenir:",
+      "li_2_1": "<strong>Teknik bağlantı verileri:</strong> Web sitesini ziyaret ederken, altyapı sağlayıcımız (GitHub Pages) güvenlik amacıyla, DDoS saldırılarını önlemek ve ağ performansı için IP adresinizi ve tarayıcı <em>User-Agent</em>'ınızı geçici olarak kaydedebilir.",
+      "li_2_2": "<strong>Bağışlar / Ödemeler:</strong> Bağış sistemi aracılığıyla projeyi desteklemek için gönüllü bir katkıda bulunmayı seçerseniz, ödeme tamamen üçüncü taraf platformlar (Lemon Squeezy veya GitHub Sponsors) tarafından işlenecektir. Banka veya kredi kartı verilerinizi hiçbir zaman toplamıyoruz veya bu verilere erişimimiz bulunmuyor.",
+      "h2_3": "3. Veri Alıcıları (Veri İşleyenler)",
+      "p_3_1": "Hizmeti sağlamak ve geliştirme destek özelliklerini etkinleştirmek için, kesinlikle teknik verileri paylaşıyor veya işlemeyi, zorunlu Veri İşleme Sözleşmesi (DPA) bulunan aşağıdaki sağlayıcılara devrediyoruz:",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages):</strong> Web barındırma sağlar. Sunucuları, Standart Sözleşme Maddeleri (SCC'ler) ve AB-ABD Veri Gizliliği Çerçevesi (DPF) kapsamında faaliyet gösteren Amerika Birleşik Devletleri'nde bulunabilir.",
+      "li_3_2": "<strong>Lemon Squeezy, LLC:</strong> Gönüllü ödemelerin işlenmesi için <em>Kayıtlı Satıcı (Merchant of Record)</em> olarak hareket eder. Kart, Apple Pay veya PayPal ile bağış yaparsanız, Lemon Squeezy, söz konusu ödeme için veri sorumlusu olarak hareket ederek kendi gizlilik politikaları kapsamında e-posta ve fatura bilgilerinizi toplayacaktır.",
+      "h2_4": "4. Yapay Zeka Teknolojileri (Yapay Zeka Yasası)",
+      "p_4_1": "Bu web sitesinin, filtre oluşturma işlevlerinde üretken Yapay Zeka motorlarını veya otomatik karar verme sistemlerini <strong>KULLANMADIĞINI</strong> açıkça bildiririz. Oluşturulan tüm kodlar, deterministik programlama mantığına dayanmaktadır.",
+      "h2_5": "5. Kullanıcı Hakları (GDPR)",
+      "p_5_1": "Kişisel verilerinizi işleyip işlemediğimiz konusunda onay alma hakkına sahipsiniz. Kayıtlı kullanıcı veritabanlarına sahip olmadığımız için, hakların kullanımı doğası gereği web sitesinin teknik yapısıyla sınırlıdır, ancak <a href=\"#\" class=\"hub-legal-link-class\">Merkezi Yasal Uyarı</a>da belirtilen iletişim adresine e-posta göndererek istediğiniz zaman <strong>Erişim, Düzeltme, Silme, Kısıtlama, Taşınabilirlik ve İtiraz</strong> haklarınızı kullanabilirsiniz.",
+      "p_5_2": "Aynı şekilde, verilerinizi düzgün bir şekilde işlemediğimizi düşünüyorsanız, yetkili veri koruma makamına şikayette bulunma hakkına sahipsiniz."
+    },
+    "cookies": {
+      "h1": "Çerezler ve Yerel Depolama Politikası",
+      "last_updated": "Son güncelleme: 2 Temmuz 2026",
+      "alert": "<strong>Yasal Muafiyet Bildirimi:</strong> Veri koruma yönergelerine uygun olarak, bu web sitesinin <strong>yalnızca kesinlikle teknik ve işlevsel depolama teknolojileri kullandığını</strong> bildiririz. Analitik, pazarlama, izleme veya reklam çerezleri kullanmıyoruz. Bu nedenle, etkileşimli bir başlık (\"Kabul Et/Reddet\") aracılığıyla açık rızanızı alma yükümlülüğünden yasal olarak muafız.",
+      "h2_1": "1. Çerezler ve yerel depolama nedir?",
+      "p_1_1": "Çerezler, web sitelerini ziyaret ettiğinizde cihazınızda saklanan küçük metin dosyalarıdır. Klasik çerezlere ek olarak, tarayıcınızın <em>Local Storage</em> (Yerel Depolama) gibi, deneyiminizi iyileştirmek için bilgileri kaydetmek gibi aynı amaca hizmet eden benzer teknolojiler vardır.",
+      "h2_2": "2. Kullandığımız Teknolojiler",
+      "p_2_1": "Web sitemiz, kullanıcı arayüzü tercihlerinizi kaydetmek için yalnızca tarayıcınızın <strong>yerel depolama alanını (localStorage)</strong> kullanır ve tüm işlemlerin cihazınızda gizli kalmasını sağlar.",
+      "th_name": "Ad (Anahtar)",
+      "th_type": "Tür",
+      "th_purpose": "Amaç (Kesinlikle Gerekli)",
+      "th_duration": "Süre",
+      "td_type_local": "Yerel Depolama",
+      "td_duration_persist": "Kalıcı",
+      "td_theme_desc": "Görsel arayüzü uyarlamak için Açık Modu (☀️) veya Koyu Modu (🌙) kullanmayı tercih edip etmediğinizi hatırlar.",
+      "td_filters_desc": "Oluşturulan \"Filtrelerim\"den oluşan kişisel yerel kitaplığınızı kaydederek, harici veritabanlarını kullanmadan gelecekteki ziyaretlerinizde bunları geri almanızı sağlar.",
+      "td_support_desc": "Geliştirme destek bilgi başlığını kapatmaya karar verdiğinizi ve bir daha görmemeye karar verdiğinizi hatırlayarak sıkıntıları önler.",
+      "h2_3": "3. Üçüncü Taraf Çerezleri (İsteğe Bağlı)",
+      "p_3_1": "\"Bana bir kahve ısmarla\" düğmesiyle etkileşime girerseniz ve ödeme ağ geçidi yerleşimi açılırsa, harici işlemci <strong>Lemon Squeezy</strong>, işlemi güvenli bir şekilde işlemek ve elektronik dolandırıcılığı önlemek için gerekli olan kendi kesinlikle teknik çerezlerini yükleyebilir. Bu çerezler bizim kontrolümüz dışındadır ve Lemon Squeezy'nin gizlilik ve çerez politikasına tabidir.",
+      "h2_4": "4. Bu bilgi nasıl silinir?",
+      "p_4_1": "İzleme teknolojileri kullanmamamıza rağmen, tarayıcınızda kayıtlı veriler üzerinde her zaman mutlak kontrole sahipsiniz. Kaydettiğiniz filtreleri ve görsel tercihleri silmek isterseniz, bunu kolayca yapabilirsiniz:",
+      "li_4_1": "Tarayıcı ayarlarınızda (Chrome, Firefox, Safari, Edge) önbelleği ve site veri depolamasını temizleyerek.",
+      "li_4_2": "Pencereyi kapattığınızda bu yerel depolamayı otomatik olarak silecek olan \"Gizli Gezinme\" veya \"Gizli\" modunu kullanarak.",
+      "p_4_2": "Kim olduğumuz hakkında daha fazla bilgi için <strong><a href=\"#\" id=\"hub-legal-link-2\">Merkezi Yasal Uyarı</a></strong> sayfamızı ziyaret edin."
+    }
+  }
+}

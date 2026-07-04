@@ -13,8 +13,39 @@
 
 const i18n = (() => {
   const AVAILABLE_LOCALES = [
-    { code: 'en', label: 'English' },
-    { code: 'es', label: 'Español' },
+    { code: 'id', label: 'Bahasa Indonesia' },
+    { code: 'ca', label: 'Català' },
+    { code: 'de-DE', label: 'Deutsch' },
+    { code: 'en-AU', label: 'English (Australia)' },
+    { code: 'en-CA', label: 'English (Canada)' },
+    { code: 'en', label: 'English (Generic)' },
+    { code: 'en-IN', label: 'English (India)' },
+    { code: 'en-GB', label: 'English (UK)' },
+    { code: 'en-US', label: 'English (US)' },
+    { code: 'es-US', label: 'Español (EE. UU.)' },
+    { code: 'es-ES', label: 'Español (España)' },
+    { code: 'es', label: 'Español (Genérico)' },
+    { code: 'es-419', label: 'Español (Latinoamérica)' },
+    { code: 'eu-ES', label: 'Euskara' },
+    { code: 'fr-CA', label: 'Français (Canada)' },
+    { code: 'fr-FR', label: 'Français (France)' },
+    { code: 'gl-ES', label: 'Galego' },
+    { code: 'it-IT', label: 'Italiano' },
+    { code: 'ca-ES-mallorca', label: 'Mallorquí' },
+    { code: 'pt-BR', label: 'Português (Brasil)' },
+    { code: 'pt-PT', label: 'Português (Portugal)' },
+    { code: 'vi', label: 'Tiếng Việt' },
+    { code: 'tr-TR', label: 'Türkçe' },
+    { code: 'ca-ES-valencia', label: 'Valencià' },
+    
+    // Non-Latin Scripts
+    { code: 'ru-RU', label: 'Русский' },
+    { code: 'ar', label: 'العربية' },
+    { code: 'hi-IN', label: 'हिन्दी' },
+    { code: 'th', label: 'ไทย' },
+    { code: 'zh-CN', label: '简体中文' },
+    { code: 'ja-JP', label: '日本語' },
+    { code: 'ko-KR', label: '한국어' }
   ];
 
   let _strings = {};
@@ -35,6 +66,8 @@ const i18n = (() => {
     _strings = await res.json();
     _currentLocale = locale;
     document.documentElement.lang = locale;
+    document.documentElement.dir = locale.startsWith('ar') ? 'rtl' : 'ltr';
+    try { localStorage.setItem('preferredLocale', locale); } catch (_) {}
     _listeners.forEach(fn => fn(locale));
   }
 

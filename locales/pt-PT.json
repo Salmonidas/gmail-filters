@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Criador de Filtros do Gmail",
+    "subtitle": "Crie consultas de pesquisa avançadas no Gmail visualmente, sem memorizar a sintaxe.",
+    "language_selector": "Idioma"
+  },
+  "nav": {
+    "builder": "Criador",
+    "preview": "Pré-visualização",
+    "examples": "Biblioteca",
+    "help": "Ajuda",
+    "guide": "Guia"
+  },
+  "builder": {
+    "title": "Criador de Filtros",
+    "add_condition": "Adicionar Condição",
+    "clear_all": "Limpar Tudo",
+    "logic_and": "E",
+    "logic_or": "OU",
+    "logic_label": "Combinar com",
+    "group_label": "Agrupar entre parêntesis",
+    "advanced_mode": "Editar consulta manualmente",
+    "visual_mode": "Voltar ao criador visual",
+    "advanced_note": "Edite a consulta diretamente. Clique em \"Volver ao criador visual\" para a dividir novamente em condições.",
+    "no_conditions": "Ainda não existem condições. Clique em \"Adicionar Condição\" para começar a criar o seu filtro.",
+    "condition": {
+      "type_label": "Tipo de filtro",
+      "value_label": "Valor",
+      "remove": "Remover condição",
+      "negate": "Excluir (NOT)"
+    },
+    "types": {
+      "from": "De — remetente",
+      "to": "Para — destinatário",
+      "cc": "CC — com conhecimento",
+      "bcc": "BCC — com conhecimento oculto",
+      "subject": "Assunto",
+      "body": "O corpo contém",
+      "has_attachment": "Tem anexo",
+      "filename": "Nome ou tipo do anexo",
+      "label": "Marcador (os meus marcadores do Gmail)",
+      "in": "Na pasta do sistema (caixa de entrada, spam...)",
+      "is_read": "Estado: lido",
+      "is_unread": "Estado: não lido",
+      "is_starred": "Estado: com estrela (⭐)",
+      "is_important": "Estado: marcado como importante",
+      "date_after": "Recebido após",
+      "date_before": "Recebido antes de",
+      "newer_than": "Recebido nos últimos... (relativo)",
+      "older_than": "Mais antigo do que... (relativo)",
+      "size_larger": "Tamanho maior do que",
+      "size_smaller": "Tamanho menor do que"
+    },
+    "placeholders": {
+      "from": "alice@gmail.com  OU  chefe@empresa.com",
+      "to": "equipa@empresa.com  OU  boletim@servico.io",
+      "cc": "gerente@empresa.com",
+      "bcc": "arquivo@empresa.com  OU  legal@empresa.com",
+      "subject": "fatura  OU  \"relatorio trimestral\"  -rascunho",
+      "body": "acao necessaria  OU  \"junto enviamos o\"",
+      "filename": "pdf  OU  *.docx  OU  *.xlsx",
+      "label": "faturas  OU  trabalho  OU  recibos",
+      "in": "inbox  OU  spam  OU  promotions  OU  sent",
+      "newer_than": "7d  ·  2m  ·  1y   (d=dias, m=meses, y=anos)",
+      "older_than": "30d  ·  3m  ·  2y   (d=dias, m=meses, y=anos)",
+      "size_larger": "5M  ·  10M  ·  25M   (M = megabytes)",
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobytes, M = megabytes)"
+    },
+    "has_attachment_note": "Corresponde a mensagens que contêm pelo menos um anexo (de qualquer tipo).",
+    "is_read_note": "Corresponde a mensagens que já abriu e leu.",
+    "is_unread_note": "Corresponde a mensagens que ainda não abriu.",
+    "is_starred_note": "Corresponde a mensagens que marcou com estrela (⭐) no Gmail.",
+    "is_important_note": "Corresponde a mensagens marcadas como importantes pelo Gmail ou por si (►)."
+  },
+  "preview": {
+    "title": "Consulta Gerada",
+    "empty": "A sua consulta aparecerá aqui à medida que adicionar condições acima.",
+    "copy": "Copiar para a área de transferência",
+    "copied": "Copiado!",
+    "open_gmail": "Abrir no Gmail",
+    "how_to_apply": "Como aplicar",
+    "summary_title": "O que faz este filtro",
+    "summary_empty": "Adicione condições acima para ver um resumo em português compreensível aqui.",
+    "char_count": "{{count}} caracteres",
+    "share": "Partilhar hiperligação",
+    "share_copied": "Hiperligação copiada!",
+    "save": "Guardar filtro",
+    "saved_toast": "Guardado em Os meus filtros"
+  },
+  "saved_filters": {
+    "title": "Os meus filtros",
+    "subtitle": "Filtros guardados no seu navegador.",
+    "empty": "Ainda não existem filtros guardados.",
+    "delete": "Eliminar",
+    "name_prompt": "Atribua um nome a este filtro:",
+    "default_name": "Filtro personalizado",
+    "dialog_title": "Guardar filtro",
+    "dialog_hint": "O seu filtro aparecerá no separador Biblioteca, na secção Os meus filtros.",
+    "dialog_save": "Guardar",
+    "cancel": "Cancelar",
+    "snackbar_msg": "Filtro guardado em Os meus filtros",
+    "snackbar_action": "Ver",
+    "delete_confirm_title": "Eliminar o filtro?",
+    "delete_confirm_msg": "Tem a certeza de que deseja eliminar este filtro da sua biblioteca? Esta ação não pode ser desfeita.",
+    "delete_cancel": "Cancelar",
+    "delete_confirm": "Eliminar",
+    "empty_library_title": "A sua biblioteca está vazia",
+    "empty_library_desc": "Guarde as suas consultas de pesquisa frequentes para as encontrar aqui facilmente mais tarde.",
+    "empty_library_cta": "Ir para o Criador"
+  },
+  "examples": {
+    "title": "Filtros de Exemplo",
+    "subtitle": "Clique em \"Carregar\" para preencher o criador com o exemplo e personalizá-lo.",
+    "load": "Carregar exemplo",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "Faturas de remetentes específicos (mês passado)",
+        "description": "E-mails de dois remetentes específicos contendo 'invoice' no assunto mas não 'draft', recebidos nos últimos 30 dias.",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "E-mails de reuniões onde estou em CC",
+        "description": "E-mails onde aparece em CC, o assunto contém 'meeting', mas não 'cancelled'.",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "Anexos PDF de um remetente específico",
+        "description": "Mensagens de um remetente particular que contêm um ficheiro PDF em anexo.",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "Mensagens com estrela não lidas",
+        "description": "Todas as mensagens que têm estrela e estão não lidas – um filtro rápido para a sua caixa de entrada de prioridade.",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "Boletins informativos de onde cancelar a subscrição",
+        "description": "E-mails na categoria Promoções que contêm um link de cancelamento de subscrição (unsubscribe) no corpo.",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Referência de Operadores do Gmail",
+    "intro": "Abaixo estão listados os operadores suportados pelo criador e o seu significado no Gmail.",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "Corresponde ao endereço de e-mail do remetente."
+      },
+      {
+        "op": "to:",
+        "desc": "Corresponde ao destinatário principal."
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = com conhecimento (visível). BCC = com conhecimento oculto (invisível)."
+      },
+      {
+        "op": "subject:",
+        "desc": "Pesquisa no campo do assunto."
+      },
+      {
+        "op": "has:attachment",
+        "desc": "Mensagens com qualquer anexo."
+      },
+      {
+        "op": "filename:",
+        "desc": "Corresponde ao nome ou extensão do anexo (ex. pdf, *.docx)."
+      },
+      {
+        "op": "label:",
+        "desc": "Mensagens com um marcador personalizado do Gmail criado por si."
+      },
+      {
+        "op": "in:",
+        "desc": "Mensagens em pastas do sistema: inbox, spam, trash, sent, promotions..."
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "Filtra por estado de leitura."
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "Filtra por estado com estrela (⭐) ou importância (►)."
+      },
+      {
+        "op": "after: / before:",
+        "desc": "Intervalo de datas no formato AAAA/MM/DD."
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "Data relativa: 7d (7 dias), 2m (2 meses), 1y (1 ano)."
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "Tamanho da mensagem: 5M (5 MB), 500K (500 KB)."
+      },
+      {
+        "op": "OR",
+        "desc": "Combina dois termos para que qualquer um coincida (deve ser em maiúsculas)."
+      },
+      {
+        "op": "-termo",
+        "desc": "Exclui mensagens correspondentes ao termo (operador NOT)."
+      },
+      {
+        "op": "(…)",
+        "desc": "Agrupa termos para que os operadores se apliquem a todo o grupo."
+      }
+    ],
+    "tips_title": "Dicas Profissionais",
+    "tips": [
+      "Agrupe valores com mais do que uma palavra entre aspas: subject:\"relatorio trimestral\"",
+      "Utilize OR dentro de parêntesis para corresponder a vários valores: from:(a@x.com OR b@x.com)",
+      "Os operadores do Gmail não distinguem maiúsculas de minúsculas, mas o OR tem de ser em maiúsculas.",
+      "Cole a consulta gerada diretamente na barra de pesquisa do Gmail ou no campo 'Contém as palavras' ao criar um filtro.",
+      "Combine newer_than e older_than para definir um período de tempo preciso: newer_than:3m older_than:1m",
+      "label: pesquisa nos seus marcadores personalizados. in: pesquisa nas pastas do sistema (caixa de entrada, spam...)."
+    ]
+  },
+  "support": {
+    "toast_title": "☕ Apoiar este projeto",
+    "toast_desc": "Esta ferramenta é gratuita e de código aberto. Se lhe poupou tempo, uma pequena doação ajuda a mantê-la ativa.",
+    "dismiss_permanent": "Não mostrar novamente",
+    "header_title": "Apoiar o programador",
+    "footer_donate": "Doar",
+    "toast_cta": "☕ Ofereça-me um café",
+    "modal_title": "Apoiar este projeto 💖",
+    "modal_desc": "Escolha a opção que melhor se adapta a si. Cada contribuição ajuda a manter esta ferramenta gratuita e de código aberto.",
+    "option_lemon": "Ofereça-me um café (Apple Pay, Cartão, PayPal)",
+    "option_github": "GitHub Sponsors (único ou recorrente)",
+    "links": []
+  },
+  "guide": {
+    "tab": "Guia",
+    "title": "Como aplicar o seu filtro no Gmail",
+    "intro": "Assim que tiver criado a sua consulta com esta ferramenta, siga estes passos para a transformar numa regra automática permanente no Gmail.",
+    "step1_title": "Copiar a consulta",
+    "step1_desc": "Clique no botão [Copiar para a área de transferência] no cartão «Consulta Gerada» nesta página.",
+    "step2_title": "Abrir o Gmail",
+    "step2_desc": "Aceda a gmail.com no seu navegador e inicie sessão se ainda não o tiver feito.",
+    "step3_title": "Clicar na barra de pesquisa no topo",
+    "step3_desc": "O Gmail tem uma barra de pesquisa larga no topo da página (onde diz «Pesquisar no correio»). Clique lá.",
+    "step4_title": "Colar a consulta",
+    "step4_desc": "Prima Ctrl+V (Windows / Linux) ou Cmd+V (Mac) para colar. Verá a consulta aparecer na barra de pesquisa.",
+    "step5_title": "Clicar no ícone de Opções de pesquisa <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> no canto direito da barra",
+    "step5_desc": "Olhe atentamente para o canto direito da barra de pesquisa — existe um ícone com três linhas horizontais com botões de deslize (Mostrar opções de pesquisa) <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span>. Clique nele para abrir o painel de opções avançadas.",
+    "step5_tip": "Este é o passo que a maioria das pessoas se esquece! O ícone é discreto e está mesmo no canto. Em versões anteriores do Gmail, podia ser uma pequena seta ▼, mas agora é geralmente este ícone de definições.",
+    "step6_title": "Clicar em «Criar filtro»",
+    "step6_desc": "Irá abrir-se um painel mostrando os detalhes da pesquisa. Na parte inferior desse painel, clique no botão que diz «Criar filtro».",
+    "step7_title": "Escolher as ações automáticas do Gmail",
+    "step7_desc": "Selecione uma ou mais ações – arquivar, aplicar marcador, marcar como lida, eliminar... e depois clique em [Criar filtro] para confirmar.",
+    "done": "Concluído! O Gmail passará a aplicar esta regra automaticamente a cada novo e-mail recebido que corresponda aos critérios – sem qualquer esforço adicional da sua parte.",
+    "tip_label": "Passo fundamental"
+  },
+  "footer": {
+    "made_with": "Open Source no",
+    "github": "GitHub",
+    "donate": "Doar",
+    "disclaimer": "Esta ferramenta não é afiliada com a Google ou com o Gmail.",
+    "privacy": "Política de privacidade",
+    "cookies": "Política de cookies",
+    "legal_notice": "Aviso legal"
+  },
+  "summary": {
+    "prefix": "Este filtro irá aplicar-se a e-mails",
+    "from": "enviados por {{value}}",
+    "to": "enviados para {{value}}",
+    "cc": "com {{value}} em CC",
+    "bcc": "com {{value}} em BCC",
+    "subject": "cujo assunto contém {{value}}",
+    "body": "que contêm {{value}} no corpo",
+    "has_attachment": "que contêm um anexo",
+    "filename": "com um anexo com nome/tipo {{value}}",
+    "label": "com o marcador {{value}}",
+    "in": "situados na pasta {{value}}",
+    "is_read": "que estão lidos",
+    "is_unread": "que estão não lidos",
+    "is_starred": "que estão marcados com estrela",
+    "is_important": "que estão marcados como importantes",
+    "date_after": "recebidos após {{value}}",
+    "date_before": "recebidos antes de {{value}}",
+    "newer_than": "recebidos nos últimos {{value}}",
+    "older_than": "mais antigos do que {{value}}",
+    "size_larger": "com tamanho maior do que {{value}}",
+    "size_smaller": "com tamanho menor do que {{value}}",
+    "negate_prefix": "NÃO",
+    "and_connector": " E ",
+    "or_connector": " OU "
+  },
+  "pwa": {
+    "install_btn": "Instalar aplicação",
+    "install_title": "Instalar o Criador de Filtros do Gmail",
+    "install_desc": "Instale a nossa aplicação no seu dispositivo para uma experiência mais rápida e preparada para funcionamento offline.",
+    "ios_hint_title": "Instalar no iOS / Safari",
+    "ios_hint_steps": "1. Toque no botão partilhar [ícone] \n2. Selecione 'Adicionar ao ecrã principal'",
+    "installed_msg": "Aplicação instalada com sucesso!"
+  },
+  "legal": {
+    "privacy_title": "Política de Privacidade - Gmail Filter Builder",
+    "cookies_title": "Política de Cookies - Gmail Filter Builder",
+    "back_home": "Voltar ao início",
+    "privacy": {
+      "h1": "Política de Privacidade",
+      "last_updated": "Última atualização: 2 de Julho de 2026",
+      "h2_1": "1. Identidade do Responsável",
+      "p_1_1": "Em conformidade com o estabelecido no Regulamento (UE) 2016/679 (RGPD), informamos que o responsável pelo tratamento dos dados recolhidos neste site é <strong>Salmonidas</strong>.",
+      "p_1_2": "Para consultar os dados fiscais completos, endereço de gestão e meios de contacto direto, por favor visite o nosso <strong><a href=\"#\" id=\"hub-legal-link\">Aviso Legal e de Identidade</a></strong>.",
+      "h2_2": "2. Dados que recolhemos e finalidade",
+      "p_2_1": "O <strong>Gmail Filter Builder</strong> é uma ferramenta concebida sob o princípio da \"privacidade desde a conceção\" (Privacy by Design). Por predefinição, a aplicação funciona localmente no seu navegador (<em>client-side</em>) e <strong>não recolhe, não armazena e não transmite</strong> aos nossos servidores qualquer informação sobre os seus e-mails, pesquisas, filtros gerados ou dados pessoais de utilização.",
+      "p_2_2": "Apenas são processados dados nos seguintes casos explícitos:",
+      "li_2_1": "<strong>Dados técnicos de ligação:</strong> Ao visitar o site, o nosso fornecedor de infraestruturas (GitHub Pages) pode registar temporariamente o seu endereço IP e o <em>User-Agent</em> do navegador por motivos de segurança, prevenção de ataques DDoS e desempenho da rede.",
+      "li_2_2": "<strong>Doações / Pagamentos:</strong> Se decidir fazer um contributo voluntário para apoiar o projeto através do sistema de doações, o pagamento será processado na íntegra por plataformas de terceiros (Lemon Squeezy ou GitHub Sponsors). Nós não recolhemos nem temos acesso aos seus dados bancários ou de cartão de crédito em momento algum.",
+      "h2_3": "3. Destinatários dos dados (Subcontratantes)",
+      "p_3_1": "Para poder prestar o serviço e permitir as funções de apoio ao desenvolvimento, partilhamos dados estritamente técnicos ou delegamos o processo nos seguintes fornecedores, com os quais existe o acordo obrigatório de processamento de dados (DPA):",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages):</strong> Fornece o alojamento web (hosting). Os seus servidores podem estar localizados nos Estados Unidos, operando ao abrigo das Cláusulas Contratuais Tipo (CCT) e do Quadro de Privacidade de Dados UE-EUA (DPF).",
+      "li_3_2": "<strong>Lemon Squeezy, LLC:</strong> Atua como <em>Merchant of Record</em> para o processamento de pagamentos voluntários. Se fizer uma doação através de cartão, Apple Pay ou PayPal, a Lemon Squeezy recolherá o seu e-mail e informações de faturação ao abrigo das suas próprias políticas de privacidade, atuando como responsáveis por esse pagamento.",
+      "h2_4": "4. Tecnologias de IA (AI Act)",
+      "p_4_1": "Informamos explicitamente que este site <strong>NÃO utiliza</strong> motores de Inteligência Artificial generativa nem sistemas de tomada de decisões automatizadas nas suas funções de criação de filtros. Todo o código gerado baseia-se em lógica de programação determinista.",
+      "h2_5": "5. Direitos do Utilizador (RGPD)",
+      "p_5_1": "Tem o direito de obter a confirmação de que os seus dados pessoais estão ou não a ser objeto de tratamento. Por não dispormos de bases de dados de utilizadores registados, o exercício dos direitos está inerentemente limitado à natureza técnica do site, mas a qualquer momento poderá exercer os seus direitos de <strong>Acesso, Retificação, Apagamento, Limitação, Portabilidade e Oposição</strong>, enviando um e-mail para o endereço de contacto especificado no <a href=\"#\" class=\"hub-legal-link-class\">Aviso Legal Centralizado</a>.",
+      "p_5_2": "Da mesma forma, se considerar que não tratámos os seus dados de forma adequada, tem o direito de apresentar uma reclamação à Comissão Nacional de Proteção de Dados (CNPD)."
+    },
+    "cookies": {
+      "h1": "Política de Cookies e Armazenamento Local",
+      "last_updated": "Última atualização: 2 de Julho de 2026",
+      "alert": "<strong>Informação sobre isenção legal:</strong> Em conformidade com as diretrizes de proteção de dados, informamos que este site <strong>apenas utiliza tecnologias de armazenamento estritamente técnicas e funcionais</strong>. Não utilizamos cookies analíticos, de marketing, de rastreio ou publicitários. Portanto, estamos legalmente isentos da obrigação de recolher o seu consentimento expresso através de um painel interativo (\"Aceitar/Rejeitar\").",
+      "h2_1": "1. O que são cookies e armazenamento local?",
+      "p_1_1": "Os cookies são pequenos ficheiros de texto que os sites armazenam no seu dispositivo quando os visita. Além dos cookies clássicos, existem outras tecnologias semelhantes como o <em>Local Storage</em> (armazenamento local) do seu navegador, que cumprem propósitos idênticos de guardar informações para melhorar a sua experiência.",
+      "h2_2": "2. Tecnologias que utilizamos",
+      "p_2_1": "O nosso site utiliza exclusivamente o <strong>armazenamento local (localStorage)</strong> do seu navegador para guardar as suas preferências de interface de utilizador, garantindo que todo o processamento se mantenha de forma privada no seu dispositivo.",
+      "th_name": "Nome (Chave)",
+      "th_type": "Tipo",
+      "th_purpose": "Finalidade (Estritamente Necessária)",
+      "th_duration": "Duração",
+      "td_type_local": "Armazenamento Local",
+      "td_duration_persist": "Persistente",
+      "td_theme_desc": "Lembra-se se prefere utilizar o Modo Claro (☀️) ou o Modo Escuro (🌙) para adaptar a interface visual.",
+      "td_filters_desc": "Guarda a sua biblioteca local pessoal de \"Os Meus Filtros\" gerados, permitindo-lhe recuperá-los em visitas futuras sem utilizar bases de dados externas.",
+      "td_support_desc": "Evita incómodos lembrando-se de que decidiu fechar e não voltar a ver o banner informativo de apoio ao desenvolvimento.",
+      "h2_3": "3. Cookies de terceiros (Opcionais)",
+      "p_3_1": "Se interagir com o botão \"Pagar-me um café\" e se abrir a gateway de pagamento sobreposta, o processador externo <strong>Lemon Squeezy</strong> poderá carregar os seus próprios cookies estritamente técnicos necessários para processar a transação de forma segura e evitar a fraude eletrónica. Estes cookies escapam ao nosso controlo e regem-se pela política de privacidade e cookies da Lemon Squeezy.",
+      "h2_4": "4. Como apagar esta informação?",
+      "p_4_1": "Embora não utilizemos tecnologias de rastreio, o utilizador tem a todo o momento o controlo absoluto sobre os dados guardados no seu navegador. Se desejar apagar os seus filtros guardados e as suas preferências visuais, pode fazê-lo facilmente:",
+      "li_4_1": "Limpando a cache e o armazenamento de dados de sites nas definições do seu navegador (Chrome, Firefox, Safari, Edge).",
+      "li_4_2": "Utilizando o modo de \"Navegação Privada\" ou \"Incógnito\", o qual apagará automaticamente este armazenamento local ao fechar a janela.",
+      "p_4_2": "Para mais informações sobre quem somos, visite o nosso <strong><a href=\"#\" id=\"hub-legal-link-2\">Aviso Legal Centralizado</a></strong>."
+    }
+  }
+}

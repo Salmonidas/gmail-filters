@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "Gmail Filter Builder",
-    "subtitle": "Build advanced Gmail search queries visually, without memorising the syntax.",
+    "subtitle": "Build advanced Gmail search queries visually, without memorizing the syntax.",
     "language_selector": "Language"
   },
   "nav": {
@@ -110,7 +110,7 @@
   },
   "examples": {
     "title": "Example Filters",
-    "subtitle": "Click \"Load\" to populate the builder with each example and customise it.",
+    "subtitle": "Click \"Load\" to populate the builder with each example and customize it.",
     "load": "Load example",
     "items": [
       {
@@ -122,8 +122,8 @@
       {
         "id": "meeting_cc",
         "title": "Meeting emails where I am CC'd",
-        "description": "Emails where you appear in CC, the subject contains 'meeting', but not 'cancelled'.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "description": "Emails where you appear in CC, the subject contains 'meeting', but not 'canceled'.",
+        "query": "cc:me subject:(meeting -canceled)"
       },
       {
         "id": "pdf_attachments",

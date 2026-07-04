@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Gmail 过滤器生成器",
+    "subtitle": "可视化构建高级 Gmail 搜索查询，无需记忆复杂语法。",
+    "language_selector": "语言"
+  },
+  "nav": {
+    "builder": "生成器",
+    "preview": "预览",
+    "examples": "过滤器库",
+    "help": "帮助",
+    "guide": "指南"
+  },
+  "builder": {
+    "title": "过滤器生成器",
+    "add_condition": "添加条件",
+    "clear_all": "清空全部",
+    "logic_and": "与 (AND)",
+    "logic_or": "或 (OR)",
+    "logic_label": "条件关系",
+    "group_label": "用括号分组",
+    "advanced_mode": "手动编辑查询语句",
+    "visual_mode": "返回可视化生成器",
+    "advanced_note": "直接编辑查询语句。点击“返回可视化生成器”可重新将其解析为可视化条件。",
+    "no_conditions": "目前没有条件。点击“添加条件”开始构建您的过滤器。",
+    "condition": {
+      "type_label": "过滤类型",
+      "value_label": "值",
+      "remove": "移除条件",
+      "negate": "排除 (NOT)"
+    },
+    "types": {
+      "from": "发件人 (from)",
+      "to": "收件人 (to)",
+      "cc": "抄送 (cc)",
+      "bcc": "密送 (bcc)",
+      "subject": "主题 (subject)",
+      "body": "正文包含",
+      "has_attachment": "包含附件",
+      "filename": "附件名称/类型 (filename)",
+      "label": "标签 (自定义标签)",
+      "in": "系统文件夹 (收件箱、垃圾邮件等)",
+      "is_read": "状态：已读",
+      "is_unread": "状态：未读",
+      "is_starred": "状态：已加星标 (⭐)",
+      "is_important": "状态：重要邮件",
+      "date_after": "在此日期之后收到",
+      "date_before": "在此日期之前收到",
+      "newer_than": "在最近的时间内收到 (相对时间)",
+      "older_than": "在此时间之前收到 (相对时间)",
+      "size_larger": "大小大于",
+      "size_smaller": "大小小于"
+    },
+    "placeholders": {
+      "from": "alice@gmail.com  或  boss@company.com",
+      "to": "team@company.com  或  newsletter@service.io",
+      "cc": "manager@company.com",
+      "bcc": "archive@company.com  或  compliance@firm.com",
+      "subject": "invoice  或  \"quarterly report\"  -draft",
+      "body": "action required  或  \"please find attached\"",
+      "filename": "pdf  或  *.docx  或  *.xlsx",
+      "label": "invoices  或  work  或  receipts",
+      "in": "inbox  或  spam  或  promotions  或  sent",
+      "newer_than": "7d  ·  2m  ·  1y   (d = 天，m = 月，y = 年)",
+      "older_than": "30d  ·  3m  ·  2y   (d = 天，m = 月，y = 年)",
+      "size_larger": "5M  ·  10M  ·  25M   (M = 兆字节)",
+      "size_smaller": "500K  ·  1M  ·  5M   (K = 千字节，M = 兆字节)"
+    },
+    "has_attachment_note": "匹配包含至少一个附件（任意类型）的邮件。",
+    "is_read_note": "匹配您已打开并阅读过的邮件。",
+    "is_unread_note": "匹配您尚未打开的邮件。",
+    "is_starred_note": "匹配您在 Gmail 中加了星标 (⭐) 的邮件。",
+    "is_important_note": "匹配被 Gmail 或您标记为重要 (►) 的邮件。"
+  },
+  "preview": {
+    "title": "生成的查询语句",
+    "empty": "当您在上方添加条件时，生成的查询语句将显示在此处。",
+    "copy": "复制到剪贴板",
+    "copied": "已复制！",
+    "open_gmail": "在 Gmail 中打开",
+    "how_to_apply": "如何应用",
+    "summary_title": "此过滤器作用",
+    "summary_empty": "在上方添加条件以在此处查看简单易懂的规则说明。",
+    "char_count": "{{count}} 个字符",
+    "share": "分享链接",
+    "share_copied": "链接已复制！",
+    "save": "保存过滤器",
+    "saved_toast": "已保存到“我的过滤器”"
+  },
+  "saved_filters": {
+    "title": "我的过滤器",
+    "subtitle": "已保存到浏览器的过滤器。",
+    "empty": "暂无保存的的过滤器。",
+    "delete": "删除",
+    "name_prompt": "命名此过滤器：",
+    "default_name": "自定义过滤器",
+    "dialog_title": "保存过滤器",
+    "dialog_hint": "您的过滤器将显示在“过滤器库”选项卡下的“我的过滤器”中。",
+    "dialog_save": "保存",
+    "cancel": "取消",
+    "snackbar_msg": "过滤器已保存到“我的过滤器”",
+    "snackbar_action": "查看",
+    "delete_confirm_title": "确定删除过滤器？",
+    "delete_confirm_msg": "您确定要从库中删除此过滤器吗？此操作无法撤销。",
+    "delete_cancel": "取消",
+    "delete_confirm": "删除",
+    "empty_library_title": "您的过滤器库为空",
+    "empty_library_desc": "保存您常用的搜索查询，以便日后在此处快速查找。",
+    "empty_library_cta": "前往生成器"
+  },
+  "examples": {
+    "title": "过滤器示例",
+    "subtitle": "点击“加载示例”将示例填充到生成器中并进行自定义。",
+    "load": "加载示例",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "特定发件人的发票 (上个月)",
+        "description": "来自两个特定发件人，主题中包含 'invoice' 但不包含 'draft'，且在过去 30 天内收到的邮件。",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "我被抄送的会议邮件",
+        "description": "您在抄送人中、主题包含 'meeting' 但不包含 'cancelled' 的邮件。",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "特定发件人的 PDF 附件",
+        "description": "来自特定发件人且附有 PDF 文件格式的邮件。",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "未读的星标邮件",
+        "description": "所有已加星标且未读的邮件——一种快速设置的优先级收件箱过滤器。",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "待退订的订阅邮件",
+        "description": "属于“推广”类别且正文中包含退订链接 (unsubscribe) 的邮件。",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Gmail 搜索算符参考",
+    "intro": "以下是生成器支持的算符以及它们在 Gmail 中的含义。",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "匹配发件人的电子邮件地址。"
+      },
+      {
+        "op": "to:",
+        "desc": "匹配主要收件人。"
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = 抄送 (公开)。BCC = 密送 (隐藏)。"
+      },
+      {
+        "op": "subject:",
+        "desc": "在主题行中搜索。"
+      },
+      {
+        "op": "has:attachment",
+        "desc": "匹配包含任意附件的邮件。"
+      },
+      {
+        "op": "filename:",
+        "desc": "匹配附件的文件名或文件扩展名 (例如 pdf, *.docx)。"
+      },
+      {
+        "op": "label:",
+        "desc": "匹配带有您创建的自定义 Gmail 标签的邮件。"
+      },
+      {
+        "op": "in:",
+        "desc": "系统文件夹中的邮件：inbox（收件箱）、spam（垃圾邮件）、trash（已删除）、sent（已发送）、promotions（推广）等。"
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "按已读/未读状态过滤。"
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "按星标 (⭐) 或重要性 (►) 状态过滤。"
+      },
+      {
+        "op": "after: / before:",
+        "desc": "使用 YYYY/MM/DD 格式的日期范围。"
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "相对日期：7d (7天), 2m (2个月), 1y (1年)。"
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "邮件大小：5M (5兆字节), 500K (500千字节)。"
+      },
+      {
+        "op": "OR",
+        "desc": "结合两个词，匹配其中任意一个即可 (必须大写)。"
+      },
+      {
+        "op": "-term",
+        "desc": "排除匹配该词的邮件 (求反/NOT 算符)。"
+      },
+      {
+        "op": "(…)",
+        "desc": "将多个词分组，使算符应用于整个组。"
+      }
+    ],
+    "tips_title": "专业技巧",
+    "tips": [
+      "如果值包含多个单词，请用双引号括起来：subject:\"quarterly report\"",
+      "在括号内使用 OR 来匹配多个值中的任意一个：from:(a@x.com OR b@x.com)",
+      "Gmail 算符不区分大小写，但 OR 必须大写。",
+      "在创建过滤器时，将生成的查询语句直接粘贴到 Gmail 搜索栏或“包含字词”字段中。",
+      "结合使用 newer_than 和 older_than 来锁定精确的时间段：newer_than:3m older_than:1m",
+      "label: 搜索您自定义的标签。in: 搜索 Gmail 的内置文件夹（收件箱、垃圾邮件、推广等）。"
+    ]
+  },
+  "support": {
+    "toast_title": "☕ 支持此项目",
+    "toast_desc": "此工具免费且开源。如果它帮您节省了时间，小额赞助将有助于保持项目活力。",
+    "dismiss_permanent": "不再显示",
+    "header_title": "支持开发者",
+    "footer_donate": "赞助",
+    "toast_cta": "☕ 请我喝杯 coffee",
+    "modal_title": "支持此项目 💖",
+    "modal_desc": "选择最适合您的方式。您的每一分支持都能帮助保持此工具免费和开源。",
+    "option_lemon": "请我喝杯咖啡 (Apple Pay, 银行卡, PayPal)",
+    "option_github": "GitHub Sponsors (单次或定期)",
+    "links": []
+  },
+  "guide": {
+    "tab": "指南",
+    "title": "如何在 Gmail 中应用您的过滤器",
+    "intro": "使用本工具构建查询语句后，请按照以下步骤在 Gmail 中创建永久自动应用规则。",
+    "step1_title": "复制查询语句",
+    "step1_desc": "点击此页面上“生成的查询语句”卡片中的 [复制到剪贴板] 按钮。",
+    "step2_title": "打开 Gmail",
+    "step2_desc": "在浏览器中访问 gmail.com，如果尚未登录，请先登录您的帐号。",
+    "step3_title": "点击顶部的搜索栏",
+    "step3_desc": "Gmail 顶部有一个宽搜索栏（显示“在邮件中搜索”）。点击它。",
+    "step4_title": "粘贴查询语句",
+    "step4_desc": "按 Ctrl+V (Windows / Linux) 或 Cmd+V (Mac) 进行粘贴。您将看到查询语句显示在搜索栏中。",
+    "step5_title": "点击搜索栏最右侧的“显示搜索选项”图标 <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span>",
+    "step5_desc": "仔细查看搜索栏的右边缘——有一个由三条水平线和滑块组成的图标 <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span>（显示搜索选项）。点击它可以打开高级选项面板。",
+    "step5_tip": "这是大多数人都会遗漏的一步！该图标很小，位于最边缘。在旧版 Gmail 中，它可能是一个倒三角 ▼，但现在通常是这个设置图标。",
+    "step6_title": "点击“创建过滤器”",
+    "step6_desc": "系统将打开一个显示搜索详细信息的面板。在该面板的底部，点击“创建过滤器”按钮。",
+    "step7_title": "选择您希望 Gmail 自动执行的操作",
+    "step7_desc": "勾选一项或多项操作——归档、应用标签、标记为已读、删除...然后点击 [创建过滤器] 予以确认。",
+    "done": "大功告成！Gmail 从现在起将自动将此规则应用于每一封符合条件的新邮件——您无需再做任何操作。",
+    "tip_label": "关键步骤"
+  },
+  "footer": {
+    "made_with": "开源于",
+    "github": "GitHub",
+    "donate": "赞助",
+    "disclaimer": "本工具不隶属于 Google 或 Gmail。",
+    "privacy": "隐私政策",
+    "cookies": "Cookie 政策",
+    "legal_notice": "法律声明"
+  },
+  "summary": {
+    "prefix": "此过滤器将匹配以下邮件：",
+    "from": "发件人为 {{value}}",
+    "to": "收件人为 {{value}}",
+    "cc": "抄送给 {{value}}",
+    "bcc": "密送给 {{value}}",
+    "subject": "主题包含 {{value}}",
+    "body": "正文包含 {{value}}",
+    "has_attachment": "包含附件",
+    "filename": "附件名称或类型为 {{value}}",
+    "label": "带有标签 {{value}}",
+    "in": "位于 {{value}} 文件夹",
+    "is_read": "状态为已读",
+    "is_unread": "状态为未读",
+    "is_starred": "状态为已加星标",
+    "is_important": "状态为重要邮件",
+    "date_after": "在 {{value}} 之后收到",
+    "date_before": "在 {{value}} 之前收到",
+    "newer_than": "在最近 {{value}} 内收到",
+    "older_than": "收到时间已超过 {{value}}",
+    "size_larger": "大小超过 {{value}}",
+    "size_smaller": "大小小于 {{value}}",
+    "negate_prefix": "非",
+    "and_connector": " 与 ",
+    "or_connector": " 或 "
+  },
+  "pwa": {
+    "install_btn": "安装应用",
+    "install_title": "安装 Gmail 过滤器生成器",
+    "install_desc": "在您的设备上安装我们的应用，享受更快速、支持离线使用的体验。",
+    "ios_hint_title": "在 iOS / Safari 上安装",
+    "ios_hint_steps": "1. 点击分享按钮 [图标] \n2. 选择“添加到主屏幕”",
+    "installed_msg": "应用安装成功！"
+  },
+  "legal": {
+    "privacy_title": "隐私政策 - Gmail Filter Builder",
+    "cookies_title": "Cookie 政策 - Gmail Filter Builder",
+    "back_home": "返回首页",
+    "privacy": {
+      "h1": "隐私政策",
+      "last_updated": "最后更新：2026年7月2日",
+      "h2_1": "1. 数据控制者身份",
+      "p_1_1": "根据《通用数据保护条例》（GDPR）和西班牙第 3/2018 号组织法的规定，我们通知您，本网站收集数据的控制者是 <strong>Salmonidas</strong>。",
+      "p_1_2": "如需查看完整的税务详情、管理地址和直接联系方式，请访问我们的 <strong><a href=\"#\" id=\"hub-legal-link\">法律与身份声明</a></strong>。",
+      "h2_2": "2. 我们收集的数据及目的",
+      "p_2_1": "<strong>Gmail Filter Builder</strong> 是一款基于“设计隐私”（Privacy by Design）原则设计的工具。默认情况下，应用程序在您的浏览器中本地运行（<em>客户端</em>），<strong>不收集、不存储、也不向我们的服务器传输</strong>关于您的电子邮件、搜索、生成的过滤器或个人使用数据的任何信息。",
+      "p_2_2": "数据仅在以下明确情况下进行处理：",
+      "li_2_1": "<strong>技术连接数据：</strong>访问本网站时，我们的基础设施提供商（GitHub Pages）可能出于安全、防止 DDoS 攻击和网络性能的考虑，临时记录您的 IP 地址和浏览器 <em>User-Agent</em>。",
+      "li_2_2": "<strong>捐赠 / 支付：</strong>如果您决定通过捐赠系统自愿捐款以支持本项目，支付将完全由第三方平台（Lemon Squeezy 或 GitHub Sponsors）处理。我们在任何时候均不收集也无权访问您的银行或信用卡数据。",
+      "h2_3": "3. 数据接收方（数据处理者）",
+      "p_3_1": "为提供服务及启用开发支持功能，我们仅共享严格的技术数据或将处理工作委托给以下供应商，我们与这些供应商均签订了强制性的数据处理协议（DPA）：",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages)：</strong> 提供网站托管服务。其服务器可能位于美国，根据标准合同条款（SCC）和欧美数据隐私框架（DPF）运行。",
+      "li_3_2": "<strong>Lemon Squeezy, LLC：</strong> 作为处理自愿付款的 <em>Merchant of Record</em>（记录商家）。如果您通过银行卡、Apple Pay 或 PayPal 进行捐赠，Lemon Squeezy 将根据其隐私政策收集您的电子邮件和账单信息，并作为该笔付款的数据控制者。",
+      "h2_4": "4. 人工智能技术（AI Act）",
+      "p_4_1": "我们明确告知您，本网站在其过滤器创建功能中 <strong>不使用</strong> 生成式人工智能引擎或自动决策系统。所有生成的代码均基于确定性编程逻辑。",
+      "h2_5": "5. 用户权利（GDPR）",
+      "p_5_1": "您有权确认我们是否在处理您的个人数据。由于我们没有注册用户数据库，权利的行使本质上受限于网站的技术性质，但您随时可以向 <a href=\"#\" class=\"hub-legal-link-class\">集中式法律声明</a> 中指定的联系地址发送电子邮件，行使您的 <strong>访问、更正、删除、限制、可携性和反对权</strong>。",
+      "p_5_2": "同样，如果您认为我们未妥善处理您的情况，您有权向相关数据保护机构提出申诉。"
+    },
+    "cookies": {
+      "h1": "Cookie 及本地存储政策",
+      "last_updated": "最后更新：2026年7月2日",
+      "alert": "<strong>法律豁免通知：</strong>根据数据保护准则，我们通知您，本网站 <strong>仅使用严格意义上的技术和功能性存储技术</strong>。我们不使用分析、营销、跟踪或广告类 Cookie。因此，我们在法律上免于通过互动式横幅（“接受/拒绝”）收集您的明确同意。",
+      "h2_1": "1. 什么是 Cookie 和本地存储？",
+      "p_1_1": "Cookie 是您访问网站时，网站存储在您设备上的小型文本文件。除了经典的 Cookie 之外，您的浏览器中还有类似的技术（如 <em>Local Storage</em>），其目的是保存信息以改善您的体验。",
+      "h2_2": "2. 我们使用的技术",
+      "p_2_1": "本网站专门使用您浏览器的 <strong>本地存储 (localStorage)</strong> 来保存您的用户界面首选项，以确保所有处理都在您的设备上私密进行。",
+      "th_name": "名称 (Key)",
+      "th_type": "类型",
+      "th_purpose": "目的 (严格必需)",
+      "th_duration": "持续时间",
+      "td_type_local": "本地存储",
+      "td_duration_persist": "永久",
+      "td_theme_desc": "记住您是否偏好使用亮色模式 (☀️) 或暗色模式 (🌙) 以调整视觉界面。",
+      "td_filters_desc": "保存您生成的“我的过滤器”的个人本地库，使您在以后的访问中能直接检索它们，而无需使用外部数据库。",
+      "td_support_desc": "记住您已决定关闭并且不再查看开发支持横幅，以避免打扰。",
+      "h2_3": "3. 第三方 Cookie（可选）",
+      "p_3_1": "如果您与“请我喝杯咖啡”按钮互动并打开了叠加的支付网关，外部处理商 <strong>Lemon Squeezy</strong> 可能会加载其自己的技术性 Cookie，这些 Cookie 是安全处理交易和防止电子欺诈所必需的。这些 Cookie 不受我们控制，并受 Lemon Squeezy 隐私和 Cookie 政策的管辖。",
+      "h2_4": "4. 如何删除这些信息？",
+      "p_4_1": "尽管我们不使用跟踪技术，但您始终可以随时完全控制保存在浏览器中的数据。如果您希望删除保存的过滤器和视觉偏好，您可以轻松完成：",
+      "li_4_1": "通过在浏览器设置（Chrome、Firefox、Safari、Edge）中清除缓存和网站数据存储。",
+      "li_4_2": "使用“隐私浏览”或“无痕”模式，在关闭窗口时将自动删除这些本地存储。",
+      "p_4_2": "欲了解有关我们身份的更多信息，请访问我们的 <strong><a href=\"#\" id=\"hub-legal-link-2\">集中式法律声明</a></strong>。"
+    }
+  }
+}

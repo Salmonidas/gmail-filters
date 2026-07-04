@@ -15,9 +15,54 @@ const state = {
 
 function detectLocale() {
   if (CONFIG.INITIAL_LOCALE) return CONFIG.INITIAL_LOCALE;
-  const preferred = navigator.language?.split('-')[0] || 'en';
+
+  // 0. User's persisted choice (set when they pick a language in the selector)
+  try {
+    const saved = localStorage.getItem('preferredLocale');
+    const available = i18n.availableLocales().map(l => l.code);
+    if (saved && available.includes(saved)) return saved;
+  } catch (_) {}
+
+  const preferred = navigator.language || 'en';
   const available = i18n.availableLocales().map(l => l.code);
-  return available.includes(preferred) ? preferred : 'en';
+
+  // 1. Exact match
+  if (available.includes(preferred)) return preferred;
+
+  // 2. Regional Map fallback
+  const lowerPref = preferred.toLowerCase();
+  if (lowerPref.startsWith('es-')) {
+    if (lowerPref === 'es-es') return 'es-ES';
+    if (lowerPref === 'es-us') return 'es-US';
+    return 'es-419'; 
+  }
+  if (lowerPref.startsWith('en-')) {
+    if (lowerPref === 'en-gb') return 'en-GB';
+    if (lowerPref === 'en-ca') return 'en-CA';
+    if (lowerPref === 'en-au') return 'en-AU';
+    if (lowerPref === 'en-in') return 'en-IN';
+    return 'en-US';
+  }
+  if (lowerPref.startsWith('fr-')) {
+    if (lowerPref === 'fr-ca') return 'fr-CA';
+    return 'fr-FR';
+  }
+  if (lowerPref.startsWith('pt-')) {
+    if (lowerPref === 'pt-br') return 'pt-BR';
+    return 'pt-PT';
+  }
+  if (lowerPref.startsWith('ca-')) {
+    if (lowerPref.includes('valencia')) return 'ca-ES-valencia';
+    if (lowerPref.includes('mallorca')) return 'ca-ES-mallorca';
+    return 'ca';
+  }
+
+  // 3. Prefix matching
+  const prefix = preferred.split('-')[0];
+  if (available.includes(prefix)) return prefix;
+
+  // 4. Default fallback
+  return 'en';
 }
 
 function initTheme() {

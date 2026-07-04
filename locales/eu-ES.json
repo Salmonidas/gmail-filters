@@ -1,0 +1,356 @@
+{
+  "app": {
+    "title": "Gmail Iragazki Sortzailea",
+    "subtitle": "Sortu bilaketa-kontsulta aurreratuak Gmail-erako era bisualean, sintaxia buruz ikasi gabe.",
+    "language_selector": "Hizkuntza"
+  },
+  "nav": {
+    "builder": "Sortzailea",
+    "preview": "Aurrebista",
+    "examples": "Liburutegia",
+    "help": "Laguntza",
+    "guide": "Gida"
+  },
+  "builder": {
+    "title": "Iragazki Sortzailea",
+    "add_condition": "Gehitu baldintza",
+    "clear_all": "Garbitu dena",
+    "logic_and": "ETA",
+    "logic_or": "EDO",
+    "logic_label": "Honekin uztartu",
+    "group_label": "Taldekatu parentesi artean",
+    "advanced_mode": "Editatu kontsulta eskuz",
+    "visual_mode": "Itzuli sortzaile bisualera",
+    "advanced_note": "Editatu kontsulta zuzenean. Egin klik \"Itzuli sortzaile bisualera\" baldintzetan berriro banatzeko.",
+    "no_conditions": "Oraindik ez dago baldintzarik. Egin klik \"Gehitu baldintza\" zure iragazkia sortzen hasteko.",
+    "condition": {
+      "type_label": "Iragazki mota",
+      "value_label": "Balioa",
+      "remove": "Kendu baldintza",
+      "negate": "Kanpoan utzi (NOT)"
+    },
+    "types": {
+      "from": "Nork bidalia (from)",
+      "to": "Nori bidalia (to)",
+      "cc": "Kopia (cc)",
+      "bcc": "Kopia ezkutua (bcc)",
+      "subject": "Gaia (subject)",
+      "body": "Gorpuzkiak hau du",
+      "has_attachment": "Erantsitako fitxategia du",
+      "filename": "Erantsitako fitxategiaren izena / mota",
+      "label": "Etiketa (nire Gmail etiketak)",
+      "in": "Sistemako karpetan (inbox, spam...)",
+      "is_read": "Egoera: irakurria",
+      "is_unread": "Egoera: irakurri gabea",
+      "is_starred": "Egoera: izarduna (⭐)",
+      "is_important": "Egoera: garrantzitsu gisa markatua",
+      "date_after": "Honekin jasoa (ondoren)",
+      "date_before": "Honekin jasoa (aurretik)",
+      "newer_than": "Hau baino berriagoa... (erlatiboa)",
+      "older_than": "Hau baino zaharragoa... (erlatiboa)",
+      "size_larger": "Hau baino handiagoa",
+      "size_smaller": "Hau baino txikiagoa"
+    },
+    "placeholders": {
+      "from": "irene@gmail.com  EDO  nagusia@enpresa.com",
+      "to": "taldea@enpresa.com  EDO  buletina@zerbitzua.io",
+      "cc": "kudeatzailea@enpresa.com",
+      "bcc": "artxiboa@enpresa.com  EDO  legezkoa@enpresa.com",
+      "subject": "faktura  EDO  \"hiruhileko txostena\"  -zirriborroa",
+      "body": "ekintza beharrezkoa  EDO  \"hemen duzu fitxategia\"",
+      "filename": "pdf  EDO  *.docx  EDO  *.xlsx",
+      "label": "fakturak  EDO  lana  EDO  ordainagiriak",
+      "in": "inbox  EDO  spam  EDO  promotions  EDO  sent",
+      "newer_than": "7d  ·  2m  ·  1y   (d=egunak, m=hilabeteak, y=urteak)",
+      "older_than": "30d  ·  3m  ·  2y   (d=egunak, m=hilabeteak, y=urteak)",
+      "size_larger": "5M  ·  10M  ·  25M   (M = megabyte)",
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobyte, M = megabyte)"
+    },
+    "has_attachment_note": "Gutxienez erantsitako fitxategi bat (edozein motatakoa) duten mezuak hautatzen ditu.",
+    "is_read_note": "Dagoeneko ireki eta irakurri dituzun mezuak hautatzen ditu.",
+    "is_unread_note": "Oraindik ireki ez dituzun mezuak hautatzen ditu.",
+    "is_starred_note": "Gmail-en izarrarekin (⭐) markatu dituzun mezuak hautatzen ditu.",
+    "is_important_note": "Gmail-ek edo zuk garrantzitsu gisa (►) markatu dituzuen mezuak hautatzen ditu."
+  },
+  "preview": {
+    "title": "Sortutako Kontsulta",
+    "empty": "Zure kontsulta hemen agertuko da goian baldintzak gehitu ahala.",
+    "copy": "Kopiatu arbelean",
+    "copied": "Kopiatua!",
+    "open_gmail": "Ireki Gmail-en",
+    "how_to_apply": "Nola aplikatu",
+    "summary_title": "Iragazki honek egiten duena",
+    "summary_empty": "Gehitu baldintzak goian laburpen ulergarri bat hemen ikusteko.",
+    "char_count": "{{count}} karaktere",
+    "share": "Partekatu esteka",
+    "share_copied": "Esteka kopiatua!",
+    "save": "Gorde iragazkia",
+    "saved_toast": "Nire iragazkietan gordea"
+  },
+  "saved_filters": {
+    "title": "Nire iragazkiak",
+    "subtitle": "Zure nabigatzailean gorde dituzun iragazkiak.",
+    "empty": "Ez dago gordetako iragazkirik oraindik.",
+    "delete": "Ezabatu",
+    "name_prompt": "Izendatu iragazki hau:",
+    "default_name": "Iragazki pertsonalizatua",
+    "dialog_title": "Gorde iragazkia",
+    "dialog_hint": "Zure iragazkia Liburutegia pestan agertuko da, Nire iragazkiak atalean.",
+    "dialog_save": "Gorde",
+    "cancel": "Utzi",
+    "snackbar_msg": "Iragazkia Nire iragazkietan gordea",
+    "snackbar_action": "Ikusi",
+    "delete_confirm_title": "Iragazkia ezabatu?",
+    "delete_confirm_msg": "Ziur al zaude iragazki hau zure liburutegitik ezabatu nahi duzula? Ekintza hau ezin da desegin.",
+    "delete_cancel": "Utzi",
+    "delete_confirm": "Ezabatu",
+    "empty_library_title": "Zure liburutegia hutsik dago",
+    "empty_library_desc": "Gorde maiztasun handiz erabiltzen dituzun bilaketak hemen geroago erraz aurkitzeko.",
+    "empty_library_cta": "Joan Sortzailera"
+  },
+  "examples": {
+    "title": "Adibideko iragazkiak",
+    "subtitle": "Egin klik \"Kargatu\" botoian sortzailea adibideko datuekin betetzeko eta pertsonalizatzeko.",
+    "load": "Kargatu adibidea",
+    "items": [
+      {
+        "id": "invoices_last_month",
+        "title": "Fakturak bidaltzaile zehatz batzuengandik (azken hilabetea)",
+        "description": "Bi bidaltzaile zehatzen mezuak, gaian 'invoice' dutenak baina ez 'draft', azken 30 egunetan jasoak.",
+        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+      },
+      {
+        "id": "meeting_cc",
+        "title": "Bileren mezuak non CC-n nagoen",
+        "description": "Kopian (CC) agertzen zaren mezuak, gaian 'meeting' dutenak, baina ez 'cancelled'.",
+        "query": "cc:me subject:(meeting -cancelled)"
+      },
+      {
+        "id": "pdf_attachments",
+        "title": "PDF fitxategi erantsiak bidaltzaile zehatz batetik",
+        "description": "Bidaltzaile zehatz baten mezuak, PDF fitxategi erantsi bat dutenak.",
+        "query": "from:reports@company.com has:attachment filename:pdf"
+      },
+      {
+        "id": "unread_starred",
+        "title": "Irakurri gabeko mezu izardunak",
+        "description": "Izardunak eta irakurri gabeak diren mezu guztiak: lehentasunezko iragazki azkar bat.",
+        "query": "is:unread is:starred"
+      },
+      {
+        "id": "newsletter_unsubscribe",
+        "title": "Harpidetza kentzeko esteka duten buletinak",
+        "description": "Promozioak kategoriako mezuak, gorputzean harpidetza kentzeko esteka (unsubscribe) dutenak.",
+        "query": "in:promotions unsubscribe"
+      }
+    ]
+  },
+  "help": {
+    "title": "Gmail-eko operadoreen erreferentzia",
+    "intro": "Jarraian, sortzaileak onartzen dituen operadoreak eta Gmail-en duten esanahia ageri dira.",
+    "operators": [
+      {
+        "op": "from:",
+        "desc": "Bidaltzailearen helbidearekin bat dator."
+      },
+      {
+        "op": "to:",
+        "desc": "Hartzaile nagusiarekin bat dator."
+      },
+      {
+        "op": "cc: / bcc:",
+        "desc": "CC = kopia (ikusgarria). BCC = kopia ezkutua (ez-ikusgarria)."
+      },
+      {
+        "op": "subject:",
+        "desc": "Gaiaren barruan bilatzen du."
+      },
+      {
+        "op": "has:attachment",
+        "desc": "Edozein fitxategi erantsi duten mezuak."
+      },
+      {
+        "op": "filename:",
+        "desc": "Erantsitako fitxategiaren izenarekin edo luzapenarekin bat dator (adib. pdf, *.docx)."
+      },
+      {
+        "op": "label:",
+        "desc": "Zuk sortutako Gmail etiketa pertsonalizatua duten mezuak."
+      },
+      {
+        "op": "in:",
+        "desc": "Gmail sistemako karpetetako mezuak: inbox, spam, trash, sent, promotions..."
+      },
+      {
+        "op": "is:read / is:unread",
+        "desc": "Irakurritako egoeraren arabera iragazten du."
+      },
+      {
+        "op": "is:starred / is:important",
+        "desc": "Izarra (⭐) edo garrantzia (►) egoeraren arabera iragazten du."
+      },
+      {
+        "op": "after: / before:",
+        "desc": "Data-tartea, URTEA/HILABETEA/EGUNA formatua erabiliz."
+      },
+      {
+        "op": "newer_than: / older_than:",
+        "desc": "Data erlatiboa: 7d (7 egun), 2m (2 hilabete), 1y (urte 1)."
+      },
+      {
+        "op": "larger: / smaller:",
+        "desc": "Mezuaren tamaina: 5M (5 MB), 500K (500 KB)."
+      },
+      {
+        "op": "OR",
+        "desc": "Bi baldintza uztartzen ditu, bietako bat betetzea nahikoa delarik (letra larriz idatzi behar da)."
+      },
+      {
+        "op": "-baldintza",
+        "desc": "Baldintza horrekin bat datozen mezuak kanpoan uzten ditu (NOT operadorea)."
+      },
+      {
+        "op": "(…)",
+        "desc": "Baldintzak taldekatzen ditu operadoreak talde osoari aplikatzeko."
+      }
+    ],
+    "tips_title": "Aholku profesionalak",
+    "tips": [
+      "Hitz bat baino gehiagoko balioak komatxo artean sartu: subject:\"hiruhileko txostena\"",
+      "Erabili OR parentesi artean hainbat baliorekin bat etortzeko: from:(a@x.com OR b@x.com)",
+      "Gmail-eko operadoreek ez dituzte letra larriak eta xeheak bereizten, baina OR letra larriz idatzi behar da.",
+      "Enganxatu sortutako kontsulta zuzenean Gmail-eko bilaketa-barran edo iragazki bat sortzean 'Hitzak ditu' eremuan.",
+      "Uztartu newer_than eta older_than denbora-tarte zehatz bat ezartzeko: newer_than:3m older_than:1m",
+      "label: zure etiketa pertsonalizatuetan bilatzen du. in: Gmail sistemako karpetetan bilatzen du (inbox, spam...)."
+    ]
+  },
+  "support": {
+    "toast_title": "☕ Lagundu proiektua babesten",
+    "toast_desc": "Tresna hau doakoa eta kode irekikoa da. Denbora aurreztu badizu, doazio txiki batek bizirik mantentzen laguntzen du.",
+    "dismiss_permanent": "Ez erakutsi berriro",
+    "header_title": "Lagundu garatzaileari",
+    "footer_donate": "Doazioa",
+    "toast_cta": "☕ Gonbidatu niri kafe batera",
+    "modal_title": "Babestu proiektu hau 💖",
+    "modal_desc": "Aukeratu zuretzat onena den bidea. Laguntza txiki orok tresna hau doakoa eta kode irekikoa izaten jarraitzen laguntzen du.",
+    "option_lemon": "Gonbidatu niri kafe batera (Apple Pay, txartela, PayPal)",
+    "option_github": "GitHub Sponsors (aldi bakarrekoa edo errepikakorra)",
+    "links": []
+  },
+  "guide": {
+    "tab": "Gida",
+    "title": "Nola aplikatu zure iragazkia Gmail-en",
+    "intro": "Kontsulta tresna honekin sortu ondoren, jarraitu urrats hauek Gmail-en arau automatiko iraunkor bihurtzeko.",
+    "step1_title": "Kopiatu kontsulta",
+    "step1_desc": "Egin klik [Kopiatu arbelean] botoian orrialde honetako «Sortutako Kontsulta» txartelean.",
+    "step2_title": "Ireki Gmail",
+    "step2_desc": "Joan gmail.com helbidera zure nabigatzailean eta hasi saioa ez baduzu egin.",
+    "step3_title": "Egin klik goiko bilaketa-barran",
+    "step3_desc": "Gmail-ek bilaketa-barra zabal bat du goialdean («Bilatu mezuetan» dioena). Egin klik bertan.",
+    "step4_title": "Enganxatu kontsulta",
+    "step4_desc": "Sakatu Ctrl+V (Windows / Linux) edo Cmd+V (Mac) itsasteko. Kontsulta barruan agertzen dela ikusiko duzu.",
+    "step5_title": "Egin klik bilaketa-aukerak ikonoan <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span> bilaketa-barraren eskuinaldean",
+    "step5_desc": "Begiratu arretaz barraren eskuineko ertza — hiru lerro horizontal dituen ikono bat dago (Erakutsi bilaketa-aukerak) <span class=\"inline-icon\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z\"/></svg></span>. Egin klik bertan aukera aurreratuen panela irekitzeko.",
+    "step5_tip": "Hau da jende gehienak ahazten duen urratsa! Ikonoa oso diskretua da eta txokoan dago. Gmail bertsio zaharragoetan ▼ gezi bat izan daiteke, baina orain konfigurazio ikono hau izan ohi da.",
+    "step6_title": "Egin klik «Sortu iragazkia» botoian",
+    "step6_desc": "Bilaketa xehetasunen panel bat irekiko da. Leiho horren behealdean, egin klik «Sortu iragazkia» dioen botoian.",
+    "step7_title": "Aukeratu zer egin behar duen Gmail-ek automatikoki",
+    "step7_desc": "Markatu ekintza bat edo gehiago — artxibatu, etiketa bat ezarri, irakurri gisa markatu, ezabatu... eta ondoren egin klik [Sortu iragazkia] botoian berresteko.",
+    "done": "Egina! Gmail-ek arau hau automatikoki aplikatuko dio mezu berri bakoitzari, zuk ezer egin beharrik gabe.",
+    "tip_label": "Urrats nagusia"
+  },
+  "footer": {
+    "made_with": "Kode irekia hemen:",
+    "github": "GitHub",
+    "donate": "Doazioa",
+    "disclaimer": "Tresna honek ez du loturarik Google edo Gmail-ekin.",
+    "privacy": "Pribatutasun politika",
+    "cookies": "Cookie politika",
+    "legal_notice": "Lege oharra"
+  },
+  "summary": {
+    "prefix": "Iragazki honek mezu hauek hautatuko ditu",
+    "from": "nork bidalia: {{value}}",
+    "to": "nori bidalia: {{value}}",
+    "cc": "{{value}} CC-n dutenak",
+    "bcc": "{{value}} BCC-n dutenak",
+    "subject": "gaian {{value}} dutenak",
+    "body": "gorputzean {{value}} dutenak",
+    "has_attachment": "fitxategi erantsi bat dutenak",
+    "filename": "fitxategi erantsiaren izena/mota {{value}} dutenak",
+    "label": "{{value}} etiketarekin markatuak",
+    "in": "{{value}} karpetan kokatuak",
+    "is_read": "irakurrita daudenak",
+    "is_unread": "irakurri gabe daudenak",
+    "is_starred": "izarrarekin markatuta daudenak",
+    "is_important": "garrantzitsu gisa markatuta daudenak",
+    "date_after": "{{value}} ondoren jasoak",
+    "date_before": "{{value}} aurretik jasoak",
+    "newer_than": "azken {{value}} epean jasoak",
+    "older_than": "{{value}} baino zaharragoak",
+    "size_larger": "tamaina {{value}} baino handiagoa dutenak",
+    "size_smaller": "tamaina {{value}} baino txikiagoa dutenak",
+    "negate_prefix": "EZ",
+    "and_connector": " ETA ",
+    "or_connector": " EDO "
+  },
+  "pwa": {
+    "install_btn": "Instalatu aplikazioa",
+    "install_title": "Instalatu Iragazki Sortzailea",
+    "install_desc": "Instalatu gure aplikazioa zure gailuan esperientzia azkarragoa eta lineaz kanpokoa izateko.",
+    "ios_hint_title": "Instalatu iOS / Safari-n",
+    "ios_hint_steps": "1. Sakatu partekatzeko botoia [ikonoa] \n2. Hautatu 'Gehitu hasierako pantailan'",
+    "installed_msg": "Aplikazioa ondo instalatu da!"
+  },
+  "legal": {
+    "privacy_title": "Pribatutasun-politika - Gmail Filter Builder",
+    "cookies_title": "Cookie-politika - Gmail Filter Builder",
+    "back_home": "Itzuli hasierara",
+    "privacy": {
+      "h1": "Pribatutasun-politika",
+      "last_updated": "Azken eguneratzea: 2026ko uztailaren 2a",
+      "h2_1": "1. Arduradunaren Nortasuna",
+      "p_1_1": "2016/679 (EB) Araudian (DBEO) eta 3/2018 Lege Organikoan (DBEDBLO) ezarritakoaren arabera, jakinarazten dizugu webgune honetan bildutako datuen tratamenduaren arduraduna <strong>Salmonidas</strong> dela.",
+      "p_1_2": "Datu fiskal osoak, kudeaketa-helbidea eta zuzeneko harremanetarako bideak kontsultatzeko, mesedez bisitatu gure <strong><a href=\"#\" id=\"hub-legal-link\">Lege-oharra eta Nortasuna</a></strong>.",
+      "h2_2": "2. Biltzen ditugun datuak eta helburua",
+      "p_2_1": "<strong>Gmail Filter Builder</strong> \"pribatutasuna diseinutik bertatik\" (Privacy by Design) printzipioaren pean diseinatutako tresna da. Berez, aplikazioak lokalki funtzionatzen du zure nabigatzailean (<em>client-side</em>) eta <strong>ez du biltzen, ez du gordetzen eta ez die transmititzen</strong> gure zerbitzariei zure mezu elektronikoei, bilaketei, sortutako iragazkiei edo erabileraren datu pertsonalei buruzko inolako informaziorik.",
+      "p_2_2": "Datuak kasu esplizitu hauetan soilik prozesatzen dira:",
+      "li_2_1": "<strong>Konexio-datu teknikoak:</strong> Webgunea bisitatzean, gure azpiegitura-hornitzaileak (GitHub Pages) zure IP helbidea eta nabigatzailearen <em>User-Agent</em>-a erregistratu ditzake aldi baterako, segurtasunagatik, DDoS erasoak prebenitzeko eta sarearen errendimenduagatik.",
+      "li_2_2": "<strong>Dohaintzak / Ordainketak:</strong> Dohaintza-sistemaren bidez proiektua laguntzeko borondatezko ekarpen bat egitea erabakitzen baduzu, ordainketa hirugarrenen plataformek (Lemon Squeezy edo GitHub Sponsors) prozesatuko dute osorik. Guk ez ditugu biltzen eta ez dugu sarbiderik zure banku- edo kreditu-txartelaren datuetara inongo unetan.",
+      "h2_3": "3. Datuen Hartzaileak (Tratamenduaren Eragileak)",
+      "p_3_1": "Zerbitzua eman eta garapenerako laguntza-funtzioak gaitu ahal izateko, datu teknikoak soilik partekatzen ditugu edo prozesua hornitzaile hauen esku uzten dugu, zeinekin tratamendu-enkarguaren nahitaezko akordioa (DPA) dagoen:",
+      "li_3_1": "<strong>Microsoft Corporation (GitHub Pages):</strong> Web-ostalaritza (hosting-a) eskaintzen du. Bere zerbitzariak Estatu Batuetan egon daitezke, kontratu-klausula tipoen (SCC) eta EB-AEB Datuen Pribatutasun Esparruaren (DPF) pean funtzionatuz.",
+      "li_3_2": "<strong>Lemon Squeezy, LLC:</strong> <em>Merchant of Record</em> gisa jarduten du borondatezko ordainketak prozesatzeko. Txartelaren, Apple Pay-ren edo PayPal-en bidez dohaintza bat egiten baduzu, Lemon Squeezy-k zure posta elektronikoa eta fakturazio-informazioa bilduko ditu bere pribatutasun-politiken pean, beraiek ordainketa horren arduradun gisa jardunez.",
+      "h2_4": "4. AI Teknologiak (AI Act)",
+      "p_4_1": "Esplizituki jakinarazten dizugu webgune honek <strong>EZ duela erabiltzen</strong> Adimen Artifizial sortzaileko motorrik edo erabaki automatizatuak hartzeko sistemarik bere iragazkiak sortzeko funtzioetan. Sortutako kode guztia programazio deterministaren logikan oinarritzen da.",
+      "h2_5": "5. Erabiltzailearen Eskubideak (DBEO)",
+      "p_5_1": "Zure datu pertsonalak tratatzen ari garen ala ez baieztatzeko eskubidea duzu. Erregistratutako erabiltzaileen datu-baserik ez dugunez, eskubideen gauzatzea berez mugatuta dago webgunearen izaera teknikoagatik, baina edozein unetan gauzatu ahal izango dituzu zure <strong>Sarbide, Zuzenketa, Ezabaketa, Muga, Eramangarritasun eta Aurkaritza</strong> eskubideak, <a href=\"#\" class=\"hub-legal-link-class\">Lege-ohar Zentralizatuan</a> zehaztutako harremanetarako helbidera mezu elektroniko bat bidaliz.",
+      "p_5_2": "Era berean, zure datuak behar bezala tratatu ez ditugula uste baduzu, Datuak Babesteko Espainiako Bulegoan (AEPD) erreklamazio bat aurkezteko eskubidea duzu."
+    },
+    "cookies": {
+      "h1": "Cookie-politika eta Tokiko Biltegiratzea",
+      "last_updated": "Azken eguneratzea: 2026ko uztailaren 2a",
+      "alert": "<strong>Legezko salbuespenari buruzko informazioa:</strong> Datuak Babesteko Espainiako Bulegoaren (AEPD) jarraibideak betez, jakinarazten dizugu webgune honek <strong>biltegiratze-teknologia teknikoak eta funtzionalak soilik erabiltzen dituela</strong>. Ez dugu cookie analitikorik, marketinekorik, jarraipenekorik edo publizitatekorik erabiltzen. Beraz, legez salbuetsita gaude panel interaktibo baten bidez (\"Onartu/Baztertu\") zure berariazko baimena eskatzeko betebeharretik.",
+      "h2_1": "1. Zer dira cookie-ak eta tokiko biltegiratzea?",
+      "p_1_1": "Cookie-ak webguneek zure gailuan gordetzen dituzten testu-fitxategi txikiak dira, webgune horiek bisitatzen dituzunean. Cookie klasikoez gain, antzeko beste teknologia batzuk daude, hala nola zure nabigatzailearen <em>Local Storage</em> (tokiko biltegiratzea), zure esperientzia hobetzeko informazioa gordetzeko helburu berdinak betetzen dituztenak.",
+      "h2_2": "2. Erabiltzen ditugun teknologiak",
+      "p_2_1": "Gure webguneak esklusiboki zure nabigatzailearen <strong>tokiko biltegiratzea (localStorage)</strong> erabiltzen du zure erabiltzaile-interfazearen hobespenak gordetzeko, prozesamendu guztia zure gailuan modu pribatuan mantentzen dela bermatuz.",
+      "th_name": "Izena (Gakoa)",
+      "th_type": "Mota",
+      "th_purpose": "Helburua (Ezinbestekoa)",
+      "th_duration": "Iraupena",
+      "td_type_local": "Local Storage",
+      "td_duration_persist": "Iraunkorra",
+      "td_theme_desc": "Interfaze bisuala egokitzeko Modu Argia (☀️) edo Modu Iluna (🌙) nahiago duzun gogoratzen du.",
+      "td_filters_desc": "Sortutako \"Nire Iragazkiak\"-en tokiko liburutegi pertsonala gordetzen du, etorkizuneko bisitetan berreskuratu ahal izateko kanpoko datu-baserik erabili gabe.",
+      "td_support_desc": "Gogaitasunak saihesten ditu, garapenerako laguntza emateko informazio-bannerra itxi eta berriro ez ikustea erabaki duzula gogoratuz.",
+      "h2_3": "3. Hirugarrenen cookie-ak (Aukerakoak)",
+      "p_3_1": "\"Gonbida nazazu kafe batera\" botoiarekin elkarreragiten baduzu eta gainjarritako ordainketa-pasabidea irekitzen bada, <strong>Lemon Squeezy</strong> kanpoko prozesadoreak transakzioa modu seguruan prozesatzeko eta iruzur elektronikoa saihesteko beharrezkoak diren bere cookie teknikoak kargatu ditzake. Cookie horiek gure kontroletik kanpo daude eta Lemon Squeezy-ren pribatutasun- eta cookie-politikak arautzen ditu.",
+      "h2_4": "4. Nola ezabatu informazio hori?",
+      "p_4_1": "Jarraipen-teknologiarik erabiltzen ez dugun arren, zure nabigatzailean gordetako datuen gaineko erabateko kontrola duzu uneoro. Gordetako iragazkiak eta hobespen bisualak ezabatu nahi badituzu, erraz egin dezakezu:",
+      "li_4_1": "Zure nabigatzailearen ezarpenetan cachea eta guneetako datuen biltegiratzea hustuz (Chrome, Firefox, Safari, Edge).",
+      "li_4_2": "\"Nabigazio Pribatua\" edo \"Ezkutuko\" modua erabiliz, zeinak automatikoki ezabatuko duen tokiko biltegiratze hori leihoa ixtean.",
+      "p_4_2": "Nortzuk garen buruzko informazio gehiago lortzeko, bisitatu gure <strong><a href=\"#\" id=\"hub-legal-link-2\">Lege-ohar Zentralizatua</a></strong>."
+    }
+  }
+}
