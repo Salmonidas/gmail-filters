@@ -2,7 +2,8 @@
   "app": {
     "title": "Pembuat Filter Gmail",
     "subtitle": "Buat kueri pencarian Gmail lanjutan secara visual, tanpa harus menghafal sintaks.",
-    "language_selector": "Bahasa"
+    "language_selector": "Bahasa",
+    "skip_to_content": "Lompat ke konten utama"
   },
   "nav": {
     "builder": "Pembuat",
@@ -22,7 +23,7 @@
     "advanced_mode": "Edit kueri secara manual",
     "visual_mode": "Kembali ke pembuat visual",
     "advanced_note": "Edit kueri pencarian secara langsung. Klik \"Kembali ke pembuat visual\" untuk mengurainya kembali menjadi kondisi terpisah.",
-    "no_conditions": "Belum ada kondisi. Klik \"Tambah Kondisi\" untuk mulai membuat filter Anda.",
+    "no_conditions": "Belum ada kondisi. Klik «Tambah Kondisi» atau «Tambah Grup» untuk memulai.",
     "condition": {
       "type_label": "Jenis filter",
       "value_label": "Nilai",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "Dari — pengirim",
-      "to": "Kepada — penerima",
+      "to": "Kepada — penerima mana pun (To/CC/BCC)",
       "cc": "CC — tembusan",
       "bcc": "BCC — tembusan tersembunyi",
       "subject": "Subjek",
       "body": "Isi pesan mengandung",
-      "has_attachment": "Memiliki lampiran",
+      "has_attachment": "Memiliki lampiran (termasuk gambar inline)",
       "filename": "Nama / jenis berkas lampiran",
       "label": "Label (label Gmail kustom saya)",
-      "in": "Di folder sistem (kotak masuk, spam...)",
+      "in": "Folder sistem (inbox, spam, anywhere…)",
       "is_read": "Status: sudah dibaca",
       "is_unread": "Status: belum dibaca",
       "is_starred": "Status: berbintang (⭐)",
       "is_important": "Status: ditandai penting",
-      "date_after": "Diterima setelah tanggal",
-      "date_before": "Diterima sebelum tanggal",
+      "date_after": "Diterima setelah tanggal (inklusif)",
+      "date_before": "Diterima sebelum tanggal (eksklusif)",
       "newer_than": "Diterima dalam... terakhir (relatif)",
       "older_than": "Diterima lebih lama dari... (relatif)",
       "size_larger": "Ukuran lebih besar dari",
-      "size_smaller": "Ukuran lebih kecil dari"
+      "size_smaller": "Ukuran lebih kecil dari",
+      "deliveredto": "Delivered-To — alias / alamat penerusan",
+      "list": "Milis (header List-Id)",
+      "exact_phrase": "Frasa persis (\"…\")",
+      "exact_word": "Kata persis tanpa imbuhan (+)",
+      "around": "Kata berdekatan (AROUND)",
+      "has_drive": "Berisi tautan Google Drive",
+      "has_document": "Berisi file Google Docs",
+      "has_spreadsheet": "Berisi file Google Sheets",
+      "has_presentation": "Berisi file Google Slides",
+      "has_youtube": "Berisi video YouTube",
+      "header_calendar": "Notifikasi Google Kalender",
+      "rfc822msgid": "Message-ID persis (rfc822msgid:)",
+      "category": "Tab kategori kotak masuk",
+      "has_userlabels": "Memiliki label kustom",
+      "has_nouserlabels": "TIDAK memiliki label kustom",
+      "label_encryptedmail": "Terenkripsi sisi klien (CSE)",
+      "has_star": "Ikon bintang tertentu",
+      "is_muted": "Status: utas dibisukan",
+      "size_exact": "Ukuran minimum dalam byte (size:)"
     },
     "placeholders": {
-      "from": "alice@gmail.com ATAU boss@company.com",
-      "to": "team@company.com ATAU newsletter@service.io",
+      "from": "alice@gmail.com  OR  boss@company.com",
+      "to": "team@company.com  OR  newsletter@service.io",
       "cc": "manager@company.com",
-      "bcc": "archive@company.com ATAU compliance@firm.com",
-      "subject": "faktur ATAU \"laporan triwulanan\" -draf",
-      "body": "tindakan diperlukan ATAU \"silakan temukan lampiran\"",
-      "filename": "pdf ATAU *.docx ATAU *.xlsx",
-      "label": "faktur ATAU pekerjaan ATAU tanda terima",
-      "in": "inbox ATAU spam ATAU promotions ATAU sent",
+      "bcc": "archive@company.com  OR  compliance@firm.com",
+      "subject": "faktur  OR  \"laporan kuartalan\"",
+      "body": "tindakan diperlukan  OR  konfirmasi",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "faktur  OR  Keuangan/Pajak  OR  Label Saya",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d · 2m · 1y   (d=hari, m=bulan, y=tahun)",
       "older_than": "30d · 3m · 2y   (d=hari, m=bulan, y=tahun)",
       "size_larger": "5M · 10M · 25M   (M = megabyte)",
-      "size_smaller": "500K · 1M · 5M   (K = kilobyte, M = megabyte)"
+      "size_smaller": "500K · 1M · 5M   (K = kilobyte, M = megabyte)",
+      "deliveredto": "anda+berita@gmail.com  OR  you@gmail.com",
+      "list": "info@layanan.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "laporan kuartalan",
+      "exact_word": "faktur",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "Mencocokkan pesan yang memiliki setidaknya satu lampiran (jenis apa pun).",
-    "is_read_note": "Mencocokkan pesan yang sudah Anda buka dan baca.",
-    "is_unread_note": "Mencocokkan pesan yang belum Anda buka.",
-    "is_starred_note": "Mencocokkan pesan yang Anda beri bintang (⭐) di Gmail.",
-    "is_important_note": "Mencocokkan pesan yang ditandai penting oleh Gmail atau oleh Anda (►)."
+    "has_attachment_note": "Cocok untuk pesan dengan minimal satu lampiran (termasuk gambar inline).",
+    "is_read_note": "Khusus Pencarian: pesan yang sudah dibaca.",
+    "is_unread_note": "Khusus Pencarian: pesan yang belum dibaca.",
+    "is_starred_note": "Khusus Pencarian: pesan berbintang (⭐).",
+    "is_important_note": "Khusus Pencarian: pesan bertanda penting (►).",
+    "add_group": "Tambah Grup",
+    "add_condition_to_group": "Tambah Kondisi ke Grup",
+    "remove_group": "Hapus Grup",
+    "exclude_group": "Kecualikan grup (NOT)",
+    "match_prefix": "Cocokkan",
+    "match_all": "SEMUA (AND)",
+    "match_any": "SALAH SATU (OR)",
+    "match_suffix": "kondisi berikut:",
+    "around_word1": "Kata pertama",
+    "around_distance": "Maks. jarak kata",
+    "around_word2": "Kata kedua",
+    "around_ordered": "Urutan ketat",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (detik Unix)",
+    "groups": {
+      "people": "Orang & Milis",
+      "content": "Subjek & Isi Pesan",
+      "attachments": "Lampiran & Google Drive",
+      "calendar_headers": "Kalender & Header",
+      "organization": "Kategori, Label & Folder",
+      "status": "Baca, Bintang & Status (Pencarian)",
+      "date_size": "Tanggal & Ukuran"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — Utama",
+        "social": "social — Sosial",
+        "promotions": "promotions — Promosi",
+        "updates": "updates — Pembaruan",
+        "forums": "forums — Forum",
+        "reservations": "reservations — Reservasi",
+        "purchases": "purchases — Pembelian"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — Undangan baru",
+        "eventCancelled": "eventCancelled — Acara dibatalkan",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — Waktu/pengulangan diubah",
+        "roomAdded": "roomAdded — Ruangan ditambahkan",
+        "roomRemoved": "roomRemoved — Ruangan dihapus",
+        "locationUpdated": "locationUpdated — Lokasi diubah",
+        "titleUpdated": "titleUpdated — Judul diubah",
+        "descriptionUpdated": "descriptionUpdated — Deskripsi diubah",
+        "attachmentAdded": "attachmentAdded — Lampiran ditambahkan",
+        "attachmentRemoved": "attachmentRemoved — Lampiran dihapus",
+        "conferenceUpdated": "conferenceUpdated — Tautan rapat diubah",
+        "rsvpAccepted": "rsvpAccepted — Tamu menerima",
+        "rsvpDeclined": "rsvpDeclined — Tamu menolak",
+        "rsvpTentative": "rsvpTentative — Tamu mungkin hadir",
+        "rsvpWithNote": "rsvpWithNote — Membalas dengan catatan",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — Mengusulkan waktu baru",
+        "roomAccepted": "roomAccepted — Ruangan diterima",
+        "roomDeclined": "roomDeclined — Ruangan ditolak"
+      },
+      "has_star": {
+        "yellow-star": "Bintang kuning",
+        "orange-star": "Bintang oranye",
+        "red-star": "Bintang merah",
+        "purple-star": "Bintang ungu",
+        "blue-star": "Bintang biru",
+        "green-star": "Bintang hijau",
+        "red-bang": "Tanda seru merah (!)",
+        "orange-guillemet": "Panah ganda oranye (»)",
+        "yellow-bang": "Tanda seru kuning (!)",
+        "green-check": "Centang hijau (✓)",
+        "blue-info": "Info biru (i)",
+        "purple-question": "Tanda tanya ungu (?)"
+      }
+    },
+    "to_note": "Di Gmail, to: mencocokkan To, CC, dan BCC terkirim Anda. Gabungkan to:me dengan -cc:me untuk email langsung ke Anda.",
+    "bcc_note": "Pada filter masuk, bcc: biasanya hanya cocok dengan email yang Anda kirim. Untuk BCC masuk, coba deliveredto:you@gmail.com -to:me -cc:me.",
+    "deliveredto_note": "Mencocokkan header Delivered-To (+alias, penerusan; tidak mencakup alias domain Workspace).",
+    "exact_phrase_note": "Mencari frasa persis dalam tanda kutip (Gmail mengabaikan sebagian besar tanda baca kecuali _).",
+    "exact_word_note": "Mencegah stemming otomatis Gmail (mis. +run tidak cocok dengan running).",
+    "around_note": "Menemukan email dengan dua kata berjarak maks N kata. Jangan gunakan OR di dalam AROUND.",
+    "header_calendar_note": "Operator resmi header: hanya untuk notifikasi Google Kalender.",
+    "category_note": "Tab otomatis Gmail. Andal untuk Pencarian; bisa bervariasi di filter masuk.",
+    "label_note": "Spasi di nama label diubah menjadi tanda hubung (-) dan garis miring (/) dipertahankan. Khusus Pencarian.",
+    "in_note": "Pencarian standar melewati Spam dan Sampah kecuali menambahkan in:anywhere. Tidak ada in:archive (untuk arsip gunakan -in:inbox -in:sent -in:drafts -in:spam -in:trash). Khusus Pencarian.",
+    "label_encryptedmail_note": "Khusus Pencarian: pesan terenkripsi sisi klien (Workspace).",
+    "is_muted_note": "Khusus Pencarian: utas yang dibisukan.",
+    "date_after_note": "Inklusif (mulai pukul 00:00 hari tersebut). Khusus Pencarian.",
+    "date_before_note": "Eksklusif (berhenti sebelum 00:00 — hari itu TIDAK termasuk). Khusus Pencarian."
   },
   "preview": {
     "title": "Kueri yang Dihasilkan",
@@ -116,113 +224,174 @@
       {
         "id": "invoices_last_month",
         "title": "Faktur dari pengirim tertentu (bulan lalu)",
-        "description": "Email dari dua pengirim tertentu yang mengandung kata 'invoice' di subjek tetapi bukan 'draft', diterima dalam 30 hari terakhir.",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "description": "Email dari dua pengirim dengan subjek 'invoice' tanpa 'draft' dalam 30 hari terakhir.",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "Email rapat di mana saya di-CC",
-        "description": "Email di mana Anda muncul di CC, subjek mengandung 'meeting', tetapi bukan 'cancelled'.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "Email rapat saat saya di CC",
+        "description": "Pesan di mana Anda di CC, subjek berisi 'meeting', tanpa 'cancelled'.",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
         "title": "Lampiran PDF dari pengirim tertentu",
-        "description": "Pesan dari pengirim tertentu yang memiliki berkas lampiran PDF.",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "description": "Pesan dari pengirim tertentu yang memiliki lampiran PDF.",
+        "query": ""
       },
       {
         "id": "unread_starred",
         "title": "Pesan berbintang yang belum dibaca",
-        "description": "Semua pesan yang berbintang sekaligus belum dibaca – filter kotak masuk prioritas cepat.",
-        "query": "is:unread is:starred"
+        "description": "Semua pesan berbintang dan belum dibaca — pencarian prioritas cepat.",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "Buletin untuk berhenti berlangganan",
-        "description": "Email dalam kategori Promosi yang mengandung tautan berhenti berlangganan (unsubscribe) di dalam isi pesan.",
-        "query": "in:promotions unsubscribe"
+        "title": "Promosi dengan tautan berhenti berlangganan",
+        "description": "Email di kategori Promosi yang berisi kata 'unsubscribe'.",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "Grup OR dengan pengecualian global",
+        "description": "Pengelompokan 2 tingkat: cocok label:work OR subject:urgent, selalu kecualikan subject:Day.",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Balasan RSVP Google Kalender",
+        "description": "Menangkap undangan diterima, ditolak, atau mungkin via operator resmi header:.",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "Buletin lama massal (Trik lanjutan)",
+        "description": "Memakai label internal label:^unsub untuk mencari buletin lebih dari 30 hari.",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "Dikirim langsung ke saya (tanpa CC)",
+        "description": "Solusi untuk to: (yang mencakup CC): pesan khusus untuk Anda.",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "Email yang diterima sebagai BCC",
+        "description": "Menemukan email masuk tanpa alamat Anda di Kepada atau CC.",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "File Google Drive tanpa label",
+        "description": "Mencari pesan berisi tautan Google Drive tanpa label kustom.",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Referensi Operator Gmail",
-    "intro": "Berikut adalah operator pencarian yang didukung oleh pembuat dan artinya di Gmail.",
+    "intro": "Referensi lengkap operator pencarian dan filter Gmail, perilaku khusus, dan batas akun.",
     "operators": [
       {
         "op": "from:",
-        "desc": "Mencocokkan alamat email pengirim."
+        "desc": "Mencocokkan alamat atau domain pengirim."
       },
       {
         "op": "to:",
-        "desc": "Mencocokkan penerima utama."
+        "desc": "Mencocokkan PENERIMA mana pun (To, CC, BCC terkirim). Gunakan to:me -cc:me untuk langsung."
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = tembusan (terlihat). BCC = tembusan tersembunyi (rahasia)."
+        "desc": "CC = tembusan. BCC = tembusan rahasia (untuk masuk: deliveredto:you@gmail.com -to:me -cc:me)."
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Header Delivered-To (+alias, penerusan; bukan alias domain Workspace)."
+      },
+      {
+        "op": "list:",
+        "desc": "Header List-Id dari milis."
       },
       {
         "op": "subject:",
         "desc": "Mencari di baris subjek."
       },
       {
-        "op": "has:attachment",
-        "desc": "Pesan dengan lampiran berkas apa pun."
+        "op": "\"frasa\" / +kata",
+        "desc": "Frasa persis dalam kutip atau kata persis tanpa imbuhan dengan +."
       },
       {
-        "op": "filename:",
-        "desc": "Mencocokkan nama berkas atau ekstensi lampiran (misalnya pdf, *.docx)."
+        "op": "AROUND",
+        "desc": "Kedekatan: kata1 AROUND 5 kata2 (kutip untuk urutan ketat; tanpa OR)."
       },
       {
-        "op": "label:",
-        "desc": "Pesan dengan label Gmail kustom yang Anda buat."
+        "op": "has:attachment / filename:",
+        "desc": "Lampiran dan nama/ekstensi (pdf, docx — tanpa *)."
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Tautan Google Drive, Docs, Sheets, Slides, atau YouTube."
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Operator resmi untuk notifikasi Kalender."
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "Pencarian persis RFC 5322 Message-ID."
+      },
+      {
+        "op": "category:",
+        "desc": "Tab: primary, social, promotions, updates, forums, reservations, purchases."
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "Label kustom (tanda hubung ganti spasi) — Khusus pencarian."
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "Pesan terenkripsi sisi klien (Workspace — Khusus pencarian)."
       },
       {
         "op": "in:",
-        "desc": "Pesan di folder sistem: inbox (kotak masuk), spam, trash (sampah), sent (terkirim), promotions..."
+        "desc": "Lokasi: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (tanpa in:archive)."
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "Memfilter berdasarkan status pembacaan."
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "Memfilter berdasarkan status bintang (⭐) atau kepentingan (►)."
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "Status atau ikon bintang tertentu (Khusus pencarian)."
       },
       {
         "op": "after: / before:",
-        "desc": "Rentang tanggal menggunakan format YYYY/MM/DD."
+        "desc": "Tanggal (YYYY/MM/DD atau Unix epoch): after: inklusif, before: eksklusif (Khusus pencarian)."
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "Tanggal relatif: 7d (7 hari), 2m (2 bulan), 1y (1 tahun)."
+        "desc": "Tanggal relatif: 7d, 2m, 1y (Khusus pencarian)."
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "Ukuran pesan: 5M (5 MB), 500K (500 KB)."
+        "op": "larger: / smaller: / size:",
+        "desc": "Ukuran: 5M, 500K atau ukuran minimum byte via size: (mis. size:1048576)."
       },
       {
-        "op": "OR",
-        "desc": "Menggabungkan dua istilah agar salah satu cocok (harus huruf besar)."
-      },
-      {
-        "op": "-istilah",
-        "desc": "Mengecualikan pesan yang cocok dengan istilah tersebut (operator NOT)."
-      },
-      {
-        "op": "(…)",
-        "desc": "Mengelompokkan istilah agar operator berlaku untuk seluruh kelompok."
+        "op": "OR / { } / -istilah / (…)",
+        "desc": "OR huruf besar (atau {a b}), pengecualian - dan tanda kurung grup."
       }
     ],
-    "tips_title": "Tips Ahli",
+    "tips_title": "Tips Lanjutan & Kebiasaan Khusus Gmail",
     "tips": [
-      "Apit nilai yang terdiri dari beberapa kata dengan tanda kutip: subject:\"laporan triwulanan\"",
-      "Gunakan OR di dalam tanda kurung untuk mencocokkan beberapa nilai: from:(a@x.com OR b@x.com)",
-      "Operator Gmail tidak sensitif terhadap huruf besar-kecil, tetapi OR harus ditulis dengan huruf besar.",
-      "Tempelkan kueri yang dihasilkan langsung ke bilah pencarian Gmail atau bidang 'Memiliki kata-kata' saat membuat filter.",
-      "Gabungkan newer_than dan older_than untuk menargetkan rentang waktu yang tepat: newer_than:3m older_than:1m",
-      "label: mencari di label kustom Anda sendiri. in: mencari di folder bawaan Gmail (inbox, spam, promotions...)."
-    ]
+      "OR mengikat lebih kuat dari spasi (AND): gabungkan OR dan pengecualian dengan grup, mis. (label:work OR subject:urgent) -subject:Day.",
+      "Gmail TIDAK mendukung wildcard * (*.docx) atau regex. Gunakan ekstensi biasa (docx) atau domain.",
+      "Gmail mengabaikan sebagian besar tanda baca (! ? $ & # *) kecuali _ dan memecah angka bertanda hubung.",
+      "after: inklusif (mulai 00:00) sedangkan before: eksklusif. Mendukung Unix epoch.",
+      "Pencarian standar melewati Spam & Sampah kecuali menambahkan in:anywhere.",
+      "Tampilan percakapan: jika pesan lain di utas lolos dari pengecualian -, seluruh utas tetap muncul.",
+      "Filter masuk berjalan saat email tiba: tanggal, status baca/bintang, dan label: terutama untuk Pencarian.",
+      "Trik lanjutan: label:^unsub menangkap buletin dan label:^smartlabel_receipt menangkap struk.",
+      "Batas akun: jaga tiap filter di bawah ~1.469–1.500 karakter (maks. 1.000 filter, 500 label, 20 penerusan)."
+    ],
+    "th_operator": "Operator",
+    "th_description": "Deskripsi"
   },
   "support": {
     "toast_title": "☕ Dukung proyek ini",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "Filter ini akan mencocokkan email",
     "from": "yang dikirim oleh {{value}}",
-    "to": "yang dikirim ke {{value}}",
+    "to": "dengan penerima (To/CC/BCC) {{value}}",
     "cc": "dengan {{value}} di CC",
     "bcc": "dengan {{value}} di BCC",
     "subject": "yang subjeknya mengandung {{value}}",
@@ -296,7 +465,28 @@
     "size_smaller": "dengan ukuran lebih kecil dari {{value}}",
     "negate_prefix": "BUKAN",
     "and_connector": " DAN ",
-    "or_connector": " ATAU "
+    "or_connector": " ATAU ",
+    "deliveredto": "yang dikirim ke alamat {{value}}",
+    "list": "dari milis {{value}}",
+    "exact_phrase": "yang berisi frasa persis \"{{value}}\"",
+    "exact_word": "yang berisi kata persis {{value}}",
+    "around": "di mana {{word1}} muncul dalam jarak {{distance}} kata dari {{word2}}",
+    "around_ordered_suffix": "(urutan ketat)",
+    "has_drive": "berisi tautan Google Drive",
+    "has_document": "berisi file Google Docs",
+    "has_spreadsheet": "berisi file Google Sheets",
+    "has_presentation": "berisi file Google Slides",
+    "has_youtube": "berisi video YouTube",
+    "header_calendar": "dengan notifikasi Google Kalender {{value}}",
+    "rfc822msgid": "dengan Message-ID {{value}}",
+    "category": "di kategori {{value}}",
+    "has_userlabels": "memiliki minimal satu label kustom",
+    "has_nouserlabels": "tanpa label kustom",
+    "label_encryptedmail": "dikirim dengan enkripsi sisi klien",
+    "has_star": "dengan bintang {{value}}",
+    "is_muted": "dari utas yang dibisukan",
+    "size_exact": "lebih besar dari {{value}} byte",
+    "negate_group_prefix": "BUKAN SALAH SATU DARI"
   },
   "pwa": {
     "install_btn": "Instal Aplikasi",
@@ -354,7 +544,27 @@
       "p_4_1": "Meskipun kami tidak menggunakan teknologi pelacakan, Anda selalu memiliki kendali mutlak atas data yang disimpan di browser Anda. Jika Anda ingin menghapus filter yang disimpan dan preferensi visual, Anda dapat melakukannya dengan mudah:",
       "li_4_1": "Dengan menghapus cache dan penyimpanan data situs di pengaturan browser Anda (Chrome, Firefox, Safari, Edge).",
       "li_4_2": "Dengan menggunakan mode \"Penjelajahan Pribadi\" atau \"Incognito\", yang akan secara otomatis menghapus penyimpanan lokal ini saat Anda menutup jendela.",
-      "p_4_2": "Untuk informasi lebih lanjut tentang siapa kami, kunjungi <strong><a href=\"#\" id=\"hub-legal-link-2\">Pemberitahuan Hukum Terpusat</a></strong> kami."
+      "p_4_2": "Untuk informasi lebih lanjut tentang siapa kami, kunjungi <strong><a href=\"#\" id=\"hub-legal-link-2\">Pemberitahuan Hukum Terpusat</a></strong> kami.",
+      "td_locale_desc": "Mengingat bahasa yang dipilih di pemilih bahasa antar kunjungan."
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "Mendekati batas ~1.500 karakter Gmail ({{count}} karakter). Pertimbangkan untuk memperpendek atau membagi filter.",
+    "char_limit_exceeded": "Melebihi batas ~1.469–1.500 karakter Gmail ({{count}} karakter). Gmail bisa menolak atau gagal diam-diam — bagi menjadi beberapa filter.",
+    "or_negation_trap": "Jebakan OR + Kecualikan: pengecualian di dalam grup OR membuat syarat lain melewati pengecualian. Pindahkan pengecualian ke luar grup OR.",
+    "fix_or_negation_btn": "Perbaiki pengelompokan",
+    "search_only_operators": "Operator khusus pencarian terdeteksi ({{operators}}): berfungsi di pencarian Gmail, tetapi biasanya tidak cocok dengan email masuk.",
+    "caution_bcc": "Catatan bcc:: email masuk menyembunyikan BCC orang lain, jadi ini terutama cocok untuk email yang Anda kirim.",
+    "caution_category": "Catatan category:: kategori ditetapkan secara dinamis; ideal untuk Pencarian, kurang konsisten di filter masuk.",
+    "wildcard_unsupported": "Wildcard (*) terdeteksi: Gmail TIDAK mendukung * (mis. *.docx). Gunakan ekstensi langsung (docx) atau domain.",
+    "lowercase_or": "\"or\" huruf kecil terdeteksi: Gmail akan mencari kata literal \"or\" jika OR tidak huruf besar.",
+    "unescaped_inner_quote": "Tanda kutip ganda (\") ekstra di dalam frasa: Gmail akan menutup frasa lebih awal.",
+    "negation_inside_operator": "Negasi inline (-istilah) terdeteksi: sebaiknya tambahkan baris terpisah dengan Kecualikan (NOT).",
+    "around_with_or": "AROUND tidak menerima OR atau { } di dalamnya. Buat dua kondisi AROUND terpisah digabung dengan ATAU.",
+    "conversation_view_negation": "Catatan tampilan percakapan: jika utas aktif, utas tetap muncul bila pesan lain di dalamnya lolos dari pengecualian.",
+    "deliveredto_me_unsupported": "Gmail tidak mengenali \"me\" pada deliveredto: — masukkan alamat email atau alias lengkap Anda (mis. you@gmail.com).",
+    "in_archive_unsupported": "Gmail tidak memiliki operator in:archive (email arsip hanya tidak punya label Inbox). Gunakan -in:inbox -in:sent -in:drafts -in:spam -in:trash.",
+    "negated_group_caution": "Grup majemuk dikecualikan -(...) terdeteksi: berfungsi di Pencarian, namun bisa tidak konsisten pada filter masuk tersimpan. Gunakan pengecualian terpisah (-a -b).",
+    "double_negation": "Negasi ganda terdeteksi (kondisi dikecualikan di dalam grup dikecualikan): Gmail tidak mendukung -(-istilah). Hapus salah satu pengecualian."
   }
 }

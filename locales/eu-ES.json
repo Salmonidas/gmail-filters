@@ -2,7 +2,8 @@
   "app": {
     "title": "Gmail Iragazki Sortzailea",
     "subtitle": "Sortu bilaketa-kontsulta aurreratuak Gmail-erako era bisualean, sintaxia buruz ikasi gabe.",
-    "language_selector": "Hizkuntza"
+    "language_selector": "Hizkuntza",
+    "skip_to_content": "Joan eduki nagusira"
   },
   "nav": {
     "builder": "Sortzailea",
@@ -22,7 +23,7 @@
     "advanced_mode": "Editatu kontsulta eskuz",
     "visual_mode": "Itzuli sortzaile bisualera",
     "advanced_note": "Editatu kontsulta zuzenean. Egin klik \"Itzuli sortzaile bisualera\" baldintzetan berriro banatzeko.",
-    "no_conditions": "Oraindik ez dago baldintzarik. Egin klik \"Gehitu baldintza\" zure iragazkia sortzen hasteko.",
+    "no_conditions": "Ez dago baldintzarik oraindik. Sakatu «Gehitu baldintza» edo «Gehitu taldea» hasteko.",
     "condition": {
       "type_label": "Iragazki mota",
       "value_label": "Balioa",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "Nork bidalia (from)",
-      "to": "Nori bidalia (to)",
+      "to": "Nori — edozein hartzaile (To/CC/BCC)",
       "cc": "Kopia (cc)",
       "bcc": "Kopia ezkutua (bcc)",
       "subject": "Gaia (subject)",
       "body": "Gorpuzkiak hau du",
-      "has_attachment": "Erantsitako fitxategia du",
+      "has_attachment": "Eranskina du (barneko irudiak barne)",
       "filename": "Erantsitako fitxategiaren izena / mota",
       "label": "Etiketa (nire Gmail etiketak)",
-      "in": "Sistemako karpetan (inbox, spam...)",
+      "in": "Sistema-karpeta (inbox, spam, anywhere…)",
       "is_read": "Egoera: irakurria",
       "is_unread": "Egoera: irakurri gabea",
       "is_starred": "Egoera: izarduna (⭐)",
       "is_important": "Egoera: garrantzitsu gisa markatua",
-      "date_after": "Honekin jasoa (ondoren)",
-      "date_before": "Honekin jasoa (aurretik)",
+      "date_after": "Data honen ondoren jasoa (barne)",
+      "date_before": "Data honen aurretik jasoa (kanpo)",
       "newer_than": "Hau baino berriagoa... (erlatiboa)",
       "older_than": "Hau baino zaharragoa... (erlatiboa)",
       "size_larger": "Hau baino handiagoa",
-      "size_smaller": "Hau baino txikiagoa"
+      "size_smaller": "Hau baino txikiagoa",
+      "deliveredto": "Delivered-To — aliasa edo birbidaltze-helbidea",
+      "list": "Posta-zerrenda (List-Id goiburua)",
+      "exact_phrase": "Esaldi zehatza (\"…\")",
+      "exact_word": "Hitz zehatza aldaerarik gabe (+)",
+      "around": "Elkarrengandik gertuko hitzak (AROUND)",
+      "has_drive": "Google Drive esteka du",
+      "has_document": "Google Docs fitxategia du",
+      "has_spreadsheet": "Google Sheets kalkulu-orria du",
+      "has_presentation": "Google Slides aurkezpena du",
+      "has_youtube": "YouTube bideoa du",
+      "header_calendar": "Google Calendar jakinarazpena",
+      "rfc822msgid": "Message-ID zehatza (rfc822msgid:)",
+      "category": "Gmail sarrera-kategoria",
+      "has_userlabels": "Etiketa pertsonalizatua du",
+      "has_nouserlabels": "EZ du etiketa pertsonalizaturik",
+      "label_encryptedmail": "Bezeroan zifratua (CSE)",
+      "has_star": "Izar ikono zehatza",
+      "is_muted": "Egoera: isilarazitako haria",
+      "size_exact": "Gutxieneko tamaina byte-tan (size:)"
     },
     "placeholders": {
-      "from": "irene@gmail.com  EDO  nagusia@enpresa.com",
-      "to": "taldea@enpresa.com  EDO  buletina@zerbitzua.io",
+      "from": "irene@gmail.com  OR  nagusia@enpresa.com",
+      "to": "taldea@enpresa.com  OR  buletina@zerbitzua.io",
       "cc": "kudeatzailea@enpresa.com",
-      "bcc": "artxiboa@enpresa.com  EDO  legezkoa@enpresa.com",
-      "subject": "faktura  EDO  \"hiruhileko txostena\"  -zirriborroa",
-      "body": "ekintza beharrezkoa  EDO  \"hemen duzu fitxategia\"",
-      "filename": "pdf  EDO  *.docx  EDO  *.xlsx",
-      "label": "fakturak  EDO  lana  EDO  ordainagiriak",
-      "in": "inbox  EDO  spam  EDO  promotions  EDO  sent",
+      "bcc": "artxiboa@enpresa.com  OR  legezkoa@enpresa.com",
+      "subject": "faktura  OR  \"hiruhileko txostena\"",
+      "body": "ekintza beharrezkoa  OR  baieztapena",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "fakturak  OR  Finantzak/Zergak  OR  Nire Etiketa",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d  ·  2m  ·  1y   (d=egunak, m=hilabeteak, y=urteak)",
       "older_than": "30d  ·  3m  ·  2y   (d=egunak, m=hilabeteak, y=urteak)",
       "size_larger": "5M  ·  10M  ·  25M   (M = megabyte)",
-      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobyte, M = megabyte)"
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobyte, M = megabyte)",
+      "deliveredto": "zu+buletina@gmail.com  OR  you@gmail.com",
+      "list": "berriak@zerbitzua.io  OR  dev-zerrenda.googlegroups.com",
+      "exact_phrase": "hiruhileko txostena",
+      "exact_word": "faktura",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "Gutxienez erantsitako fitxategi bat (edozein motatakoa) duten mezuak hautatzen ditu.",
-    "is_read_note": "Dagoeneko ireki eta irakurri dituzun mezuak hautatzen ditu.",
-    "is_unread_note": "Oraindik ireki ez dituzun mezuak hautatzen ditu.",
-    "is_starred_note": "Gmail-en izarrarekin (⭐) markatu dituzun mezuak hautatzen ditu.",
-    "is_important_note": "Gmail-ek edo zuk garrantzitsu gisa (►) markatu dituzuen mezuak hautatzen ditu."
+    "has_attachment_note": "Gutxienez eranskin bat duten mezuak (barneko irudiak barne).",
+    "is_read_note": "Bilaketa soilik: dagoeneko irakurritako mezuak.",
+    "is_unread_note": "Bilaketa soilik: irakurri gabeko mezuak.",
+    "is_starred_note": "Bilaketa soilik: izardun mezuak (⭐).",
+    "is_important_note": "Bilaketa soilik: garrantzitsu gisa markatutako mezuak (►).",
+    "add_group": "Gehitu taldea",
+    "add_condition_to_group": "Gehitu baldintza taldera",
+    "remove_group": "Kendu taldea",
+    "exclude_group": "Baztertu taldea (NOT)",
+    "match_prefix": "Bat etorri",
+    "match_all": "GUZTIEKIN (AND)",
+    "match_any": "EDOZEINEKIN (OR)",
+    "match_suffix": "hauetatik:",
+    "around_word1": "Lehen hitza",
+    "around_distance": "Gehienezko hitz-tartea",
+    "around_word2": "Bigarren hitza",
+    "around_ordered": "Ordena zorrotza",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (Unix segundoak)",
+    "groups": {
+      "people": "Pertsonak eta posta-zerrendak",
+      "content": "Gaia eta mezuaren gorputza",
+      "attachments": "Eranskinak eta Google Drive",
+      "calendar_headers": "Egutegia eta goiburuak",
+      "organization": "Kategoriak, etiketak eta karpetak",
+      "status": "Irakurketa, izarrak eta egoera (Bilaketa)",
+      "date_size": "Datak eta tamaina"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — Sarrera nagusia",
+        "social": "social — Sare sozialak",
+        "promotions": "promotions — Promozioak eta eskaintzak",
+        "updates": "updates — Eguneraketak eta fakturak",
+        "forums": "forums — Foroak eta taldeak",
+        "reservations": "reservations — Erreserbak eta hegaldiak",
+        "purchases": "purchases — Erosketak eta ordainagiriak"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — Gonbidapen berria",
+        "eventCancelled": "eventCancelled — Ekitaldia bertan behera",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — Ordua edo maiztasuna aldatuta",
+        "roomAdded": "roomAdded — Gela gehituta",
+        "roomRemoved": "roomRemoved — Gela kenduta",
+        "locationUpdated": "locationUpdated — Kokapena aldatuta",
+        "titleUpdated": "titleUpdated — Izenburua aldatuta",
+        "descriptionUpdated": "descriptionUpdated — Deskribapena aldatuta",
+        "attachmentAdded": "attachmentAdded — Eranskina gehituta",
+        "attachmentRemoved": "attachmentRemoved — Eranskina kenduta",
+        "conferenceUpdated": "conferenceUpdated — Bideodei esteka aldatuta",
+        "rsvpAccepted": "rsvpAccepted — Gonbidatuak onartu du",
+        "rsvpDeclined": "rsvpDeclined — Gonbidatuak baztertu du",
+        "rsvpTentative": "rsvpTentative — Gonbidatua zalantzan",
+        "rsvpWithNote": "rsvpWithNote — Gonbidatuak oharrarekin erantzun du",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — Ordu berria proposatu du",
+        "roomAccepted": "roomAccepted — Gelaren erreserba onartuta",
+        "roomDeclined": "roomDeclined — Gelaren erreserba baztertuta"
+      },
+      "has_star": {
+        "yellow-star": "Izar horia",
+        "orange-star": "Izar laranja",
+        "red-star": "Izar gorria",
+        "purple-star": "Izar morea",
+        "blue-star": "Izar urdina",
+        "green-star": "Izar berdea",
+        "red-bang": "Harridura gorria (!)",
+        "orange-guillemet": "Gezi bikoitz laranja (»)",
+        "yellow-bang": "Harridura horia (!)",
+        "green-check": "Marka berdea (✓)",
+        "blue-info": "Info urdina (i)",
+        "purple-question": "Galdera morea (?)"
+      }
+    },
+    "to_note": "Gmail-en to: operadoreak Nori, CC eta zuk bidalitako BCC ere bilatzen ditu. Erabili to:me -cc:me zuri bakarrik bidalitakoak ikusteko.",
+    "bcc_note": "Sarrerako iragazkietan, bcc:-k zuk bidalitako mezuak detektatzen ditu batez ere. Jasotako CCOak ikusteko, erabili deliveredto:you@gmail.com -to:me -cc:me.",
+    "deliveredto_note": "Delivered-To goiburuarekin bat dator (+alias eta birbidaltzeetarako; ez du Workspace domeinu-aliasik estaltzen).",
+    "exact_phrase_note": "Komatxo arteko esaldi zehatza bilatzen du (Gmail-ek puntuazio gehiena baztertzen du azpiko marra izan ezik).",
+    "exact_word_note": "Gmailen aldaera automatikoak desgaitzen ditu (adib. +run ez dator bat running hitzarekin).",
+    "around_note": "Bi hitzak gehienez N hitzetara dauden mezuak aurkitzen ditu. Ez sartu OR AROUND barruan.",
+    "header_calendar_note": "header: operadore ofiziala Google Calendar jakinarazpenetarako mugatua (ez du hirugarrenen goibururik onartzen).",
+    "category_note": "Gmailen kategoria automatikoa. Bilaketan fidagarria da; sarrerako iragazkietan aldakorra izan daiteke.",
+    "label_note": "Etiketa-izenetako zuriuneak marratxo (-) bihurtzen dira eta barrak (/) mantentzen dira. Bilaketa soilik iragazki estandarretan.",
+    "in_note": "Bilaketa arruntek Spam eta Zakarrontzia alde batera uzten dituzte in:anywhere gehitu ezean. Ez dago in:archive-rik (artxibatutakoentzat erabili -in:inbox -in:sent -in:drafts -in:spam -in:trash). Bilaketa soilik.",
+    "label_encryptedmail_note": "Bilaketa soilik: bezeroan zifratutako mezuak (Workspace).",
+    "is_muted_note": "Bilaketa soilik: isilarazitako hariak.",
+    "date_after_note": "Barne (egun horretako 00:00etatik). Bilaketa soilik: ez da mezu berriekin exekutatzen.",
+    "date_before_note": "Kanpo (egun horretako 00:00ak baino lehen — egun hori EZ da sartzen). Bilaketa soilik."
   },
   "preview": {
     "title": "Sortutako Kontsulta",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "Fakturak bidaltzaile zehatz batzuengandik (azken hilabetea)",
-        "description": "Bi bidaltzaile zehatzen mezuak, gaian 'invoice' dutenak baina ez 'draft', azken 30 egunetan jasoak.",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "Igorle zehatzen fakturak (azken hilabetea)",
+        "description": "Bi igorleren mezuak, gaian 'invoice' dutenak baina ez 'draft', azken 30 egunetakoak.",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "Bileren mezuak non CC-n nagoen",
-        "description": "Kopian (CC) agertzen zaren mezuak, gaian 'meeting' dutenak, baina ez 'cancelled'.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "CCn nagoen bilera-mezuak",
+        "description": "CCn zauden mezuak, gaian 'meeting' dutenak eta 'cancelled' baztertzen dutenak.",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "PDF fitxategi erantsiak bidaltzaile zehatz batetik",
-        "description": "Bidaltzaile zehatz baten mezuak, PDF fitxategi erantsi bat dutenak.",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "Igorle zehatz baten PDF eranskinak",
+        "description": "Igorle jakin baten mezuak PDF fitxategi erantsiarekin.",
+        "query": ""
       },
       {
         "id": "unread_starred",
         "title": "Irakurri gabeko mezu izardunak",
-        "description": "Izardunak eta irakurri gabeak diren mezu guztiak: lehentasunezko iragazki azkar bat.",
-        "query": "is:unread is:starred"
+        "description": "Izardunak eta irakurri gabeak diren mezu guztiak — lehentasunezko bilaketa azkarra.",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "Harpidetza kentzeko esteka duten buletinak",
-        "description": "Promozioak kategoriako mezuak, gorputzean harpidetza kentzeko esteka (unsubscribe) dutenak.",
-        "query": "in:promotions unsubscribe"
+        "title": "Harpidetza kentzeko promozioak",
+        "description": "Promozioak kategoriako mezuak 'unsubscribe' hitza dutenak.",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "OR taldea baztertze globalarekin",
+        "description": "2 mailako taldekatzea: label:work OR subject:urgent betetzen du, subject:Day beti baztertuz.",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Google Calendar RSVP erantzunak",
+        "description": "Onartutako, baztertutako edo zalantzazko gonbidapenak detektatzen ditu header: operadore ofizialarekin.",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "Buletin zahar masiboak (Trikimailua)",
+        "description": "Barneko label:^unsub etiketa erabiltzen du 30 egunetik gorako buletinak aurkitzeko.",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "Niri zuzenean bidaliak (CC gabe)",
+        "description": "Gmail-en to:-k CC ere hartzen du: hau erabiliz zuri bakarrik bidaliak aurkitzen ditu.",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "Kopia ezkutuan (BCC) jasotakoak",
+        "description": "Zure helbidea Nori edo CC eremuetan ez dagoen baina zuri iritsitako mezuak.",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "Etiketatu gabeko Google Drive fitxategiak",
+        "description": "Etiketa propiorik gabeko Google Drive estekadun mezuak bilatzen ditu.",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Gmail-eko operadoreen erreferentzia",
-    "intro": "Jarraian, sortzaileak onartzen dituen operadoreak eta Gmail-en duten esanahia ageri dira.",
+    "intro": "Gmail bilaketa eta iragazki operadoreen erreferentzia osoa, berezitasunak eta kontu-mugak.",
     "operators": [
       {
         "op": "from:",
-        "desc": "Bidaltzailearen helbidearekin bat dator."
+        "desc": "Igorlearen helbide edo domeinuarekin bat dator."
       },
       {
         "op": "to:",
-        "desc": "Hartzaile nagusiarekin bat dator."
+        "desc": "EDOZEIN hartzailerekin bat dator (To, CC eta bidalitako BCC). Erabili to:me -cc:me zuzenekoetarako."
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = kopia (ikusgarria). BCC = kopia ezkutua (ez-ikusgarria)."
+        "desc": "CC = kopia. BCC = kopia ezkutua (jasotakoetan deliveredto:you@gmail.com -to:me -cc:me erabili)."
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Delivered-To goiburua (+aliasak, birbidaltzeak). Ez Workspace domeinu-aliasak."
+      },
+      {
+        "op": "list:",
+        "desc": "Posta-zerrenden List-Id goiburua."
       },
       {
         "op": "subject:",
-        "desc": "Gaiaren barruan bilatzen du."
+        "desc": "Mezuaren gaian bilatzen du."
       },
       {
-        "op": "has:attachment",
-        "desc": "Edozein fitxategi erantsi duten mezuak."
+        "op": "\"esaldia\" / +hitza",
+        "desc": "Esaldi zehatza komatxoetan edo aldaerarik gabeko hitza +ekin."
       },
       {
-        "op": "filename:",
-        "desc": "Erantsitako fitxategiaren izenarekin edo luzapenarekin bat dator (adib. pdf, *.docx)."
+        "op": "AROUND",
+        "desc": "Hurbiltasuna: hitza1 AROUND 5 hitza2 (komatxoetan ordena zorrotzerako; OR gabe)."
       },
       {
-        "op": "label:",
-        "desc": "Zuk sortutako Gmail etiketa pertsonalizatua duten mezuak."
+        "op": "has:attachment / filename:",
+        "desc": "Eranskinak (barneko irudiak barne) eta izena/luzapena (* komodinik gabe)."
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Google Drive, Docs, Sheets, Slides edo YouTube estekak."
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Calendar jakinarazpenen operadore ofiziala."
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "RFC 5322 Message-ID zehatza."
+      },
+      {
+        "op": "category:",
+        "desc": "Fitxa automatikoa: primary, social, promotions, updates, forums, reservations, purchases."
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "Etiketa propioak (gidoiak zuriuneetan), etiketaduna edo etiketarik gabea (Bilaketa soilik)."
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "Bezeroan zifratutako mezuak (Workspace, Bilaketa soilik)."
       },
       {
         "op": "in:",
-        "desc": "Gmail sistemako karpetetako mezuak: inbox, spam, trash, sent, promotions..."
+        "desc": "Sistema-kokapena: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (ez dago in:archive-rik)."
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "Irakurritako egoeraren arabera iragazten du."
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "Izarra (⭐) edo garrantzia (►) egoeraren arabera iragazten du."
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "Egoera edo izar mota zehatza (Bilaketa soilik)."
       },
       {
         "op": "after: / before:",
-        "desc": "Data-tartea, URTEA/HILABETEA/EGUNA formatua erabiliz."
+        "desc": "Datak (UUUU/HH/EE edo Unix epoch): after: barne, before: kanpo (Bilaketa soilik)."
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "Data erlatiboa: 7d (7 egun), 2m (2 hilabete), 1y (urte 1)."
+        "desc": "Data erlatiboa: 7d, 2m, 1y (Bilaketa soilik)."
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "Mezuaren tamaina: 5M (5 MB), 500K (500 KB)."
+        "op": "larger: / smaller: / size:",
+        "desc": "Mezuaren tamaina: 5M, 500K edo gutxieneko tamaina byte-tan size:-rekin (adib. size:1048576)."
       },
       {
-        "op": "OR",
-        "desc": "Bi baldintza uztartzen ditu, bietako bat betetzea nahikoa delarik (letra larriz idatzi behar da)."
-      },
-      {
-        "op": "-baldintza",
-        "desc": "Baldintza horrekin bat datozen mezuak kanpoan uzten ditu (NOT operadorea)."
-      },
-      {
-        "op": "(…)",
-        "desc": "Baldintzak taldekatzen ditu operadoreak talde osoari aplikatzeko."
+        "op": "OR / { } / -terminoa / (…)",
+        "desc": "OR maiuskulaz (edo {a b}), - baztertzea eta talde-parentesiak."
       }
     ],
-    "tips_title": "Aholku profesionalak",
+    "tips_title": "Aholku aurreratuak eta Gmailen berezitasunak",
     "tips": [
-      "Hitz bat baino gehiagoko balioak komatxo artean sartu: subject:\"hiruhileko txostena\"",
-      "Erabili OR parentesi artean hainbat baliorekin bat etortzeko: from:(a@x.com OR b@x.com)",
-      "Gmail-eko operadoreek ez dituzte letra larriak eta xeheak bereizten, baina OR letra larriz idatzi behar da.",
-      "Enganxatu sortutako kontsulta zuzenean Gmail-eko bilaketa-barran edo iragazki bat sortzean 'Hitzak ditu' eremuan.",
-      "Uztartu newer_than eta older_than denbora-tarte zehatz bat ezartzeko: newer_than:3m older_than:1m",
-      "label: zure etiketa pertsonalizatuetan bilatzen du. in: Gmail sistemako karpetetan bilatzen du (inbox, spam...)."
-    ]
+      "OR operadoreak zuriuneak (AND) baino lotura estuagoa du: nahastu OR eta baztertzeak taldeak erabiliz, adib. (label:work OR subject:urgent) -subject:Day.",
+      "Gmail-ek EZ ditu * komodinak (*.docx) onartzen. Erabili luzapen hutsak (docx) edo domeinuak.",
+      "Gmail-ek puntuazio gehiena (! ? $ & # *) baztertzen du _ izan ezik, eta gidoizko zenbakiak banatzen ditu.",
+      "after: inklusiboa da (00:00etatik) eta before: esklusiboa. Unix epoch onartzen du.",
+      "Bilaketa arruntek Spam eta Zakarrontzia saltatzen dituzte in:anywhere gehitu ezean.",
+      "Elkarrizketa-ikuspegia: haria gaituta badago, baztertzea saihesten duen mezu batek haria erakutsiko du.",
+      "Sarrerako iragazkiak jasotzean exekutatzen dira: datak, irakurria/izarra eta label: bilaketarako dira.",
+      "Trikimailuak: label:^unsub buletinetarako eta label:^smartlabel_receipt ordainagirietarako.",
+      "Mugak: iragazki bakoitza < ~1.469–1.500 karaktere (gehienez 1.000 iragazki, 500 etiketa, 20 birbidalketa)."
+    ],
+    "th_operator": "Operadorea",
+    "th_description": "Deskribapena"
   },
   "support": {
     "toast_title": "☕ Lagundu proiektua babesten",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "Iragazki honek mezu hauek hautatuko ditu",
     "from": "nork bidalia: {{value}}",
-    "to": "nori bidalia: {{value}}",
+    "to": "hartzailearekin (To/CC/BCC) {{value}}",
     "cc": "{{value}} CC-n dutenak",
     "bcc": "{{value}} BCC-n dutenak",
     "subject": "gaian {{value}} dutenak",
@@ -296,7 +465,28 @@
     "size_smaller": "tamaina {{value}} baino txikiagoa dutenak",
     "negate_prefix": "EZ",
     "and_connector": " ETA ",
-    "or_connector": " EDO "
+    "or_connector": " EDO ",
+    "deliveredto": "{{value}} helbidera entregatuak",
+    "list": "{{value}} posta-zerrendakoak",
+    "exact_phrase": "\"{{value}}\" esaldi zehatzarekin",
+    "exact_word": "{{value}} hitz zehatzarekin",
+    "around": "{{word1}} eta {{word2}} {{distance}} hitz baino gutxiagora dituztenak",
+    "around_ordered_suffix": "(ordena zorrotzean)",
+    "has_drive": "Google Drive esteka dutenak",
+    "has_document": "Google Docs fitxategia dutenak",
+    "has_spreadsheet": "Google Sheets fitxategia dutenak",
+    "has_presentation": "Google Slides fitxategia dutenak",
+    "has_youtube": "YouTube bideoa dutenak",
+    "header_calendar": "Google Calendar jakinarazpen honekin: {{value}}",
+    "rfc822msgid": "{{value}} Message-ID dutenak",
+    "category": "{{value}} kategorian",
+    "has_userlabels": "gutxienez etiketa propio bat dutenak",
+    "has_nouserlabels": "etiketa propiorik ez dutenak",
+    "label_encryptedmail": "bezeroan zifratuta bidaliak",
+    "has_star": "{{value}} izar-ikonoarekin",
+    "is_muted": "isilarazitako harietakoak",
+    "size_exact": "{{value}} byte baino handiagoak",
+    "negate_group_prefix": "BAT ERE EZ"
   },
   "pwa": {
     "install_btn": "Instalatu aplikazioa",
@@ -354,7 +544,27 @@
       "p_4_1": "Jarraipen-teknologiarik erabiltzen ez dugun arren, zure nabigatzailean gordetako datuen gaineko erabateko kontrola duzu uneoro. Gordetako iragazkiak eta hobespen bisualak ezabatu nahi badituzu, erraz egin dezakezu:",
       "li_4_1": "Zure nabigatzailearen ezarpenetan cachea eta guneetako datuen biltegiratzea hustuz (Chrome, Firefox, Safari, Edge).",
       "li_4_2": "\"Nabigazio Pribatua\" edo \"Ezkutuko\" modua erabiliz, zeinak automatikoki ezabatuko duen tokiko biltegiratze hori leihoa ixtean.",
-      "p_4_2": "Nortzuk garen buruzko informazio gehiago lortzeko, bisitatu gure <strong><a href=\"#\" id=\"hub-legal-link-2\">Lege-ohar Zentralizatua</a></strong>."
+      "p_4_2": "Nortzuk garen buruzko informazio gehiago lortzeko, bisitatu gure <strong><a href=\"#\" id=\"hub-legal-link-2\">Lege-ohar Zentralizatua</a></strong>.",
+      "td_locale_desc": "Bisiten artean hizkuntza-hautatzailean aukeratutako hizkuntza gogoratzen du."
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "Gmailen ~1.500 karaktereko mugatik gertu ({{count}} karaktere). Laburtu edo zatitu iragazki gisa gordetzeko.",
+    "char_limit_exceeded": "Gmailen ~1.469–1.500 karaktereko muga gainditzen du ({{count}} karaktere). Gmail-ek akatsa eman edo isilean huts egin dezake — zatitu hainbat iragazkitan.",
+    "or_negation_trap": "OR + Baztertu tranpa: OR talde baten barruko baztertzeak beste terminoei baztertzea saihestea ahalbidetzen die. Atera baztertzeak OR taldetik kanpo.",
+    "fix_or_negation_btn": "Konpondu taldekatzea",
+    "search_only_operators": "Bilaketa soilik diren operadoreak ({{operators}}): bilaketa-barran funtzionatzen dute, baina Gmail-ek ohartarazten du normalean ez direla mezu berrietan aktibatzen.",
+    "caution_bcc": "bcc: oharra: jasotako mezuek beste hartzaileen BCC ezkutatzen dute, beraz bidalitako mezuetan funtzionatzen du nagusiki.",
+    "caution_category": "category: oharra: Gmail-ek kategoriak dinamikoki esleitzen ditu; bilaketarako egokia, sarrerako iragazkietan ez hain aurreikusgarria.",
+    "wildcard_unsupported": "Komodin (*) detektatua: Gmail-ek EZ ditu * komodinak onartzen (adib. *.docx). Erabili luzapen hutsak (docx) edo domeinuak.",
+    "lowercase_or": "Minuskulazko \"or\" detektatua: Gmail-ek \"or\" hitz literala bilatuko du OR maiuskulaz idatzi ezean.",
+    "unescaped_inner_quote": "Komatxo bikoitz (\") gehigarria esaldi zehatzaren barruan: Gmail-ek esaldia goiz itxiko du.",
+    "negation_inside_operator": "Lerroko ezeztapena (-hitza) eremu baten barruan: gehitu beste baldintza bat Baztertu (NOT) markatuta.",
+    "around_with_or": "AROUND operadoreak ez du OR edo { } onartzen barruan. Sortu bi AROUND baldintza EDO-rekin lotuta.",
+    "conversation_view_negation": "Elkarrizketa-ikuspegiaren oharra: haria gaituta badago, baztertutako terminoa saihesten duen beste mezu bat badago haria agertuko da.",
+    "deliveredto_me_unsupported": "Gmail-ek ez du «me» zabaltzen deliveredto:-n — idatzi zure helbide osoa edo aliasa (adib. you@gmail.com).",
+    "in_archive_unsupported": "Gmail-ek ez du in:archive eragilerik (artxibatutako mezuek Inbox etiketa falta dute soilik). Erabili -in:inbox -in:sent -in:drafts -in:spam -in:trash.",
+    "negated_group_caution": "Talde konposatu baztertua -(...) detektatu da: Bilaketan dabil, baina gordetako sarrerako iragazkietan huts egin dezake. Nahiago izan banakako bazterketak (-a -b).",
+    "double_negation": "Ukazio bikoitza detektatu da (baztertutako baldintza talde baztertu batean): Gmail-ek ez du -(-hitza) onartzen. Kendu bazterketetako bat."
   }
 }

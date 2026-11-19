@@ -2,7 +2,8 @@
   "app": {
     "title": "जीमेल फ़िल्टर निर्माता",
     "subtitle": "सिंटैक्स याद रखे बिना, विज़ुअल रूप से उन्नत जीमेल खोज फ़िल्टर बनाएं।",
-    "language_selector": "भाषा"
+    "language_selector": "भाषा",
+    "skip_to_content": "मुख्य सामग्री पर जाएं"
   },
   "nav": {
     "builder": "फ़िल्टर निर्माता",
@@ -22,7 +23,7 @@
     "advanced_mode": "मैन्युअल रूप से संपादित करें",
     "visual_mode": "विज़ुअल निर्माता पर वापस जाएं",
     "advanced_note": "क्वेरी को सीधे संपादित करें। शर्तों में पुनः विभाजित करने के लिए \"विज़ुअल निर्माता पर वापस जाएं\" पर क्लिक करें।",
-    "no_conditions": "अभी तक कोई शर्त नहीं है। अपना फ़िल्टर बनाना शुरू करने के लिए \"शर्त जोड़ें\" पर क्लिक करें।",
+    "no_conditions": "अभी कोई शर्त नहीं है। शुरू करने के लिए «शर्त जोड़ें» या «समूह जोड़ें» पर क्लिक करें।",
     "condition": {
       "type_label": "फ़िल्टर प्रकार",
       "value_label": "मान",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "प्रेषक (from)",
-      "to": "प्राप्तकर्ता (to)",
+      "to": "को — कोई भी प्राप्तकर्ता (To/CC/BCC)",
       "cc": "प्रतिलिपि (cc)",
       "bcc": "गुप्त प्रतिलिपि (bcc)",
       "subject": "विषय (subject)",
       "body": "ईमेल संदेश में यह शब्द हो",
-      "has_attachment": "अनुलग्नक (attachment) है",
+      "has_attachment": "अटैचमेंट है (इनलाइन छवियों सहित)",
       "filename": "अनुलग्नक का नाम / प्रकार",
       "label": "लेबल (मेरे बनाए कस्टम लेबल)",
-      "in": "सिस्टम फ़ोल्डर में (इनबॉक्स, स्पैम आदि)",
+      "in": "सिस्टम फ़ोल्डर (inbox, spam, anywhere…)",
       "is_read": "स्थिति: पढ़ा हुआ",
       "is_unread": "स्थिति: न पढ़ा हुआ",
       "is_starred": "स्थिति: तारांकित (⭐)",
       "is_important": "स्थिति: महत्वपूर्ण चिह्नित",
-      "date_after": "इस तारीख के बाद प्राप्त",
-      "date_before": "इस तारीख से पहले प्राप्त",
+      "date_after": "दिनांक के बाद प्राप्त (शामिल)",
+      "date_before": "दिनांक से पहले प्राप्त (शामिल नहीं)",
       "newer_than": "हाल ही में प्राप्त... (सापेक्ष)",
       "older_than": "इससे पहले प्राप्त... (सापेक्ष)",
       "size_larger": "आकार इससे बड़ा",
-      "size_smaller": "आकार इससे छोटा"
+      "size_smaller": "आकार इससे छोटा",
+      "deliveredto": "Delivered-To — उपनाम / अग्रेषण पता",
+      "list": "मेलिंग सूची (List-Id हेडर)",
+      "exact_phrase": "सटीक वाक्यांश (\"…\")",
+      "exact_word": "बिना रूप बदले सटीक शब्द (+)",
+      "around": "आस-पास के शब्द (AROUND)",
+      "has_drive": "Google Drive लिंक शामिल है",
+      "has_document": "Google Docs फ़ाइल शामिल है",
+      "has_spreadsheet": "Google Sheets फ़ाइल शामिल है",
+      "has_presentation": "Google Slides फ़ाइल शामिल है",
+      "has_youtube": "YouTube वीडियो शामिल है",
+      "header_calendar": "Google Calendar सूचना",
+      "rfc822msgid": "सटीक Message-ID (rfc822msgid:)",
+      "category": "इनबॉक्स श्रेणी टैब",
+      "has_userlabels": "कस्टम उपयोगकर्ता लेबल है",
+      "has_nouserlabels": "कोई कस्टम लेबल नहीं है",
+      "label_encryptedmail": "क्लाइंट-साइड एन्क्रिप्टेड (CSE)",
+      "has_star": "विशिष्ट सुपरस्टार आइकन",
+      "is_muted": "स्थिति: म्यूट की गई बातचीत",
+      "size_exact": "बाइट्स में न्यूनतम आकार (size:)"
     },
     "placeholders": {
-      "from": "alice@gmail.com  या  boss@company.com",
-      "to": "team@company.com  या  newsletter@service.io",
+      "from": "alice@gmail.com  OR  boss@company.com",
+      "to": "team@company.com  OR  newsletter@service.io",
       "cc": "manager@company.com",
-      "bcc": "archive@company.com  या  compliance@firm.com",
-      "subject": "invoice  या  \"quarterly report\"  -draft",
-      "body": "action required  या  \"please find attached\"",
-      "filename": "pdf  या  *.docx  या  *.xlsx",
-      "label": "invoices  या  work  या  receipts",
-      "in": "inbox  या  spam  या  promotions  या  sent",
+      "bcc": "archive@company.com  OR  compliance@firm.com",
+      "subject": "चालान  OR  \"तिमाही रिपोर्ट\"",
+      "body": "कार्रवाई आवश्यक  OR  पुष्टि",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "चालान  OR  वित्त/कर  OR  मेरा लेबल",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d  ·  2m  ·  1y   (d=दिन, m=महीने, y=वर्ष)",
       "older_than": "30d  ·  3m  ·  2y   (d=दिन, m=महीने, y=वर्ष)",
       "size_larger": "5M  ·  10M  ·  25M   (M = मेगाबाइट)",
-      "size_smaller": "500K  ·  1M  ·  5M   (K = किलोबाइट, M = मेगाबाइट)"
+      "size_smaller": "500K  ·  1M  ·  5M   (K = किलोबाइट, M = मेगाबाइट)",
+      "deliveredto": "you+news@gmail.com  OR  you@gmail.com",
+      "list": "updates@service.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "तिमाही रिपोर्ट",
+      "exact_word": "चालान",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "उन संदेशों से मेल खाता है जिनमें कम से कम एक अनुलग्नक (किसी भी प्रकार का) हो।",
-    "is_read_note": "उन संदेशों से मेल खाता है जिन्हें आपने पहले ही खोलकर पढ़ लिया है।",
-    "is_unread_note": "उन संदेशों से मेल खाता है जिन्हें आपने अभी तक खोला नहीं है।",
-    "is_starred_note": "उन संदेशों से मेल खाता है जिन्हें आपने जीमेल में तारांकित (⭐) किया है।",
-    "is_important_note": "उन संदेशों से मेल खाता है जिन्हें जीमेल या आपके द्वारा महत्वपूर्ण (►) चिह्नित किया गया है।"
+    "has_attachment_note": "कम से कम एक अटैचमेंट वाले संदेश (इनलाइन छवियों सहित)।",
+    "is_read_note": "केवल खोज: पहले से पढ़े गए संदेश।",
+    "is_unread_note": "केवल खोज: अपठित संदेश।",
+    "is_starred_note": "केवल खोज: तारांकित संदेश (⭐)।",
+    "is_important_note": "केवल खोज: महत्वपूर्ण चिह्नित संदेश (►)।",
+    "add_group": "समूह जोड़ें",
+    "add_condition_to_group": "समूह में शर्त जोड़ें",
+    "remove_group": "समूह हटाएं",
+    "exclude_group": "समूह हटाएं/बाहर रखें (NOT)",
+    "match_prefix": "निम्नलिखित में से",
+    "match_all": "सभी (AND)",
+    "match_any": "कोई भी (OR)",
+    "match_suffix": "से मेल खाए:",
+    "around_word1": "पहला शब्द",
+    "around_distance": "अधिकतम शब्द दूरी",
+    "around_word2": "दूसरा शब्द",
+    "around_ordered": "सख्त क्रम",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (Unix सेकंड)",
+    "groups": {
+      "people": "लोग और मेलिंग सूचियाँ",
+      "content": "विषय और संदेश मुख्य भाग",
+      "attachments": "अटैचमेंट और Google Drive",
+      "calendar_headers": "कैलेंडर और हेडर",
+      "organization": "श्रेणियाँ, लेबल और फ़ोल्डर",
+      "status": "पढ़ा गया, तारे और स्थिति (खोज)",
+      "date_size": "दिनांक और आकार"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — मुख्य",
+        "social": "social — सोशल",
+        "promotions": "promotions — प्रचार",
+        "updates": "updates — अपडेट",
+        "forums": "forums — फ़ोरम",
+        "reservations": "reservations — आरक्षण",
+        "purchases": "purchases — खरीदारी"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — नया निमंत्रण",
+        "eventCancelled": "eventCancelled — कार्यक्रम रद्द",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — समय/दोहराव बदला",
+        "roomAdded": "roomAdded — कमरा जोड़ा गया",
+        "roomRemoved": "roomRemoved — कमरा हटाया गया",
+        "locationUpdated": "locationUpdated — स्थान बदला",
+        "titleUpdated": "titleUpdated — शीर्षक बदला",
+        "descriptionUpdated": "descriptionUpdated — विवरण बदला",
+        "attachmentAdded": "attachmentAdded — अटैचमेंट जोड़ा गया",
+        "attachmentRemoved": "attachmentRemoved — अटैचमेंट हटाया गया",
+        "conferenceUpdated": "conferenceUpdated — वीडियो कॉल लिंक बदला",
+        "rsvpAccepted": "rsvpAccepted — अतिथि ने स्वीकार किया",
+        "rsvpDeclined": "rsvpDeclined — अतिथि ने अस्वीकार किया",
+        "rsvpTentative": "rsvpTentative — शायद शामिल हों",
+        "rsvpWithNote": "rsvpWithNote — नोट के साथ उत्तर दिया",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — नया समय सुझाया",
+        "roomAccepted": "roomAccepted — कमरे की बुकिंग स्वीकृत",
+        "roomDeclined": "roomDeclined — कमरे की बुकिंग अस्वीकृत"
+      },
+      "has_star": {
+        "yellow-star": "पीला तारा",
+        "orange-star": "नारंगी तारा",
+        "red-star": "लाल तारा",
+        "purple-star": "बैंगनी तारा",
+        "blue-star": "नीला तारा",
+        "green-star": "हरा तारा",
+        "red-bang": "लाल विस्मयादिबोधक (!)",
+        "orange-guillemet": "नारंगी दोहरा तीर (»)",
+        "yellow-bang": "पीला विस्मयादिबोधक (!)",
+        "green-check": "हरा सही का निशान (✓)",
+        "blue-info": "नीली जानकारी (i)",
+        "purple-question": "बैंगनी प्रश्नचिह्न (?)"
+      }
+    },
+    "to_note": "Gmail में to: टू, CC और आपके भेजे गए BCC से मेल खाता है। सीधे ईमेल के लिए to:me के साथ -cc:me जोड़ें।",
+    "bcc_note": "आने वाले फ़िल्टर में bcc: मुख्यतः आपके भेजे ईमेल पकड़ता है। प्राप्त BCC के लिए deliveredto:you@gmail.com -to:me -cc:me आज़माएं।",
+    "deliveredto_note": "Delivered-To हेडर से मेल खाता है (+उपनाम व फ़ॉरवर्ड के लिए उपयोगी; Workspace डोमेन उपनाम शामिल नहीं)।",
+    "exact_phrase_note": "उद्धरण में सटीक वाक्यांश खोजता है (Gmail _ को छोड़कर अधिकांश विराम चिह्न अनदेखा करता है)।",
+    "exact_word_note": "Gmail के स्वचालित शब्द रूप मिलान को रोकता है (जैसे +run, running से नहीं मिलेगा)।",
+    "around_note": "जहाँ दोनों शब्द अधिकतम N शब्दों की दूरी पर हों। AROUND के भीतर OR न जोड़ें।",
+    "header_calendar_note": "आधिकारिक header: ऑपरेटर केवल Google Calendar सूचनाओं का समर्थन करता है।",
+    "category_note": "स्वचालित Gmail टैब। खोज में विश्वसनीय; आने वाले फ़िल्टर में भिन्न हो सकता है।",
+    "label_note": "लेबल के रिक्त स्थान हाइफ़न (-) बन जाते हैं और (/) बना रहता है। केवल खोज के लिए।",
+    "in_note": "सामान्य खोज स्पैम और ट्रैश छोड़ देती है जब तक in:anywhere न जोड़ा जाए। in:archive नहीं होता (आर्काइव के लिए -in:inbox -in:sent -in:drafts -in:spam -in:trash का उपयोग करें)। केवल खोज।",
+    "label_encryptedmail_note": "केवल खोज: क्लाइंट-साइड एन्क्रिप्टेड संदेश (Workspace)।",
+    "is_muted_note": "केवल खोज: म्यूट की गई बातचीत।",
+    "date_after_note": "समावेशी (उस दिन 00:00 से)। केवल खोज।",
+    "date_before_note": "अपवर्जी (उस दिन 00:00 से पहले — वह दिन शामिल नहीं)। केवल खोज।"
   },
   "preview": {
     "title": "बनी हुई खोज क्वेरी",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "विशिष्ट प्रेषकों से प्राप्त बिल (पिछला महीना)",
-        "description": "दो विशिष्ट प्रेषकों से प्राप्त ईमेल जिनमें विषय में 'invoice' हो लेकिन 'draft' न हो, पिछले 30 दिनों में प्राप्त हुए हों।",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "विशिष्ट प्रेषकों के चालान (पिछला माह)",
+        "description": "पिछले 30 दिनों के दो प्रेषकों के ईमेल जिनके विषय में 'invoice' हो और 'draft' न हो।",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "बैठक ईमेल जिसमें मैं सीसी (CC) में हूँ",
-        "description": "वे ईमेल जिनमें आप सीसी में हैं, विषय में 'meeting' है, लेकिन 'cancelled' नहीं है।",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "मीटिंग ईमेल जिनमें मैं CC में हूँ",
+        "description": "जहाँ आप CC में हैं, विषय में 'meeting' है और 'cancelled' नहीं है।",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "विशिष्ट प्रेषक से पीडीएफ अनुलग्नक",
-        "description": "किसी विशिष्ट प्रेषक से प्राप्त संदेश जिसमें पीडीएफ फाइल संलग्न हो।",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "किसी प्रेषक के PDF अटैचमेंट",
+        "description": "किसी विशेष प्रेषक के PDF फ़ाइल अटैचमेंट वाले संदेश।",
+        "query": ""
       },
       {
         "id": "unread_starred",
-        "title": "न पढ़े गए तारांकित संदेश",
-        "description": "वे सभी संदेश जो तारांकित और बिना पढ़े दोनों हैं - प्राथमिकता इनबॉक्स के लिए एक त्वरित फ़िल्टर।",
-        "query": "is:unread is:starred"
+        "title": "अपठित तारांकित संदेश",
+        "description": "तारांकित और अपठित सभी संदेश — त्वरित प्राथमिकता खोज।",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "सदस्यता समाप्त करने योग्य न्यूज़लेटर",
-        "description": "प्रमोशन श्रेणी के ईमेल जिनमें संदेश के मुख्य भाग में सदस्यता समाप्त (unsubscribe) करने का लिंक हो।",
-        "query": "in:promotions unsubscribe"
+        "title": "सदस्यता समाप्त लिंक वाले प्रचार",
+        "description": "प्रचार श्रेणी में मौजूद वे ईमेल जिनमें 'unsubscribe' शब्द है।",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "वैश्विक बहिष्करण के साथ OR समूह",
+        "description": "2-स्तरीय समूहन: label:work OR subject:urgent से मेल खाएगा, subject:Day को हमेशा बाहर रखेगा।",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Google Calendar RSVP उत्तर",
+        "description": "आधिकारिक header: ऑपरेटर से स्वीकृत, अस्वीकृत या संभावित निमंत्रण पकड़ता है।",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "पुराने बल्क न्यूज़लेटर (उन्नत युक्ति)",
+        "description": "30 दिन से पुराने न्यूज़लेटर खोजने के लिए आंतरिक label:^unsub का उपयोग करता है।",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "सीधे मुझे भेजे गए (बिना CC)",
+        "description": "to: (जिसमें CC भी आता है) का हल: केवल आपको संबोधित संदेश।",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "BCC में प्राप्त हुए ईमेल",
+        "description": "ऐसे ईमेल खोजता है जहाँ आपका पता न To में है न CC में।",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "बिना लेबल वाली Google Drive फ़ाइलें",
+        "description": "Google Drive लिंक वाले ऐसे संदेश खोजता है जिन पर कोई कस्टम लेबल नहीं है।",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "जीमेल खोज ऑपरेटर गाइड",
-    "intro": "नीचे वे खोज ऑपरेटर दिए गए हैं जो इस टूल द्वारा समर्थित हैं और जीमेल में उनका क्या अर्थ है।",
+    "intro": "Gmail खोज और फ़िल्टर ऑपरेटरों, विशेष नियमों और सीमाओं का संपूर्ण संदर्भ।",
     "operators": [
       {
         "op": "from:",
-        "desc": "प्रेषक के ईमेल पते से मेल खाता है।"
+        "desc": "प्रेषक के ईमेल या डोमेन से मेल खाता है।"
       },
       {
         "op": "to:",
-        "desc": "मुख्य प्राप्तकर्ता से मेल खाता है।"
+        "desc": "किसी भी प्राप्तकर्ता (To, CC, भेजा BCC) से मेल। सीधे मेल के लिए to:me -cc:me उपयोग करें।"
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = प्रतिलिपि (दिखाई देने वाली)। BCC = गुप्त प्रतिलिपि (छुपी हुई)।"
+        "desc": "CC = प्रतिलिपि। BCC = गुप्त प्रतिलिपि (आने वाले के लिए deliveredto:you@gmail.com -to:me -cc:me)।"
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Delivered-To हेडर (+उपनाम, फ़ॉरवर्ड; Workspace डोमेन उपनाम नहीं)।"
+      },
+      {
+        "op": "list:",
+        "desc": "मेलिंग सूची का List-Id हेडर।"
       },
       {
         "op": "subject:",
-        "desc": "विषय में खोजता है।"
+        "desc": "संदेश के विषय में खोजता है।"
       },
       {
-        "op": "has:attachment",
-        "desc": "किसी भी संलग्नक वाले संदेश।"
+        "op": "\"वाक्यांश\" / +शब्द",
+        "desc": "उद्धरण में सटीक वाक्यांश या + के साथ बिना रूप बदलाव के शब्द।"
       },
       {
-        "op": "filename:",
-        "desc": "संलग्नक के नाम या प्रकार (जैसे pdf, *.docx) से मेल खाता है।"
+        "op": "AROUND",
+        "desc": "निकटता: शब्द1 AROUND 5 शब्द2 (सख्त क्रम के लिए उद्धरण में; भीतर OR नहीं)।"
       },
       {
-        "op": "label:",
-        "desc": "जीमेल के आपके द्वारा बनाए गए किसी कस्टम लेबल वाले संदेश।"
+        "op": "has:attachment / filename:",
+        "desc": "अटैचमेंट और फ़ाइल नाम/एक्सटेंशन (pdf, docx — * के बिना)।"
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Google Drive, Docs, Sheets, Slides या YouTube लिंक।"
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Google Calendar सूचनाओं के लिए आधिकारिक ऑपरेटर।"
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "सटीक RFC 5322 Message-ID खोज।"
+      },
+      {
+        "op": "category:",
+        "desc": "टैब: primary, social, promotions, updates, forums, reservations, purchases।"
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "कस्टम लेबल (स्पेस की जगह हाइफ़न) — केवल खोज।"
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "क्लाइंट-साइड एन्क्रिप्टेड संदेश (Workspace — केवल खोज)।"
       },
       {
         "op": "in:",
-        "desc": "जीमेल सिस्टम फ़ोल्डर के संदेश: inbox (इनबॉक्स), spam (स्पैम), trash (कचरा), sent (भेजे गए), promotions (प्रचार) आदि।"
+        "desc": "स्थान: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (in:archive नहीं है)।"
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "पढ़े गए/न पढ़े गए के अनुसार फ़िल्टर करें।"
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "तारे (⭐) या महत्व (►) की स्थिति के अनुसार फ़िल्टर करें।"
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "संदेश स्थिति या तारा आइकन (केवल खोज)।"
       },
       {
         "op": "after: / before:",
-        "desc": "YYYY/MM/DD प्रारूप में दिनांक सीमा।"
+        "desc": "दिनांक (YYYY/MM/DD या Unix epoch): after: समावेशी, before: अपवर्जी (केवल खोज)।"
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "सापेक्ष समय: 7d (7 दिन), 2m (2 महीने), 1y (1 वर्ष)।"
+        "desc": "सापेक्ष दिनांक: 7d, 2m, 1y (केवल खोज)।"
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "संदेश का आकार: 5M (5 एमबी), 500K (500 केबी)।"
+        "op": "larger: / smaller: / size:",
+        "desc": "आकार: 5M, 500K या size: के साथ न्यूनतम बाइट्स (जैसे size:1048576)।"
       },
       {
-        "op": "OR",
-        "desc": "दो शर्तों को जोड़ता है ताकि दोनों में से कोई भी मेल खाए (ऑपरेटर हमेशा बड़े अक्षरों में होना चाहिए)।"
-      },
-      {
-        "op": "-शब्द",
-        "desc": "उस शब्द वाले संदेशों को बाहर करता है (NOT ऑपरेटर)।"
-      },
-      {
-        "op": "(…)",
-        "desc": "शर्तों को समूह में बांधता है ताकि ऑपरेटर पूरे समूह पर लागू हों।"
+        "op": "OR / { } / -शब्द / (…)",
+        "desc": "बड़े अक्षरों में OR (या {a b}), बहिष्करण - और समूह कोष्ठक।"
       }
     ],
-    "tips_title": "विशेषज्ञ युक्तियाँ",
+    "tips_title": "उन्नत सुझाव और Gmail के विशेष नियम",
     "tips": [
-      "यदि मान में एक से अधिक शब्द हैं, तो उसे उद्धरण चिह्नों में रखें: subject:\"quarterly report\"",
-      "कई मानों में से किसी एक से मेल खाने के लिए कोष्ठक के अंदर OR का उपयोग करें: from:(a@x.com OR b@x.com)",
-      "जीमेल ऑपरेटर केस-संवेदी नहीं हैं, लेकिन OR हमेशा बड़े अक्षरों (UPPERCASE) में ही होना चाहिए।",
-      "बनी हुई क्वेरी को सीधे जीमेल के खोज बार में या फ़िल्टर बनाते समय 'Has the words' फ़ील्ड में पेस्ट करें।",
-      "सटीक समयावधि तय करने के लिए newer_than और older_than को मिलाएं: newer_than:3m older_than:1m",
-      "label: आपके बनाए कस्टम लेबल में खोजता है। in: जीमेल के बने-बनाए फ़ोल्डर में खोजता है (inbox, spam, promotions आदि)।"
-    ]
+      "OR रिक्त स्थान (AND) से अधिक मजबूती से जुड़ता है: OR और बहिष्करण को समूहों से मिलाएं, जैसे (label:work OR subject:urgent) -subject:Day।",
+      "Gmail वाइल्डकार्ड * (*.docx) या regex का समर्थन नहीं करता। सीधे एक्सटेंशन (docx) या डोमेन लिखें।",
+      "Gmail _ को छोड़कर अधिकांश विराम चिह्न (! ? $ & # *) अनदेखा करता है और हाइफ़न वाले नंबर विभाजित करता है।",
+      "after: समावेशी है (00:00 से), before: अपवर्जी है। Unix epoch समर्थित है।",
+      "सामान्य खोज स्पैम और ट्रैश छोड़ देती है जब तक in:anywhere न जोड़ा जाए।",
+      "बातचीत दृश्य: थ्रेड चालू होने पर, यदि अन्य संदेश -बहिष्करण से बच जाए तो थ्रेड दिखेगा।",
+      "आने वाले फ़िल्टर डिलीवरी के समय चलते हैं: दिनांक, पढ़ा/तारा और label: मुख्यतः खोज के लिए हैं।",
+      "उन्नत युक्तियाँ: label:^unsub न्यूज़लेटर और label:^smartlabel_receipt रसीदें ढूँढता है।",
+      "सीमाएं: प्रत्येक फ़िल्टर ~1,469–1,500 अक्षरों से कम रखें (अधिकतम 1,000 फ़िल्टर, 500 लेबल, 20 फ़ॉरवर्डिंग)।"
+    ],
+    "th_operator": "ऑपरेटर",
+    "th_description": "विवरण"
   },
   "support": {
     "toast_title": "☕ परियोजना का समर्थन करें",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "यह फ़िल्टर उन ईमेल से मेल खाएगा,",
     "from": "जो {{value}} द्वारा भेजे गए हों",
-    "to": "जो {{value}} को भेजे गए हों",
+    "to": "{{value}} को (To/CC/BCC) संबोधित",
     "cc": "जिनमें सीसी में {{value}} शामिल हो",
     "bcc": "जिनमें गुप्त प्रतिलिपि में {{value}} शामिल हो",
     "subject": "जिनके विषय में {{value}} हो",
@@ -296,7 +465,28 @@
     "size_smaller": "जिनका आकार {{value}} से छोटा हो",
     "negate_prefix": "नहीं",
     "and_connector": " और ",
-    "or_connector": " या "
+    "or_connector": " या ",
+    "deliveredto": "{{value}} पते पर वितरित",
+    "list": "मेलिंग सूची {{value}} से",
+    "exact_phrase": "जिनमें सटीक वाक्यांश \"{{value}}\" है",
+    "exact_word": "जिनमें सटीक शब्द {{value}} है",
+    "around": "जहाँ {{word1}}, {{word2}} के {{distance}} शब्दों के भीतर आता है",
+    "around_ordered_suffix": "(सख्त क्रम में)",
+    "has_drive": "जिनमें Google Drive लिंक है",
+    "has_document": "जिनमें Google Docs फ़ाइल है",
+    "has_spreadsheet": "जिनमें Google Sheets फ़ाइल है",
+    "has_presentation": "जिनमें Google Slides प्रस्तुति है",
+    "has_youtube": "जिनमें YouTube वीडियो है",
+    "header_calendar": "Google Calendar सूचना {{value}} के साथ",
+    "rfc822msgid": "Message-ID {{value}} के साथ",
+    "category": "{{value}} श्रेणी में",
+    "has_userlabels": "कम से कम एक कस्टम लेबल वाले",
+    "has_nouserlabels": "बिना किसी कस्टम लेबल वाले",
+    "label_encryptedmail": "क्लाइंट-साइड एन्क्रिप्शन से भेजे गए",
+    "has_star": "तारा आइकन {{value}} के साथ",
+    "is_muted": "म्यूट किए गए थ्रेड से",
+    "size_exact": "{{value}} बाइट्स से बड़े",
+    "negate_group_prefix": "इनमें से कोई नहीं"
   },
   "pwa": {
     "install_btn": "ऐप इंस्टॉल करें",
@@ -354,7 +544,27 @@
       "p_4_1": "हालाँकि हम ट्रैकिंग तकनीकों का उपयोग नहीं करते हैं, लेकिन आपके पास हर समय अपने ब्राउज़र में सहेजे गए डेटा पर पूर्ण नियंत्रण होता है। यदि आप अपने सहेजे गए फ़िल्टर और विज़ुअल प्राथमिकताओं को हटाना चाहते हैं, तो आप इसे आसानी से कर सकते हैं:",
       "li_4_1": "अपने ब्राउज़र सेटिंग्स (Chrome, Firefox, Safari, Edge) में कैशे और साइट डेटा संग्रहण साफ़ करके।",
       "li_4_2": "\"निजी ब्राउज़िंग\" या \"इन्कोग्निटो\" मोड का उपयोग करके, जो विंडो बंद होने पर स्वचालित रूप से इस स्थानीय संग्रहण को हटा देगा।",
-      "p_4_2": "हम कौन हैं, इसके बारे में अधिक जानकारी के लिए, कृपया हमारे <strong><a href=\"#\" id=\"hub-legal-link-2\">केंद्रीकृत कानूनी सूचना</a></strong> पर जाएँ।"
+      "p_4_2": "हम कौन हैं, इसके बारे में अधिक जानकारी के लिए, कृपया हमारे <strong><a href=\"#\" id=\"hub-legal-link-2\">केंद्रीकृत कानूनी सूचना</a></strong> पर जाएँ।",
+      "td_locale_desc": "विज़िट के बीच भाषा चयनकर्ता में चुनी गई भाषा याद रखता है।"
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "Gmail की ~1,500 अक्षर सीमा के करीब ({{count}} अक्षर)। फ़िल्टर छोटा करने या बांटने पर विचार करें।",
+    "char_limit_exceeded": "Gmail की ~1,469–1,500 अक्षर सीमा से अधिक ({{count}} अक्षर)। Gmail त्रुटि दे सकता है या चुपचाप विफल हो सकता है — एकाधिक फ़िल्टर में बाँटें।",
+    "or_negation_trap": "OR + बाहर रखें जाल: OR समूह के भीतर बहिष्करण से अन्य शर्तें उसे अनदेखा कर देती हैं। बहिष्करण को OR समूह से बाहर ले जाएं।",
+    "fix_or_negation_btn": "समूहन ठीक करें",
+    "search_only_operators": "केवल-खोज ऑपरेटर मिले ({{operators}}): खोज बार में चलते हैं, पर नए आने वाले ईमेल फ़िल्टर में आमतौर पर नहीं चलते।",
+    "caution_bcc": "bcc: नोट: आने वाले ईमेल दूसरों का BCC छुपाते हैं, इसलिए यह मुख्यतः आपके भेजे ईमेल से मेल खाता है।",
+    "caution_category": "category: नोट: श्रेणियाँ गतिशील रूप से तय होती हैं; खोज के लिए उत्तम, आने वाले फ़िल्टर में कम स्थिर।",
+    "wildcard_unsupported": "वाइल्डकार्ड (*) मिला: Gmail * का समर्थन नहीं करता (जैसे *.docx)। सीधे एक्सटेंशन (docx) या डोमेन लिखें।",
+    "lowercase_or": "छोटे अक्षरों में \"or\" मिला: यदि OR बड़े अक्षरों में नहीं है तो Gmail शाब्दिक शब्द \"or\" खोजेगा।",
+    "unescaped_inner_quote": "वाक्यांश के अंदर अतिरिक्त दोहरा उद्धरण (\"): Gmail वाक्यांश को समय से पहले बंद कर देगा।",
+    "negation_inside_operator": "फ़ील्ड में इनलाइन नकार (-शब्द) मिला: इसके बजाय अलग पंक्ति में बाहर रखें (NOT) चुनें।",
+    "around_with_or": "AROUND के भीतर OR या { } स्वीकार नहीं हैं। या (OR) से जुड़ी दो अलग AROUND शर्तें बनाएं।",
+    "conversation_view_negation": "बातचीत दृश्य नोट: थ्रेड चालू होने पर, यदि कोई अन्य संदेश बहिष्करण से बचता है तो पूरा थ्रेड दिखेगा।",
+    "deliveredto_me_unsupported": "Gmail deliveredto: में \"me\" नहीं समझता — अपना पूरा ईमेल पता या एलियस लिखें (जैसे you@gmail.com)।",
+    "in_archive_unsupported": "Gmail में in:archive ऑपरेटर नहीं है (आर्काइव मेल में बस Inbox लेबल नहीं होता)। -in:inbox -in:sent -in:drafts -in:spam -in:trash आज़माएं।",
+    "negated_group_caution": "नकारात्मक यौगिक समूह -(...) मिला: खोज में चलता है, पर सेव किए गए इनकमिंग फ़िल्टर में अस्थिर हो सकता है। अलग-अलग बहिष्करण (-a -b) चुनें।",
+    "double_negation": "दोहरा निषेध मिला (बहिष्कृत समूह के अंदर बहिष्कृत शर्त): Gmail -(-शब्द) सपोर्ट नहीं करता। एक बहिष्करण हटाएं।"
   }
 }

@@ -49,6 +49,7 @@ const i18n = (() => {
   ];
 
   let _strings = {};
+  let _fallbackStrings = {};
   let _currentLocale = 'en';
   const _listeners = [];
 
@@ -60,10 +61,23 @@ const i18n = (() => {
     return str.replace(/\{\{(\w+)\}\}/g, (_, key) => (params[key] !== undefined ? params[key] : `{{${key}}}`));
   }
 
+  async function _ensureFallback() {
+    if (Object.keys(_fallbackStrings).length > 0) return;
+    try {
+      const res = await fetch('locales/en.json');
+      if (res.ok) _fallbackStrings = await res.json();
+    } catch (_) {}
+  }
+
   async function load(locale) {
     const res = await fetch(`locales/${locale}.json`);
     if (!res.ok) throw new Error(`Locale "${locale}" not found.`);
     _strings = await res.json();
+    if (locale === 'en') {
+      _fallbackStrings = _strings;
+    } else {
+      await _ensureFallback();
+    }
     _currentLocale = locale;
     document.documentElement.lang = locale;
     document.documentElement.dir = locale.startsWith('ar') ? 'rtl' : 'ltr';
@@ -72,7 +86,7 @@ const i18n = (() => {
   }
 
   function t(key, params) {
-    const val = _get(_strings, key);
+    const val = _get(_strings, key) ?? _get(_fallbackStrings, key);
     if (val === null) return key;
     if (typeof val === 'string') return _interpolate(val, params);
     return val;

@@ -2,7 +2,8 @@
   "app": {
     "title": "Constructor de Filtres de Gmail",
     "subtitle": "Crea consultes de cerca avançades per a Gmail de manera visual, sense memoritzar la sintaxi.",
-    "language_selector": "Idioma"
+    "language_selector": "Idioma",
+    "skip_to_content": "Saltar al contingut principal"
   },
   "nav": {
     "builder": "Constructor",
@@ -22,7 +23,7 @@
     "advanced_mode": "Edita la consulta manualment",
     "visual_mode": "Torna al constructor visual",
     "advanced_note": "Edita la consulta directament. Fes clic a \"Torna al constructor visual\" per a tornar a desglossar-la en condicions.",
-    "no_conditions": "Encara no hi ha condicions. Fes clic a \"Afegeix condició\" per a començar a crear el teu filtre.",
+    "no_conditions": "Encara no hi ha condicions. Fes clic a «Afegir condició» o «Afegir grup» per començar.",
     "condition": {
       "type_label": "Tipus de filtre",
       "value_label": "Valor",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "De — remitent",
-      "to": "Per a — destinatari",
+      "to": "Per a — qualsevol destinatari (To/CC/BCC)",
       "cc": "A/C — còpia de cortesia",
       "bcc": "A/C/O — còpia oculta",
       "subject": "Assumpte",
       "body": "El cos conté",
-      "has_attachment": "Té fitxer adjunt",
+      "has_attachment": "Té fitxer adjunt (incl. imatges en línia)",
       "filename": "Nom / tipus de fitxer adjunt",
       "label": "Etiqueta (les meves etiquetes)",
-      "in": "A la carpeta del sistema (bústia, spam...)",
+      "in": "Carpeta del sistema (inbox, spam, anywhere…)",
       "is_read": "Estat: llegit",
       "is_unread": "Estat: no llegit",
       "is_starred": "Estat: destacat (⭐)",
       "is_important": "Estat: marcat com a important",
-      "date_after": "Rebut després del",
-      "date_before": "Rebut abans del",
+      "date_after": "Rebut després de la data (inclusiu)",
+      "date_before": "Rebut abans de la data (exclusiu)",
       "newer_than": "Rebut fa menys de... (relatiu)",
       "older_than": "Més antic de... (relatiu)",
       "size_larger": "Mida superior a",
-      "size_smaller": "Mida inferior a"
+      "size_smaller": "Mida inferior a",
+      "deliveredto": "Delivered-To — àlies o adreça de reenviament",
+      "list": "Llista de correu (capçalera List-Id)",
+      "exact_phrase": "Frase exacta (\"…\")",
+      "exact_word": "Paraula exacta sense variants (+)",
+      "around": "Paraules properes entre si (AROUND)",
+      "has_drive": "Conté enllaç de Google Drive",
+      "has_document": "Conté document de Google Docs",
+      "has_spreadsheet": "Conté full de càlcul (Sheets)",
+      "has_presentation": "Conté presentació (Slides)",
+      "has_youtube": "Conté vídeo de YouTube",
+      "header_calendar": "Notificació de Google Calendar",
+      "rfc822msgid": "Message-ID exacte (rfc822msgid:)",
+      "category": "Categoria automàtica de Gmail",
+      "has_userlabels": "Té alguna etiqueta pròpia",
+      "has_nouserlabels": "NO té etiquetes pròpies",
+      "label_encryptedmail": "Xifrat al client (CSE)",
+      "has_star": "Icona d'estrella específica",
+      "is_muted": "Estat: conversa silenciada",
+      "size_exact": "Mida mínima en bytes (size:)"
     },
     "placeholders": {
-      "from": "anna@gmail.com  O  cap@empresa.com",
-      "to": "equip@empresa.com  O  butlleti@servei.io",
+      "from": "anna@gmail.com  OR  cap@empresa.com",
+      "to": "equip@empresa.com  OR  butlleti@servei.io",
       "cc": "gerent@empresa.com",
-      "bcc": "arxiu@empresa.com  O  legal@empresa.com",
-      "subject": "factura  O  \"informe trimestral\"  -esborrany",
-      "body": "cal acció  O  \"adjuntem document\"",
-      "filename": "pdf  O  *.docx  O  *.xlsx",
-      "label": "factures  O  feina  O  rebuts",
-      "in": "inbox  O  spam  O  promotions  O  sent",
+      "bcc": "arxiu@empresa.com  OR  legal@empresa.com",
+      "subject": "factura  OR  \"informe trimestral\"",
+      "body": "acció requerida  OR  confirmació",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "factures  OR  Finances/Impostos  OR  La Meua Etiqueta",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d  ·  2m  ·  1y   (d=dies, m=mesos, y=anys)",
       "older_than": "30d  ·  3m  ·  2y   (d=dies, m=mesos, y=anys)",
       "size_larger": "5M  ·  10M  ·  25M   (M = megabytes)",
-      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobytes, M = megabytes)"
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobytes, M = megabytes)",
+      "deliveredto": "tu+butlleti@gmail.com  OR  you@gmail.com",
+      "list": "novetats@servei.io  OR  llista-dev.googlegroups.com",
+      "exact_phrase": "informe trimestral",
+      "exact_word": "factura",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "Coincideix amb missatges que tenen almenys un fitxer adjunt (de qualsevol tipus).",
-    "is_read_note": "Coincideix amb missatges que ja has obert i llegit.",
-    "is_unread_note": "Coincideix amb missatges que encara no has obert.",
-    "is_starred_note": "Coincideix amb missatges que has destacat (⭐) a Gmail.",
-    "is_important_note": "Coincideix amb missatges que Gmail o tu heu marcat com a importants (►)."
+    "has_attachment_note": "Coincideix amb missatges que tenen almenys un adjunt (incloses imatges incrustades).",
+    "is_read_note": "Només cerca: missatges que ja has obert i llegit.",
+    "is_unread_note": "Només cerca: missatges que encara no has obert.",
+    "is_starred_note": "Només cerca: missatges destacats amb estrella (⭐) a Gmail.",
+    "is_important_note": "Només cerca: missatges marcats com a importants (►).",
+    "add_group": "Afegir grup",
+    "add_condition_to_group": "Afegir condició al grup",
+    "remove_group": "Eliminar grup",
+    "exclude_group": "Excloure grup (NOT)",
+    "match_prefix": "Coincidir amb",
+    "match_all": "TOTES (AND)",
+    "match_any": "QUALSEVOL (OR)",
+    "match_suffix": "de les següents:",
+    "around_word1": "Primera paraula",
+    "around_distance": "Màx. paraules de distància",
+    "around_word2": "Segona paraula",
+    "around_ordered": "Ordre estricte",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (segons Unix)",
+    "groups": {
+      "people": "Persones i llistes de correu",
+      "content": "Assumpte i cos del missatge",
+      "attachments": "Adjunts i Google Drive",
+      "calendar_headers": "Calendari i capçaleres",
+      "organization": "Categories, etiquetes i carpetes",
+      "status": "Lectura, estrelles i estat (Cerca)",
+      "date_size": "Dates i mida"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — Safata principal",
+        "social": "social — Xarxes socials",
+        "promotions": "promotions — Promocions i ofertes",
+        "updates": "updates — Actualitzacions i factures",
+        "forums": "forums — Fòrums i grups",
+        "reservations": "reservations — Reserves i vols",
+        "purchases": "purchases — Compres i rebuts"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — Nova invitació",
+        "eventCancelled": "eventCancelled — Esdeveniment cancel·lat",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — Hora o recurrència canviada",
+        "roomAdded": "roomAdded — Sala afegida",
+        "roomRemoved": "roomRemoved — Sala eliminada",
+        "locationUpdated": "locationUpdated — Ubicació canviada",
+        "titleUpdated": "titleUpdated — Títol canviat",
+        "descriptionUpdated": "descriptionUpdated — Descripció canviada",
+        "attachmentAdded": "attachmentAdded — Adjunt afegit",
+        "attachmentRemoved": "attachmentRemoved — Adjunt eliminat",
+        "conferenceUpdated": "conferenceUpdated — Enllaç de videotrucada canviat",
+        "rsvpAccepted": "rsvpAccepted — Convidat ha acceptat",
+        "rsvpDeclined": "rsvpDeclined — Convidat ha rebutjat",
+        "rsvpTentative": "rsvpTentative — Convidat potser",
+        "rsvpWithNote": "rsvpWithNote — Convidat ha respost amb nota",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — Convidat ha proposat nova hora",
+        "roomAccepted": "roomAccepted — Reserva de sala acceptada",
+        "roomDeclined": "roomDeclined — Reserva de sala rebutjada"
+      },
+      "has_star": {
+        "yellow-star": "Estrella groga",
+        "orange-star": "Estrella taronja",
+        "red-star": "Estrella roja",
+        "purple-star": "Estrella lila",
+        "blue-star": "Estrella blava",
+        "green-star": "Estrella verda",
+        "red-bang": "Exclamació roja (!)",
+        "orange-guillemet": "Doble fletxa taronja (»)",
+        "yellow-bang": "Exclamació groga (!)",
+        "green-check": "Marca verda (✓)",
+        "blue-info": "Info blava (i)",
+        "purple-question": "Interrogació lila (?)"
+      }
+    },
+    "to_note": "A Gmail, to: cerca a Per a, CC i als teus propis BCC enviats. Combina to:me amb -cc:me per veure correus enviats directament a tu.",
+    "bcc_note": "En filtres entrants, bcc: sol detectar només correus que tu vas enviar. Per detectar correus rebuts en CCO, usa deliveredto:you@gmail.com amb -to:me i -cc:me.",
+    "deliveredto_note": "Coincideix amb la capçalera Delivered-To (útil per a àlies +etiqueta i reenviaments; no cobreix àlies de domini Workspace).",
+    "exact_phrase_note": "Cerca la frase exacta entre cometes (Gmail ignora gairebé tota puntuació excepte el guió baix i no permet cometes imbricades).",
+    "exact_word_note": "Evita variants automàtiques de Gmail (p. ex. +run no coincideix amb running).",
+    "around_note": "Troba correus on les dos paraules apareguin a un màxim de N paraules. No barregis OR dins d'AROUND.",
+    "header_calendar_note": "Operador oficial header: limitat a notificacions de Google Calendar (no admet capçaleres arbitràries de tercers).",
+    "category_note": "Pestanya automàtica de Gmail. Ideal per a Cerca; en filtres entrants pot variar perquè s'assigna dinàmicament.",
+    "label_note": "Els espais als noms d'etiqueta es converteixen en guions (-) i es respecten les barres (/). Només cerca en filtres estàndard.",
+    "in_note": "Les cerques normals ometen Correu brossa i Paperera tret d'incloure in:anywhere. No existeix in:archive (per arxivats usa -in:inbox -in:sent -in:drafts -in:spam -in:trash). Només cerca.",
+    "label_encryptedmail_note": "Només cerca: missatges enviats amb xifrat al client (Workspace).",
+    "is_muted_note": "Només cerca: converses que has silenciat a Gmail.",
+    "date_after_note": "Inclusiu (comença a les 00:00 d'aquell dia). Només cerca: no s'activa amb correu entrant.",
+    "date_before_note": "Exclusiu (acaba abans de les 00:00 d'aquell dia — este dia NO s'inclou). Només cerca."
   },
   "preview": {
     "title": "Consulta Generada",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "Factures de remitents específics (últim mes)",
-        "description": "Correus de dos remitents específics que contenen 'invoice' a l'assumpte però no 'draft', rebuts en els darrers 30 dies.",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "Factures de remitents concrets (últim mes)",
+        "description": "Correus de dos remitents l'assumpte dels quals conté 'invoice' i exclou 'draft', dels darrers 30 dies.",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "Correus de reunions on estic en còpia (CC)",
-        "description": "Correus on apareixes en còpia (CC), l'assumpte conté 'meeting', però no 'cancelled'.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "Correus de reunió on estic en CC",
+        "description": "Missatges on apareixes en CC, l'assumpte conté 'meeting' i exclou 'cancelled'.",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "Fitxers adjunts PDF d'un remitent específic",
-        "description": "Missatges d'un remitent particular que tenen un fitxer PDF adjunt.",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "Adjunts PDF d'un remitent concret",
+        "description": "Missatges d'un remitent amb un fitxer PDF adjunt.",
+        "query": ""
       },
       {
         "id": "unread_starred",
-        "title": "Missatges destacats no llegits",
-        "description": "Tots els missatges que estan destacats i no llegits alhora: un filtre ràpid de bústia de prioritat.",
-        "query": "is:unread is:starred"
+        "title": "Missatges destacats sense llegir",
+        "description": "Tots els missatges destacats i sense llegir — filtre ràpid de safata prioritària.",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "Butlletins dels quals pots donar-te de baixa",
-        "description": "Correus de la categoria Promocions que contenen un enllaç per a donar-se de baixa (unsubscribe) al cos.",
-        "query": "in:promotions unsubscribe"
+        "title": "Promocions amb enllaç per donar-se de baixa",
+        "description": "Correus a la categoria Promocions de Gmail amb la paraula 'unsubscribe'.",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "Grup OR amb exclusió global",
+        "description": "Agrupació en 2 nivells: coincideix amb label:work OR subject:urgent, excloent sempre subject:Day.",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Respostes RSVP de Google Calendar",
+        "description": "Detecta invitacions acceptades, rebutjades o potser amb l'operador oficial header:.",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "Butlletins antics massius (Truc avançat)",
+        "description": "Fes servir l'etiqueta interna label:^unsub per localitzar butlletins antics (>30 dies).",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "Enviats directament a mi (sense CC)",
+        "description": "Solució per a to: a Gmail (que també inclou CC): missatges adreçats només a tu.",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "Correus rebuts en còpia oculta (BCC)",
+        "description": "Troba correus lliurats a la teua bústia on no ets ni a Per a ni a CC.",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "Fitxers de Google Drive sense etiquetar",
+        "description": "Cerca missatges amb enllaços de Google Drive que encara no tenen cap etiqueta pròpia.",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Referència d'operadors de Gmail",
-    "intro": "A continuació es mostren els operadors compatibles amb el constructor i què signifiquen a Gmail.",
+    "intro": "Referència completa d'operadors de cerca i filtres a Gmail, peculiaritats reals i límits de compte.",
     "operators": [
       {
         "op": "from:",
-        "desc": "Coincideix amb l'adreça de correu del remitent."
+        "desc": "Coincideix amb l'adreça o domini del remitent."
       },
       {
         "op": "to:",
-        "desc": "Coincideix amb el destinatari principal."
+        "desc": "Coincideix amb QUALSEVOL destinatari (Per a, CC i el teu BCC enviat). Fes servir to:me -cc:me per a correu directe."
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = còpia de cortesia (visible). BCC = còpia oculta (no visible)."
+        "desc": "CC = amb còpia. BCC = còpia oculta (entrants oculten BCC; usa deliveredto:you@gmail.com -to:me -cc:me)."
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Capçalera Delivered-To (+àlies, reenviaments). No cobreix àlies de domini Workspace."
+      },
+      {
+        "op": "list:",
+        "desc": "Capçalera List-Id de llistes de correu."
       },
       {
         "op": "subject:",
-        "desc": "Cerca dins del camp de l'assumpte."
+        "desc": "Cerca dins de l'assumpte del missatge."
       },
       {
-        "op": "has:attachment",
-        "desc": "Missatges amb qualsevol fitxer adjunt."
+        "op": "\"frase\" / +paraula",
+        "desc": "Frase exacta entre cometes o paraula exacta sense variants amb +."
       },
       {
-        "op": "filename:",
-        "desc": "Coincideix amb el nom o extensió de l'adjunt (ex. pdf, *.docx)."
+        "op": "AROUND",
+        "desc": "Proximitat: paraula1 AROUND 5 paraula2 (entre cometes per ordre estricte; sense OR dins)."
       },
       {
-        "op": "label:",
-        "desc": "Missatges amb una etiqueta personalitzada de Gmail que hagis creat."
+        "op": "has:attachment / filename:",
+        "desc": "Adjunts (incl. imatges en línia) i nom o extensió (pdf, docx — sense comodí *)."
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Enllaços de Google Drive, Docs, Sheets, Slides o vídeos de YouTube."
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Operador oficial per a avisos de Calendar (no admet capçaleres de tercers)."
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "Cerca per capçalera exacta RFC 5322 Message-ID."
+      },
+      {
+        "op": "category:",
+        "desc": "Pestanya automàtica: primary, social, promotions, updates, forums, reservations, purchases."
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "Etiquetes pròpies (guions per espais), amb o sense etiquetes (Només cerca)."
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "Missatges xifrats al client (Workspace, Només cerca)."
       },
       {
         "op": "in:",
-        "desc": "Missatges en una carpeta del sistema de Gmail: inbox, spam, trash, sent, promotions..."
+        "desc": "Ubicació del sistema: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (no existeix in:archive; arxivats sense inbox)."
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "Filtra per estat de lectura."
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "Filtra per estat destacat (⭐) o d'importància (►)."
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "Estat del missatge o estrella específica (Només cerca)."
       },
       {
         "op": "after: / before:",
-        "desc": "Interval de dates utilitzant el format AAAA/MM/DD."
+        "desc": "Dates (AAAA/MM/DD o Unix epoch): after: inclusiu, before: exclusiu (Només cerca)."
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "Data relativa: 7d (7 dies), 2m (2 mesos), 1y (1 any)."
+        "desc": "Data relativa: 7d, 2m, 1y (Només cerca)."
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "Mida del missatge: 5M (5 MB), 500K (500 KB)."
+        "op": "larger: / smaller: / size:",
+        "desc": "Mida del missatge: 5M, 500K o mida mínima en bytes amb size: (p. ex. size:1048576)."
       },
       {
-        "op": "OR",
-        "desc": "Combina dos termes perquè coincideixi qualsevol dels dos (ha d'anar en majúscules)."
-      },
-      {
-        "op": "-terme",
-        "desc": "Exclou els missatges que coincideixen amb el terme (operador NOT)."
-      },
-      {
-        "op": "(…)",
-        "desc": "Agrupa termes perquè els operadors s'apliquin a tot el grup."
+        "op": "OR / { } / -terme / (…)",
+        "desc": "OR en majúscules (o {a b}), exclusió - i parèntesis de grup."
       }
     ],
-    "tips_title": "Consells professionals",
+    "tips_title": "Consells avançats i peculiaritats de Gmail",
     "tips": [
-      "Agrupa els valors de més d'una paraula entre cometes: subject:\"informe trimestral\"",
-      "Utilitza OR dins de parèntesis per coincidir amb diversos valors: from:(a@x.com OR b@x.com)",
-      "Els operadors de Gmail no distingeixen entre majúscules i minúscules, però OR ha d'anar en majúscules.",
-      "Enganxa la consulta generada directament al camp de cerca de Gmail o al camp 'Conté les paraules' en crear un filtre.",
-      "Combina newer_than i older_than per definir un interval de temps precís: newer_than:3m older_than:1m",
-      "label: cerca a les teues etiquetes personalitzades. in: cerca a les carpetes del sistema de Gmail (inbox, spam...)."
-    ]
+      "OR lliga més fort que l'espai (AND): combina OR i exclusions amb seguretat usant grups, p. ej. (label:work OR subject:urgent) -subject:Day.",
+      "Gmail NO admet comodins * (com *.docx) ni regex. Usa extensions simples (docx) o dominis (from:empresa.com).",
+      "Gmail ignora la majoria de signes (! ? $ & # *) excepte el guió baix (_) i separa números amb guions.",
+      "after: és inclusiu (des de les 00:00 d'aquell dia) i before: exclusiu. Admet Unix epoch.",
+      "Les cerques normals ometen Correu brossa i Paperera tret d'afegir in:anywhere.",
+      "Vista de conversa: amb fils actius, -exclusions mostren el fil si un altre missatge evita l'exclusió.",
+      "Els filtres entrants s'avaluen a l'instant d'arribar: dates, llegit/estrella i label: són principalment per a Cerca.",
+      "Trucs avançats: label:^unsub localitza butlletins i label:^smartlabel_receipt detecta rebuts.",
+      "Límits: mantén cada filtre sota ~1.469–1.500 caràcters (màx. 1.000 filtres, 500 etiquetes, 20 reenviaments)."
+    ],
+    "th_operator": "Operador",
+    "th_description": "Descripció"
   },
   "support": {
     "toast_title": "☕ Dona suport al projecte",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "Este filtre coincidirà amb els correus",
     "from": "enviats per {{value}}",
-    "to": "enviats a {{value}}",
+    "to": "amb destinatari (Per a/CC/BCC) {{value}}",
     "cc": "amb {{value}} a CC",
     "bcc": "amb {{value}} a BCC",
     "subject": "l'assumpte dels quals contingui {{value}}",
@@ -296,7 +465,28 @@
     "size_smaller": "de mida inferior a {{value}}",
     "negate_prefix": "NO",
     "and_connector": " I ",
-    "or_connector": " O "
+    "or_connector": " O ",
+    "deliveredto": "lliurats a l'adreça {{value}}",
+    "list": "de la llista de correu {{value}}",
+    "exact_phrase": "amb la frase exacta \"{{value}}\"",
+    "exact_word": "amb la paraula exacta {{value}}",
+    "around": "on {{word1}} apareix a menys de {{distance}} paraules de {{word2}}",
+    "around_ordered_suffix": "(en ordre estricte)",
+    "has_drive": "que contenen un enllaç de Google Drive",
+    "has_document": "que contenen un fitxer de Google Docs",
+    "has_spreadsheet": "que contenen un full de Google Sheets",
+    "has_presentation": "que contenen una presentació de Google Slides",
+    "has_youtube": "que contenen un vídeo de YouTube",
+    "header_calendar": "amb notificació de Google Calendar {{value}}",
+    "rfc822msgid": "amb Message-ID {{value}}",
+    "category": "a la categoria {{value}}",
+    "has_userlabels": "que tenen almenys una etiqueta pròpia",
+    "has_nouserlabels": "que no tenen etiquetes pròpies",
+    "label_encryptedmail": "enviats amb xifrat al client",
+    "has_star": "amb la icona d'estrella {{value}}",
+    "is_muted": "de converses silenciades",
+    "size_exact": "de més de {{value}} bytes",
+    "negate_group_prefix": "CAP DE"
   },
   "pwa": {
     "install_btn": "Instal·la l'aplicació",
@@ -354,7 +544,27 @@
       "p_4_1": "Tot i que no utilitzem tecnologies de rastreig, teniu en tot moment el control absolut sobre les dades guardades al vostre navegador. Si desitgeu esborrar els vostres filtres guardats i les vostres preferències visuals, podeu fer-ho fàcilment:",
       "li_4_1": "Buidant la memòria cau i l'emmagatzematge de dades de llocs als ajustos del vostre navegador (Chrome, Firefox, Safari, Edge).",
       "li_4_2": "Utilitzant el mode de \"Navegació Privada\" o \"Incògnit\", el qual esborrarà automàticament este emmagatzematge local en tancar la finestra.",
-      "p_4_2": "Per a més informació sobre qui som, visiteu el nostre <strong><a href=\"#\" id=\"hub-legal-link-2\">Avís Legal Centralitzat</a></strong>."
+      "p_4_2": "Per a més informació sobre qui som, visiteu el nostre <strong><a href=\"#\" id=\"hub-legal-link-2\">Avís Legal Centralitzat</a></strong>.",
+      "td_locale_desc": "Recorda l'idioma seleccionat al selector d'idioma entre visites."
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "S'apropa al límit de ~1.500 caràcters de Gmail ({{count}} caràcters). Considera escurçar o dividir el filtre.",
+    "char_limit_exceeded": "Supera el límit de ~1.469–1.500 caràcters de Gmail ({{count}} caràcters). Gmail pot rebutjar-lo o fallar en silenci — divideix-lo en diversos filtres.",
+    "or_negation_trap": "Parany OR + Excloure: una exclusió dins d'un grup OR permet que qualsevol altre terme se salti l'exclusió. Treu les exclusions fora del grup OR.",
+    "fix_or_negation_btn": "Corregir agrupació",
+    "search_only_operators": "Operadors de només cerca detectats ({{operators}}): vàlids a la barra de cerca de Gmail, però Gmail avisa que normalment no coincideixen amb correu entrant.",
+    "caution_bcc": "Nota sobre bcc:: els correus rebuts oculten BCC d'altres destinataris, per tant coincideix principalment amb correus enviats per tu.",
+    "caution_category": "Nota sobre category:: Gmail assigna categories dinàmicament; ideal per a Cerca, menys predictible en filtres entrants.",
+    "wildcard_unsupported": "Comodí (*) detectat: Gmail NO admet comodins * (com *.docx). Fes servir extensions simples (docx) o dominis (from:empresa.com).",
+    "lowercase_or": "\"or\" en minúscules detectat dins d'un valor: Gmail cercarà la paraula literal \"or\" si no escrius OR en majúscules.",
+    "unescaped_inner_quote": "Cometa doble (\") extra dins d'una frase exacta: Gmail no permet escapar cometes dins de cometes.",
+    "negation_inside_operator": "Negació en línia (-terme) detectada dins d'un camp: és més segur afegir una fila separada amb Excloure (NOT).",
+    "around_with_or": "AROUND no admet OR ni { } dins de l'expressió. Crea dues condicions AROUND separades unides amb O (OR).",
+    "conversation_view_negation": "Avís de vista de conversa: amb fils agrupats a Gmail, un fil segueix apareixent si un altre missatge evita l'exclusió.",
+    "deliveredto_me_unsupported": "Gmail no expandeix «me» a deliveredto: — introdueix el teu correu o àlies complet (p. ex. you@gmail.com).",
+    "in_archive_unsupported": "Gmail no té operador in:archive (el correu arxivat només manca d'etiqueta Inbox). Usa -in:inbox -in:sent -in:drafts -in:spam -in:trash.",
+    "negated_group_caution": "Grup compost exclòs -(...) detectat: funciona a la Cerca, però pot ser imprevisible als filtres entrants guardats. Prefereix exclusions separades (-a -b).",
+    "double_negation": "Doble negació detectada (condició exclosa dins d'un grup exclòs): Gmail no suporta -(-terme). Lleva una de les exclusions."
   }
 }

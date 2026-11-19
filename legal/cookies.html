@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title data-i18n="legal.cookies_title">Cookies Policy - Gmail Filter Builder</title>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=3" />
+  <link rel="stylesheet" href="../assets/css/styles.css?v=6" />
   <style>
     .legal-container {
       max-width: 800px;
@@ -17,15 +17,15 @@
     .legal-container h1 { font-size: 32px; margin-bottom: 24px; color: var(--md-primary); }
     .legal-container h2 { font-size: 24px; margin-top: 32px; margin-bottom: 16px; }
     .legal-container p, .legal-container li { margin-bottom: 16px; font-size: 16px; }
-    .legal-container ul { padding-left: 24px; }
+    .legal-container ul { padding-inline-start: 24px; }
     .legal-container table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
-    .legal-container th, .legal-container td { border: 1px solid var(--md-outline); padding: 12px; text-align: left; }
+    .legal-container th, .legal-container td { border: 1px solid var(--md-outline); padding: 12px; text-align: start; }
     .legal-container th { background: var(--md-surface-variant); }
     .legal-container a { color: var(--md-primary); text-decoration: none; }
     .legal-container a:hover { text-decoration: underline; }
     .back-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; color: var(--md-on-surface-variant); text-decoration: none; font-weight: 500; }
     .back-btn:hover { color: var(--md-primary); }
-    .alert-box { background: rgba(52, 168, 83, 0.1); border-left: 4px solid #34A853; padding: 16px; margin: 24px 0; border-radius: 4px; }
+    .alert-box { background: rgba(52, 168, 83, 0.1); border-inline-start: 4px solid #34A853; padding: 16px; margin: 24px 0; border-radius: 4px; }
   </style>
 </head>
 <body>
@@ -74,6 +74,12 @@
           <td data-i18n="legal.cookies.td_support_desc">Avoids annoyances by remembering that you have decided to close and not see the development support banner again.</td>
           <td data-i18n="legal.cookies.td_duration_persist">Persistent</td>
         </tr>
+        <tr>
+          <td><code>preferredLocale</code></td>
+          <td data-i18n="legal.cookies.td_type_local">Local Storage</td>
+          <td data-i18n="legal.cookies.td_locale_desc">Remembers the language you selected in the language selector across visits.</td>
+          <td data-i18n="legal.cookies.td_duration_persist">Persistent</td>
+        </tr>
       </tbody>
     </table>
 
@@ -87,7 +93,7 @@
       <li data-i18n="legal.cookies.li_4_2">By using "Private Browsing" or "Incognito" mode, which will automatically delete this local storage when you close the window.</li>
     </ul>
 
-    <p data-i18n="legal.cookies.p_4_2">For more information about who we are, visit our <strong><a href="https://salmonidas-dev.vercel.app/legal-identity" class="hub-legal-link">Centralized Legal Notice</a></strong>.</p>
+    <p data-i18n="legal.cookies.p_4_2">For more information about who we are, visit our <strong><a href="https://salmonidas-dev.vercel.app/legal-identity" class="hub-legal-link" target="_blank" rel="noopener noreferrer">Centralized Legal Notice</a></strong>.</p>
   </div>
   
   <script src="../assets/js/legal-i18n.js"></script>

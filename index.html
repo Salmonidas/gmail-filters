@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://app.lemonsqueezy.com https://assets.lemonsqueezy.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://app.lemonsqueezy.com https://assets.lemonsqueezy.com https://salmonidas.lemonsqueezy.com" />
   <title>Gmail Filter Builder</title>
   <meta name="description" content="Visual builder for advanced Gmail search filters. No syntax to memorise, no backend, no build step. 30+ languages supported." />
-  <meta name="theme-color" content="#1A73E8" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#1A73E8" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131314" />
   <meta name="google-site-verification" content="olWP1Oxlj0I75JQlZY0_yAyUCAZ7OlD-0ej_Oe9H-rc" />
 
   <!-- Open Graph -->
@@ -23,10 +24,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Gmail Filters" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=3" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=6" />
   <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 </head>
 <body>
+<a href="#main" class="skip-link" data-i18n="app.skip_to_content">Skip to main content</a>
 
 <div class="app-shell">
 
@@ -157,13 +159,19 @@
 
           <!-- Toolbar -->
           <div class="builder-toolbar" style="margin-top: 20px;">
-            <button id="btn-add-condition" class="md-btn md-btn-primary">
+            <button id="btn-add-condition" class="md-btn md-btn-primary" type="button">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon" aria-hidden="true">
                 <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
               <span data-i18n="builder.add_condition">Add Condition</span>
             </button>
-            <button id="btn-clear-all" class="md-btn md-btn-danger">
+            <button id="btn-add-group" class="md-btn md-btn-tonal" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="3"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
+              </svg>
+              <span data-i18n="builder.add_group">Add Group</span>
+            </button>
+            <button id="btn-clear-all" class="md-btn md-btn-danger" type="button">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon" aria-hidden="true">
                 <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/>
               </svg>
@@ -250,6 +258,9 @@
               </div>
             </div>
 
+            <!-- Live Gmail diagnostics -->
+            <div id="query-diagnostics" class="query-diagnostics hidden" role="status" aria-live="polite"></div>
+
             <!-- Natural language summary -->
             <div class="summary-box" style="margin-top: 16px;">
               <p class="summary-title" data-i18n="preview.summary_title">What this filter does</p>
@@ -329,8 +340,8 @@
             <table class="help-table" aria-label="Gmail search operators">
               <thead>
                 <tr>
-                  <th style="width:160px;">Operator</th>
-                  <th>Description</th>
+                  <th style="width:160px;" data-i18n="help.th_operator">Operator</th>
+                  <th data-i18n="help.th_description">Description</th>
                 </tr>
               </thead>
               <tbody class="help-operators-tbody"></tbody>
@@ -341,8 +352,9 @@
             <p class="help-tips-title" data-i18n="help.tips_title">Pro Tips</p>
             <ul class="tips-list help-tips-list" role="list"></ul>
           </div>
+        </div>
       </div>
-      
+
       <div class="help-card" id="pwa-install-section">
         <h3 data-i18n="pwa.install_title">Install App</h3>
         <div id="pwa-install-container">
@@ -382,7 +394,7 @@
       <div class="footer-legal" style="margin-top: 12px; font-size: 13px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="legal/privacidad.html" data-i18n="footer.privacy" style="color: var(--md-on-surface-variant); text-decoration: none;">Privacy Policy</a>
         <a href="legal/cookies.html" data-i18n="footer.cookies" style="color: var(--md-on-surface-variant); text-decoration: none;">Cookie Policy</a>
-        <a href="https://salmonidas-dev.vercel.app/legal-identity" id="footer-hub-link" data-i18n="footer.legal_notice" target="_blank" style="color: var(--md-on-surface-variant); text-decoration: none;">Legal Notice</a>
+        <a href="https://salmonidas-dev.vercel.app/legal-identity" id="footer-hub-link" data-i18n="footer.legal_notice" target="_blank" rel="noopener noreferrer" style="color: var(--md-on-surface-variant); text-decoration: none;">Legal Notice</a>
       </div>
       <div class="footer-author" style="margin-top: 16px; display: flex; justify-content: center; align-items: center; gap: 8px;">
         <span data-i18n="footer.developed_by" style="font-size: 13px;">Developed by</span>
@@ -508,7 +520,7 @@
 </div><!-- /app-shell -->
 
 <!-- ── Entry point (ES module) ── -->
-<script type="module" src="assets/js/main.js?v=2"></script>
+<script type="module" src="assets/js/main.js?v=5"></script>
 
 </body>
 </html> 

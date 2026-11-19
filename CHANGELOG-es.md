@@ -7,6 +7,26 @@ Este proyecto sigue el estándar [Keep a Changelog](https://keepachangelog.com/e
 
 ---
 
+## [1.4.0] - 2026-11-19
+
+### Añadido (Added)
+- **Todas las opciones oficiales de Gmail (39 filtros)**: Ahora agrupadas por categorías claras para filtrar por listas de correo, frases exactas, palabras cercanas entre sí, archivos de Google Drive/Docs/Hojas/Presentaciones/YouTube, invitaciones y respuestas de Google Calendar, pestañas de la bandeja (Principal, Promociones, Social, Notificaciones…), estrellas de colores, hilos silenciados, correos sin etiqueta y fechas exactas.
+- **Grupos para reglas complejas (`+ Añadir grupo`)**: Combina cada condición con **Y (AND)** u **O (OR)** y agrúpalas visualmente sin pelearte con los paréntesis. Tus filtros guardados y enlaces compartidos anteriores siguen funcionando sin que tengas que hacer nada.
+- **Detector de errores en tiempo real**: Mientras creas el filtro, la web te avisa si hay trampas típicas de Gmail —como mezclar **O (OR)** con exclusiones (incluye un botón de **Corregir agrupación** en 1 clic)—, si te acercas al límite de longitud de Gmail o si usas reglas que solo sirven para buscar y no para correo entrante.
+- **31 idiomas y soporte de lectura derecha a izquierda**: La herramienta ya está traducida a 31 variantes regionales (incluido diseño adaptado para árabe) y recuerda el idioma que elijas.
+- **Más ejemplos listos para usar**: La Biblioteca pasa a tener 11 plantillas prácticas que puedes cargar y adaptar con un clic.
+- **Opciones de apoyo y páginas de privacidad**: Nuevo cuadro de apoyo al proyecto (con opciones de invitación a un café y GitHub Sponsors) y páginas claras de Privacidad y Cookies en tu idioma.
+
+### Modificado (Changed)
+- **Edición manual más fiable**: Alternar entre escribir una búsqueda de Gmail a mano y volver al constructor visual ahora mantiene grupos, frases exactas, fechas y exclusiones sin perder nada.
+- **Cambio entre fecha y marca de tiempo**: Al pasar un filtro de fecha a formato Unix Epoch (o al revés), ahora convierte automáticamente la fecha que ya habías elegido en lugar de borrarla.
+- **Licencia de código abierto**: Actualizada la licencia del proyecto a GNU AGPL-3.0 para asegurar que siga siendo siempre libre y abierto.
+
+### Corregido (Fixed)
+- **Vista previa siempre al día**: Solucionado un fallo por el que la búsqueda generada podía dejar de actualizarse al escribir dentro de condiciones o grupos.
+- **Borrado en Mis Filtros**: Corregido el clic con ratón en el botón de eliminar de la Biblioteca para que el aviso de confirmación y el borrado funcionen siempre igual con ratón y teclado.
+- **Mejoras en móvil y modo oscuro**: Corregidos textos solapados y flechas duplicadas en los desplegables en pantallas pequeñas, ajustadas las 4 pestañas superiores para que quepan sin cortarse en móvil, mejorado el contraste de botones en modo oscuro y restaurada la fuente local completa para que la app se vea nítida incluso sin conexión.
+
 ## [1.1.1] - 2026-03-13
 
 ### Añadido (Added)

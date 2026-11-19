@@ -2,7 +2,8 @@
   "app": {
     "title": "منشئ فلاتر جي ميل",
     "subtitle": "أنشئ استعلامات بحث جي ميل المتقدمة مرئيًا وبسهولة، دون الحاجة لحفظ الصيغ البرمجية.",
-    "language_selector": "اللغة"
+    "language_selector": "اللغة",
+    "skip_to_content": "الانتقال إلى المحتوى الرئيسي"
   },
   "nav": {
     "builder": "المنشئ",
@@ -22,7 +23,7 @@
     "advanced_mode": "تعديل الاستعلام يدويًا",
     "visual_mode": "العودة إلى المنشئ المرئي",
     "advanced_note": "قم بتعديل الاستعلام مباشرة. انقر على \"العودة إلى المنشئ المرئي\" لإعادة تفكيكه إلى شروط مرئية.",
-    "no_conditions": "لا توجد شروط بعد. انقر على \"إضافة شرط\" لبدء بناء الفلتر الخاص بك.",
+    "no_conditions": "لا توجد شروط بعد. اضغط «إضافة شرط» أو «إضافة مجموعة» للبدء.",
     "condition": {
       "type_label": "نوع الفلتر",
       "value_label": "القيمة",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "من — المرسل",
-      "to": "إلى — المستقبل",
+      "to": "إلى — أي مستلم (To/CC/BCC)",
       "cc": "نسخة كربونية (CC)",
       "bcc": "نسخة كربونية غير مرئية (BCC)",
       "subject": "الموضوع",
       "body": "نص الرسالة يحتوي على",
-      "has_attachment": "يحتوي على مرفقات",
+      "has_attachment": "يحتوي على مرفق (يشمل الصور المضمنة)",
       "filename": "اسم أو نوع المرفق",
       "label": "ملصق (ملصقات جي ميل الخاصة بي)",
-      "in": "في مجلد النظام (البريد الوارد، الرسائل غير المرغوب فيها...)",
+      "in": "مجلد النظام (inbox, spam, anywhere…)",
       "is_read": "الحالة: مقروءة",
       "is_unread": "الحالة: غير مقروءة",
       "is_starred": "الحالة: مميزة بنجمة (⭐)",
       "is_important": "الحالة: مهمة",
-      "date_after": "مستلمة بعد تاريخ",
-      "date_before": "مستلمة قبل تاريخ",
+      "date_after": "تم استلامه بعد التاريخ (شامل)",
+      "date_before": "تم استلامه قبل التاريخ (غير شامل)",
       "newer_than": "مستلمة خلال الفترة الأخيرة... (نسبي)",
       "older_than": "أقدم من فترة... (نسبي)",
       "size_larger": "الحجم أكبر من",
-      "size_smaller": "الحجم أصغر من"
+      "size_smaller": "الحجم أصغر من",
+      "deliveredto": "Delivered-To — عنوان بديل أو معاد توجيهه",
+      "list": "القائمة البريدية (ترويسة List-Id)",
+      "exact_phrase": "عبارة مطابقة تماماً (\"…\")",
+      "exact_word": "كلمة مطابقة بدون اشتقاق (+)",
+      "around": "كلمات متقاربة (AROUND)",
+      "has_drive": "يحتوي على رابط Google Drive",
+      "has_document": "يحتوي على ملف Google Docs",
+      "has_spreadsheet": "يحتوي على جدول Google Sheets",
+      "has_presentation": "يحتوي على عرض Google Slides",
+      "has_youtube": "يحتوي على فيديو YouTube",
+      "header_calendar": "إشعار تقويم Google",
+      "rfc822msgid": "معرف الرسالة الدقيق (rfc822msgid:)",
+      "category": "تصنيف البريد الوارد التلقائي",
+      "has_userlabels": "يحتوي على تصنيف مخصص",
+      "has_nouserlabels": "لا يحتوي على تصنيفات مخصصة",
+      "label_encryptedmail": "مشفر من جهة العميل (CSE)",
+      "has_star": "أيقونة نجمة محددة",
+      "is_muted": "الحالة: محادثة مكتومة",
+      "size_exact": "الحد الأدنى للحجم بالبايت (size:)"
     },
     "placeholders": {
-      "from": "alice@gmail.com أو boss@company.com",
-      "to": "team@company.com أو newsletter@service.io",
+      "from": "alice@gmail.com  OR  boss@company.com",
+      "to": "team@company.com  OR  newsletter@service.io",
       "cc": "manager@company.com",
-      "bcc": "archive@company.com أو compliance@firm.com",
-      "subject": "فاتورة أو \"تقرير ربع سنوي\" -مسودة",
-      "body": "الإجراء مطلوب أو \"يرجى الاطلاع على المرفق\"",
-      "filename": "pdf أو *.docx أو *.xlsx",
-      "label": "فواتير أو عمل أو إيصالات",
-      "in": "inbox أو spam أو promotions أو sent",
+      "bcc": "archive@company.com  OR  compliance@firm.com",
+      "subject": "فاتورة  OR  \"تقرير ربع سنوي\"",
+      "body": "إجراء مطلوب  OR  تأكيد",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "فواتير  OR  المالية/الضرائب  OR  تصنيفي",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d · 2m · 1y  (d = أيام، m = شهور، y = سنوات)",
       "older_than": "30d · 3m · 2y  (d = أيام، m = شهور، y = سنوات)",
       "size_larger": "5M · 10M · 25M  (M = ميجابايت)",
-      "size_smaller": "500K · 1M · 5M  (K = كيلوبايت، M = ميجابايت)"
+      "size_smaller": "500K · 1M · 5M  (K = كيلوبايت، M = ميجابايت)",
+      "deliveredto": "you+news@gmail.com  OR  you@gmail.com",
+      "list": "updates@service.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "تقرير ربع سنوي",
+      "exact_word": "فاتورة",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "يطابق الرسائل التي تحتوي على مرفق واحد على الأقل (أي نوع).",
-    "is_read_note": "يطابق الرسائل التي قمت بفتحها وقراءتها بالفعل.",
-    "is_unread_note": "يطابق الرسائل التي لم تفتحها بعد.",
-    "is_starred_note": "يطابق الرسائل المميزة بنجمة (⭐) في جي ميل.",
-    "is_important_note": "يطابق الرسائل التي حددها نظام جي ميل أو حددتها أنت كمهمة (►)."
+    "has_attachment_note": "يطابق الرسائل التي تحتوي على مرفق واحد على الأقل (يشمل الصور المضمنة).",
+    "is_read_note": "للبحث فقط: رسائل مقروءة بالفعل.",
+    "is_unread_note": "للبحث فقط: رسائل غير مقروءة.",
+    "is_starred_note": "للبحث فقط: رسائل مميزة بنجمة (⭐).",
+    "is_important_note": "للبحث فقط: رسائل محددة كمهمة (►).",
+    "add_group": "إضافة مجموعة",
+    "add_condition_to_group": "إضافة شرط إلى المجموعة",
+    "remove_group": "حذف المجموعة",
+    "exclude_group": "استثناء المجموعة (NOT)",
+    "match_prefix": "مطابقة",
+    "match_all": "الكل (AND)",
+    "match_any": "أيّاً من (OR)",
+    "match_suffix": "الشروط التالية:",
+    "around_word1": "الكلمة الأولى",
+    "around_distance": "أقصى عدد كلمات فاصلة",
+    "around_word2": "الكلمة الثانية",
+    "around_ordered": "ترتيب صارم",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (ثواني Unix)",
+    "groups": {
+      "people": "الأشخاص والقوائم البريدية",
+      "content": "الموضوع ونص الرسالة",
+      "attachments": "المرفقات و Google Drive",
+      "calendar_headers": "التقويم والترويسات",
+      "organization": "الفئات والتصنيفات والمجلدات",
+      "status": "القراءة والنجوم والحالة (للبحث)",
+      "date_size": "التاريخ والحجم"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — الرسائل الأساسية",
+        "social": "social — الشبكات الاجتماعية",
+        "promotions": "promotions — الرسائل الترويجية",
+        "updates": "updates — التحديثات والفواتير",
+        "forums": "forums — المنتديات والمجموعات",
+        "reservations": "reservations — الحجوزات",
+        "purchases": "purchases — المشتريات"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — دعوة جديدة",
+        "eventCancelled": "eventCancelled — حدث ملغى",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — تغيير الوقت/التكرار",
+        "roomAdded": "roomAdded — تمت إضافة غرفة",
+        "roomRemoved": "roomRemoved — تمت إزالة غرفة",
+        "locationUpdated": "locationUpdated — تغيّر الموقع",
+        "titleUpdated": "titleUpdated — تغيّر العنوان",
+        "descriptionUpdated": "descriptionUpdated — تغيّر الوصف",
+        "attachmentAdded": "attachmentAdded — تم إضافة مرفق",
+        "attachmentRemoved": "attachmentRemoved — تم حذف مرفق",
+        "conferenceUpdated": "conferenceUpdated — تغيّر رابط الاجتماع",
+        "rsvpAccepted": "rsvpAccepted — قبل المدعو",
+        "rsvpDeclined": "rsvpDeclined — رفض المدعو",
+        "rsvpTentative": "rsvpTentative — رد غير مؤكد (ربما)",
+        "rsvpWithNote": "rsvpWithNote — رد مع ملاحظة",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — اقترح وقتاً جديداً",
+        "roomAccepted": "roomAccepted — تم قبول حجز الغرفة",
+        "roomDeclined": "roomDeclined — تم رفض حجز الغرفة"
+      },
+      "has_star": {
+        "yellow-star": "نجمة صفراء",
+        "orange-star": "نجمة برتقالية",
+        "red-star": "نجمة حمراء",
+        "purple-star": "نجمة بنفسجية",
+        "blue-star": "نجمة زرقاء",
+        "green-star": "نجمة خضراء",
+        "red-bang": "تعجب أحمر (!)",
+        "orange-guillemet": "سهمان برتقاليان (»)",
+        "yellow-bang": "تعجب أصفر (!)",
+        "green-check": "علامة صح خضراء (✓)",
+        "blue-info": "معلومات زرقاء (i)",
+        "purple-question": "استفهام بنفسجي (?)"
+      }
+    },
+    "to_note": "في Gmail يطابق to: المستلم الأساسي و CC و BCC المرسلة منك. اجمع to:me مع -cc:me للرسائل الموجهة لك مباشرة.",
+    "bcc_note": "في الفلاتر الواردة يطابق bcc: عادةً رسائلك المرسلة فقط. لالتقاط BCC الواردة جرب deliveredto:you@gmail.com مع -to:me و -cc:me.",
+    "deliveredto_note": "يطابق ترويسة Delivered-To (مفيد للأسماء البديلة +alias؛ لا يشمل بدائل نطاق Workspace).",
+    "exact_phrase_note": "يبحث عن العبارة المطابقة تماماً بين علامتي تنصيص (يتجاهل Gmail معظم علامات الترقيم عدا _).",
+    "exact_word_note": "يمنع تطابق المشتقات التلقائي في Gmail (مثل +run لا يطابق running).",
+    "around_note": "يعثر على الرسائل التي تفصل بين الكلمتين فيها N كلمات كحد أقصى. لا تستخدم OR داخل AROUND.",
+    "header_calendar_note": "معامل header: الرسمي يدعم إشعارات تقويم Google فقط.",
+    "category_note": "تبويب Gmail التلقائي. موثوق في البحث وقد يختلف في الفلاتر الواردة.",
+    "label_note": "تُحوّل المسافات في التصنيفات إلى شرطات (-) وتُحفظ (/). للبحث فقط في الفلاتر القياسية.",
+    "in_note": "البحث القياسي يتجاهل المهملات والرسائل غير المرغوب فيها ما لم تضف in:anywhere. لا يوجد عامل in:archive (للمؤرشف استخدم -in:inbox -in:sent -in:drafts -in:spam -in:trash). للبحث فقط.",
+    "label_encryptedmail_note": "للبحث فقط: رسائل مشفرة من جهة العميل (Workspace).",
+    "is_muted_note": "للبحث فقط: محادثات تم كتمها.",
+    "date_after_note": "شامل (يبدأ من 00:00 من ذلك اليوم). للبحث فقط.",
+    "date_before_note": "غير شامل (ينتهي قبل 00:00 من ذلك اليوم). للبحث فقط."
   },
   "preview": {
     "title": "الاستعلام الذي تم إنشاؤه",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "الفواتير من مرسلين محددين (الشهر الماضي)",
-        "description": "رسائل البريد الإلكتروني من مرسلين محددين والتي تحتوي على 'invoice' في الموضوع ولكن ليس 'draft'، والمستلمة خلال آخر 30 يومًا.",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "فواتير من مرسلين محددين (آخر شهر)",
+        "description": "رسائل من مرسلين يحتوي موضوعها على 'invoice' وتستثني 'draft' آخر 30 يوماً.",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "رسائل البريد الخاصة بالاجتماعات التي أكون نسخة فيها (CC)",
-        "description": "الرسائل الإلكترونية التي تظهر فيها في النسخة (CC)، ويحتوي الموضوع على كلمة 'meeting' ولكن ليس 'cancelled'.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "رسائل اجتماعات أنا فيها في CC",
+        "description": "رسائل فيها عنوانك في CC والموضوع يحتوي 'meeting' ويستثني 'cancelled'.",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
         "title": "مرفقات PDF من مرسل محدد",
-        "description": "الرسائل من مرسل معين والتي تحتوي على ملف PDF مرفق.",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "description": "رسائل من مرسل معين تحتوي ملف PDF مرفقاً.",
+        "query": ""
       },
       {
         "id": "unread_starred",
-        "title": "الرسائل غير المقروءة والمميزة بنجمة",
-        "description": "جميع الرسائل المميزة بنجمة وغير المقروءة في نفس الوقت - فلتر بريد وارد سريع للأولويات.",
-        "query": "is:unread is:starred"
+        "title": "رسائل مميزة بنجمة غير مقروءة",
+        "description": "جميع الرسائل المميزة وغير المقروءة — بحث أولوية سريع.",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "النشرات الإخبارية التي تود إلغاء الاشتراك فيها",
-        "description": "الرسائل في فئة العروض الترويجية التي تحتوي على رابط إلغاء الاشتراك (unsubscribe) في محتوى الرسالة.",
-        "query": "in:promotions unsubscribe"
+        "title": "عروض ترويجية تحتوي رابط إلغاء الاشتراك",
+        "description": "رسائل في فئة العروض الترويجية تحتوي كلمة 'unsubscribe'.",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "مجموعة OR مع استثناء شامل",
+        "description": "تجميع من مستويين: يطابق label:work OR subject:urgent مع استثناء subject:Day دائماً.",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "ردود دعوات تقويم Google",
+        "description": "يلتقط القبول أو الرفض أو ربما باستخدام معامل header: الرسمي.",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "النشرات الإخبارية القديمة (حيلة متقدمة)",
+        "description": "يستخدم التصنيف الداخلي label:^unsub لإيجاد النشرات الأقدم من 30 يوماً.",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "مرسلة لي مباشرة (بدون CC)",
+        "description": "حل بديل لمعامل to: (الذي يشمل CC): رسائل موجهة لك وحدك.",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "رسائل مستلمة عبر النسخة المخفية (BCC)",
+        "description": "يجد رسائل وصلت لبريدك دون وجود عنوانك في To أو CC.",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "ملفات Google Drive بلا تصنيف",
+        "description": "يبحث عن رسائل تحوي روابط Google Drive دون أي تصنيف مخصص.",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "دليل معاملات بحث جي ميل",
-    "intro": "المعاملات المدعومة من قبل المنشئ وما تعنيه في جي ميل معروضة أدناه.",
+    "intro": "مرجع كامل لمعاملات بحث وفلاتر Gmail والقيود والسلوكيات الدقيقة.",
     "operators": [
       {
         "op": "from:",
-        "desc": "يطابق عنوان البريد الإلكتروني للمرسل."
+        "desc": "يطابق عنوان المرسل أو نطاقه."
       },
       {
         "op": "to:",
-        "desc": "يطابق المستقبل الرئيسي للرسالة."
+        "desc": "يطابق أي مستلم (To و CC و BCC المرسلة). استخدم to:me -cc:me للبريد المباشر."
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = نسخة كربونية مرئية. BCC = نسخة كربونية مخفية وغير مرئية للمستقبلين الآخرين."
+        "desc": "CC = نسخة. BCC = نسخة مخفية (للوارد استخدم deliveredto:you@gmail.com -to:me -cc:me)."
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "ترويسة Delivered-To (الأسماء البديلة وإعادة التوجيه؛ عدا نطاق Workspace)."
+      },
+      {
+        "op": "list:",
+        "desc": "ترويسة List-Id للقوائم البريدية."
       },
       {
         "op": "subject:",
-        "desc": "يبحث ضمن حقل الموضوع."
+        "desc": "يبحث داخل موضوع الرسالة."
       },
       {
-        "op": "has:attachment",
-        "desc": "الرسائل التي تحتوي على أي ملف مرفق."
+        "op": "\"phrase\" / +word",
+        "desc": "عبارة دقيقة بين تنصيص أو كلمة دقيقة بدون اشتقاق عبر +."
       },
       {
-        "op": "filename:",
-        "desc": "يطابق اسم أو امتداد الملف المرفق (مثل pdf, *.docx)."
+        "op": "AROUND",
+        "desc": "التقارب: word1 AROUND 5 word2 (تنصيص للترتيب الصارم؛ بدون OR)."
       },
       {
-        "op": "label:",
-        "desc": "الرسائل التي تحمل ملصقًا مخصصًا قمت بإنشائه في جي ميل."
+        "op": "has:attachment / filename:",
+        "desc": "المرفقات واسم/امتداد الملف (pdf, docx — بدون *)."
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "روابط Google Drive و Docs و Sheets و Slides و YouTube."
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "معامل رسمي لإشعارات تقويم Google."
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "البحث بمعرف الرسالة RFC 5322 Message-ID."
+      },
+      {
+        "op": "category:",
+        "desc": "التبويب: primary, social, promotions, updates, forums, reservations, purchases."
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "التصنيفات المخصصة (شرطة بدل المسافة) — للبحث فقط."
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "رسائل مشفرة من جهة العميل (Workspace — للبحث فقط)."
       },
       {
         "op": "in:",
-        "desc": "الرسائل في مجلد نظام جي ميل: inbox (الوارد)، spam (المزعج)، trash (المهملات)، sent (المرسل)، promotions..."
+        "desc": "الموقع: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (لا يوجد in:archive)."
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "الفلترة حسب حالة القراءة."
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "الفلترة حسب النجمة (⭐) أو الأهمية (►)."
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "حالة الرسالة أو نوع النجمة (للبحث فقط)."
       },
       {
         "op": "after: / before:",
-        "desc": "البحث بين تاريخين بصيغة YYYY/MM/DD."
+        "desc": "التواريخ (YYYY/MM/DD أو Unix epoch): after: شامل، before: غير شامل (للبحث فقط)."
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "التاريخ النسبي: 7d (7 أيام)، 2m (شهرين)، 1y (سنة واحدة)."
+        "desc": "تاريخ نسبي: 7d, 2m, 1y (للبحث فقط)."
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "حجم الرسالة: 5M (5 ميجابايت)، 500K (500 كيلوبايت)."
+        "op": "larger: / smaller: / size:",
+        "desc": "الحجم: 5M أو 500K أو الحد الأدنى بالبايت عبر size: (مثل size:1048576)."
       },
       {
-        "op": "OR",
-        "desc": "يدمج شرطين بحيث يطابق أحدهما على الأقل (يجب كتابته بالأحرف الكبيرة)."
-      },
-      {
-        "op": "-term",
-        "desc": "يستثني الرسائل التي تطابق هذه الكلمة (معامل NOT النفي)."
-      },
-      {
-        "op": "(…)",
-        "desc": "يجمع الكلمات معًا بحيث يتم تطبيق المعاملات على المجموعة كاملة."
+        "op": "OR / { } / -term / (…)",
+        "desc": "OR بأحرف كبيرة (أو {a b}) والاستثناء - وأقواس التجميع."
       }
     ],
-    "tips_title": "نصائح للمحترفين",
+    "tips_title": "نصائح متقدمة وسلوكيات Gmail الفعلية",
     "tips": [
-      "ضع القيم التي تحتوي على أكثر من كلمة بين علامتي اقتباس مزدوجتين: subject:\"تقرير ربع سنوي\"",
-      "استخدم OR بين قوسين لمطابقة أي قيمة من عدة قيم محددة: from:(a@x.com OR b@x.com)",
-      "معاملات جي ميل غير حساسة لحالة الأحرف، ولكن المعامل OR يجب أن يكتب دائمًا بالأحرف الكبيرة.",
-      "انسخ الاستعلام الناتج مباشرة في شريط بحث جي ميل أو في حقل 'يحتوي على الكلمات' عند إنشاء فلتر.",
-      "اجمع بين newer_than و older_than لتحديد فترة زمنية دقيقة: newer_than:3m older_than:1m",
-      "label: يبحث في ملصقاتك المخصصة. in: يبحث في مجلدات نظام جي ميل المضمنة (inbox, spam, promotions...)."
-    ]
+      "OR أقوى ربطاً من المسافة (AND): اجمع OR والاستثناءات باستخدام المجموعات مثل (label:work OR subject:urgent) -subject:Day.",
+      "لا يدعم Gmail رموز البدل * (*.docx) أو التعبيرات النمطية. استخدم الامتداد مباشرة (docx) أو النطاق.",
+      "يتجاهل Gmail معظم علامات الترقيم (! ? $ & # *) عدا _ ويفصل الأرقام بالشرطات.",
+      "after: شامل (من 00:00) و before: غير شامل. يدعم Unix epoch.",
+      "يتجاهل البحث القياسي البريد العشوائي والمهملات ما لم تضف in:anywhere.",
+      "عرض المحادثات: قد تظهر السلسلة كاملة إذا تجنبت رسالة أخرى فيها الاستثناء -.",
+      "فلاتر الوارد تعمل لحظة الوصول: التواريخ والحالة و label: مخصصة للبحث أساساً.",
+      "حيل متقدمة: label:^unsub يلتقط النشرات و label:^smartlabel_receipt يلتقط الإيصالات.",
+      "الحدود: أبقِ كل فلتر دون ~1,469–1,500 حرف (حد أقصى 1,000 فلتر، 500 تصنيف، 20 إعادة توجيه)."
+    ],
+    "th_operator": "المعامل",
+    "th_description": "الوصف"
   },
   "support": {
     "toast_title": "☕ دعم المشروع",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "سيطابق هذا الفلتر الرسائل التي تحقق الشروط الآتية:",
     "from": "المرسلة من {{value}}",
-    "to": "المرسلة إلى {{value}}",
+    "to": "المرسلة إلى (To/CC/BCC) {{value}}",
     "cc": "المحتوية على {{value}} في النسخة الكربونية (CC)",
     "bcc": "المحتوية على {{value}} في النسخة الكربونية المخفية (BCC)",
     "subject": "التي يحتوي موضوعها على {{value}}",
@@ -296,7 +465,28 @@
     "size_smaller": "التي حجمها أصغر من {{value}}",
     "negate_prefix": "ليس",
     "and_connector": " و ",
-    "or_connector": " أو "
+    "or_connector": " أو ",
+    "deliveredto": "المسلمة إلى العنوان {{value}}",
+    "list": "من القائمة البريدية {{value}}",
+    "exact_phrase": "التي تحوي العبارة الدقيقة \"{{value}}\"",
+    "exact_word": "التي تحوي الكلمة الدقيقة {{value}}",
+    "around": "حيث تظهر {{word1}} ضمن {{distance}} كلمة من {{word2}}",
+    "around_ordered_suffix": "(بترتيب صارم)",
+    "has_drive": "التي تحوي رابط Google Drive",
+    "has_document": "التي تحوي ملف Google Docs",
+    "has_spreadsheet": "التي تحوي جدول Google Sheets",
+    "has_presentation": "التي تحوي عرض Google Slides",
+    "has_youtube": "التي تحوي فيديو YouTube",
+    "header_calendar": "بإشعار تقويم Google {{value}}",
+    "rfc822msgid": "بمعرف الرسالة {{value}}",
+    "category": "في الفئة {{value}}",
+    "has_userlabels": "التي تحمل تصنيفاً مخصصاً واحداً على الأقل",
+    "has_nouserlabels": "بدون أي تصنيفات مخصصة",
+    "label_encryptedmail": "المرسلة بتشفير جهة العميل",
+    "has_star": "بنجمة {{value}}",
+    "is_muted": "من المحادثات المكتومة",
+    "size_exact": "أكبر من {{value}} بايت",
+    "negate_group_prefix": "ولا واحدة من"
   },
   "pwa": {
     "install_btn": "تثبيت التطبيق",
@@ -354,7 +544,27 @@
       "p_4_1": "على الرغم من أننا لا نستخدم تقنيات التتبع، إلا أنك تتمتع دائمًا بالسيطرة المطلقة على البيانات المخزنة في متصفحك. إذا كنت ترغب في حذف فلاترك المحفوظة وتفضيلاتك المرئية، يمكنك القيام بذلك بسهولة:",
       "li_4_1": "عن طريق مسح ذاكرة التخزين المؤقت وتخزين بيانات الموقع في إعدادات متصفحك (Chrome، Firefox، Safari، Edge).",
       "li_4_2": "باستخدام وضع \"التصفح الخاص\" أو \"التصفح المتخفي\"، والذي سيحذف التخزين المحلي تلقائيًا عند إغلاق النافذة.",
-      "p_4_2": "لمزيد من المعلومات حول هويتنا، قم بزيارة <strong><a href=\"#\" id=\"hub-legal-link-2\">الإشعار القانوني المركزي</a></strong>."
+      "p_4_2": "لمزيد من المعلومات حول هويتنا، قم بزيارة <strong><a href=\"#\" id=\"hub-legal-link-2\">الإشعار القانوني المركزي</a></strong>.",
+      "td_locale_desc": "يحفظ اللغة المختارة في منتقي اللغة بين الزيارات."
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "تقترب من حد Gmail البالغ ~1,500 حرف ({{count}} حرفاً). يُنصح بالاختصار أو التقسيم.",
+    "char_limit_exceeded": "يتجاوز حد Gmail البالغ ~1,469–1,500 حرف ({{count}} حرفاً). قد يرفض Gmail الفلتر أو يتجاهله — قسّمه إلى عدة فلاتر.",
+    "or_negation_trap": "فخ OR + الاستثناء: وضع شرط مستثنى داخل مجموعة OR يسمح لبقية الشروط بتجاوز الاستثناء. انقل الاستثناءات خارج مجموعة OR.",
+    "fix_or_negation_btn": "إصلاح التجميع",
+    "search_only_operators": "تم رصد معاملات للبحث فقط ({{operators}}): تعمل في شريط البحث لكن Gmail يحذر أنها لا تطابق البريد الوارد عادةً.",
+    "caution_bcc": "ملاحظة bcc:: البريد الوارد يخفي BCC للآخرين لذا يطابق غالباً رسائلك المرسلة.",
+    "caution_category": "ملاحظة category:: تُعيّن الفئات ديناميكياً؛ مثالية للبحث وأقل ثباتاً في الفلاتر الواردة.",
+    "wildcard_unsupported": "تم رصد رمز البدل (*): Gmail لا يدعم * (مثل *.docx). استخدم الامتداد مباشرة (docx) أو اسم النطاق.",
+    "lowercase_or": "تم رصد \"or\" بأحرف صغيرة: سيبحث Gmail عن كلمة \"or\" حرفياً ما لم تُكتب OR بأحرف كبيرة.",
+    "unescaped_inner_quote": "علامة تنصيص (\") إضافية داخل العبارة: سيغلق Gmail العبارة قبل أوانها.",
+    "negation_inside_operator": "نفي مضمّن (-term) داخل الحقل: أضف صفاً منفصلاً مع تحديد استثناء (NOT).",
+    "around_with_or": "لا يقبل AROUND معامل OR أو { } داخله. أنشئ شرطي AROUND منفصلين بينهما أو (OR).",
+    "conversation_view_negation": "ملاحظة عرض المحادثات: عند تفعيل السلاسل قد تظهر المحادثة إذا نجا أي بريد داخلها من الاستثناء.",
+    "deliveredto_me_unsupported": "لا يوسّع Gmail كلمة \"me\" في deliveredto: — أدخل عنوان بريدك الكامل أو البديل (مثل you@gmail.com).",
+    "in_archive_unsupported": "لا يملك Gmail عامل in:archive (البريد المؤرشف يفتقر فقط لتسمية Inbox). استخدم -in:inbox -in:sent -in:drafts -in:spam -in:trash.",
+    "negated_group_caution": "تم رصد مجموعة مركبة مستبعدة -(...): تعمل في البحث لكنها قد لا تثبت في الفلاتر الواردة المحفوظة. يُفضّل فصل الاستبعادات (-a -b).",
+    "double_negation": "تم رصد نفي مزدوج (شرط مستبعد داخل مجموعة مستبعدة): لا يدعم Gmail صيغة -(-term). أزل أحد الاستبعادين."
   }
 }

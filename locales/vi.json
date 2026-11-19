@@ -2,7 +2,8 @@
   "app": {
     "title": "Trình tạo bộ lọc Gmail",
     "subtitle": "Tạo các truy vấn tìm kiếm Gmail nâng cao một cách trực quan, không cần ghi nhớ cú pháp.",
-    "language_selector": "Ngôn ngữ"
+    "language_selector": "Ngôn ngữ",
+    "skip_to_content": "Chuyển đến nội dung chính"
   },
   "nav": {
     "builder": "Trình tạo",
@@ -22,7 +23,7 @@
     "advanced_mode": "Chỉnh sửa truy vấn thủ công",
     "visual_mode": "Quay lại trình tạo trực quan",
     "advanced_note": "Chỉnh sửa truy vấn trực tiếp. Nhấp vào \"Quay lại trình tạo trực quan\" để phân tích nó thành các điều kiện trực quan.",
-    "no_conditions": "Chưa có điều kiện nào. Nhấp vào \"Thêm điều kiện\" để bắt đầu tạo bộ lọc của bạn.",
+    "no_conditions": "Chưa có điều kiện nào. Nhấn «Thêm điều kiện» hoặc «Thêm nhóm» để bắt đầu.",
     "condition": {
       "type_label": "Loại bộ lọc",
       "value_label": "Giá trị",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "Từ — người gửi",
-      "to": "Đến — người nhận",
+      "to": "Đến — bất kỳ người nhận nào (To/CC/BCC)",
       "cc": "CC — đồng gửi",
       "bcc": "BCC — đồng gửi ẩn",
       "subject": "Tiêu đề",
       "body": "Nội dung thư chứa",
-      "has_attachment": "Có tệp đính kèm",
+      "has_attachment": "Có tệp đính kèm (gồm ảnh nhúng)",
       "filename": "Tên / loại tệp đính kèm",
       "label": "Nhãn (nhãn Gmail tùy chỉnh của tôi)",
-      "in": "Trong thư mục hệ thống (hộp thư đến, spam...)",
+      "in": "Thư mục hệ thống (inbox, spam, anywhere…)",
       "is_read": "Trạng thái: đã đọc",
       "is_unread": "Trạng thái: chưa đọc",
       "is_starred": "Trạng thái: có gắn dấu sao (⭐)",
       "is_important": "Trạng thái: được đánh dấu là quan trọng",
-      "date_after": "Nhận được sau ngày",
-      "date_before": "Nhận được trước ngày",
+      "date_after": "Nhận sau ngày (bao gồm ngày đó)",
+      "date_before": "Nhận trước ngày (không gồm ngày đó)",
       "newer_than": "Nhận được trong vòng... (tương đối)",
       "older_than": "Nhận được trước đó hơn... (tương đối)",
       "size_larger": "Kích thước lớn hơn",
-      "size_smaller": "Kích thước nhỏ hơn"
+      "size_smaller": "Kích thước nhỏ hơn",
+      "deliveredto": "Delivered-To — bí danh / chuyển tiếp",
+      "list": "Danh sách thư (tiêu đề List-Id)",
+      "exact_phrase": "Cụm từ chính xác (\"…\")",
+      "exact_word": "Từ chính xác không biến thể (+)",
+      "around": "Hai từ gần nhau (AROUND)",
+      "has_drive": "Chứa liên kết Google Drive",
+      "has_document": "Chứa tệp Google Docs",
+      "has_spreadsheet": "Chứa bảng tính Google Sheets",
+      "has_presentation": "Chứa bản trình bày Google Slides",
+      "has_youtube": "Chứa video YouTube",
+      "header_calendar": "Thông báo Lịch Google",
+      "rfc822msgid": "Message-ID chính xác (rfc822msgid:)",
+      "category": "Thẻ danh mục hộp thư đến",
+      "has_userlabels": "Có nhãn tùy chỉnh",
+      "has_nouserlabels": "KHÔNG có nhãn tùy chỉnh",
+      "label_encryptedmail": "Mã hóa phía máy khách (CSE)",
+      "has_star": "Biểu tượng ngôi sao cụ thể",
+      "is_muted": "Trạng thái: chuỗi thư đã tắt tiếng",
+      "size_exact": "Kích thước tối thiểu theo byte (size:)"
     },
     "placeholders": {
-      "from": "alice@gmail.com HOẶC boss@company.com",
-      "to": "team@company.com HOẶC newsletter@service.io",
+      "from": "alice@gmail.com  OR  boss@company.com",
+      "to": "team@company.com  OR  newsletter@service.io",
       "cc": "manager@company.com",
-      "bcc": "archive@company.com HOẶC compliance@firm.com",
-      "subject": "hóa đơn HOẶC \"báo cáo quý\" -bản nháp",
-      "body": "cần xử lý HOẶC \"vui lòng tìm tệp đính kèm\"",
-      "filename": "pdf HOẶC *.docx HOẶC *.xlsx",
-      "label": "hóa đơn HOẶC công việc HOẶC biên lai",
-      "in": "inbox HOẶC spam HOẶC promotions HOẶC sent",
+      "bcc": "archive@company.com  OR  compliance@firm.com",
+      "subject": "hóa đơn  OR  \"báo cáo quý\"",
+      "body": "cần xử lý  OR  xác nhận",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "hóa-đơn  OR  Tài-chính/Thuế  OR  Nhãn Của Tôi",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d · 2m · 1y   (d=ngày, m=tháng, y=năm)",
       "older_than": "30d · 3m · 2y   (d=ngày, m=tháng, y=năm)",
       "size_larger": "5M · 10M · 25M   (M = megabyte)",
-      "size_smaller": "500K · 1M · 5M   (K = kilobyte, M = megabyte)"
+      "size_smaller": "500K · 1M · 5M   (K = kilobyte, M = megabyte)",
+      "deliveredto": "ban+tin@gmail.com  OR  you@gmail.com",
+      "list": "tintuc@dichvu.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "báo cáo quý",
+      "exact_word": "hóa đơn",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "Khớp với các thư có chứa ít nhất một tệp đính kèm (bất kỳ định dạng nào).",
-    "is_read_note": "Khớp với các thư bạn đã mở và đọc.",
-    "is_unread_note": "Khớp với các thư bạn chưa mở.",
-    "is_starred_note": "Khớp với các thư bạn đã gắn dấu sao (⭐) trong Gmail.",
-    "is_important_note": "Khớp với các thư được Gmail hoặc bạn đánh dấu là quan trọng (►)."
+    "has_attachment_note": "Khớp thư có ít nhất một tệp đính kèm (gồm cả ảnh nhúng).",
+    "is_read_note": "Chỉ tìm kiếm: thư đã đọc.",
+    "is_unread_note": "Chỉ tìm kiếm: thư chưa đọc.",
+    "is_starred_note": "Chỉ tìm kiếm: thư có gắn sao (⭐).",
+    "is_important_note": "Chỉ tìm kiếm: thư được đánh dấu quan trọng (►).",
+    "add_group": "Thêm nhóm",
+    "add_condition_to_group": "Thêm điều kiện vào nhóm",
+    "remove_group": "Xóa nhóm",
+    "exclude_group": "Loại trừ nhóm (NOT)",
+    "match_prefix": "Khớp với",
+    "match_all": "TẤT CẢ (AND)",
+    "match_any": "BẤT KỲ (OR)",
+    "match_suffix": "các điều kiện sau:",
+    "around_word1": "Từ thứ nhất",
+    "around_distance": "Số từ tối đa ở giữa",
+    "around_word2": "Từ thứ hai",
+    "around_ordered": "Đúng thứ tự",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (giây Unix)",
+    "groups": {
+      "people": "Người nhận & Danh sách thư",
+      "content": "Tiêu đề & Nội dung thư",
+      "attachments": "Tệp đính kèm & Google Drive",
+      "calendar_headers": "Lịch & Tiêu đề kỹ thuật",
+      "organization": "Danh mục, Nhãn & Thư mục",
+      "status": "Trạng thái, Gắn sao & Tìm kiếm",
+      "date_size": "Ngày & Kích thước"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — Chính",
+        "social": "social — Mạng xã hội",
+        "promotions": "promotions — Quảng cáo",
+        "updates": "updates — Cập nhật",
+        "forums": "forums — Diễn đàn",
+        "reservations": "reservations — Đặt chỗ",
+        "purchases": "purchases — Mua sắm"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — Lời mời mới",
+        "eventCancelled": "eventCancelled — Sự kiện bị hủy",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — Đổi giờ/lịch lặp",
+        "roomAdded": "roomAdded — Đã thêm phòng",
+        "roomRemoved": "roomRemoved — Đã xóa phòng",
+        "locationUpdated": "locationUpdated — Đổi địa điểm",
+        "titleUpdated": "titleUpdated — Đổi tiêu đề",
+        "descriptionUpdated": "descriptionUpdated — Đổi mô tả",
+        "attachmentAdded": "attachmentAdded — Thêm tệp đính kèm",
+        "attachmentRemoved": "attachmentRemoved — Xóa tệp đính kèm",
+        "conferenceUpdated": "conferenceUpdated — Đổi liên kết họp video",
+        "rsvpAccepted": "rsvpAccepted — Khách đã chấp nhận",
+        "rsvpDeclined": "rsvpDeclined — Khách đã từ chối",
+        "rsvpTentative": "rsvpTentative — Khách trả lời có thể",
+        "rsvpWithNote": "rsvpWithNote — Trả lời kèm ghi chú",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — Đề xuất thời gian mới",
+        "roomAccepted": "roomAccepted — Đã duyệt đặt phòng",
+        "roomDeclined": "roomDeclined — Từ chối đặt phòng"
+      },
+      "has_star": {
+        "yellow-star": "Sao vàng",
+        "orange-star": "Sao cam",
+        "red-star": "Sao đỏ",
+        "purple-star": "Sao tím",
+        "blue-star": "Sao xanh dương",
+        "green-star": "Sao xanh lá",
+        "red-bang": "Chấm than đỏ (!)",
+        "orange-guillemet": "Mũi tên kép cam (»)",
+        "yellow-bang": "Chấm than vàng (!)",
+        "green-check": "Dấu tích xanh (✓)",
+        "blue-info": "Thông tin xanh (i)",
+        "purple-question": "Dấu hỏi tím (?)"
+      }
+    },
+    "to_note": "Trong Gmail, to: khớp cả To, CC và BCC bạn đã gửi. Kết hợp to:me với -cc:me để lọc thư gửi trực tiếp cho bạn.",
+    "bcc_note": "Trong bộ lọc thư đến, bcc: thường chỉ khớp thư bạn tự gửi. Để bắt thư nhận qua BCC, hãy thử deliveredto:you@gmail.com -to:me -cc:me.",
+    "deliveredto_note": "Khớp tiêu đề Delivered-To (+bí danh, chuyển tiếp; không áp dụng cho bí danh tên miền Workspace).",
+    "exact_phrase_note": "Tìm chính xác cụm từ trong dấu ngoặc kép (Gmail bỏ qua hầu hết dấu câu trừ _).",
+    "exact_word_note": "Ngăn Gmail tự động khớp biến thể từ (vd. +run không khớp running).",
+    "around_note": "Tìm email có hai từ cách nhau tối đa N từ. Không dùng OR bên trong AROUND.",
+    "header_calendar_note": "Toán tử header: chính thức chỉ hỗ trợ thông báo Lịch Google.",
+    "category_note": "Thẻ tự động của Gmail. Ổn định khi Tìm kiếm; có thể không ổn định với bộ lọc thư đến.",
+    "label_note": "Khoảng trắng trong nhãn được đổi thành dấu gạch nối (-) và giữ nguyên (/). Chỉ dùng để Tìm kiếm.",
+    "in_note": "Tìm kiếm thường bỏ qua Thư rác và Thùng rác trừ khi thêm in:anywhere. Không có toán tử in:archive (dùng -in:inbox -in:sent -in:drafts -in:spam -in:trash). Chỉ dùng Tìm kiếm.",
+    "label_encryptedmail_note": "Chỉ tìm kiếm: thư mã hóa phía máy khách (Workspace).",
+    "is_muted_note": "Chỉ tìm kiếm: chuỗi thư đã tắt tiếng.",
+    "date_after_note": "Bao gồm ngày đó (từ 00:00). Chỉ tìm kiếm: không kích hoạt với thư mới đến.",
+    "date_before_note": "Không bao gồm ngày đó (trước 00:00). Chỉ tìm kiếm."
   },
   "preview": {
     "title": "Truy vấn đã tạo",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "Hóa đơn từ người gửi cụ thể (tháng trước)",
-        "description": "Thư điện tử từ hai người gửi cụ thể chứa từ 'invoice' trong tiêu đề nhưng không chứa từ 'draft', nhận được trong vòng 30 ngày qua.",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "Hóa đơn từ người gửi cụ thể (tháng qua)",
+        "description": "Thư từ hai người gửi có tiêu đề chứa 'invoice' và loại trừ 'draft' trong 30 ngày qua.",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "Thư họp mà tôi được đồng gửi (CC)",
-        "description": "Thư bạn được đồng gửi (CC), tiêu đề chứa 'meeting' nhưng không chứa 'cancelled'.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "Thư họp mà tôi được CC",
+        "description": "Thư có bạn trong CC, tiêu đề chứa 'meeting' và loại trừ 'cancelled'.",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "Tệp đính kèm PDF từ một người gửi cụ thể",
-        "description": "Thư từ một người gửi cụ thể có đính kèm tệp tin định dạng PDF.",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "Tệp PDF đính kèm từ người gửi cụ thể",
+        "description": "Thư từ một người gửi cụ thể có đính kèm tệp PDF.",
+        "query": ""
       },
       {
         "id": "unread_starred",
-        "title": "Thư chưa đọc có gắn dấu sao",
-        "description": "Tất cả các thư có gắn dấu sao và chưa đọc - một bộ lọc nhanh để quản lý hộp thư ưu tiên.",
-        "query": "is:unread is:starred"
+        "title": "Thư gắn sao chưa đọc",
+        "description": "Tất cả thư vừa gắn sao vừa chưa đọc — tìm kiếm ưu tiên nhanh.",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "Thư đăng ký nhận tin muốn hủy đăng ký",
-        "description": "Thư trong danh mục Quảng cáo có chứa liên kết hủy đăng ký (unsubscribe) trong nội dung thư.",
-        "query": "in:promotions unsubscribe"
+        "title": "Thư quảng cáo có nút hủy đăng ký",
+        "description": "Thư trong danh mục Quảng cáo có chứa từ 'unsubscribe'.",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "Nhóm OR kèm loại trừ toàn cục",
+        "description": "Nhóm 2 cấp: khớp label:work OR subject:urgent nhưng luôn loại trừ subject:Day.",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Phản hồi RSVP Lịch Google",
+        "description": "Bắt các phản hồi chấp nhận, từ chối hoặc có thể qua toán tử chính thức header:.",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "Bản tin cũ hàng loạt (Mẹo nâng cao)",
+        "description": "Dùng nhãn nội bộ label:^unsub để tìm bản tin cũ hơn 30 ngày.",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "Gửi trực tiếp cho tôi (không CC)",
+        "description": "Cách khắc phục to: (vốn gồm cả CC): chỉ thư gửi thẳng tới bạn.",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "Thư nhận qua BCC",
+        "description": "Tìm thư đến hộp thư mà địa chỉ của bạn không nằm trong To hay CC.",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "Tệp Google Drive chưa gắn nhãn",
+        "description": "Tìm thư có liên kết Google Drive nhưng chưa có nhãn tùy chỉnh nào.",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Tài liệu tham khảo toán tử Gmail",
-    "intro": "Dưới đây là các toán tử tìm kiếm được trình tạo hỗ trợ và ý nghĩa của chúng trong Gmail.",
+    "intro": "Tài liệu đầy đủ các toán tử tìm kiếm và bộ lọc Gmail, lưu ý thực tế và giới hạn.",
     "operators": [
       {
         "op": "from:",
-        "desc": "Khớp với địa chỉ email của người gửi."
+        "desc": "Khớp địa chỉ hoặc tên miền người gửi."
       },
       {
         "op": "to:",
-        "desc": "Khớp với người nhận chính."
+        "desc": "Khớp BẤT KỲ người nhận nào (To, CC, BCC đã gửi). Dùng to:me -cc:me cho thư trực tiếp."
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = đồng gửi (công khai). BCC = đồng gửi ẩn (ẩn danh)."
+        "desc": "CC = đồng nhận. BCC = ẩn danh (thư nhận: deliveredto:you@gmail.com -to:me -cc:me)."
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Tiêu đề Delivered-To (+bí danh, chuyển tiếp; trừ bí danh Workspace)."
+      },
+      {
+        "op": "list:",
+        "desc": "Tiêu đề List-Id của danh sách gửi thư."
       },
       {
         "op": "subject:",
-        "desc": "Tìm kiếm trong dòng tiêu đề."
+        "desc": "Tìm trong tiêu đề thư."
       },
       {
-        "op": "has:attachment",
-        "desc": "Thư có chứa bất kỳ tệp đính kèm nào."
+        "op": "\"cụm từ\" / +từ",
+        "desc": "Cụm từ chính xác trong ngoặc kép hoặc từ gốc chính xác với +."
       },
       {
-        "op": "filename:",
-        "desc": "Khớp với tên hoặc phần mở rộng của tệp đính kèm (vd: pdf, *.docx)."
+        "op": "AROUND",
+        "desc": "Khoảng cách từ: tu1 AROUND 5 tu2 (ngoặc kép để giữ thứ tự; không dùng OR)."
       },
       {
-        "op": "label:",
-        "desc": "Thư có gắn nhãn Gmail tùy chỉnh do bạn tự tạo."
+        "op": "has:attachment / filename:",
+        "desc": "Tệp đính kèm và tên/phần mở rộng (pdf, docx — không dùng *)."
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Liên kết Google Drive, Docs, Sheets, Slides hoặc YouTube."
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Toán tử chính thức cho thông báo Lịch Google."
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "Tìm chính xác theo RFC 5322 Message-ID."
+      },
+      {
+        "op": "category:",
+        "desc": "Thẻ: primary, social, promotions, updates, forums, reservations, purchases."
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "Nhãn tùy chỉnh (gạch nối thay dấu cách) — Chỉ tìm kiếm."
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "Thư mã hóa phía máy khách (Workspace — Chỉ tìm kiếm)."
       },
       {
         "op": "in:",
-        "desc": "Thư trong thư mục hệ thống: inbox (hộp thư đến), spam, trash (thùng rác), sent (thư đã gửi), promotions..."
+        "desc": "Vị trí: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (không có in:archive)."
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "Lọc theo trạng thái đã đọc/chưa đọc."
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "Lọc theo dấu sao (⭐) hoặc mức độ quan trọng (►)."
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "Trạng thái hoặc loại sao cụ thể (Chỉ tìm kiếm)."
       },
       {
         "op": "after: / before:",
-        "desc": "Phạm vi ngày sử dụng định dạng YYYY/MM/DD."
+        "desc": "Ngày (YYYY/MM/DD hoặc Unix epoch): after: gồm ngày đó, before: không gồm (Chỉ tìm kiếm)."
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "Ngày tương đối: 7d (7 ngày), 2m (2 tháng), 1y (1 năm)."
+        "desc": "Ngày tương đối: 7d, 2m, 1y (Chỉ tìm kiếm)."
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "Kích thước thư: 5M (5 MB), 500K (500 KB)."
+        "op": "larger: / smaller: / size:",
+        "desc": "Kích thước: 5M, 500K hoặc tối thiểu byte với size: (vd. size:1048576)."
       },
       {
-        "op": "OR",
-        "desc": "Kết hợp hai điều kiện để khớp với một trong hai (bắt buộc phải viết hoa)."
-      },
-      {
-        "op": "-từ",
-        "desc": "Loại trừ thư chứa từ khóa đó (toán tử phủ định NOT)."
-      },
-      {
-        "op": "(…)",
-        "desc": "Nhóm các điều kiện để toán tử áp dụng cho toàn bộ nhóm."
+        "op": "OR / { } / -từ / (…)",
+        "desc": "OR viết hoa (hoặc {a b}), loại trừ - và ngoặc nhóm."
       }
     ],
-    "tips_title": "Mẹo chuyên nghiệp",
+    "tips_title": "Mẹo nâng cao & Đặc thù của Gmail",
     "tips": [
-      "Đặt các giá trị chứa nhiều từ trong dấu ngoặc kép: subject:\"báo cáo quý\"",
-      "Sử dụng OR trong ngoặc đơn để khớp với một trong nhiều giá trị: from:(a@x.com OR b@x.com)",
-      "Các toán tử của Gmail không phân biệt chữ hoa chữ thường, nhưng OR bắt buộc phải viết hoa.",
-      "Dán trực tiếp truy vấn đã tạo vào thanh tìm kiếm của Gmail hoặc vào trường 'Có các từ này' khi tạo bộ lọc.",
-      "Kết hợp newer_than và older_than để lọc chính xác một khoảng thời gian: newer_than:3m older_than:1m",
-      "label: tìm kiếm trong các nhãn tùy chỉnh của bạn. in: tìm kiếm trong các thư mục hệ thống của Gmail (inbox, spam, promotions...)."
-    ]
+      "OR liên kết chặt hơn dấu cách (AND): dùng nhóm khi trộn OR và loại trừ, vd. (label:work OR subject:urgent) -subject:Day.",
+      "Gmail KHÔNG hỗ trợ dấu * (*.docx) hay regex. Dùng phần mở rộng đơn giản (docx) hoặc tên miền.",
+      "Gmail bỏ qua hầu hết dấu câu (! ? $ & # *) trừ _ và tách số có dấu gạch ngang.",
+      "after: tính từ 00:00 ngày đó, before: dừng trước 00:00 ngày đó. Hỗ trợ Unix epoch.",
+      "Tìm kiếm thường bỏ qua Thư rác và Thùng rác trừ khi thêm in:anywhere.",
+      "Chế độ chuỗi thư: nếu thư khác trong chuỗi thoát được -loại trừ, cả chuỗi vẫn hiện.",
+      "Bộ lọc tự động chạy lúc thư đến: ngày, đã đọc/sao và label: chủ yếu dùng để Tìm kiếm.",
+      "Mẹo nâng cao: label:^unsub tìm bản tin, label:^smartlabel_receipt tìm biên lai.",
+      "Giới hạn: giữ mỗi bộ lọc dưới ~1.469–1.500 ký tự (tối đa 1.000 bộ lọc, 500 nhãn, 20 chuyển tiếp)."
+    ],
+    "th_operator": "Toán tử",
+    "th_description": "Mô tả"
   },
   "support": {
     "toast_title": "☕ Hỗ trợ dự án",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "Bộ lọc này sẽ khớp với những thư",
     "from": "được gửi bởi {{value}}",
-    "to": "được gửi đến {{value}}",
+    "to": "gửi tới (To/CC/BCC) {{value}}",
     "cc": "có {{value}} trong CC",
     "bcc": "có {{value}} trong BCC",
     "subject": "có tiêu đề chứa {{value}}",
@@ -296,7 +465,28 @@
     "size_smaller": "kích thước nhỏ hơn {{value}}",
     "negate_prefix": "KHÔNG",
     "and_connector": " VÀ ",
-    "or_connector": " HOẶC "
+    "or_connector": " HOẶC ",
+    "deliveredto": "được gửi đến địa chỉ {{value}}",
+    "list": "từ danh sách thư {{value}}",
+    "exact_phrase": "chứa cụm từ chính xác \"{{value}}\"",
+    "exact_word": "chứa từ chính xác {{value}}",
+    "around": "nơi {{word1}} xuất hiện cách {{word2}} tối đa {{distance}} từ",
+    "around_ordered_suffix": "(đúng thứ tự)",
+    "has_drive": "chứa liên kết Google Drive",
+    "has_document": "chứa tệp Google Docs",
+    "has_spreadsheet": "chứa bảng tính Google Sheets",
+    "has_presentation": "chứa bản trình bày Google Slides",
+    "has_youtube": "chứa video YouTube",
+    "header_calendar": "có thông báo Lịch Google {{value}}",
+    "rfc822msgid": "có Message-ID {{value}}",
+    "category": "trong danh mục {{value}}",
+    "has_userlabels": "có ít nhất một nhãn tùy chỉnh",
+    "has_nouserlabels": "không có nhãn tùy chỉnh nào",
+    "label_encryptedmail": "được gửi với mã hóa phía máy khách",
+    "has_star": "có biểu tượng sao {{value}}",
+    "is_muted": "thuộc chuỗi thư đã tắt tiếng",
+    "size_exact": "lớn hơn {{value}} byte",
+    "negate_group_prefix": "KHÔNG THUỘC"
   },
   "pwa": {
     "install_btn": "Cài đặt ứng dụng",
@@ -354,7 +544,27 @@
       "p_4_1": "Mặc dù chúng tôi không sử dụng công nghệ theo dõi, bạn luôn có quyền kiểm soát tuyệt đối đối với dữ liệu được lưu trữ trong trình duyệt của mình. Nếu bạn muốn xóa các bộ lọc đã lưu và tùy chọn hình ảnh, bạn có thể thực hiện dễ dàng:",
       "li_4_1": "Bằng cách xóa bộ nhớ cache và bộ nhớ dữ liệu trang web trong cài đặt trình duyệt của bạn (Chrome, Firefox, Safari, Edge).",
       "li_4_2": "Bằng cách sử dụng chế độ \"Duyệt web riêng tư\" hoặc \"Ẩn danh\", chế độ này sẽ tự động xóa bộ nhớ cục bộ này khi bạn đóng cửa sổ.",
-      "p_4_2": "Để biết thêm thông tin về chúng tôi là ai, hãy truy cập <strong><a href=\"#\" id=\"hub-legal-link-2\">Thông báo Pháp lý Tập trung</a></strong> của chúng tôi."
+      "p_4_2": "Để biết thêm thông tin về chúng tôi là ai, hãy truy cập <strong><a href=\"#\" id=\"hub-legal-link-2\">Thông báo Pháp lý Tập trung</a></strong> của chúng tôi.",
+      "td_locale_desc": "Ghi nhớ ngôn ngữ bạn đã chọn trong trình chọn ngôn ngữ giữa các lần truy cập."
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "Gần chạm giới hạn ~1.500 ký tự của Gmail ({{count}} ký tự). Cân nhắc rút gọn hoặc tách bộ lọc.",
+    "char_limit_exceeded": "Vượt giới hạn ~1.469–1.500 ký tự của Gmail ({{count}} ký tự). Gmail có thể báo lỗi hoặc âm thầm không chạy — hãy tách thành nhiều bộ lọc.",
+    "or_negation_trap": "Bẫy OR + Loại trừ: đặt điều kiện phủ định trong nhóm OR khiến các nhánh khác bỏ qua lệnh loại trừ. Hãy đưa loại trừ ra ngoài nhóm OR.",
+    "fix_or_negation_btn": "Sửa nhóm điều kiện",
+    "search_only_operators": "Phát hiện toán tử chỉ dành cho tìm kiếm ({{operators}}): chạy tốt ở thanh tìm kiếm nhưng thường không khớp thư mới đến.",
+    "caution_bcc": "Lưu ý bcc:: thư nhận ẩn BCC của người khác nên chủ yếu khớp thư do bạn gửi.",
+    "caution_category": "Lưu ý category:: danh mục được gán động; lý tưởng để tìm kiếm, kém ổn định trong bộ lọc tự động.",
+    "wildcard_unsupported": "Phát hiện ký tự đại diện (*): Gmail KHÔNG hỗ trợ * (vd. *.docx). Dùng phần mở rộng đơn giản (docx) hoặc tên miền.",
+    "lowercase_or": "Phát hiện \"or\" chữ thường: Gmail sẽ tìm chữ \"or\" theo nghĩa đen nếu OR không viết hoa.",
+    "unescaped_inner_quote": "Phát hiện dấu ngoặc kép (\") thừa bên trong cụm từ: Gmail sẽ đóng cụm từ sớm.",
+    "negation_inside_operator": "Phát hiện phủ định trong trường (-từ): nên thêm dòng riêng với tùy chọn Loại trừ (NOT).",
+    "around_with_or": "AROUND không hỗ trợ OR hoặc { } bên trong. Tạo hai dòng AROUND riêng nối với HOẶC (OR).",
+    "conversation_view_negation": "Lưu ý chế độ chuỗi thư: nếu bật chuỗi thư, cả chuỗi vẫn hiện nếu một thư khác không bị loại trừ.",
+    "deliveredto_me_unsupported": "Gmail không hiểu \"me\" trong deliveredto: — hãy nhập đầy đủ email hoặc bí danh (vd. you@gmail.com).",
+    "in_archive_unsupported": "Gmail không có toán tử in:archive (thư lưu trữ chỉ là thư không có nhãn Inbox). Hãy dùng -in:inbox -in:sent -in:drafts -in:spam -in:trash.",
+    "negated_group_caution": "Phát hiện nhóm phức hợp bị loại trừ -(...): chạy tốt khi Tìm kiếm nhưng có thể thiếu ổn định trong bộ lọc tự động. Nên tách thành các loại trừ riêng (-a -b).",
+    "double_negation": "Phát hiện phủ định kép (điều kiện loại trừ nằm trong nhóm bị loại trừ): Gmail không hỗ trợ -(-từ). Hãy bỏ bớt một loại trừ."
   }
 }

@@ -2,7 +2,8 @@
   "app": {
     "title": "Gmail Filtre Oluşturucu",
     "subtitle": "Gmail gelişmiş arama sorgularını sözdizimini ezberlemeden görsel olarak oluşturun.",
-    "language_selector": "Dil"
+    "language_selector": "Dil",
+    "skip_to_content": "Ana içeriğe atla"
   },
   "nav": {
     "builder": "Oluşturucu",
@@ -22,7 +23,7 @@
     "advanced_mode": "Sorguyu manuel düzenle",
     "visual_mode": "Görsel oluşturucuya dön",
     "advanced_note": "Sorguyu doğrudan düzenleyin. Tekrar koşullara ayırmak için \"Görsel oluşturucuya dön\" butonuna tıklayın.",
-    "no_conditions": "Henüz koşul eklenmedi. Filtrenizi oluşturmaya başlamak için \"Koşul Ekle\" butonuna tıklayın.",
+    "no_conditions": "Henüz koşul yok. Başlamak için «Koşul Ekle» veya «Grup Ekle» düğmesine tıklayın.",
     "condition": {
       "type_label": "Filtre türü",
       "value_label": "Değer",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "Kimden — gönderen",
-      "to": "Kime — alıcı",
+      "to": "Kime — herhangi bir alıcı (Kime/CC/BCC)",
       "cc": "CC — karbon kopya",
       "bcc": "BCC — gizli karbon kopya",
       "subject": "Konu",
       "body": "Metin şunları içeriyor",
-      "has_attachment": "Eki var",
+      "has_attachment": "Eki var (satır içi görseller dahil)",
       "filename": "Dosya adı / uzantısı",
       "label": "Etiket (özel Gmail etiketlerim)",
-      "in": "Sistem klasöründe (gelen kutusu, spam...)",
+      "in": "Sistem klasörü (inbox, spam, anywhere…)",
       "is_read": "Durum: okunmuş",
       "is_unread": "Durum: okunmamış",
       "is_starred": "Durum: yıldızlı (⭐)",
       "is_important": "Durum: önemli olarak işaretlenmiş",
-      "date_after": "Şu tarihten sonra gelen",
-      "date_before": "Şu tarihten önce gelen",
+      "date_after": "Tarihinden sonra (dahil)",
+      "date_before": "Tarihinden önce (hariç)",
       "newer_than": "Son ... içinde gelen (göreceli)",
       "older_than": "... tarihinden önce gelen (göreceli)",
       "size_larger": "Boyutu şundan büyük",
-      "size_smaller": "Boyutu şundan küçük"
+      "size_smaller": "Boyutu şundan küçük",
+      "deliveredto": "Delivered-To — takma ad / yönlendirme",
+      "list": "Posta listesi (List-Id başlığı)",
+      "exact_phrase": "Tam ifade (\"…\")",
+      "exact_word": "Ek almamış tam kelime (+)",
+      "around": "Birbirine yakın kelimeler (AROUND)",
+      "has_drive": "Google Drive bağlantısı içeriyor",
+      "has_document": "Google Dokümanlar dosyası içeriyor",
+      "has_spreadsheet": "Google E-Tablolar dosyası içeriyor",
+      "has_presentation": "Google Slaytlar dosyası içeriyor",
+      "has_youtube": "YouTube videosu içeriyor",
+      "header_calendar": "Google Takvim bildirimi",
+      "rfc822msgid": "Tam Message-ID (rfc822msgid:)",
+      "category": "Gelen kutusu kategori sekmesi",
+      "has_userlabels": "Özel kullanıcı etiketi var",
+      "has_nouserlabels": "Özel kullanıcı etiketi YOK",
+      "label_encryptedmail": "İstemci tarafında şifreli (CSE)",
+      "has_star": "Belirli yıldız simgesi",
+      "is_muted": "Durum: sessize alınmış dizi",
+      "size_exact": "Bayt cinsinden minimum boyut (size:)"
     },
     "placeholders": {
-      "from": "ahmet@gmail.com  VEYA  patron@sirket.com",
-      "to": "ekip@sirket.com  VEYA  bulten@servis.io",
+      "from": "ahmet@gmail.com  OR  patron@sirket.com",
+      "to": "ekip@sirket.com  OR  bulten@servis.io",
       "cc": "yonetici@sirket.com",
-      "bcc": "arsiv@sirket.com  VEYA  hukuk@sirket.com",
-      "subject": "fatura  VEYA  \"ceyrek raporu\"  -taslak",
-      "body": "aksiyon gerekiyor  VEYA  \"ektedir\"",
-      "filename": "pdf  VEYA  *.docx  VEYA  *.xlsx",
-      "label": "faturalar  VEYA  is  VEYA  makbuzlar",
-      "in": "inbox  VEYA  spam  VEYA  promotions  VEYA  sent",
+      "bcc": "arsiv@sirket.com  OR  hukuk@sirket.com",
+      "subject": "fatura  OR  \"üç aylık rapor\"",
+      "body": "işlem gerekli  OR  onay",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "faturalar  OR  Finans/Vergi  OR  Etiketim",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d  ·  2m  ·  1y   (d=gün, m=ay, y=yıl)",
       "older_than": "30d  ·  3m  ·  2y   (d=gün, m=ay, y=yıl)",
       "size_larger": "5M  ·  10M  ·  25M   (M = megabayt)",
-      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobayt, M = megabayt)"
+      "size_smaller": "500K  ·  1M  ·  5M   (K = kilobayt, M = megabayt)",
+      "deliveredto": "siz+haber@gmail.com  OR  you@gmail.com",
+      "list": "guncelleme@servis.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "üç aylık rapor",
+      "exact_word": "fatura",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "Herhangi bir türde en az bir ek barındıran e-postalarla eşleşir.",
-    "is_read_note": "Daha önce açıp okuduğunuz e-postalarla eşleşir.",
-    "is_unread_note": "Henüz açmadığınız e-postalarla eşleşir.",
-    "is_starred_note": "Gmail'de yıldız eklediğiniz (⭐) e-postalarla eşleşir.",
-    "is_important_note": "Gmail tarafından veya sizin tarafınızdan önemli (►) olarak işaretlenen e-postalarla eşleşir."
+    "has_attachment_note": "En az bir eki olan iletileri eşler (satır içi görseller dahil).",
+    "is_read_note": "Yalnızca Arama: zaten okunmuş iletiler.",
+    "is_unread_note": "Yalnızca Arama: okunmamış iletiler.",
+    "is_starred_note": "Yalnızca Arama: yıldızlı iletiler (⭐).",
+    "is_important_note": "Yalnızca Arama: önemli olarak işaretlenmiş iletiler (►).",
+    "add_group": "Grup Ekle",
+    "add_condition_to_group": "Gruba Koşul Ekle",
+    "remove_group": "Grubu Kaldır",
+    "exclude_group": "Grubu hariç tut (NOT)",
+    "match_prefix": "Şunlardan",
+    "match_all": "TÜMÜNÜ (AND)",
+    "match_any": "HERHANGİ BİRİNİ (OR)",
+    "match_suffix": "eşleştir:",
+    "around_word1": "İlk kelime",
+    "around_distance": "Maks. kelime mesafesi",
+    "around_word2": "İkinci kelime",
+    "around_ordered": "Katı sıra",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (Unix saniye)",
+    "groups": {
+      "people": "Kişiler ve Posta Listeleri",
+      "content": "Konu ve İleti Gövdesi",
+      "attachments": "Ekler ve Google Drive",
+      "calendar_headers": "Takvim ve Başlıklar",
+      "organization": "Kategoriler, Etiketler ve Klasörler",
+      "status": "Okuma, Yıldızlar ve Durum (Arama)",
+      "date_size": "Tarih ve Boyut"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — Birincil",
+        "social": "social — Sosyal",
+        "promotions": "promotions — Tanıtımlar",
+        "updates": "updates — Güncellemeler",
+        "forums": "forums — Forumlar",
+        "reservations": "reservations — Rezervasyonlar",
+        "purchases": "purchases — Satın Alımlar"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — Yeni davet",
+        "eventCancelled": "eventCancelled — Etkinlik iptal edildi",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — Saat/yinelenme değişti",
+        "roomAdded": "roomAdded — Oda eklendi",
+        "roomRemoved": "roomRemoved — Oda kaldırıldı",
+        "locationUpdated": "locationUpdated — Konum değişti",
+        "titleUpdated": "titleUpdated — Başlık değişti",
+        "descriptionUpdated": "descriptionUpdated — Açıklama değişti",
+        "attachmentAdded": "attachmentAdded — Ek eklendi",
+        "attachmentRemoved": "attachmentRemoved — Ek kaldırıldı",
+        "conferenceUpdated": "conferenceUpdated — Görüntülü arama bağlantısı değişti",
+        "rsvpAccepted": "rsvpAccepted — Davetli kabul etti",
+        "rsvpDeclined": "rsvpDeclined — Davetli reddetti",
+        "rsvpTentative": "rsvpTentative — Belki (geçici)",
+        "rsvpWithNote": "rsvpWithNote — Not ile yanıtladı",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — Yeni saat önerdi",
+        "roomAccepted": "roomAccepted — Oda rezervasyonu onaylandı",
+        "roomDeclined": "roomDeclined — Oda rezervasyonu reddedildi"
+      },
+      "has_star": {
+        "yellow-star": "Sarı yıldız",
+        "orange-star": "Turuncu yıldız",
+        "red-star": "Kırmızı yıldız",
+        "purple-star": "Mor yıldız",
+        "blue-star": "Mavi yıldız",
+        "green-star": "Yeşil yıldız",
+        "red-bang": "Kırmızı ünlem (!)",
+        "orange-guillemet": "Turuncu çift ok (»)",
+        "yellow-bang": "Sarı ünlem (!)",
+        "green-check": "Yeşil onay (✓)",
+        "blue-info": "Mavi bilgi (i)",
+        "purple-question": "Mor soru işareti (?)"
+      }
+    },
+    "to_note": "Gmail'de to: Kime, CC ve gönderilen BCC'de arar. Doğrudan size gelenler için to:me ile -cc:me birleştirin.",
+    "bcc_note": "Gelen filtrelerde bcc: genelde yalnızca sizin gönderdiklerinizi eşler. Alınan BCC için deliveredto:you@gmail.com -to:me -cc:me deneyin.",
+    "deliveredto_note": "Delivered-To başlığını eşler (+takma adlar ve yönlendirmeler için; Workspace alan adı takma adlarını kapsamaz).",
+    "exact_phrase_note": "Tırnak içindeki tam ifadeyi arar (Gmail alt çizgi dışındaki çoğu noktalama işaretini yoksayar).",
+    "exact_word_note": "Gmail kelime kökü eşleştirmesini devre dışı bırakır (örn. +run, running ile eşleşmez).",
+    "around_note": "İki kelimenin en fazla N kelime mesafede olduğu e-postaları bulur. AROUND içinde OR kullanmayın.",
+    "header_calendar_note": "Resmi header: operatörü yalnızca Google Takvim bildirimlerini destekler.",
+    "category_note": "Otomatik Gmail sekmesi. Aramada güvenilir; gelen filtrelerde değişken olabilir.",
+    "label_note": "Etiket adlarındaki boşluklar tire (-) olur ve eğik çizgiler (/) korunur. Yalnızca Arama.",
+    "in_note": "Standart aramalar in:anywhere eklenmedikçe Spam ve Çöp Kutusu'nu atlar. in:archive yoktur (arşiv için -in:inbox -in:sent -in:drafts -in:spam -in:trash kullanın). Yalnızca Arama.",
+    "label_encryptedmail_note": "Yalnızca Arama: İstemci tarafı şifrelemeli iletiler (Workspace).",
+    "is_muted_note": "Yalnızca Arama: sessize alınmış diziler.",
+    "date_after_note": "Dahil (o gün saat 00:00'dan itibaren). Yalnızca Arama.",
+    "date_before_note": "Hariç (o gün 00:00'dan önce — o gün DAHİL DEĞİLDİR). Yalnızca Arama."
   },
   "preview": {
     "title": "Oluşturulan Sorgu",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "Belirli göndericilerden gelen faturalar (son 1 ay)",
-        "description": "Son 30 gün içinde gelen, konusunda 'invoice' geçen ancak 'draft' geçmeyen belirli iki göndericiden gelen e-postalar.",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "Belirli gönderenlerden faturalar (son ay)",
+        "description": "Konusunda 'invoice' geçen ancak 'draft' içermeyen, son 30 gündeki iki gönderenden e-postalar.",
+        "query": ""
       },
       {
         "id": "meeting_cc",
         "title": "CC'de olduğum toplantı e-postaları",
-        "description": "CC'de olduğunuz, konusu 'meeting' içeren ancak 'cancelled' içermeyen e-postalar.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "description": "CC'de yer aldığınız, konusunda 'meeting' geçen ve 'cancelled' hariç iletiler.",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "Belirli bir göndericiden gelen PDF ekleri",
-        "description": "Belirli bir göndericiden gelen ve PDF dosyası ekli olan e-postalar.",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "Belirli gönderenden PDF ekleri",
+        "description": "Belirli bir gönderenden PDF dosyası ekli iletiler.",
+        "query": ""
       },
       {
         "id": "unread_starred",
-        "title": "Okunmamış yıldızlı e-postalar",
-        "description": "Hem yıldızlı hem de okunmamış olan tüm e-postalar – hızlı bir öncelikli gelen kutusu filtresi.",
-        "query": "is:unread is:starred"
+        "title": "Okunmamış yıldızlı iletiler",
+        "description": "Hem yıldızlı hem okunmamış tüm iletiler — hızlı öncelik araması.",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "Abonelikten çıkılabilecek bültenler",
-        "description": "Tanıtımlar kategorisinde yer alan ve içeriğinde abonelikten çıkma (unsubscribe) bağlantısı içeren e-postalar.",
-        "query": "in:promotions unsubscribe"
+        "title": "Abonelikten çıkma bağlantılı tanıtımlar",
+        "description": "Tanıtımlar kategorisindeki ve 'unsubscribe' içeren e-postalar.",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "Genel hariç tutmalı OR grubu",
+        "description": "2 seviyeli gruplama: label:work OR subject:urgent eşlerken subject:Day her zaman hariç tutulur.",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Google Takvim RSVP yanıtları",
+        "description": "Resmi header: operatörüyle kabul, ret veya belki yanıtlarını yakalar.",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "Eski toplu bültenler (İleri ipucu)",
+        "description": "30 günden eski bültenleri bulmak için dahili label:^unsub etiketini kullanır.",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "Doğrudan bana gönderilenler (CC yok)",
+        "description": "to: için çözüm (CC dahil ettiği için): doğrudan size gelen iletiler.",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "BCC ile alınan e-postalar",
+        "description": "Adresinizin Kime veya CC'de olmadığı gelen e-postaları bulur.",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "Etiketsiz Google Drive paylaşımları",
+        "description": "Özel etiketi olmayan Google Drive bağlantılı iletileri arar.",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Gmail Operatörleri Başvuru Kartı",
-    "intro": "Aşağıda oluşturucu tarafından desteklenen arama operatörleri ve Gmail'deki anlamları listelenmiştir.",
+    "intro": "Gmail arama ve filtre operatörlerinin tam referansı, gerçek davranışlar ve hesap limitleri.",
     "operators": [
       {
         "op": "from:",
-        "desc": "Gönderen e-posta adresiyle eşleşir."
+        "desc": "Gönderen adresini veya alan adını eşler."
       },
       {
         "op": "to:",
-        "desc": "Birincil alıcıyla eşleşir."
+        "desc": "HERHANGİ bir alıcıyı eşler (Kime, CC, gönderilen BCC). Doğrudan posta için to:me -cc:me kullanın."
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = karbon kopya (görünür). BCC = gizli karbon kopya (görünmez)."
+        "desc": "CC = bilgi. BCC = gizli bilgi (gelenler için deliveredto:you@gmail.com -to:me -cc:me)."
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Delivered-To başlığı (+takma adlar, yönlendirmeler). Workspace alan adı takma adları hariç."
+      },
+      {
+        "op": "list:",
+        "desc": "Posta listesi List-Id başlığı."
       },
       {
         "op": "subject:",
-        "desc": "E-postanın konu satırında arama yapar."
+        "desc": "E-posta konusunda arar."
       },
       {
-        "op": "has:attachment",
-        "desc": "Herhangi bir eki olan e-postalar."
+        "op": "\"ifade\" / +kelime",
+        "desc": "Tırnak içinde tam ifade veya + ile köksüz tam kelime."
       },
       {
-        "op": "filename:",
-        "desc": "Ek dosya adı veya uzantısıyla eşleşir (örn: pdf, *.docx)."
+        "op": "AROUND",
+        "desc": "Yakınlık: kelime1 AROUND 5 kelime2 (katı sıra için tırnak; içinde OR yok)."
       },
       {
-        "op": "label:",
-        "desc": "Oluşturduğunuz özel bir Gmail etiketine sahip e-postalar."
+        "op": "has:attachment / filename:",
+        "desc": "Ekler (satır içi görseller dahil) ve dosya adı/uzantısı (* olmadan)."
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Google Drive, Dokümanlar, E-Tablolar, Slaytlar veya YouTube bağlantıları."
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Google Takvim bildirimleri için resmi operatör."
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "Tam RFC 5322 Message-ID araması."
+      },
+      {
+        "op": "category:",
+        "desc": "Sekme: primary, social, promotions, updates, forums, reservations, purchases."
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "Özel etiketler (boşluk yerine tire), etiketli/etiketsiz (Yalnızca arama)."
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "İstemci tarafında şifreli iletiler (Workspace, Yalnızca arama)."
       },
       {
         "op": "in:",
-        "desc": "Gmail sistem klasörlerindeki e-postalar: inbox (gelen kutusu), spam, trash (çöp kutusu), sent (gönderilenler), promotions..."
+        "desc": "Konum: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (in:archive yok)."
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "Okunma durumuna göre filtreler."
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "Yıldızlı (⭐) veya önemli (►) durumuna göre filtreler."
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "İleti durumu veya yıldız simgesi (Yalnızca arama)."
       },
       {
         "op": "after: / before:",
-        "desc": "YYYY/AA/GG formatında tarih aralığı."
+        "desc": "Tarihler (YYYY/AA/GG veya Unix epoch): after: dahil, before: hariç (Yalnızca arama)."
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "Göreceli tarih: 7d (7 gün), 2m (2 ay), 1y (1 yıl)."
+        "desc": "Göreceli tarih: 7d, 2m, 1y (Yalnızca arama)."
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "E-posta boyutu: 5M (5 MB), 500K (500 KB)."
+        "op": "larger: / smaller: / size:",
+        "desc": "Boyut: 5M, 500K veya size: ile minimum bayt (örn. size:1048576)."
       },
       {
-        "op": "OR",
-        "desc": "İki koşuldan herhangi birinin eşleşmesini sağlar (büyük harfle yazılmalıdır)."
-      },
-      {
-        "op": "-terim",
-        "desc": "Terimi içeren e-postaları filtre dışında tutar (NOT operatörü)."
-      },
-      {
-        "op": "(…)",
-        "desc": "Operatörlerin tüm gruba uygulanması için koşulları gruplar."
+        "op": "OR / { } / -terim / (…)",
+        "desc": "Büyük harfli OR (veya {a b}), hariç tutma - ve gruplama parantezleri."
       }
     ],
-    "tips_title": "Uzman İpuçları",
+    "tips_title": "İleri İpuçları ve Gmail Özellikleri",
     "tips": [
-      "Birden fazla kelime içeren değerleri tırnak içine alın: subject:\"ceyrek raporu\"",
-      "Farklı değerlerden herhangi biriyle eşleşmek için parantez içinde OR kullanın: from:(a@x.com OR b@x.com)",
-      "Gmail operatörleri büyük/küçük harfe duyarlı değildir, ancak OR büyük harfle yazılmalıdır.",
-      "Oluşturulan sorguyu doğrudan Gmail arama çubuğuna veya filtre oluştururken 'İçerdiği kelimeler' alanına yapıştırın.",
-      "Belirli bir zaman dilimini hedeflemek için newer_than ve older_than operatörlerini birleştirin: newer_than:3m older_than:1m",
-      "label: kendi oluşturduğunuz etiketlerde arar. in: Gmail sistem klasörlerinde arar (gelen kutusu, spam, tanıtımlar...)."
-    ]
+      "OR, boşluktan (AND) daha sıkı bağlanır: OR ve hariç tutmaları gruplarla karıştırın, örn. (label:work OR subject:urgent) -subject:Day.",
+      "Gmail * jokerlerini (*.docx) veya regex desteklemez. Düz uzantılar (docx) veya alan adları kullanın.",
+      "Gmail alt çizgi (_) dışındaki çoğu noktalama işaretini (! ? $ & # *) yoksayar ve tireli sayıları böler.",
+      "after: dahildir (00:00'dan itibaren), before: hariçtir. Unix epoch desteklenir.",
+      "Standart aramalar in:anywhere eklenmedikçe Spam ve Çöp Kutusu'nu atlar.",
+      "Konuşma görünümü: diziler açıkken, dizideki başka bir ileti hariç tutmadan kaçarsa dizi görünür.",
+      "Gelen filtreler teslim anında çalışır: tarihler, okundu/yıldız ve label: çoğunlukla Arama içindir.",
+      "İpuçları: label:^unsub bültenleri, label:^smartlabel_receipt makbuzları bulur.",
+      "Limitler: filtreleri ~1.469–1.500 karakterin altında tutun (en fazla 1.000 filtre, 500 etiket, 20 yönlendirme)."
+    ],
+    "th_operator": "Operatör",
+    "th_description": "Açıklama"
   },
   "support": {
     "toast_title": "☕ Projeyi Destekle",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "Bu filtre şu kriterlere uyan e-postalara uygulanır:",
     "from": "gönderen kişi {{value}} olanlar",
-    "to": "alıcısı {{value}} olanlar",
+    "to": "alıcısı (Kime/CC/BCC) {{value}} olan",
     "cc": "CC alanında {{value}} olanlar",
     "bcc": "BCC alanında {{value}} olanlar",
     "subject": "konusu {{value}} içerenler",
@@ -296,7 +465,28 @@
     "size_smaller": "boyutu {{value}} değerinden küçük olanlar",
     "negate_prefix": "HARIÇ",
     "and_connector": " VE ",
-    "or_connector": " VEYA "
+    "or_connector": " VEYA ",
+    "deliveredto": "{{value}} adresine teslim edilen",
+    "list": "{{value}} posta listesinden",
+    "exact_phrase": "\"{{value}}\" tam ifadesini içeren",
+    "exact_word": "{{value}} tam kelimesini içeren",
+    "around": "{{word1}} kelimesinin {{word2}} kelimesine {{distance}} kelime mesafede geçtiği",
+    "around_ordered_suffix": "(katı sırada)",
+    "has_drive": "Google Drive bağlantısı içeren",
+    "has_document": "Google Dokümanlar dosyası içeren",
+    "has_spreadsheet": "Google E-Tablolar dosyası içeren",
+    "has_presentation": "Google Slaytlar sunumu içeren",
+    "has_youtube": "YouTube videosu içeren",
+    "header_calendar": "Google Takvim bildirimi {{value}} olan",
+    "rfc822msgid": "Message-ID değeri {{value}} olan",
+    "category": "{{value}} kategorisindeki",
+    "has_userlabels": "en az bir özel etikete sahip",
+    "has_nouserlabels": "özel etiketi olmayan",
+    "label_encryptedmail": "istemci tarafında şifreli gönderilen",
+    "has_star": "{{value}} yıldız simgesine sahip",
+    "is_muted": "sessize alınmış dizilerden",
+    "size_exact": "{{value}} bayttan büyük",
+    "negate_group_prefix": "HİÇBİRİ"
   },
   "pwa": {
     "install_btn": "Uygulamayı Yükle",
@@ -354,7 +544,27 @@
       "p_4_1": "İzleme teknolojileri kullanmamamıza rağmen, tarayıcınızda kayıtlı veriler üzerinde her zaman mutlak kontrole sahipsiniz. Kaydettiğiniz filtreleri ve görsel tercihleri silmek isterseniz, bunu kolayca yapabilirsiniz:",
       "li_4_1": "Tarayıcı ayarlarınızda (Chrome, Firefox, Safari, Edge) önbelleği ve site veri depolamasını temizleyerek.",
       "li_4_2": "Pencereyi kapattığınızda bu yerel depolamayı otomatik olarak silecek olan \"Gizli Gezinme\" veya \"Gizli\" modunu kullanarak.",
-      "p_4_2": "Kim olduğumuz hakkında daha fazla bilgi için <strong><a href=\"#\" id=\"hub-legal-link-2\">Merkezi Yasal Uyarı</a></strong> sayfamızı ziyaret edin."
+      "p_4_2": "Kim olduğumuz hakkında daha fazla bilgi için <strong><a href=\"#\" id=\"hub-legal-link-2\">Merkezi Yasal Uyarı</a></strong> sayfamızı ziyaret edin.",
+      "td_locale_desc": "Ziyaretler arasında dil seçicide seçtiğiniz dili hatırlar."
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "Gmail ~1.500 karakter sınırına yaklaşıyor ({{count}} karakter). Kısaltmayı veya bölmeyi düşünün.",
+    "char_limit_exceeded": "Gmail ~1.469–1.500 karakter sınırını aşıyor ({{count}} karakter). Gmail hata verebilir veya sessizce çalışmayabilir — birden fazla filtreye bölün.",
+    "or_negation_trap": "OR + Hariç Tut tuzağı: OR grubu içindeki hariç tutma, diğer koşulların hariç tutmayı atlamasına yol açar. Hariç tutmaları OR grubu dışına taşıyın.",
+    "fix_or_negation_btn": "Gruplamayı düzelt",
+    "search_only_operators": "Yalnızca arama operatörleri algılandı ({{operators}}): Gmail aramada çalışır ancak yeni gelen postalarda genelde tetiklenmez.",
+    "caution_bcc": "bcc: notu: gelen postalar başkalarının BCC'sini gizler; çoğunlukla kendi gönderdiklerinizi eşler.",
+    "caution_category": "category: notu: kategoriler dinamik atanır; arama için ideal, gelen filtrelerde daha az öngörülebilir.",
+    "wildcard_unsupported": "Joker karakter (*) algılandı: Gmail * desteklemez (örn. *.docx). Düz uzantı (docx) veya alan adı kullanın.",
+    "lowercase_or": "Küçük harfli \"or\" algılandı: OR büyük harfle yazılmazsa Gmail \"or\" kelimesini arar.",
+    "unescaped_inner_quote": "Tırnak içinde fazladan çift tırnak (\") algılandı: Gmail ifadeyi erken kapatacaktır.",
+    "negation_inside_operator": "Alan içinde satır içi olumsuzlama (-terim): Hariç Tut (NOT) işaretli ayrı bir satır ekleyin.",
+    "around_with_or": "AROUND içinde OR veya { } desteklenmez. VEYA ile bağlı iki ayrı AROUND satırı oluşturun.",
+    "conversation_view_negation": "Konuşma görünümü notu: diziler etkinken, dizideki başka bir ileti hariç tutmadan kaçarsa tüm dizi görünür.",
+    "deliveredto_me_unsupported": "Gmail, deliveredto: içinde \"me\" kısaltmasını desteklemez — tam e-posta adresinizi veya takma adınızı yazın (örn. you@gmail.com).",
+    "in_archive_unsupported": "Gmail'de in:archive operatörü yoktur (arşivlenen e-postalarda yalnızca Inbox etiketi eksiktir). Bunun yerine -in:inbox -in:sent -in:drafts -in:spam -in:trash kullanın.",
+    "negated_group_caution": "Dışlanmış bileşik grup -(...) algılandı: Aramada çalışır ancak kayıtlı gelen filtrelerde öngörülemeyebilir. Mümkünse ayrı dışlamalar (-a -b) kullanın.",
+    "double_negation": "Çift olumsuzlama algılandı (dışlanmış grup içinde dışlanmış koşul): Gmail -(-terim) desteklemez. Dışlamalardan birini kaldırın."
   }
 }

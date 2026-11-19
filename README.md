@@ -2,60 +2,54 @@
 
 **English** | [Español](README-es.md)
 
-> Build advanced Gmail search filters visually — no syntax memorisation needed. Real-time query generation, plain-English summary, copy-to-clipboard, and runs entirely in the browser. No backend, no build step. EN/ES.
+> Build advanced Gmail search filters visually — no syntax memorisation needed. Real-time query generation, per-condition/per-group `AND`/`OR` logic with 2-level grouping (`+ Add Group`), live Gmail diagnostics, plain-language summary, offline PWA, and 31 supported languages/regional variants. No backend, no build step.
 
 [![Use Now - Live Demo](https://img.shields.io/badge/Use_Now-Live_Demo-blue?logo=googlechrome)](https://salmonidas.github.io/gmail-filters/)
 
 ---
 
 ## 🛑 The Gmail Problem
-Gmail's search is incredibly powerful, but creating complex filters (e.g., "Emails with attachments, NOT from X person, with label Y") requires you to memorize a list of commands and symbols like `has:attachment -from:boss@company.com label:urgent`. Nobody has time to memorize that!
+Gmail's search is powerful, but creating complex filters (e.g., `(label:work OR subject:urgent) -subject:Day`) requires knowing exact operator syntax, operator precedence rules (such as `OR` binding tighter than spaces and exclusions), and hidden limitations (`~1,500` character cap, Search-only operators vs. incoming mail filters, no `*` wildcards).
 
 ## ✨ The Solution
-**Gmail Filter Builder** is a free, secure tool that runs in your browser. It lets you create complex searches simply by clicking dropdown menus.
+**Gmail Filter Builder** is a free, zero-dependency, client-side web app (and installable PWA) running in your browser:
 
-1. **Add your rules:** Select what you want to filter by (Sender, Subject, Has attachment, Date...).
-2. **Copy the result:** The tool generates the exact Gmail code instantly.
-3. **Paste into Gmail:** Use the "Open in Gmail" button to test your search directly in your inbox, or use it to create an automated filter.
+1. **Add conditions & groups:** Choose from 39 Gmail operators organized by category, toggle exclusions (`NOT`), set per-condition or per-group `AND`/`OR` logic, and add optional 2-level sub-groups (`+ Add Group`).
+2. **Real-time diagnostics & summary:** Detects Gmail traps (`OR` + exclusion bypasses with a 1-click fix, ~1,500 character filter limit warnings, Search-only operator alerts, invalid `in:archive` / `deliveredto:me`, negated compound groups, `*` wildcards, lowercase `or`).
+3. **Copy, Save, Share & Apply:** Save filters locally in your Library, share filters via URL hash, or click **Open in Gmail** and follow the integrated 7-step Guide.
 
 ---
 
 ## 🚀 Main Features
-- **Visual Interface:** Add as many conditions as you need, click buttons to combine them with "AND / OR", or check the "Exclude (NOT)" box to specify what you don't want.
-- **Plain-English Summary:** As you build, the tool writes out a human-readable explanation of exactly which emails will match.
-- **100% Private:** No passwords required, it does not connect to your Google account, and it runs entirely in your own browser. Your data is perfectly safe.
-- **Step-by-step Guide:** Includes a dedicated "Guide" tab with screenshots showing you exactly where to paste this filter back into Gmail.
-- **Ready-to-use Examples:** Load common filters (like "Clean up heavy newsletters") with one click so you don't have to start from scratch.
+- **39 Official Gmail Operators:** Covers people/lists (`from:`, `to:`, `cc:`, `bcc:`, `deliveredto:`, `list:`), exact/proximity text (`"..."`, `+word`, `AROUND`), attachments & Drive (`has:attachment`, `filename:`, `has:drive`, `has:document`, `has:spreadsheet`, `has:presentation`, `has:youtube`), Calendar & headers (`header:X-Google-Calendar-Notification:*` with 18 tokens, `rfc822msgid:`), organization (`category:`, `label:`, `in:`, `has:userlabels`, `has:nouserlabels`, `label:encryptedmail`), status & 12 Superstars (`is:*`, `has:<star>`), and dates/sizes (incl. Unix epoch & bytes).
+- **2-Level Progressive Grouping:** Clean flat rows by default with per-condition and per-group `AND`/`OR` toggles, plus `+ Add Group` for nested mixed boolean logic without parenthesis confusion (auto-parenthesizing mixed `AND`/`OR` runs and flattening `-(A OR B)` via De Morgan `-A -B`).
+- **Full Round-Trip Manual Editor:** Edit raw Gmail queries manually and parse them back into visual conditions/groups cleanly.
+- **100% Private & Offline PWA:** Zero backend, zero tracking cookies, works offline via Service Worker, RTL layout support (`ar`), and 31 localized interfaces.
 
 ---
 
 ## 📚 Supported Operators
-With this tool you can filter by:
-
 | Operator | Description |
 |---|---|
-| `from:` | Sender address |
-| `to:` | Primary recipient |
-| `cc:` / `bcc:` | CC / BCC recipients |
-| `subject:` | Subject line |
-| `has:attachment` | Has any attachment |
-| `filename:` | Attachment name or extension |
-| `label:` | Gmail label |
-| `in:` | Folder / category (inbox, spam, promotions…) |
-| `is:read` / `is:unread` | Read status |
-| `is:starred` / `is:important` | Flag status |
-| `after:` / `before:` | Date range (YYYY/MM/DD) |
-| `newer_than:` / `older_than:` | Relative date (1d, 2m, 1y) |
-| `larger:` / `smaller:` | Message size |
-| `OR` | Logical OR |
-| `-term` | Exclude / NOT |
-| `(…)` | Grouping |
+| `from:` / `to:` / `cc:` / `bcc:` | Sender & recipients (`to:` matches To, CC, and sent BCC) |
+| `deliveredto:` / `list:` | Envelope `Delivered-To` (`+aliases`) & `List-Id` mailing lists |
+| `subject:` / body / `"..."` / `+` / `AROUND` | Subject, body, exact phrase, unstemmed word, word proximity |
+| `has:attachment` / `filename:` | Attachments (incl. inline images) & file extensions (no `*`) |
+| `has:drive` / `document` / `spreadsheet` / `presentation` / `youtube` | Embedded Google Drive, Docs, Sheets, Slides, YouTube |
+| `header:X-Google-Calendar-Notification:` / `rfc822msgid:` | Official Calendar notifications (18 tokens) & Message-ID |
+| `category:` | Official inbox tabs (`primary`, `social`, `promotions`, `updates`, `forums`, `reservations`, `purchases`) |
+| `label:` / `has:userlabels` / `has:nouserlabels` / `label:encryptedmail` | Custom labels, unlabeled messages, Client-Side Encryption (Search) |
+| `in:` | System locations (`inbox`, `sent`, `drafts`, `spam`, `trash`, `anywhere`, `snoozed`, `scheduled`, `chats` — Gmail has no `in:archive`) |
+| `is:read` / `unread` / `starred` / `important` / `muted` / `has:<star>` | Read state, muted threads, and 12 Superstars (Search) |
+| `after:` / `before:` / `newer_than:` / `older_than:` | Absolute (`YYYY/MM/DD` or Unix epoch) & relative dates (`7d`, `2m`, `1y`) |
+| `larger:` / `smaller:` / `size:` | Message size (`5M`, `500K`, or minimum bytes: `size:` = larger than N bytes) |
+| `OR` / `{ }` / `-term` / `(…)` | Logical OR, exclusions, and parenthesized grouping |
 
 ---
 
 ## 🛠️ For Developers
-If you are a developer looking to host your own version, contribute to the codebase (Vanilla HTML/JS/CSS, no build step, no dependencies), or check out the lightweight i18n engine: all source code is open under the MIT license. Just clone the repo and explore!
+Built with Vanilla HTML, CSS (M3 design system + RTL logical properties), and ES6 JavaScript modules — zero build tools, zero npm runtime dependencies, AGPL-3.0 licensed (see [LICENSE](LICENSE)).
 
 ---
 
-License: MIT © 2026 
+License: AGPL-3.0 © 2026

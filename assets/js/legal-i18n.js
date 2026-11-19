@@ -112,17 +112,22 @@
     var allLinks = document.querySelectorAll('.legal-container a[href="#"]');
     for (var i = 0; i < allLinks.length; i++) {
       allLinks[i].href = LEGAL_HUB_URL;
+      allLinks[i].setAttribute('rel', 'noopener noreferrer');
     }
     // Also fix by known IDs
     var ids = ['hub-legal-link', 'hub-legal-link-2'];
     for (var j = 0; j < ids.length; j++) {
       var el = document.getElementById(ids[j]);
-      if (el) el.href = LEGAL_HUB_URL;
+      if (el) {
+        el.href = LEGAL_HUB_URL;
+        el.setAttribute('rel', 'noopener noreferrer');
+      }
     }
     // Fix by class
     var byClass = document.querySelectorAll('.hub-legal-link-class');
     for (var k = 0; k < byClass.length; k++) {
       byClass[k].href = LEGAL_HUB_URL;
+      byClass[k].setAttribute('rel', 'noopener noreferrer');
     }
     // Also fix the statically-placed ones (from fallback HTML)
     var staticLinks = document.querySelectorAll('a.hub-legal-link');
@@ -130,10 +135,23 @@
       if (!staticLinks[l].href || staticLinks[l].getAttribute('href') === '#') {
         staticLinks[l].href = LEGAL_HUB_URL;
       }
+      staticLinks[l].setAttribute('rel', 'noopener noreferrer');
     }
   }
 
+  function applyThemeFromPrefs() {
+    var theme = null;
+    try {
+      theme = localStorage.getItem('theme');
+    } catch (_) {}
+    if (!theme && window.matchMedia) {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+  }
+
   function init() {
+    applyThemeFromPrefs();
     var locale = detectLocale();
 
     // Build path to locales/ relative to the current page

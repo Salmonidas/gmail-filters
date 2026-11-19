@@ -2,7 +2,8 @@
   "app": {
     "title": "Gmail 过滤器生成器",
     "subtitle": "可视化构建高级 Gmail 搜索查询，无需记忆复杂语法。",
-    "language_selector": "语言"
+    "language_selector": "语言",
+    "skip_to_content": "跳到主要内容"
   },
   "nav": {
     "builder": "生成器",
@@ -22,7 +23,7 @@
     "advanced_mode": "手动编辑查询语句",
     "visual_mode": "返回可视化生成器",
     "advanced_note": "直接编辑查询语句。点击“返回可视化生成器”可重新将其解析为可视化条件。",
-    "no_conditions": "目前没有条件。点击“添加条件”开始构建您的过滤器。",
+    "no_conditions": "暂无条件。点击「添加条件」或「添加分组」开始构建过滤器。",
     "condition": {
       "type_label": "过滤类型",
       "value_label": "值",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "发件人 (from)",
-      "to": "收件人 (to)",
+      "to": "收件人 — 任意收件人 (To/CC/BCC)",
       "cc": "抄送 (cc)",
       "bcc": "密送 (bcc)",
       "subject": "主题 (subject)",
       "body": "正文包含",
-      "has_attachment": "包含附件",
+      "has_attachment": "包含附件（含内嵌图片）",
       "filename": "附件名称/类型 (filename)",
       "label": "标签 (自定义标签)",
-      "in": "系统文件夹 (收件箱、垃圾邮件等)",
+      "in": "系统文件夹 (inbox, spam, anywhere…)",
       "is_read": "状态：已读",
       "is_unread": "状态：未读",
       "is_starred": "状态：已加星标 (⭐)",
       "is_important": "状态：重要邮件",
-      "date_after": "在此日期之后收到",
-      "date_before": "在此日期之前收到",
+      "date_after": "在此日期之后收到（含当天）",
+      "date_before": "在此日期之前收到（不含当天）",
       "newer_than": "在最近的时间内收到 (相对时间)",
       "older_than": "在此时间之前收到 (相对时间)",
       "size_larger": "大小大于",
-      "size_smaller": "大小小于"
+      "size_smaller": "大小小于",
+      "deliveredto": "Delivered-To — 别名 / 转发地址",
+      "list": "邮件列表 (List-Id 邮件头)",
+      "exact_phrase": "精确短语 (\"…\")",
+      "exact_word": "精确单词不匹配词形变化 (+)",
+      "around": "邻近词汇 (AROUND)",
+      "has_drive": "包含 Google 云端硬盘链接",
+      "has_document": "包含 Google 文档文件",
+      "has_spreadsheet": "包含 Google 表格文件",
+      "has_presentation": "包含 Google 幻灯片文件",
+      "has_youtube": "包含 YouTube 视频",
+      "header_calendar": "Google 日历通知",
+      "rfc822msgid": "精确 Message-ID (rfc822msgid:)",
+      "category": "收件箱分类标签页",
+      "has_userlabels": "包含自定义标签",
+      "has_nouserlabels": "不包含任何自定义标签",
+      "label_encryptedmail": "客户端加密邮件 (CSE)",
+      "has_star": "特定星标图标",
+      "is_muted": "状态：已忽略会话",
+      "size_exact": "最小字节数 (size:)"
     },
     "placeholders": {
-      "from": "alice@gmail.com  或  boss@company.com",
-      "to": "team@company.com  或  newsletter@service.io",
+      "from": "alice@gmail.com  OR  boss@company.com",
+      "to": "team@company.com  OR  newsletter@service.io",
       "cc": "manager@company.com",
-      "bcc": "archive@company.com  或  compliance@firm.com",
-      "subject": "invoice  或  \"quarterly report\"  -draft",
-      "body": "action required  或  \"please find attached\"",
-      "filename": "pdf  或  *.docx  或  *.xlsx",
-      "label": "invoices  或  work  或  receipts",
-      "in": "inbox  或  spam  或  promotions  或  sent",
+      "bcc": "archive@company.com  OR  compliance@firm.com",
+      "subject": "发票  OR  \"季度报告\"",
+      "body": "需要处理  OR  确认",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "发票  OR  财务/税务  OR  我的标签",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d  ·  2m  ·  1y   (d = 天，m = 月，y = 年)",
       "older_than": "30d  ·  3m  ·  2y   (d = 天，m = 月，y = 年)",
       "size_larger": "5M  ·  10M  ·  25M   (M = 兆字节)",
-      "size_smaller": "500K  ·  1M  ·  5M   (K = 千字节，M = 兆字节)"
+      "size_smaller": "500K  ·  1M  ·  5M   (K = 千字节，M = 兆字节)",
+      "deliveredto": "you+news@gmail.com  OR  you@gmail.com",
+      "list": "updates@service.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "季度报告",
+      "exact_word": "发票",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "匹配包含至少一个附件（任意类型）的邮件。",
-    "is_read_note": "匹配您已打开并阅读过的邮件。",
-    "is_unread_note": "匹配您尚未打开的邮件。",
-    "is_starred_note": "匹配您在 Gmail 中加了星标 (⭐) 的邮件。",
-    "is_important_note": "匹配被 Gmail 或您标记为重要 (►) 的邮件。"
+    "has_attachment_note": "匹配至少含有一个附件的邮件（包括内嵌图片）。",
+    "is_read_note": "仅限搜索：已读邮件。",
+    "is_unread_note": "仅限搜索：未读邮件。",
+    "is_starred_note": "仅限搜索：已加星标的邮件 (⭐)。",
+    "is_important_note": "仅限搜索：标记为重要的邮件 (►)。",
+    "add_group": "添加分组",
+    "add_condition_to_group": "向分组添加条件",
+    "remove_group": "删除分组",
+    "exclude_group": "排除分组 (NOT)",
+    "match_prefix": "匹配以下",
+    "match_all": "全部 (AND)",
+    "match_any": "任一 (OR)",
+    "match_suffix": "条件：",
+    "around_word1": "第一个词",
+    "around_distance": "最大间隔词数",
+    "around_word2": "第二个词",
+    "around_ordered": "严格顺序",
+    "epoch_toggle": "Unix 时间戳",
+    "epoch_placeholder": "1735689600 (Unix 秒)",
+    "groups": {
+      "people": "联系人与邮件列表",
+      "content": "主题与正文内容",
+      "attachments": "附件与 Google 云端硬盘",
+      "calendar_headers": "日历与邮件头",
+      "organization": "分类、标签与文件夹",
+      "status": "已读、星标与状态（仅搜索）",
+      "date_size": "日期与大小"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — 主要",
+        "social": "social — 社交",
+        "promotions": "promotions — 促销",
+        "updates": "updates — 动态",
+        "forums": "forums — 论坛",
+        "reservations": "reservations — 预订",
+        "purchases": "purchases — 购物"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — 新邀请",
+        "eventCancelled": "eventCancelled — 活动已取消",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — 时间/重复已更改",
+        "roomAdded": "roomAdded — 已添加会议室",
+        "roomRemoved": "roomRemoved — 已移除会议室",
+        "locationUpdated": "locationUpdated — 地点已更改",
+        "titleUpdated": "titleUpdated — 标题已更改",
+        "descriptionUpdated": "descriptionUpdated — 说明已更改",
+        "attachmentAdded": "attachmentAdded — 已添加附件",
+        "attachmentRemoved": "attachmentRemoved — 已移除附件",
+        "conferenceUpdated": "conferenceUpdated — 视频会议链接已更改",
+        "rsvpAccepted": "rsvpAccepted — 受邀者已接受",
+        "rsvpDeclined": "rsvpDeclined — 受邀者已拒绝",
+        "rsvpTentative": "rsvpTentative — 受邀者暂定",
+        "rsvpWithNote": "rsvpWithNote — 附带备注回复",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — 建议新时间",
+        "roomAccepted": "roomAccepted — 会议室预订已接受",
+        "roomDeclined": "roomDeclined — 会议室预订被拒绝"
+      },
+      "has_star": {
+        "yellow-star": "黄色星标",
+        "orange-star": "橙色星标",
+        "red-star": "红色星标",
+        "purple-star": "紫色星标",
+        "blue-star": "蓝色星标",
+        "green-star": "绿色星标",
+        "red-bang": "红色感叹号 (!)",
+        "orange-guillemet": "橙色双箭头 (»)",
+        "yellow-bang": "黄色感叹号 (!)",
+        "green-check": "绿色对勾 (✓)",
+        "blue-info": "蓝色信息 (i)",
+        "purple-question": "紫色问号 (?)"
+      }
+    },
+    "to_note": "在 Gmail 中，to: 会匹配 To、CC 以及你发送的 BCC。将 to:me 与 -cc:me 结合可筛选直接发给你的邮件。",
+    "bcc_note": "在收件过滤器中，bcc: 通常仅匹配你发送的邮件。若要匹配收到的密送邮件，请尝试 deliveredto:you@gmail.com -to:me -cc:me。",
+    "deliveredto_note": "匹配 Delivered-To 信封邮件头（适用于 +别名与转发；不支持 Workspace 域别名）。",
+    "exact_phrase_note": "精确匹配引号内的短语（Gmail 会忽略除下划线 _ 外的大多数标点，且不支持嵌套引号）。",
+    "exact_word_note": "关闭 Gmail 自动词形匹配（例如 +run 不会匹配 running）。",
+    "around_note": "查找两个词间距不超过 N 个词的邮件。不要在 AROUND 内使用 OR。",
+    "header_calendar_note": "官方 header: 运算符仅支持 Google 日历通知令牌，不支持任意第三方邮件头。",
+    "category_note": "Gmail 自动分类标签页。在搜索中可靠；在收件过滤器中可能不稳定。",
+    "label_note": "标签名中的空格会转换为连字符 (-)，斜杠 (/) 会保留。标准过滤器中仅限搜索。",
+    "in_note": "除非包含 in:anywhere，否则普通搜索会跳过垃圾邮件和已删除邮件。Gmail 没有 in:archive 运算符（已归档请用 -in:inbox -in:sent -in:drafts -in:spam -in:trash）。仅限搜索。",
+    "label_encryptedmail_note": "仅限搜索：使用客户端加密 (CSE) 发送的邮件。",
+    "is_muted_note": "仅限搜索：已忽略的会话。",
+    "date_after_note": "包含当天（从当地时间 00:00 起）。仅限搜索。",
+    "date_before_note": "不含当天（至当天 00:00 前）。仅限搜索。"
   },
   "preview": {
     "title": "生成的查询语句",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "特定发件人的发票 (上个月)",
-        "description": "来自两个特定发件人，主题中包含 'invoice' 但不包含 'draft'，且在过去 30 天内收到的邮件。",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "特定发件人的发票（最近一个月）",
+        "description": "过去 30 天来自两位发件人、主题包含 'invoice' 且不含 'draft' 的邮件。",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "我被抄送的会议邮件",
-        "description": "您在抄送人中、主题包含 'meeting' 但不包含 'cancelled' 的邮件。",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "我被抄送 (CC) 的会议邮件",
+        "description": "你在 CC 中、主题含 'meeting' 且排除 'cancelled' 的邮件。",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
         "title": "特定发件人的 PDF 附件",
-        "description": "来自特定发件人且附有 PDF 文件格式的邮件。",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "description": "来自特定发件人且附带 PDF 文件的邮件。",
+        "query": ""
       },
       {
         "id": "unread_starred",
-        "title": "未读的星标邮件",
-        "description": "所有已加星标且未读的邮件——一种快速设置的优先级收件箱过滤器。",
-        "query": "is:unread is:starred"
+        "title": "未读星标邮件",
+        "description": "所有已加星标且未读的邮件 — 快速优先收件箱筛选。",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "待退订的订阅邮件",
-        "description": "属于“推广”类别且正文中包含退订链接 (unsubscribe) 的邮件。",
-        "query": "in:promotions unsubscribe"
+        "title": "含退订链接的促销邮件",
+        "description": "位于促销分类中且包含 'unsubscribe' 字样的邮件。",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "OR 分组配合全局排除",
+        "description": "2 级分组示例：匹配 label:work OR subject:urgent，同时全局排除 subject:Day。",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Google 日历 RSVP 回复",
+        "description": "通过官方 header: 运算符捕获接受、拒绝或暂定回复。",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "清理旧订阅简报（进阶技巧）",
+        "description": "使用内部标签 label:^unsub 查找 30 天前的批量订阅邮件。",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "直接发给我的邮件（不含 CC）",
+        "description": "针对 to: 包含 CC 的变通方案：仅筛选直接发送给你的邮件。",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "密送 (BCC) 收到的邮件",
+        "description": "查找投递到你邮箱但你的地址既不在 To 也不在 CC 中的邮件。",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "未加标签的 Google 云端硬盘分享",
+        "description": "搜索包含云端硬盘链接但尚无自定义标签的邮件。",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Gmail 搜索算符参考",
-    "intro": "以下是生成器支持的算符以及它们在 Gmail 中的含义。",
+    "intro": "Gmail 搜索与过滤器运算符完整参考、实际限制及特殊行为。",
     "operators": [
       {
         "op": "from:",
-        "desc": "匹配发件人的电子邮件地址。"
+        "desc": "匹配发件人邮箱或域名。"
       },
       {
         "op": "to:",
-        "desc": "匹配主要收件人。"
+        "desc": "匹配任意收件人（To、CC 及你发送的 BCC）。直邮请用 to:me -cc:me。"
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = 抄送 (公开)。BCC = 密送 (隐藏)。"
+        "desc": "CC = 抄送。BCC = 密送（收件用 deliveredto:you@gmail.com -to:me -cc:me）。"
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "匹配 Delivered-To 邮件头（+别名、转发；不含 Workspace 域别名）。"
+      },
+      {
+        "op": "list:",
+        "desc": "匹配邮件列表的 List-Id 邮件头。"
       },
       {
         "op": "subject:",
-        "desc": "在主题行中搜索。"
+        "desc": "在邮件主题中搜索。"
       },
       {
-        "op": "has:attachment",
-        "desc": "匹配包含任意附件的邮件。"
+        "op": "\"短语\" / +词",
+        "desc": "引号精确短语或 + 精确单词匹配。"
       },
       {
-        "op": "filename:",
-        "desc": "匹配附件的文件名或文件扩展名 (例如 pdf, *.docx)。"
+        "op": "AROUND",
+        "desc": "邻近搜索：词1 AROUND 5 词2（加引号严格顺序；不可含 OR）。"
       },
       {
-        "op": "label:",
-        "desc": "匹配带有您创建的自定义 Gmail 标签的邮件。"
+        "op": "has:attachment / filename:",
+        "desc": "附件（含内嵌图片）及文件名/扩展名（不能用 *）。"
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Google 云端硬盘、文档、表格、幻灯片或 YouTube 链接。"
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Google 日历通知官方运算符。"
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "按 RFC 5322 Message-ID 精确搜索。"
+      },
+      {
+        "op": "category:",
+        "desc": "分类：primary, social, promotions, updates, forums, reservations, purchases。"
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "自定义标签（空格改连字符）及有/无标签（仅限搜索）。"
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "客户端加密邮件（Workspace，仅限搜索）。"
       },
       {
         "op": "in:",
-        "desc": "系统文件夹中的邮件：inbox（收件箱）、spam（垃圾邮件）、trash（已删除）、sent（已发送）、promotions（推广）等。"
+        "desc": "位置：inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats（无 in:archive）。"
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "按已读/未读状态过滤。"
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "按星标 (⭐) 或重要性 (►) 状态过滤。"
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "邮件状态或特定星标（仅限搜索）。"
       },
       {
         "op": "after: / before:",
-        "desc": "使用 YYYY/MM/DD 格式的日期范围。"
+        "desc": "日期（YYYY/MM/DD 或 Unix epoch）：after: 含当天，before: 不含当天（仅限搜索）。"
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "相对日期：7d (7天), 2m (2个月), 1y (1年)。"
+        "desc": "相对日期：7d, 2m, 1y（仅限搜索）。"
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "邮件大小：5M (5兆字节), 500K (500千字节)。"
+        "op": "larger: / smaller: / size:",
+        "desc": "邮件大小：5M、500K 或用 size: 指定最小字节数（如 size:1048576）。"
       },
       {
-        "op": "OR",
-        "desc": "结合两个词，匹配其中任意一个即可 (必须大写)。"
-      },
-      {
-        "op": "-term",
-        "desc": "排除匹配该词的邮件 (求反/NOT 算符)。"
-      },
-      {
-        "op": "(…)",
-        "desc": "将多个词分组，使算符应用于整个组。"
+        "op": "OR / { } / -词 / (…)",
+        "desc": "大写 OR（或 {a b}）、排除 - 与分组括号。"
       }
     ],
-    "tips_title": "专业技巧",
+    "tips_title": "进阶技巧与 Gmail 实际特性",
     "tips": [
-      "如果值包含多个单词，请用双引号括起来：subject:\"quarterly report\"",
-      "在括号内使用 OR 来匹配多个值中的任意一个：from:(a@x.com OR b@x.com)",
-      "Gmail 算符不区分大小写，但 OR 必须大写。",
-      "在创建过滤器时，将生成的查询语句直接粘贴到 Gmail 搜索栏或“包含字词”字段中。",
-      "结合使用 newer_than 和 older_than 来锁定精确的时间段：newer_than:3m older_than:1m",
-      "label: 搜索您自定义的标签。in: 搜索 Gmail 的内置文件夹（收件箱、垃圾邮件、推广等）。"
-    ]
+      "OR 优先级高于空格 (AND)：混用 OR 与排除时请用分组，如 (label:work OR subject:urgent) -subject:Day。",
+      "Gmail 不支持 * 通配符 (*.docx) 或正则。请直接使用扩展名 (docx) 或域名。",
+      "Gmail 会忽略除下划线 (_) 外的大多数标点 (! ? $ & # *)，并将带连字符的数字拆分。",
+      "after: 包含当天 (00:00 起)，before: 不包含当天。支持 Unix 时间戳。",
+      "普通搜索默认跳过垃圾邮件与已删除邮件，除非加入 in:anywhere。",
+      "会话视图：开启线程时，只要线程内有其他邮件未命中 - 排除，整个会话仍显示。",
+      "收件规则仅在到达瞬间执行：日期、已读/星标与 label: 主要用于搜索。",
+      "高阶技巧：label:^unsub 查找订阅邮件，label:^smartlabel_receipt 查找收据。",
+      "账号限制：单个过滤器需低于 ~1,469–1,500 字符（最多 1,000 个过滤器、500 个标签、20 个转发过滤器）。"
+    ],
+    "th_operator": "运算符",
+    "th_description": "说明"
   },
   "support": {
     "toast_title": "☕ 支持此项目",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "此过滤器将匹配以下邮件：",
     "from": "发件人为 {{value}}",
-    "to": "收件人为 {{value}}",
+    "to": "收件人（To/CC/BCC）包含 {{value}}",
     "cc": "抄送给 {{value}}",
     "bcc": "密送给 {{value}}",
     "subject": "主题包含 {{value}}",
@@ -296,7 +465,28 @@
     "size_smaller": "大小小于 {{value}}",
     "negate_prefix": "非",
     "and_connector": " 与 ",
-    "or_connector": " 或 "
+    "or_connector": " 或 ",
+    "deliveredto": "投递至地址 {{value}}",
+    "list": "来自邮件列表 {{value}}",
+    "exact_phrase": "包含精确短语 \"{{value}}\"",
+    "exact_word": "包含精确单词 {{value}}",
+    "around": "{{word1}} 与 {{word2}} 间距不超过 {{distance}} 个词",
+    "around_ordered_suffix": "（严格顺序）",
+    "has_drive": "包含 Google 云端硬盘链接",
+    "has_document": "包含 Google 文档文件",
+    "has_spreadsheet": "包含 Google 表格文件",
+    "has_presentation": "包含 Google 幻灯片文件",
+    "has_youtube": "包含 YouTube 视频",
+    "header_calendar": "带有 Google 日历通知 {{value}}",
+    "rfc822msgid": "Message-ID 为 {{value}}",
+    "category": "位于分类 {{value}}",
+    "has_userlabels": "带有至少一个自定义标签",
+    "has_nouserlabels": "没有任何自定义标签",
+    "label_encryptedmail": "使用客户端加密发送",
+    "has_star": "带有星标 {{value}}",
+    "is_muted": "来自已忽略的会话",
+    "size_exact": "大于 {{value}} 字节",
+    "negate_group_prefix": "均不符合"
   },
   "pwa": {
     "install_btn": "安装应用",
@@ -354,7 +544,27 @@
       "p_4_1": "尽管我们不使用跟踪技术，但您始终可以随时完全控制保存在浏览器中的数据。如果您希望删除保存的过滤器和视觉偏好，您可以轻松完成：",
       "li_4_1": "通过在浏览器设置（Chrome、Firefox、Safari、Edge）中清除缓存和网站数据存储。",
       "li_4_2": "使用“隐私浏览”或“无痕”模式，在关闭窗口时将自动删除这些本地存储。",
-      "p_4_2": "欲了解有关我们身份的更多信息，请访问我们的 <strong><a href=\"#\" id=\"hub-legal-link-2\">集中式法律声明</a></strong>。"
+      "p_4_2": "欲了解有关我们身份的更多信息，请访问我们的 <strong><a href=\"#\" id=\"hub-legal-link-2\">集中式法律声明</a></strong>。",
+      "td_locale_desc": "在多次访问之间记住您在语言选择器中选定的语言。"
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "接近 Gmail 约 1,500 字符的过滤器上限（{{count}} 字符）。建议精简或拆分。",
+    "char_limit_exceeded": "超过 Gmail 约 1,469–1,500 字符的过滤器上限（{{count}} 字符）。Gmail 可能报错或静默失效 — 请拆分为多个过滤器。",
+    "or_negation_trap": "OR + 排除陷阱：在 OR 分组内使用排除会导致其他分支绕过排除条件。请将排除条件移至 OR 分组外。",
+    "fix_or_negation_btn": "修复分组",
+    "search_only_operators": "检测到仅限搜索的运算符 ({{operators}})：在搜索栏有效，但 Gmail 提示通常不会匹配新到达的邮件。",
+    "caution_bcc": "bcc: 提示：收到的邮件隐藏了他人密送头，因此主要匹配你发送的邮件。",
+    "caution_category": "category: 提示：分类为动态分配；适合搜索，在自动过滤器中不太可预测。",
+    "wildcard_unsupported": "检测到通配符 (*)：Gmail 不支持 * 通配符（如 *.docx）。请直接写扩展名 (docx) 或域名。",
+    "lowercase_or": "检测到小写 \"or\"：若不使用大写 OR，Gmail 将按普通单词 \"or\" 搜索。",
+    "unescaped_inner_quote": "短语内部出现多余双引号 (\")：Gmail 无法转义引号，会提前结束短语。",
+    "negation_inside_operator": "字段值内检测到行内否定 (-词)：建议单独添加条件并勾选排除 (NOT)。",
+    "around_with_or": "AROUND 不接受内部使用 OR 或 { }。请创建两条 AROUND 条件并用 或 (OR) 连接。",
+    "conversation_view_negation": "会话视图提示：开启会话分组时，只要同会话中存在另一封不受排除匹配的邮件，整个会话仍会显示。",
+    "deliveredto_me_unsupported": "Gmail 的 deliveredto: 不支持「me」— 请输入完整邮箱地址或别名（如 you@gmail.com）。",
+    "in_archive_unsupported": "Gmail 没有 in:archive 运算符（归档邮件只是移除了 Inbox 标签）。请改用 -in:inbox -in:sent -in:drafts -in:spam -in:trash。",
+    "negated_group_caution": "检测到排除的复合分组 -(...)：可用于搜索，但在保存的自动入站过滤规则中可能不稳定，建议拆分为单独排除 (-a -b)。",
+    "double_negation": "检测到双重否定（被排除的分组中包含排除条件）：Gmail 不支持 -(-词)。请取消其中一项排除。"
   }
 }

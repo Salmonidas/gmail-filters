@@ -7,6 +7,26 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ---
 
+## [1.4.0] - 2026-11-19
+
+### Added
+- **All Official Gmail Filter Options (39 in total)**: Now organized in clear categories so you can filter by mailing lists, exact phrases, words near each other, Google Drive/Docs/Sheets/Slides/YouTube links, Google Calendar invites and RSVPs, inbox tabs (Primary, Promotions, Social, Updates…), colored stars, muted threads, unlabeled emails, and exact dates or timestamps.
+- **Groups for Complex Rules (`+ Add Group`)**: Combine conditions with **AND** / **OR** on every rule and group them together visually—no more worrying about where parentheses go. Your previously saved filters and shared links continue working automatically.
+- **Live Mistake Detector**: As you build a filter, the app warns you about common Gmail pitfalls—like combining **OR** with exclusions (with a 1-click **Fix grouping** button), approaching Gmail's length limit, or using search-only rules that don't run on incoming mail.
+- **31 Languages & Right-to-Left Support**: The app now speaks 31 regional language variants (including full right-to-left layout for Arabic) and remembers your language choice between visits.
+- **More Ready-to-Use Examples**: Expanded the Library to 11 practical templates you can load and customize in one click.
+- **Flexible Support & Privacy Pages**: Added a clean support dialog (with Buy Me a Coffee and GitHub Sponsors options) and dedicated Privacy and Cookie Policy pages in your language.
+
+### Changed
+- **Smarter Manual Query Editing**: Switching between typing a Gmail search by hand and editing it visually now preserves groups, exact phrases, dates, and exclusions reliably.
+- **Date & Timestamp Switching**: Toggling a date filter between calendar date and Unix timestamp now converts your chosen date automatically instead of clearing it.
+- **Open-Source License**: Updated the project license to GNU AGPL-3.0 to keep the tool permanently free and open source.
+
+### Fixed
+- **Instant Query Preview**: Fixed an issue where typing inside conditions or groups could fail to update the generated Gmail query in real time.
+- **Deleting Saved Filters**: Fixed a click issue on the delete button inside **My Filters** so confirmation and removal work reliably with both mouse and keyboard.
+- **Mobile & Dark Mode Polish**: Fixed overlapping dropdown text and duplicate arrows on small screens, made all 4 navigation tabs fit cleanly on phones without cutting off, improved dark-mode button contrast, and restored the full local Roboto font so the app loads crisply offline.
+
 ## [1.1.1] - 2026-03-13
 
 ### Added

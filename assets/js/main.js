@@ -1,40 +1,52 @@
-import i18n            from './i18n.js';
-import { initUI }      from './ui.js';
+import i18n from './i18n.js';
+import { initUI } from './ui.js';
+import { createRootGroup } from './query-builder.js';
 import { renderExamples, renderHelp, renderGuide, renderSavedFilters } from './examples.js';
 
 const CONFIG = {
   INITIAL_LOCALE: null,
-  HIDE_SUPPORT:   false,
+  HIDE_SUPPORT: false,
 };
 
 const state = {
-  conditions:        [],
-  currentQuery:      '',
+  filterTree: createRootGroup('AND'),
+  currentQuery: '',
   hideSupportBanner: CONFIG.HIDE_SUPPORT,
 };
+
+function safeStorageGet(key, fallback = null) {
+  try {
+    const val = localStorage.getItem(key);
+    return val !== null ? val : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function safeStorageSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 function detectLocale() {
   if (CONFIG.INITIAL_LOCALE) return CONFIG.INITIAL_LOCALE;
 
-  // 0. User's persisted choice (set when they pick a language in the selector)
-  try {
-    const saved = localStorage.getItem('preferredLocale');
-    const available = i18n.availableLocales().map(l => l.code);
-    if (saved && available.includes(saved)) return saved;
-  } catch (_) {}
+  const available = i18n.availableLocales().map(l => l.code);
+  const saved = safeStorageGet('preferredLocale');
+  if (saved && available.includes(saved)) return saved;
 
   const preferred = navigator.language || 'en';
-  const available = i18n.availableLocales().map(l => l.code);
-
-  // 1. Exact match
   if (available.includes(preferred)) return preferred;
 
-  // 2. Regional Map fallback
   const lowerPref = preferred.toLowerCase();
   if (lowerPref.startsWith('es-')) {
     if (lowerPref === 'es-es') return 'es-ES';
     if (lowerPref === 'es-us') return 'es-US';
-    return 'es-419'; 
+    return 'es-419';
   }
   if (lowerPref.startsWith('en-')) {
     if (lowerPref === 'en-gb') return 'en-GB';
@@ -44,12 +56,10 @@ function detectLocale() {
     return 'en-US';
   }
   if (lowerPref.startsWith('fr-')) {
-    if (lowerPref === 'fr-ca') return 'fr-CA';
-    return 'fr-FR';
+    return lowerPref === 'fr-ca' ? 'fr-CA' : 'fr-FR';
   }
   if (lowerPref.startsWith('pt-')) {
-    if (lowerPref === 'pt-br') return 'pt-BR';
-    return 'pt-PT';
+    return lowerPref === 'pt-br' ? 'pt-BR' : 'pt-PT';
   }
   if (lowerPref.startsWith('ca-')) {
     if (lowerPref.includes('valencia')) return 'ca-ES-valencia';
@@ -57,22 +67,21 @@ function detectLocale() {
     return 'ca';
   }
 
-  // 3. Prefix matching
   const prefix = preferred.split('-')[0];
-  if (available.includes(prefix)) return prefix;
+  const prefixMatch = available.find(c => c === prefix || c.split('-')[0] === prefix);
+  if (prefixMatch) return prefixMatch;
 
-  // 4. Default fallback
   return 'en';
 }
 
 function initTheme() {
   const root = document.documentElement;
-  const btn  = document.getElementById('theme-toggle-btn');
-  const mq   = window.matchMedia('(prefers-color-scheme: dark)');
+  const btn = document.getElementById('theme-toggle-btn');
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
   const svgs = {
     dark: '<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>',
-    light: '<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/></svg>'
+    light: '<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/></svg>',
   };
 
   function applyTheme(dark) {
@@ -80,17 +89,32 @@ function initTheme() {
     if (btn) btn.innerHTML = dark ? svgs.light : svgs.dark;
   }
 
-  const saved = localStorage.getItem('theme');
+  const saved = safeStorageGet('theme');
   applyTheme(saved ? saved === 'dark' : mq.matches);
 
   btn?.addEventListener('click', () => {
     const next = root.getAttribute('data-theme') !== 'dark';
     applyTheme(next);
-    localStorage.setItem('theme', next ? 'dark' : 'light');
+    safeStorageSet('theme', next ? 'dark' : 'light');
   });
 
   mq.addEventListener('change', e => {
-    if (!localStorage.getItem('theme')) applyTheme(e.matches);
+    if (!safeStorageGet('theme')) applyTheme(e.matches);
+  });
+}
+
+function navigateToSection(sectionId) {
+  const validIds = new Set(['builder', 'examples', 'help', 'guide']);
+  const targetId = validIds.has(sectionId) ? sectionId : 'builder';
+
+  document.querySelectorAll('.main-section').forEach(s => {
+    s.classList.toggle('hidden', s.id !== `section-${targetId}`);
+  });
+  document.querySelectorAll('.nav-link').forEach(l => {
+    const isActive = l.dataset.section === targetId;
+    l.classList.toggle('active', isActive);
+    if (isActive) l.setAttribute('aria-current', 'page');
+    else l.removeAttribute('aria-current');
   });
 }
 
@@ -99,9 +123,7 @@ async function boot() {
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(err => {
-        console.warn('SW Registration failed:', err);
-      });
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
     });
   }
 
@@ -111,39 +133,54 @@ async function boot() {
     await i18n.load('en');
   }
 
-  const ui = initUI(i18n, state);
+  const ui = initUI(i18n, state, { navigateToSection });
   ui.init();
   ui.initPWAInstall();
 
-  const examplesContainer     = document.getElementById('examples-grid');
+  const examplesContainer = document.getElementById('examples-grid');
   const savedFiltersContainer = document.getElementById('saved-filters-grid');
-  const helpContainer     = document.getElementById('help-container');
-  const guideContainer    = document.getElementById('guide-container');
+  const helpContainer = document.getElementById('help-container');
+  const guideContainer = document.getElementById('guide-container');
+
+  function readSavedFilters() {
+    try {
+      const parsed = JSON.parse(safeStorageGet('savedFilters', '[]'));
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
 
   function updateSavedLibrary() {
-    const saved = JSON.parse(localStorage.getItem('savedFilters') || '[]');
-    renderSavedFilters(savedFiltersContainer, saved, i18n.t.bind(i18n), conditions => {
-      ui.loadConditions(conditions);
-    }, id => {
-      ui.showDeleteConfirmation(() => {
-        const remaining = saved.filter(f => f.id !== id);
-        localStorage.setItem('savedFilters', JSON.stringify(remaining));
-        updateSavedLibrary();
-      });
-    });
+    const saved = readSavedFilters();
+    renderSavedFilters(
+      savedFiltersContainer,
+      saved,
+      i18n.t.bind(i18n),
+      item => {
+        ui.loadFilter(item);
+      },
+      id => {
+        ui.showDeleteConfirmation(() => {
+          const remaining = saved.filter(f => f.id !== id);
+          safeStorageSet('savedFilters', JSON.stringify(remaining));
+          updateSavedLibrary();
+        });
+      }
+    );
   }
 
   function refreshDynamicSections() {
     updateSavedLibrary();
     renderExamples(examplesContainer, i18n.t.bind(i18n), conditions => {
-      ui.loadConditions(conditions);
+      ui.loadFilter({ tree: conditions });
     });
     renderHelp(helpContainer, i18n.t.bind(i18n));
     renderGuide(guideContainer, i18n.t.bind(i18n));
   }
 
   refreshDynamicSections();
-  
+
   window.addEventListener('filters-updated', () => updateSavedLibrary());
   i18n.onChange(() => refreshDynamicSections());
 
@@ -168,9 +205,4 @@ async function boot() {
   });
 }
 
-function navigateToSection(sectionId) {
-  document.querySelectorAll('.main-section').forEach(s => s.classList.toggle('hidden', s.id !== `section-${sectionId}`));
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.section === sectionId));
-}
-
-boot(); 
+boot();

@@ -2,7 +2,8 @@
   "app": {
     "title": "Gmail Filter-Generator",
     "subtitle": "Erstellen Sie visuell fortgeschrittene Gmail-Suchfilter, ohne die Syntax auswendig lernen zu müssen.",
-    "language_selector": "Sprache"
+    "language_selector": "Sprache",
+    "skip_to_content": "Zum Hauptinhalt springen"
   },
   "nav": {
     "builder": "Generator",
@@ -22,7 +23,7 @@
     "advanced_mode": "Suchanfrage manuell bearbeiten",
     "visual_mode": "Zurück zum visuellen Editor",
     "advanced_note": "Bearbeiten Sie die Suchanfrage direkt. Klicken Sie auf \"Zurück zum visuellen Editor\", um sie wieder in Bedingungen zu zerlegen.",
-    "no_conditions": "Noch keine Bedingungen vorhanden. Klicken Sie auf \"Bedingung hinzufügen\", um Ihren Filter zu erstellen.",
+    "no_conditions": "Noch keine Bedingungen. Klicken Sie auf «Bedingung hinzufügen» oder «Gruppe hinzufügen».",
     "condition": {
       "type_label": "Filtertyp",
       "value_label": "Wert",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "Von — Absender",
-      "to": "An — Empfänger",
+      "to": "An — jeder Empfänger (An/CC/BCC)",
       "cc": "CC — Kopie",
       "bcc": "BCC — Blindkopie",
       "subject": "Betreff",
       "body": "Inhalt enthält",
-      "has_attachment": "Hat Anhang",
+      "has_attachment": "Hat Anhang (inkl. Inline-Bilder)",
       "filename": "Dateiname / -typ des Anhangs",
       "label": "Label (meine benutzerdefinierten Labels)",
-      "in": "In Systemordner (Posteingang, Spam...)",
+      "in": "Systemordner (inbox, spam, anywhere…)",
       "is_read": "Status: Gelesen",
       "is_unread": "Status: Ungelesen",
       "is_starred": "Status: Markiert (⭐)",
       "is_important": "Status: Als wichtig markiert",
-      "date_after": "Erhalten nach dem",
-      "date_before": "Erhalten vor dem",
+      "date_after": "Empfangen ab Datum (inklusiv)",
+      "date_before": "Empfangen vor Datum (exklusiv)",
       "newer_than": "Erhalten in den letzten... (relativ)",
       "older_than": "Älter als... (relativ)",
       "size_larger": "Größe größer als",
-      "size_smaller": "Größe kleiner als"
+      "size_smaller": "Größe kleiner als",
+      "deliveredto": "Delivered-To — Alias / Weiterleitungsadresse",
+      "list": "Mailingliste (List-Id-Header)",
+      "exact_phrase": "Exakter Wortlaut (\"…\")",
+      "exact_word": "Exaktes Wort ohne Wortstamm (+)",
+      "around": "Wörter in Nähe zueinander (AROUND)",
+      "has_drive": "Enthält Google-Drive-Link",
+      "has_document": "Enthält Google-Docs-Datei",
+      "has_spreadsheet": "Enthält Google-Sheets-Tabelle",
+      "has_presentation": "Enthält Google-Slides-Präsentation",
+      "has_youtube": "Enthält YouTube-Video",
+      "header_calendar": "Google-Kalender-Benachrichtigung",
+      "rfc822msgid": "Exakte Message-ID (rfc822msgid:)",
+      "category": "Posteingang-Kategorie",
+      "has_userlabels": "Hat benutzerdefiniertes Label",
+      "has_nouserlabels": "Hat KEIN benutzerdefiniertes Label",
+      "label_encryptedmail": "Clientseitig verschlüsselt (CSE)",
+      "has_star": "Bestimmtes Sternsymbol",
+      "is_muted": "Status: stummgeschaltete Konversation",
+      "size_exact": "Mindestgröße in Bytes (size:)"
     },
     "placeholders": {
-      "from": "max@gmail.com  ODER  chef@firma.de",
-      "to": "team@firma.de  ODER  newsletter@dienst.io",
+      "from": "max@gmail.com  OR  chef@firma.de",
+      "to": "team@firma.de  OR  newsletter@dienst.io",
       "cc": "manager@firma.de",
-      "bcc": "archiv@firma.de  ODER  compliance@firma.de",
-      "subject": "rechnung  ODER  \"quartalsbericht\"  -entwurf",
-      "body": "aktion erforderlich  ODER  \"anbei finden sie\"",
-      "filename": "pdf  ODER  *.docx  ODER  *.xlsx",
-      "label": "rechnungen  ODER  arbeit  ODER  quittungen",
-      "in": "inbox  ODER  spam  ODER  promotions  ODER  sent",
+      "bcc": "archiv@firma.de  OR  compliance@firma.de",
+      "subject": "Rechnung  OR  \"Quartalsbericht\"",
+      "body": "Handlung erforderlich  OR  Bestätigung",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "Rechnungen  OR  Finanzen/Steuern  OR  Mein Label",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d  ·  2m  ·  1y   (d=Tage, m=Monate, y=Jahre)",
       "older_than": "30d  ·  3m  ·  2y   (d=Tage, m=Monate, y=Jahre)",
       "size_larger": "5M  ·  10M  ·  25M   (M = Megabyte)",
-      "size_smaller": "500K  ·  1M  ·  5M   (K = Kilobyte, M = Megabyte)"
+      "size_smaller": "500K  ·  1M  ·  5M   (K = Kilobyte, M = Megabyte)",
+      "deliveredto": "sie+news@gmail.com  OR  you@gmail.com",
+      "list": "news@service.io  OR  dev-liste.googlegroups.com",
+      "exact_phrase": "Quartalsbericht",
+      "exact_word": "Rechnung",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "Filtert Nachrichten, die mindestens einen Anhang (beliebigen Typs) enthalten.",
-    "is_read_note": "Filtert Nachrichten, die Sie bereits geöffnet und gelesen haben.",
-    "is_unread_note": "Filtert Nachrichten, die Sie noch nicht geöffnet haben.",
-    "is_starred_note": "Filtert Nachrichten, die Sie in Gmail mit einem Stern (⭐) markiert haben.",
-    "is_important_note": "Filtert Nachrichten, die von Gmail oder von Ihnen als wichtig (►) markiert wurden."
+    "has_attachment_note": "Erfasst Nachrichten mit mindestens einem Anhang (inkl. eingebettete Bilder).",
+    "is_read_note": "Nur Suche: bereits gelesene Nachrichten.",
+    "is_unread_note": "Nur Suche: ungelesene Nachrichten.",
+    "is_starred_note": "Nur Suche: markierte Nachrichten (⭐).",
+    "is_important_note": "Nur Suche: als wichtig markierte Nachrichten (►).",
+    "add_group": "Gruppe hinzufügen",
+    "add_condition_to_group": "Bedingung zur Gruppe hinzufügen",
+    "remove_group": "Gruppe entfernen",
+    "exclude_group": "Gruppe ausschließen (NOT)",
+    "match_prefix": "Erfüllt",
+    "match_all": "ALLE (AND)",
+    "match_any": "EINE BELIEBIGE (OR)",
+    "match_suffix": "der folgenden Regeln:",
+    "around_word1": "Erstes Wort",
+    "around_distance": "Max. Wortabstand",
+    "around_word2": "Zweites Wort",
+    "around_ordered": "Strikte Reihenfolge",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (Unix-Sekunden)",
+    "groups": {
+      "people": "Personen & Mailinglisten",
+      "content": "Betreff & Nachrichtentext",
+      "attachments": "Anhänge & Google Drive",
+      "calendar_headers": "Kalender & Header",
+      "organization": "Kategorien, Labels & Ordner",
+      "status": "Gelesen, Sterne & Status (Suche)",
+      "date_size": "Datum & Größe"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — Allgemein",
+        "social": "social — Soziale Netzwerke",
+        "promotions": "promotions — Werbung",
+        "updates": "updates — Benachrichtigungen",
+        "forums": "forums — Foren",
+        "reservations": "reservations — Reservierungen",
+        "purchases": "purchases — Käufe"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — Neue Einladung",
+        "eventCancelled": "eventCancelled — Termin abgesagt",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — Zeit/Serie geändert",
+        "roomAdded": "roomAdded — Raum hinzugefügt",
+        "roomRemoved": "roomRemoved — Raum entfernt",
+        "locationUpdated": "locationUpdated — Ort geändert",
+        "titleUpdated": "titleUpdated — Titel geändert",
+        "descriptionUpdated": "descriptionUpdated — Beschreibung geändert",
+        "attachmentAdded": "attachmentAdded — Anhang hinzugefügt",
+        "attachmentRemoved": "attachmentRemoved — Anhang entfernt",
+        "conferenceUpdated": "conferenceUpdated — Videocall-Link geändert",
+        "rsvpAccepted": "rsvpAccepted — Zusage",
+        "rsvpDeclined": "rsvpDeclined — Absage",
+        "rsvpTentative": "rsvpTentative — Vielleicht",
+        "rsvpWithNote": "rsvpWithNote — Antwort mit Notiz",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — Neue Zeit vorgeschlagen",
+        "roomAccepted": "roomAccepted — Raum gebucht",
+        "roomDeclined": "roomDeclined — Raum abgelehnt"
+      },
+      "has_star": {
+        "yellow-star": "Gelber Stern",
+        "orange-star": "Oranger Stern",
+        "red-star": "Roter Stern",
+        "purple-star": "Lila Stern",
+        "blue-star": "Blauer Stern",
+        "green-star": "Grüner Stern",
+        "red-bang": "Rotes Ausrufezeichen (!)",
+        "orange-guillemet": "Oranger Doppelpfeil (»)",
+        "yellow-bang": "Gelbes Ausrufezeichen (!)",
+        "green-check": "Grünes Häkchen (✓)",
+        "blue-info": "Blaues Info-Symbol (i)",
+        "purple-question": "Lila Fragezeichen (?)"
+      }
+    },
+    "to_note": "In Gmail durchsucht to: An, CC und Ihre gesendeten BCC. Kombinieren Sie to:me mit -cc:me für direkte E-Mails.",
+    "bcc_note": "Bei eingehenden Filtern findet bcc: meist nur selbst gesendete E-Mails. Für empfangene BCC nutzen Sie deliveredto:you@gmail.com mit -to:me und -cc:me.",
+    "deliveredto_note": "Prüft den Delivered-To-Header (+Aliase, Weiterleitungen; nicht für Workspace-Domain-Aliase).",
+    "exact_phrase_note": "Sucht die exakte Phrase in Anführungszeichen (Gmail ignoriert meist Satzzeichen außer _).",
+    "exact_word_note": "Deaktiviert Gmail-Wortstamm-Suche (z. B. +run findet nicht running).",
+    "around_note": "Findet E-Mails, in denen beide Wörter maximal N Wörter auseinander stehen. Kein OR innerhalb von AROUND.",
+    "header_calendar_note": "Offizieller header:-Operator für Google-Kalender-Tokens (keine beliebigen Drittanbieter-Header).",
+    "category_note": "Automatischer Gmail-Tab. Zuverlässig in der Suche; bei eingehenden Filtern teils unvorhersehbar.",
+    "label_note": "Leerzeichen in Labels werden zu Bindestrichen (-), Schrägstriche (/) bleiben erhalten. Nur Suche.",
+    "in_note": "Standardsuche überspringt Spam & Papierkorb außer mit in:anywhere. Es gibt kein in:archive (für Archiv: -in:inbox -in:sent -in:drafts -in:spam -in:trash). Nur Suche.",
+    "label_encryptedmail_note": "Nur Suche: clientseitig verschlüsselte Nachrichten (Workspace).",
+    "is_muted_note": "Nur Suche: stummgeschaltete Konversationen.",
+    "date_after_note": "Inklusiv (ab 00:00 Uhr des Tages). Nur Suche: greift nicht bei neu eingehenden Mails.",
+    "date_before_note": "Exklusiv (vor 00:00 Uhr — der Tag selbst ist NICHT enthalten). Nur Suche."
   },
   "preview": {
     "title": "Generierte Suchanfrage",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "Rechnungen von bestimmten Absendern (letzter Monat)",
-        "description": "E-Mails von zwei bestimmten Absendern, die 'invoice' im Betreff, aber nicht 'draft' enthalten, erhalten in den letzten 30 Tagen.",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "Rechnungen bestimmter Absender (letzter Monat)",
+        "description": "E-Mails zweier Absender mit 'invoice' im Betreff, ohne 'draft', aus den letzten 30 Tagen.",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "Meeting-E-Mails, bei denen ich in CC stehe",
-        "description": "E-Mails, bei denen Sie in CC stehen, der Betreff 'meeting' enthält, aber nicht 'cancelled'.",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "Besprechungs-E-Mails mit mir in CC",
+        "description": "Nachrichten mit Ihnen in CC, Betreff 'meeting', ohne 'cancelled'.",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "PDF-Anhänge von einem bestimmten Absender",
-        "description": "Nachrichten eines bestimmten Absenders, die einen PDF-Anhang enthalten.",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "PDF-Anhänge eines bestimmten Absenders",
+        "description": "Nachrichten eines Absenders mit PDF-Dateianhang.",
+        "query": ""
       },
       {
         "id": "unread_starred",
         "title": "Ungelesene markierte Nachrichten",
-        "description": "Alle Nachrichten, die sowohl markiert als auch ungelesen sind – ein schneller Prioritätsfilter.",
-        "query": "is:unread is:starred"
+        "description": "Alle markierten und ungelesenen Nachrichten — schnelle Prioritätssuche.",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "Newsletter zum Abbestellen",
-        "description": "E-Mails der Kategorie Werbung, die einen Link zum Abbestellen (unsubscribe) im Text enthalten.",
-        "query": "in:promotions unsubscribe"
+        "title": "Werbung mit Abmeldelink",
+        "description": "E-Mails in der Kategorie Werbung (promotions) mit dem Wort 'unsubscribe'.",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "OR-Gruppe mit globalem Ausschluss",
+        "description": "2-Ebenen-Gruppierung: erfüllt label:work OR subject:urgent, schließt aber stets subject:Day aus.",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Google-Kalender-Zusagen/-Absagen",
+        "description": "Erkennt zugesagte, abgelehnte oder vorläufige Antworten über den offiziellen header:-Operator.",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "Alte Massen-Newsletter (Profi-Tipp)",
+        "description": "Nutzt das interne Label label:^unsub für über 30 Tage alte Newsletter.",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "Direkt an mich gesendet (ohne CC)",
+        "description": "Workaround für to: (schließt CC ein): E-Mails direkt an Sie.",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "Als BCC empfangene E-Mails",
+        "description": "Findet empfangene Nachrichten, bei denen Ihre Adresse weder in An noch in CC steht.",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "Google-Drive-Freigaben ohne Label",
+        "description": "Sucht Nachrichten mit Google-Drive-Links ohne eigene Labels.",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Gmail-Operatoren Referenz",
-    "intro": "Unten finden Sie die vom Generator unterstützten Operatoren und ihre Bedeutung in Gmail.",
+    "intro": "Vollständige Referenz aller Gmail-Such- und Filteroperatoren, Besonderheiten und Kontolimits.",
     "operators": [
       {
         "op": "from:",
-        "desc": "Filtert nach der E-Mail-Adresse des Absenders."
+        "desc": "Prüft Absenderadresse oder Domain."
       },
       {
         "op": "to:",
-        "desc": "Filtert nach dem Hauptempfänger."
+        "desc": "Prüft JEDEN Empfänger (An, CC, gesendetes BCC). Nutzen Sie to:me -cc:me für direkte Mails."
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = Kopie (sichtbar). BCC = Blindkopie (unsichtbar)."
+        "desc": "CC = Kopie. BCC = Blindkopie (empfangene Mails: deliveredto:you@gmail.com -to:me -cc:me)."
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Prüft Delivered-To (+Aliase, Weiterleitungen). Nicht für Workspace-Domain-Aliase."
+      },
+      {
+        "op": "list:",
+        "desc": "Prüft List-Id-Header von Mailinglisten."
       },
       {
         "op": "subject:",
-        "desc": "Sucht im Betreff der E-Mail."
+        "desc": "Sucht im Betreff."
       },
       {
-        "op": "has:attachment",
-        "desc": "Nachrichten mit beliebigem Anhang."
+        "op": "\"Phrase\" / +Wort",
+        "desc": "Exakte Phrase oder exaktes Wort ohne Wortstamm-Matching."
       },
       {
-        "op": "filename:",
-        "desc": "Filtert nach Dateiname oder -endung des Anhangs (z.B. pdf, *.docx)."
+        "op": "AROUND",
+        "desc": "Wortabstand: wort1 AROUND 5 wort2 (Anführungszeichen für strikte Reihenfolge; kein OR)."
       },
       {
-        "op": "label:",
-        "desc": "Nachrichten mit einem von Ihnen erstellten Gmail-Label."
+        "op": "has:attachment / filename:",
+        "desc": "Anhänge (inkl. Inline-Bilder) und Dateiname/-endung (ohne *)."
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Links zu Google Drive, Docs, Sheets, Slides oder YouTube."
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Offizieller Operator für Kalender-Benachrichtigungen."
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "Exakte Suche nach RFC-5322-Message-ID."
+      },
+      {
+        "op": "category:",
+        "desc": "Tab: primary, social, promotions, updates, forums, reservations, purchases."
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "Eigene Labels (Bindestriche statt Leerzeichen), mit/ohne Labels (Nur Suche)."
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "Clientseitig verschlüsselte Nachrichten (Workspace, Nur Suche)."
       },
       {
         "op": "in:",
-        "desc": "Nachrichten in Systemordnern: inbox, spam, trash, sent, promotions..."
+        "desc": "Systemordner: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (kein in:archive)."
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "Filtert nach dem Lesestatus."
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "Filtert nach Stern (⭐) oder Wichtigkeit (►)."
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "Status oder Stern-Typ (Nur Suche)."
       },
       {
         "op": "after: / before:",
-        "desc": "Datumsbereich im Format JJJJ/MM/TT."
+        "desc": "Datum (JJJJ/MM/TT oder Unix Epoch): after: inklusiv, before: exklusiv (Nur Suche)."
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "Relatives Datum: 7d (7 Tage), 2m (2 Monate), 1y (1 Jahr)."
+        "desc": "Relatives Datum: 7d, 2m, 1y (Nur Suche)."
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "Nachrichtengröße: 5M (5 MB), 500K (500 KB)."
+        "op": "larger: / smaller: / size:",
+        "desc": "Größe: 5M, 500K oder Mindestgröße in Bytes via size: (z. B. size:1048576)."
       },
       {
-        "op": "OR",
-        "desc": "Verbindet zwei Bedingungen, sodass eine davon zutreffen muss (muss großgeschrieben werden)."
-      },
-      {
-        "op": "-Begriff",
-        "desc": "Schließt Nachrichten aus, die den Begriff enthalten (NOT-Operator)."
-      },
-      {
-        "op": "(…)",
-        "desc": "Gruppiert Begriffe, damit die Operatoren auf die gesamte Gruppe angewendet werden."
+        "op": "OR / { } / -Begriff / (…)",
+        "desc": "Großgeschriebenes OR (oder {a b}), Ausschluss - und Klammern."
       }
     ],
-    "tips_title": "Profi-Tipps",
+    "tips_title": "Profi-Tipps & Gmail-Besonderheiten",
     "tips": [
-      "Setzen Sie Werte aus mehreren Wörtern in Anführungszeichen: subject:\"quartalsbericht\"",
-      "Nutzen Sie OR in Klammern, um mehrere Werte abzugleichen: from:(a@x.com OR b@x.com)",
-      "Gmail-Operatoren unterscheiden nicht zwischen Groß- und Kleinschreibung, aber OR muss großgeschrieben werden.",
-      "Fügen Sie die generierte Suchanfrage direkt in die Gmail-Suchleiste oder in das Feld 'Enthält die Wörter' bei der Filtererstellung ein.",
-      "Kombinieren Sie newer_than und older_than, um einen Zeitraum einzugrenzen: newer_than:3m older_than:1m",
-      "label: sucht in Ihren benutzerdefinierten Labels. in: sucht in Gmail-Systemordnern (inbox, spam...)."
-    ]
+      "OR bindet stärker als Leerzeichen (AND): kombinieren Sie OR und Ausschlüsse mit Gruppen, z. B. (label:work OR subject:urgent) -subject:Day.",
+      "Gmail unterstützt KEINE *-Platzhalter (*.docx) oder Regex. Nutzen Sie Endungen (docx) oder Domains.",
+      "Gmail ignoriert die meisten Satzzeichen (! ? $ & # *) außer _ und trennt Zahlen mit Bindestrich.",
+      "after: ist inklusiv (ab 00:00), before: ist exklusiv. Unix Epoch wird unterstützt.",
+      "Standardsuchen ignorieren Spam und Papierkorb außer mit in:anywhere.",
+      "Konversationsansicht: Bei aktivierten Threads bleibt ein Thread sichtbar, wenn eine andere Mail den Ausschluss vermeidet.",
+      "Eingangsfilter laufen beim Empfang: Datum, Gelesen/Stern und label: sind primär für die Suche.",
+      "Profi-Tricks: label:^unsub findet Newsletter, label:^smartlabel_receipt findet Belege.",
+      "Limits: max. ~1.469–1.500 Zeichen je Filter (max. 1.000 Filter, 500 Labels, 20 Weiterleitungen)."
+    ],
+    "th_operator": "Operator",
+    "th_description": "Beschreibung"
   },
   "support": {
     "toast_title": "☕ Dieses Projekt unterstützen",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "Dieser Filter gilt für E-Mails,",
     "from": "gesendet von {{value}}",
-    "to": "gesendet an {{value}}",
+    "to": "an (An/CC/BCC) {{value}}",
     "cc": "mit {{value}} in CC",
     "bcc": "mit {{value}} in BCC",
     "subject": "deren Betreff {{value}} enthält",
@@ -296,7 +465,28 @@
     "size_smaller": "kleiner als {{value}}",
     "negate_prefix": "NICHT",
     "and_connector": " UND ",
-    "or_connector": " ODER "
+    "or_connector": " ODER ",
+    "deliveredto": "zugestellt an {{value}}",
+    "list": "von der Mailingliste {{value}}",
+    "exact_phrase": "mit dem exakten Wortlaut \"{{value}}\"",
+    "exact_word": "mit dem exakten Wort {{value}}",
+    "around": "wo {{word1}} höchstens {{distance}} Wörter von {{word2}} entfernt ist",
+    "around_ordered_suffix": "(in strikter Reihenfolge)",
+    "has_drive": "mit einem Google-Drive-Link",
+    "has_document": "mit einer Google-Docs-Datei",
+    "has_spreadsheet": "mit einer Google-Sheets-Tabelle",
+    "has_presentation": "mit einer Google-Slides-Präsentation",
+    "has_youtube": "mit einem YouTube-Video",
+    "header_calendar": "mit Google-Kalender-Ereignis {{value}}",
+    "rfc822msgid": "mit Message-ID {{value}}",
+    "category": "in der Kategorie {{value}}",
+    "has_userlabels": "mit mindestens einem eigenen Label",
+    "has_nouserlabels": "ohne eigene Labels",
+    "label_encryptedmail": "clientseitig verschlüsselt gesendet",
+    "has_star": "mit Sternsymbol {{value}}",
+    "is_muted": "aus stummgeschalteten Konversationen",
+    "size_exact": "größer als {{value}} Bytes",
+    "negate_group_prefix": "KEINE VON"
   },
   "pwa": {
     "install_btn": "App installieren",
@@ -354,7 +544,27 @@
       "p_4_1": "Obwohl wir keine Tracking-Technologien verwenden, haben Sie jederzeit die absolute Kontrolle über die in Ihrem Browser gespeicherten Daten. Wenn Sie Ihre gespeicherten Filter und visuellen Präferenzen löschen möchten, können Sie dies ganz einfach tun:",
       "li_4_1": "Indem Sie den Cache und den Speicher für Websitedaten in Ihren Browsereinstellungen (Chrome, Firefox, Safari, Edge) leeren.",
       "li_4_2": "Indem Sie den Modus \"Privates Surfen\" oder \"Inkognito\" verwenden, der diesen lokalen Speicher beim Schließen des Fensters automatisch löscht.",
-      "p_4_2": "Weitere Informationen darüber, wer wir sind, finden Sie in unserem <strong><a href=\"#\" id=\"hub-legal-link-2\">Zentralen Rechtshinweis</a></strong>."
+      "p_4_2": "Weitere Informationen darüber, wer wir sind, finden Sie in unserem <strong><a href=\"#\" id=\"hub-legal-link-2\">Zentralen Rechtshinweis</a></strong>.",
+      "td_locale_desc": "Speichert Ihre ausgewählte Sprache zwischen den Besuchen."
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "Nahe am Gmail-Limit von ~1.500 Zeichen ({{count}} Zeichen). Ggf. kürzen oder aufteilen.",
+    "char_limit_exceeded": "Überschreitet das Gmail-Limit von ~1.469–1.500 Zeichen ({{count}} Zeichen). Gmail kann die Regel ablehnen — in mehrere Filter aufteilen.",
+    "or_negation_trap": "OR + Ausschluss-Falle: Ein Ausschluss in einer OR-Gruppe ermöglicht anderen Bedingungen, ihn zu umgehen. Ausschlüsse aus der OR-Gruppe herausnehmen.",
+    "fix_or_negation_btn": "Gruppierung korrigieren",
+    "search_only_operators": "Nur-Suche-Operatoren erkannt ({{operators}}): in der Suchleiste gültig, greifen laut Gmail bei eingehenden Filtern meist nicht.",
+    "caution_bcc": "bcc:-Hinweis: Eingehende Mails verbergen fremde BCCs; greift primär bei gesendeten E-Mails.",
+    "caution_category": "category:-Hinweis: Tabs werden dynamisch vergeben; optimal für die Suche, weniger stabil in Eingangsfiltern.",
+    "wildcard_unsupported": "Platzhalter (*) erkannt: Gmail unterstützt KEINE * Wildcards (wie *.docx). Nutzen Sie einfache Endungen (docx) oder Domains.",
+    "lowercase_or": "Kleingeschriebenes \"or\" erkannt: Gmail sucht wörtlich nach \"or\", solange OR nicht großgeschrieben ist.",
+    "unescaped_inner_quote": "Zusätzliches Anführungszeichen (\") innerhalb einer Phrase: Gmail beendet die Phrase vorzeitig.",
+    "negation_inside_operator": "Inline-Negation (-Begriff) erkannt: besser als separate Bedingung mit Ausschließen (NOT) anlegen.",
+    "around_with_or": "AROUND erlaubt kein OR oder { } im Inneren. Erstellen Sie zwei AROUND-Zeilen verbunden mit ODER.",
+    "conversation_view_negation": "Konversationsansicht-Hinweis: Bei gruppierten Threads bleibt ein Thread sichtbar, wenn eine andere Nachricht darin den Ausschluss umgeht.",
+    "deliveredto_me_unsupported": "Gmail löst „me“ in deliveredto: nicht auf — geben Sie Ihre vollständige E-Mail-Adresse oder Alias ein (z. B. you@gmail.com).",
+    "in_archive_unsupported": "Gmail hat keinen Operator in:archive (archivierten Mails fehlt nur das Inbox-Label). Nutzen Sie stattdessen -in:inbox -in:sent -in:drafts -in:spam -in:trash.",
+    "negated_group_caution": "Negierte zusammengesetzte Gruppe -(...) erkannt: funktioniert in der Suche, kann aber in gespeicherten Eingangsfiltern unzuverlässig sein. Bevorzugen Sie einzelne Ausschlüsse (-a -b).",
+    "double_negation": "Doppelte Verneinung erkannt (ausgeschlossene Bedingung in ausgeschlossener Gruppe): Gmail unterstützt kein -(-Begriff). Entfernen Sie einen Ausschluss."
   }
 }

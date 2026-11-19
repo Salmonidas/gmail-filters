@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gmail-builder-v1.3.0';
+const CACHE_NAME = 'gmail-builder-v1.4.0';
 
 const ASSETS = [
   './',
@@ -7,8 +7,8 @@ const ASSETS = [
   './favicon.png',
   './assets/img/icon-192.png',
   './assets/img/icon-512.png',
-  './assets/css/styles.css?v=3',
-  './assets/js/main.js?v=2',
+  './assets/css/styles.css?v=6',
+  './assets/js/main.js?v=5',
   './assets/js/ui.js',
   './assets/js/query-builder.js',
   './assets/js/examples.js',
@@ -59,10 +59,12 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(event.request)
         .then(networkResponse => {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseClone);
-          });
+          if (networkResponse && networkResponse.ok && networkResponse.type === 'basic') {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseClone);
+            });
+          }
           return networkResponse;
         })
         .catch(() => caches.match(event.request))
@@ -76,10 +78,12 @@ self.addEventListener('fetch', event => {
       if (cachedResponse) return cachedResponse;
 
       return fetch(event.request).then(networkResponse => {
-        const responseClone = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseClone);
-        });
+        if (networkResponse && networkResponse.ok && networkResponse.type === 'basic') {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+        }
         return networkResponse;
       }).catch(() => {
         // Offline and not cached - fail silently

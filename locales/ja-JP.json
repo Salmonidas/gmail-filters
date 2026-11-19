@@ -2,7 +2,8 @@
   "app": {
     "title": "Gmail フィルタ作成ツール",
     "subtitle": "構文を覚えることなく、視覚的に高度な Gmail 検索フィルタを作成できます。",
-    "language_selector": "言語"
+    "language_selector": "言語",
+    "skip_to_content": "メインコンテンツへスキップ"
   },
   "nav": {
     "builder": "作成ツール",
@@ -22,7 +23,7 @@
     "advanced_mode": "クエリを直接編集",
     "visual_mode": "ビジュアルエディタに戻る",
     "advanced_note": "クエリを直接編集します。「ビジュアルエディタに戻る」をクリックすると、再び条件行に分解されます。",
-    "no_conditions": "条件が設定されていません。「条件を追加」をクリックしてフィルタを作成してください。",
+    "no_conditions": "まだ条件がありません。「条件を追加」または「グループを追加」をクリックして開始してください。",
     "condition": {
       "type_label": "フィルタ項目",
       "value_label": "値",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "差出人 (from)",
-      "to": "宛先 (to)",
+      "to": "宛先 — すべての受信者 (To/CC/BCC)",
       "cc": "CC (cc)",
       "bcc": "BCC (bcc)",
       "subject": "件名 (subject)",
       "body": "本文に含む単語",
-      "has_attachment": "添付ファイルあり",
+      "has_attachment": "添付ファイルあり（インライン画像含む）",
       "filename": "添付ファイルのファイル名・種類",
       "label": "ラベル (作成済みのカスタムラベル)",
-      "in": "システムフォルダ (受信トレイ、迷惑メールなど)",
+      "in": "システムフォルダ (inbox, spam, anywhere…)",
       "is_read": "ステータス: 既読",
       "is_unread": "ステータス: 未読",
       "is_starred": "ステータス: スター付き (⭐)",
       "is_important": "ステータス: 重要マーク付き",
-      "date_after": "指定日以降に受信",
-      "date_before": "指定日以前に受信",
+      "date_after": "指定日以降に受信（当日含む）",
+      "date_before": "指定日より前に受信（当日含まない）",
       "newer_than": "指定期間内に受信 (相対指定)",
       "older_than": "指定期間より前に受信 (相対指定)",
       "size_larger": "サイズが次の値より大きい",
-      "size_smaller": "サイズが次の値より小さい"
+      "size_smaller": "サイズが次の値より小さい",
+      "deliveredto": "Delivered-To — エイリアス / 転送先",
+      "list": "メーリングリスト (List-Id ヘッダー)",
+      "exact_phrase": "完全一致フレーズ (\"…\")",
+      "exact_word": "活用形を除外した完全一致単語 (+)",
+      "around": "近接語検索 (AROUND)",
+      "has_drive": "Google ドライブのリンクを含む",
+      "has_document": "Google ドキュメントを含む",
+      "has_spreadsheet": "Google スプレッドシートを含む",
+      "has_presentation": "Google スライドを含む",
+      "has_youtube": "YouTube 動画を含む",
+      "header_calendar": "Google カレンダー通知",
+      "rfc822msgid": "完全な Message-ID (rfc822msgid:)",
+      "category": "受信トレイのカテゴリタブ",
+      "has_userlabels": "カスタムラベルが付いている",
+      "has_nouserlabels": "カスタムラベルが付いていない",
+      "label_encryptedmail": "クライアント側暗号化メール (CSE)",
+      "has_star": "特定のスターアイコン",
+      "is_muted": "ステータス：ミュート中のスレッド",
+      "size_exact": "最小バイトサイズ (size:)"
     },
     "placeholders": {
-      "from": "alice@gmail.com  または  boss@company.com",
-      "to": "team@company.com  または  newsletter@service.io",
+      "from": "alice@gmail.com  OR  boss@company.com",
+      "to": "team@company.com  OR  newsletter@service.io",
       "cc": "manager@company.com",
-      "bcc": "archive@company.com  または  compliance@firm.com",
-      "subject": "請求書  または  \"四半期報告\"  -下書き",
-      "body": "要対応  または  \"添付ファイルをご確認ください\"",
-      "filename": "pdf  または  *.docx  または  *.xlsx",
-      "label": "請求書  または  仕事  Or  領収書",
-      "in": "inbox  または  spam  または  promotions  または  sent",
+      "bcc": "archive@company.com  OR  compliance@firm.com",
+      "subject": "請求書  OR  \"四半期レポート\"",
+      "body": "対応が必要  OR  確認",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "請求書  OR  経理/税金  OR  マイラベル",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d  ·  2m  ·  1y   (d=日, m=月, y=年)",
       "older_than": "30d  ·  3m  ·  2y   (d=日, m=月, y=年)",
       "size_larger": "5M  ·  10M  ·  25M   (M = メガバイト)",
-      "size_smaller": "500K  ·  1M  ·  5M   (K = キロバイト, M = メガバイト)"
+      "size_smaller": "500K  ·  1M  ·  5M   (K = キロバイト, M = メガバイト)",
+      "deliveredto": "you+news@gmail.com  OR  you@gmail.com",
+      "list": "updates@service.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "四半期レポート",
+      "exact_word": "請求書",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "1つ以上の添付ファイル（形式不問）があるメールに一致します。",
-    "is_read_note": "既に開封して読んだメールに一致します。",
-    "is_unread_note": "まだ開封していない未読メールに一致します。",
-    "is_starred_note": "Gmailでスター（⭐）を付けたメールに一致します。",
-    "is_important_note": "Gmailシステムまたはあなた自身によって「重要」（►）と判定されたメールに一致します。"
+    "has_attachment_note": "少なくとも1つの添付ファイルがあるメール（インライン画像含む）。",
+    "is_read_note": "検索専用：既読メール。",
+    "is_unread_note": "検索専用：未読メール。",
+    "is_starred_note": "検索専用：スター付きメール (⭐)。",
+    "is_important_note": "検索専用：重要マーク付きメール (►)。",
+    "add_group": "グループを追加",
+    "add_condition_to_group": "グループに条件を追加",
+    "remove_group": "グループを削除",
+    "exclude_group": "グループを除外 (NOT)",
+    "match_prefix": "次の条件の",
+    "match_all": "すべて (AND)",
+    "match_any": "いずれか (OR)",
+    "match_suffix": "に一致:",
+    "around_word1": "1つ目の単語",
+    "around_distance": "最大単語間隔",
+    "around_word2": "2つ目の単語",
+    "around_ordered": "語順を固定",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (Unix秒)",
+    "groups": {
+      "people": "宛先・送信者・メーリングリスト",
+      "content": "件名・本文テキスト",
+      "attachments": "添付ファイル・Google ドライブ",
+      "calendar_headers": "カレンダー・ヘッダー",
+      "organization": "カテゴリ・ラベル・フォルダ",
+      "status": "既読・スター・ステータス（検索専用）",
+      "date_size": "日付・サイズ"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — メイン",
+        "social": "social — ソーシャル",
+        "promotions": "promotions — プロモーション",
+        "updates": "updates — 新着",
+        "forums": "forums — フォーラム",
+        "reservations": "reservations — 予約",
+        "purchases": "purchases — 購入"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — 新しい招待",
+        "eventCancelled": "eventCancelled — 予定キャンセル",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — 日時・繰り返し変更",
+        "roomAdded": "roomAdded — 会議室追加",
+        "roomRemoved": "roomRemoved — 会議室削除",
+        "locationUpdated": "locationUpdated — 場所変更",
+        "titleUpdated": "titleUpdated — タイトル変更",
+        "descriptionUpdated": "descriptionUpdated — 説明変更",
+        "attachmentAdded": "attachmentAdded — 添付追加",
+        "attachmentRemoved": "attachmentRemoved — 添付削除",
+        "conferenceUpdated": "conferenceUpdated — ビデオ通話リンク変更",
+        "rsvpAccepted": "rsvpAccepted — ゲストが承諾",
+        "rsvpDeclined": "rsvpDeclined — ゲストが辞退",
+        "rsvpTentative": "rsvpTentative — ゲストが未定",
+        "rsvpWithNote": "rsvpWithNote — メモ付き返信",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — 別の日時を提案",
+        "roomAccepted": "roomAccepted — 会議室予約が承認",
+        "roomDeclined": "roomDeclined — 会議室予約が却下"
+      },
+      "has_star": {
+        "yellow-star": "黄色のスター",
+        "orange-star": "オレンジのスター",
+        "red-star": "赤色のスター",
+        "purple-star": "紫色のスター",
+        "blue-star": "青色のスター",
+        "green-star": "緑色のスター",
+        "red-bang": "赤の感嘆符 (!)",
+        "orange-guillemet": "オレンジの二重矢印 (»)",
+        "yellow-bang": "黄の感嘆符 (!)",
+        "green-check": "緑のチェックマーク (✓)",
+        "blue-info": "青の情報アイコン (i)",
+        "purple-question": "紫のはてな (?)"
+      }
+    },
+    "to_note": "Gmail の to: は To・CC・送信済み BCC のすべてに一致します。直接自分宛てのメールには to:me と -cc:me を組み合わせてください。",
+    "bcc_note": "受信フィルタでは bcc: は通常自分が送信したメールにのみ一致します。BCC 受信を探すには deliveredto:you@gmail.com -to:me -cc:me をお試しください。",
+    "deliveredto_note": "Delivered-To ヘッダーに一致します（+エイリアスや転送に有効。Workspace ドメインエイリアスは対象外）。",
+    "exact_phrase_note": "引用符内の完全一致フレーズを検索します（アンダースコア以外のほとんどの記号は無視されます）。",
+    "exact_word_note": "Gmail の語形変化による自動一致を無効にします（例: +run は running に一致しません）。",
+    "around_note": "2つの単語が N 語以内の距離にあるメールを検索します。AROUND 内に OR は使えません。",
+    "header_calendar_note": "公式の header: 演算子は Google カレンダー通知専用です（任意の外部ヘッダーには使えません）。",
+    "category_note": "自動受信トレイタブ。検索では安定していますが、受信フィルタでは不安定な場合があります。",
+    "label_note": "ラベル名内の空白はハイフン (-) に変換され、スラッシュ (/) は保持されます。通常フィルタでは検索専用。",
+    "in_note": "通常検索は in:anywhere を付けない限り迷惑メールとゴミ箱を除外します。in:archive は存在しません（アーカイブ検索は -in:inbox -in:sent -in:drafts -in:spam -in:trash）。検索専用。",
+    "label_encryptedmail_note": "検索専用：クライアント側暗号化 (CSE) メール（Workspace）。",
+    "is_muted_note": "検索専用：ミュート中のスレッド。",
+    "date_after_note": "当日含む（現地時間 00:00 から）。検索専用：新着メールの自動フィルタでは動作しません。",
+    "date_before_note": "当日含まない（現地時間 00:00 より前）。検索専用。"
   },
   "preview": {
     "title": "生成されたクエリ",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "特定送信者からの請求書メール（過去1ヶ月）",
-        "description": "過去30日以内に受信した、特定の送信者2名からのメールで、件名に「invoice」を含み、「draft」を含まないもの。",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "特定送信者の請求書（過去1か月）",
+        "description": "過去30日間に2人の送信者から届き、件名に 'invoice' を含み 'draft' を除くメール。",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "自分がCCに含まれる会議メール",
-        "description": "自分がCCに入っており、件名に「meeting」を含み、「cancelled」を含まないメール。",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "自分が CC に含まれる会議メール",
+        "description": "CC に自分が入っており、件名に 'meeting' を含み 'cancelled' を除くメール。",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "特定送信者からのPDFファイル添付メール",
-        "description": "特定の送信者から受信した、PDFファイルが添付されているメール。",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "特定送信者からの PDF 添付メール",
+        "description": "特定の送信者から届いた PDF ファイル付きのメール。",
+        "query": ""
       },
       {
         "id": "unread_starred",
         "title": "未読のスター付きメール",
-        "description": "スター付きかつ未読のメールをすべて表示する、簡易版優先トレイフィルタ。",
-        "query": "is:unread is:starred"
+        "description": "スター付きかつ未読のメール — 優先度高めの素早い検索。",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "登録解除できるメルマガ",
-        "description": "プロモーションカテゴリのメールで、本文に「登録解除」や「unsubscribe」のテキストを含むもの。",
-        "query": "in:promotions unsubscribe"
+        "title": "配信停止リンク付きのプロモーション",
+        "description": "プロモーションカテゴリ内で 'unsubscribe' を含むメール。",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "OR グループ＋全体除外",
+        "description": "2階層グループ例：label:work OR subject:urgent を満たし、常に subject:Day を除外。",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "Google カレンダーの出欠返信",
+        "description": "公式 header: 演算子で承諾・辞退・未定の返信を抽出します。",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "古いメルマガ一括整理（上級テク）",
+        "description": "内部ラベル label:^unsub を使って30日超の一斉配信メルマガを検索します。",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "自分宛て直接メール（CC 除外）",
+        "description": "to: が CC にも一致する仕様への対策：自分宛てのみのメール。",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "BCC で受信したメール",
+        "description": "To にも CC にも自分のアドレスがない受信メールを検出します。",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "ラベル未設定の Google ドライブ共有",
+        "description": "カスタムラベルなしの Google ドライブリンク付きメールを検索します。",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "Gmail 検索演算子リファレンス",
-    "intro": "以下は、本ツールで対応しているGmail検索演算子と、そのGmail内での意味です。",
+    "intro": "Gmail 検索・フィルタ演算子の完全リファレンス、仕様の注意点、アカウント上限。",
     "operators": [
       {
         "op": "from:",
-        "desc": "送信者のメールアドレスで検索します。"
+        "desc": "送信者のアドレスまたはドメインに一致。"
       },
       {
         "op": "to:",
-        "desc": "メインの受信者で検索します。"
+        "desc": "すべての受信者 (To/CC/送信BCC) に一致。直接宛てには to:me -cc:me を使用。"
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = 写し（全員に見える）。BCC = 密かな写し（他の受信者には見えない）。"
+        "desc": "CC = 複写。BCC = ブラインドコピー（受信検出は deliveredto:you@gmail.com -to:me -cc:me）。"
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "Delivered-To ヘッダー（+エイリアス、転送用。Workspace ドメインエイリアス不可）。"
+      },
+      {
+        "op": "list:",
+        "desc": "メーリングリストの List-Id ヘッダー。"
       },
       {
         "op": "subject:",
-        "desc": "件名の中のキーワードを検索します。"
+        "desc": "メールの件名を検索。"
       },
       {
-        "op": "has:attachment",
-        "desc": "添付ファイルがあるメールを検索します。"
+        "op": "\"フレーズ\" / +単語",
+        "desc": "引用符による完全一致フレーズ、または + による語形変化なし単語。"
       },
       {
-        "op": "filename:",
-        "desc": "添付ファイルのファイル名や拡張子（例: pdf, *.docx）を指定します。"
+        "op": "AROUND",
+        "desc": "近接：word1 AROUND 5 word2（語順固定は引用符で囲む；OR 不可）。"
       },
       {
-        "op": "label:",
-        "desc": "自分で作成したカスタムGmailラベルを指定します。"
+        "op": "has:attachment / filename:",
+        "desc": "添付ファイル（インライン画像含む）および名前・拡張子（* 不可）。"
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "Google ドライブ、ドキュメント、スプレッドシート、スライド、YouTube リンク。"
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "Google カレンダー通知専用の公式演算子。"
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "RFC 5322 Message-ID での完全一致検索。"
+      },
+      {
+        "op": "category:",
+        "desc": "タブ：primary, social, promotions, updates, forums, reservations, purchases。"
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "カスタムラベル（空白はハイフン）およびラベル有無（検索専用）。"
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "クライアント側暗号化メール（Workspace・検索専用）。"
       },
       {
         "op": "in:",
-        "desc": "システムフォルダを指定します: inbox（受信トレイ）, spam（迷惑メール）, trash（ゴミ箱）, sent（送信済み）, promotions（プロモーション）など。"
+        "desc": "フォルダ：inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats（in:archive は不可）。"
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "既読・未読ステータスでフィルタリングします。"
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "スター（⭐）や重要マーク（►）の有無でフィルタリングします。"
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "ステータスまたはスターの種類（検索専用）。"
       },
       {
         "op": "after: / before:",
-        "desc": "YYYY/MM/DD 形式で期間を指定します。"
+        "desc": "日付 (YYYY/MM/DD または Unix epoch)：after: は当日含む、before: は含まない（検索専用）。"
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "期間の相対指定: 7d (7日間), 2m (2ヶ月間), 1y (1年間)。"
+        "desc": "相対日付：7d, 2m, 1y（検索専用）。"
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "メールのサイズ指定: 5M (5MB), 500K (500KB)。"
+        "op": "larger: / smaller: / size:",
+        "desc": "サイズ：5M, 500K または size: で最小バイト数（例 size:1048576）。"
       },
       {
-        "op": "OR",
-        "desc": "2つの条件のいずれかに一致すれば可とします（必ず大文字で書く必要があります）。"
-      },
-      {
-        "op": "-キーワード",
-        "desc": "そのキーワードを含むメールを除外します（NOT検索）。"
-      },
-      {
-        "op": "(…)",
-        "desc": "演算子の適用順序を制御するためにグループ化します。"
+        "op": "OR / { } / -語句 / (…)",
+        "desc": "大文字の OR（または {a b}）、除外 -、グループ括弧。"
       }
     ],
-    "tips_title": "プロのテクニック",
+    "tips_title": "高度なヒントと Gmail 仕様の注意点",
     "tips": [
-      "2語以上の単語を値に指定する場合はダブルクォーテーションで囲みます: subject:\"四半期報告\"",
-      "複数の送信者等のいずれかに一致させたい場合はカッコの中で OR を使います: from:(a@x.com OR b@x.com)",
-      "Gmail検索キーワードは大文字小文字を区別しませんが、OR は必ず大文字で指定します。",
-      "生成されたクエリは、Gmail上部の検索バーに貼り付けるか、フィルタ作成時の「含む」欄に直接貼り付けて使用します。",
-      "newer_than と older_than を組み合わせることで、特定の期間内を指定できます: newer_than:3m older_than:1m",
-      "label: は自作のラベルを検索します。in: は受信トレイやプロモーションなどの標準システムカテゴリを検索します。"
-    ]
+      "OR はスペース (AND) より強く結合します：OR と除外を混ぜる際は (label:work OR subject:urgent) -subject:Day のようにグループ化してください。",
+      "Gmail は * ワイルドカード (*.docx) や正規表現に非対応です。拡張子 (docx) やドメインを指定してください。",
+      "Gmail はアンダースコア (_) 以外の記号 (! ? $ & # *) を無視し、ハイフン付き数字を分割します。",
+      "after: は当日 00:00 から含むのに対し、before: は当日を含みません。Unix epoch も利用可能です。",
+      "通常検索は in:anywhere を付けない限り迷惑メールとゴミ箱を検索しません。",
+      "スレッド表示の注意：他メッセージが除外 - を回避するとスレッド全体が表示されます。",
+      "自動フィルタは受信瞬間に評価されるため、日付・既読・label: は主に検索用です。",
+      "上級テク：label:^unsub はメルマガ、label:^smartlabel_receipt は領収書に便利です。",
+      "制限：1フィルタ約 1,469〜1,500 文字以内（最大 1,000 フィルタ、500 ラベル、20 転送フィルタ）。"
+    ],
+    "th_operator": "演算子",
+    "th_description": "説明"
   },
   "support": {
     "toast_title": "☕ プロジェクトへの支援",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "このフィルタは、以下の条件を満たすメールに適用されます:",
     "from": "送信者が {{value}}",
-    "to": "受信者が {{value}}",
+    "to": "宛先 (To/CC/BCC) に {{value}} を含む",
     "cc": "CCに {{value}} を含む",
     "bcc": "BCCに {{value}} を含む",
     "subject": "件名に {{value}} を含む",
@@ -296,7 +465,28 @@
     "size_smaller": "サイズが {{value}} より小さい",
     "negate_prefix": "かつ次を含まない:",
     "and_connector": " かつ ",
-    "or_connector": " または "
+    "or_connector": " または ",
+    "deliveredto": "{{value}} 宛てに配信された",
+    "list": "メーリングリスト {{value}} からの",
+    "exact_phrase": "完全一致フレーズ \"{{value}}\" を含む",
+    "exact_word": "完全一致単語 {{value}} を含む",
+    "around": "{{word1}} と {{word2}} が {{distance}} 語以内に現れる",
+    "around_ordered_suffix": "（語順固定）",
+    "has_drive": "Google ドライブのリンクを含む",
+    "has_document": "Google ドキュメントを含む",
+    "has_spreadsheet": "Google スプレッドシートを含む",
+    "has_presentation": "Google スライドを含む",
+    "has_youtube": "YouTube 動画を含む",
+    "header_calendar": "Google カレンダー通知 {{value}} を含む",
+    "rfc822msgid": "Message-ID が {{value}} の",
+    "category": "カテゴリ {{value}} の",
+    "has_userlabels": "カスタムラベルが1つ以上ある",
+    "has_nouserlabels": "カスタムラベルがない",
+    "label_encryptedmail": "クライアント側暗号化で送信された",
+    "has_star": "スターアイコン {{value}} が付いた",
+    "is_muted": "ミュート中のスレッドの",
+    "size_exact": "{{value}} バイトより大きい",
+    "negate_group_prefix": "次のいずれにも該当しない"
   },
   "pwa": {
     "install_btn": "アプリをインストール",
@@ -354,7 +544,27 @@
       "p_4_1": "当社はトラッキング技術を使用していませんが、お客様はブラウザに保存されたデータをいつでも完全に制御できます。保存されたフィルタと視覚的な設定を削除したい場合は、簡単に実行できます：",
       "li_4_1": "ブラウザの設定（Chrome、Firefox、Safari、Edge）でキャッシュとサイトデータのストレージをクリアします。",
       "li_4_2": "「プライベートブラウジング」または「シークレット」モードを使用します。ウィンドウを閉じると、このローカルストレージが自動的に削除されます。",
-      "p_4_2": "当社の詳細については、<strong><a href=\"#\" id=\"hub-legal-link-2\">集中化された法的通知</a></strong>をご覧ください。"
+      "p_4_2": "当社の詳細については、<strong><a href=\"#\" id=\"hub-legal-link-2\">集中化された法的通知</a></strong>をご覧ください。",
+      "td_locale_desc": "言語セレクターで選択した言語を訪問間で記憶します。"
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "Gmail フィルタの上限（約1,500文字）に近づいています（現在 {{count}} 文字）。短縮または分割を検討してください。",
+    "char_limit_exceeded": "Gmail フィルタの上限（約1,469〜1,500文字）を超えています（{{count}} 文字）。エラーまたは適用漏れの原因になるため分割してください。",
+    "or_negation_trap": "OR + 除外の罠：OR グループ内に除外条件を入れると他の条件が除外をすり抜けます。除外条件を OR グループの外に出してください。",
+    "fix_or_negation_btn": "グループを修正",
+    "search_only_operators": "検索専用演算子を検出 ({{operators}})：検索バーでは機能しますが、新着自動フィルタでは通常一致しないと Gmail が警告します。",
+    "caution_bcc": "bcc: の注意：受信メールは他者の BCC を隠すため、主に自分が送信したメールに一致します。",
+    "caution_category": "category: の注意：カテゴリは動的に割り当てられるため、検索には最適ですが受信フィルタでは安定しない場合があります。",
+    "wildcard_unsupported": "ワイルドカード (*) を検出：Gmail は * を使えません（例: *.docx）。拡張子のみ (docx) やドメイン名を指定してください。",
+    "lowercase_or": "小文字の \"or\" を検出：大文字の OR にしないと、単語の \"or\" として検索されます。",
+    "unescaped_inner_quote": "フレーズ内に余分な二重引用符 (\") があります：Gmail は途中でフレーズを閉じてしまいます。",
+    "negation_inside_operator": "項目値内のインライン否定 (-語句) を検出：別の行で「除外 (NOT)」を使う方が安全です。",
+    "around_with_or": "AROUND 内に OR や { } は使用できません。AROUND 条件を2つ作成し OR で結合してください。",
+    "conversation_view_negation": "スレッド表示の注意：スレッド表示が有効な場合、別のメッセージが除外を免れるとスレッド全体が表示されます。",
+    "deliveredto_me_unsupported": "Gmail の deliveredto: では「me」が使えません — 完全なメールアドレスやエイリアスを入力してください（例 you@gmail.com）。",
+    "in_archive_unsupported": "Gmail に in:archive 演算子はありません（アーカイブ済みは Inbox ラベルが無いだけです）。代わりに -in:inbox -in:sent -in:drafts -in:spam -in:trash を使ってください。",
+    "negated_group_caution": "除外された複合グループ -(...) を検出：検索では動作しますが、保存した受信フィルタでは不安定になることがあります。個別の除外 (-a -b) を推奨します。",
+    "double_negation": "二重否定を検出（除外グループ内の除外条件）：Gmail は -(-term) に未対応です。どちらか一方の除外を解除してください。"
   }
 }

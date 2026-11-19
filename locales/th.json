@@ -2,7 +2,8 @@
   "app": {
     "title": "เครื่องมือสร้างตัวกรอง Gmail",
     "subtitle": "สร้างเงื่อนไขการค้นหาขั้นสูงของ Gmail แบบภาพ โดยไม่ต้องจดจำโครงสร้างไวยากรณ์คำค้นหา",
-    "language_selector": "ภาษา"
+    "language_selector": "ภาษา",
+    "skip_to_content": "ข้ามไปยังเนื้อหาหลัก"
   },
   "nav": {
     "builder": "เครื่องมือสร้าง",
@@ -22,7 +23,7 @@
     "advanced_mode": "แก้ไขคำค้นหาด้วยตนเอง",
     "visual_mode": "กลับไปที่การสร้างแบบภาพ",
     "advanced_note": "แก้ไขคำค้นหาโดยตรง คลิก \"กลับไปที่การสร้างแบบภาพ\" เพื่อย่อยคำค้นหากลับเป็นแถวเงื่อนไขตามเดิม",
-    "no_conditions": "ยังไม่มีเงื่อนไขในขณะนี้ คลิก \"เพิ่มเงื่อนไข\" เพื่อเริ่มสร้างตัวกรองของคุณ",
+    "no_conditions": "ยังไม่มีเงื่อนไข คลิก «เพิ่มเงื่อนไข» หรือ «เพิ่มกลุ่ม» เพื่อเริ่มต้น",
     "condition": {
       "type_label": "ประเภทตัวกรอง",
       "value_label": "ค่าข้อมูล",
@@ -31,46 +32,153 @@
     },
     "types": {
       "from": "จาก — ผู้ส่ง",
-      "to": "ถึง — ผู้รับ",
+      "to": "ถึง — ผู้รับใดๆ (To/CC/BCC)",
       "cc": "CC — สำเนา",
       "bcc": "BCC — สำเนาลับ",
       "subject": "หัวข้อ",
       "body": "เนื้อหาจดหมายมีคำว่า",
-      "has_attachment": "มีไฟล์แนบ",
+      "has_attachment": "มีไฟล์แนบ (รวมรูปภาพในเนื้อหา)",
       "filename": "ชื่อ / ประเภทของไฟล์แนบ",
       "label": "ป้ายกำกับ (ป้ายกำกับ Gmail ที่ฉันสร้างไว้)",
-      "in": "อยู่ในโฟลเดอร์ระบบ (กล่องจดหมาย, สแปม...)",
+      "in": "โฟลเดอร์ระบบ (inbox, spam, anywhere…)",
       "is_read": "สถานะ: อ่านแล้ว",
       "is_unread": "status: ยังไม่ได้อ่าน",
       "is_starred": "สถานะ: ติดดาว (⭐)",
       "is_important": "สถานะ: ทำเครื่องหมายว่าสำคัญ",
-      "date_after": "ได้รับหลังจากวันที่",
-      "date_before": "ได้รับก่อนวันที่",
+      "date_after": "ได้รับหลังวันที่ (รวมวันนั้น)",
+      "date_before": "ได้รับก่อนวันที่ (ไม่รวมวันนั้น)",
       "newer_than": "ได้รับภายในระยะเวลา... (สัมพันธ์กับปัจจุบัน)",
       "older_than": "ได้รับนานกว่าระยะเวลา... (สัมพันธ์กับปัจจุบัน)",
       "size_larger": "ขนาดใหญ่กว่า",
-      "size_smaller": "ขนาดเล็กกว่า"
+      "size_smaller": "ขนาดเล็กกว่า",
+      "deliveredto": "Delivered-To — นามแฝง / ที่อยู่ส่งต่อ",
+      "list": "รายชื่อผู้รับจดหมาย (ส่วนหัว List-Id)",
+      "exact_phrase": "วลีตรงตัว (\"…\")",
+      "exact_word": "คำตรงตัวไม่ผันรูป (+)",
+      "around": "คำที่อยู่ใกล้กัน (AROUND)",
+      "has_drive": "มีลิงก์ Google Drive",
+      "has_document": "มีไฟล์ Google Docs",
+      "has_spreadsheet": "มีไฟล์ Google Sheets",
+      "has_presentation": "มีไฟล์ Google Slides",
+      "has_youtube": "มีวิดีโอ YouTube",
+      "header_calendar": "การแจ้งเตือน Google ปฏิทิน",
+      "rfc822msgid": "Message-ID ตรงตัว (rfc822msgid:)",
+      "category": "แท็บหมวดหมู่กล่องจดหมาย",
+      "has_userlabels": "มีป้ายกำกับที่กำหนดเอง",
+      "has_nouserlabels": "ไม่มีป้ายกำกับที่กำหนดเอง",
+      "label_encryptedmail": "เข้ารหัสฝั่งไคลเอนต์ (CSE)",
+      "has_star": "ไอคอนดาวเฉพาะแบบ",
+      "is_muted": "สถานะ: เธรดที่ปิดเสียง",
+      "size_exact": "ขนาดขั้นต่ำเป็นไบต์ (size:)"
     },
     "placeholders": {
-      "from": "alice@gmail.com หรือ boss@company.com",
-      "to": "team@company.com หรือ newsletter@service.io",
+      "from": "alice@gmail.com  OR  boss@company.com",
+      "to": "team@company.com  OR  newsletter@service.io",
       "cc": "manager@company.com",
-      "bcc": "archive@company.com หรือ compliance@firm.com",
-      "subject": "invoice หรือ \"quarterly report\" -draft",
-      "body": "action required หรือ \"please find attached\"",
-      "filename": "pdf หรือ *.docx หรือ *.xlsx",
-      "label": "invoices หรือ work หรือ receipts",
-      "in": "inbox หรือ spam หรือ promotions หรือ sent",
+      "bcc": "archive@company.com  OR  compliance@firm.com",
+      "subject": "ใบแจ้งหนี้  OR  \"รายงานประจำไตรมาส\"",
+      "body": "ต้องดำเนินการ  OR  ยืนยัน",
+      "filename": "pdf  OR  docx  OR  xlsx",
+      "label": "ใบแจ้งหนี้  OR  การเงิน/ภาษี  OR  ป้ายกำกับของฉัน",
+      "in": "inbox  OR  spam  OR  snoozed  OR  anywhere",
       "newer_than": "7d · 2m · 1y   (d=วัน, m=เดือน, y=ปี)",
       "older_than": "30d · 3m · 2y   (d=วัน, m=เดือน, y=ปี)",
       "size_larger": "5M · 10M · 25M   (M = เมกะไบต์)",
-      "size_smaller": "500K · 1M · 5M   (K = กิโลไบต์, M = เมกะไบต์)"
+      "size_smaller": "500K · 1M · 5M   (K = กิโลไบต์, M = เมกะไบต์)",
+      "deliveredto": "you+news@gmail.com  OR  you@gmail.com",
+      "list": "updates@service.io  OR  dev-list.googlegroups.com",
+      "exact_phrase": "รายงานประจำไตรมาส",
+      "exact_word": "ใบแจ้งหนี้",
+      "size_exact": "1048576  ·  5M  ·  500K",
+      "rfc822msgid": "message-id@mail.gmail.com"
     },
-    "has_attachment_note": "จับคู่ข้อความที่มีไฟล์แนบอย่างน้อยหนึ่งไฟล์ (ประเภทใดก็ได้)",
-    "is_read_note": "จับคู่ข้อความที่คุณเปิดอ่านแล้วเท่านั้น",
-    "is_unread_note": "จับคู่ข้อความที่คุณยังไม่ได้เปิดอ่าน",
-    "is_starred_note": "จับคู่ข้อความที่คุณติดดาว (⭐) ไว้ใน Gmail",
-    "is_important_note": "จับคู่ข้อความที่ Gmail หรือคุณระบุว่าสำคัญ (►)"
+    "has_attachment_note": "ตรงกับข้อความที่มีไฟล์แนบอย่างน้อย 1 ไฟล์ (รวมรูปภาพในเนื้อหา)",
+    "is_read_note": "ค้นหาเท่านั้น: ข้อความที่อ่านแล้ว",
+    "is_unread_note": "ค้นหาเท่านั้น: ข้อความที่ยังไม่ได้อ่าน",
+    "is_starred_note": "ค้นหาเท่านั้น: ข้อความที่ติดดาว (⭐)",
+    "is_important_note": "ค้นหาเท่านั้น: ข้อความที่ทำเครื่องหมายว่าสำคัญ (►)",
+    "add_group": "เพิ่มกลุ่ม",
+    "add_condition_to_group": "เพิ่มเงื่อนไขในกลุ่ม",
+    "remove_group": "ลบกลุ่ม",
+    "exclude_group": "ยกเว้นกลุ่ม (NOT)",
+    "match_prefix": "ตรงกับ",
+    "match_all": "ทั้งหมด (AND)",
+    "match_any": "อย่างใดอย่างหนึ่ง (OR)",
+    "match_suffix": "ของเงื่อนไขต่อไปนี้:",
+    "around_word1": "คำที่ 1",
+    "around_distance": "ระยะห่างสูงสุด (คำ)",
+    "around_word2": "คำที่ 2",
+    "around_ordered": "เรียงลำดับตายตัว",
+    "epoch_toggle": "Unix Epoch",
+    "epoch_placeholder": "1735689600 (วินาที Unix)",
+    "groups": {
+      "people": "ผู้ติดต่อและรายชื่อผู้รับจดหมาย",
+      "content": "หัวข้อและเนื้อหาข้อความ",
+      "attachments": "ไฟล์แนบและ Google Drive",
+      "calendar_headers": "ปฏิทินและส่วนหัวอีเมล",
+      "organization": "หมวดหมู่ ป้ายกำกับ และโฟลเดอร์",
+      "status": "การอ่าน ดาว และสถานะ (สำหรับค้นหา)",
+      "date_size": "วันที่และขนาด"
+    },
+    "options": {
+      "category": {
+        "primary": "primary — หลัก",
+        "social": "social — โซเชียล",
+        "promotions": "promotions — โปรโมชัน",
+        "updates": "updates — อัปเดต",
+        "forums": "forums — ฟอรัม",
+        "reservations": "reservations — การจอง",
+        "purchases": "purchases — การซื้อ"
+      },
+      "header_calendar": {
+        "eventCreated": "eventCreated — คำเชิญใหม่",
+        "eventCancelled": "eventCancelled — ยกเลิกกิจกรรม",
+        "timeOrRecurrenceUpdated": "timeOrRecurrenceUpdated — เปลี่ยนเวลา/การเกิดซ้ำ",
+        "roomAdded": "roomAdded — เพิ่มห้องประชุม",
+        "roomRemoved": "roomRemoved — ลบห้องประชุม",
+        "locationUpdated": "locationUpdated — เปลี่ยนสถานที่",
+        "titleUpdated": "titleUpdated — เปลี่ยนชื่อกิจกรรม",
+        "descriptionUpdated": "descriptionUpdated — เปลี่ยนคำอธิบาย",
+        "attachmentAdded": "attachmentAdded — เพิ่มไฟล์แนบ",
+        "attachmentRemoved": "attachmentRemoved — ลบไฟล์แนบ",
+        "conferenceUpdated": "conferenceUpdated — เปลี่ยนลิงก์วิดีโอคอล",
+        "rsvpAccepted": "rsvpAccepted — ผู้รับเชิญตอบรับ",
+        "rsvpDeclined": "rsvpDeclined — ผู้รับเชิญปฏิเสธ",
+        "rsvpTentative": "rsvpTentative — ผู้รับเชิญตอบว่าอาจจะ",
+        "rsvpWithNote": "rsvpWithNote — ตอบกลับพร้อมบันทึก",
+        "rsvpProposeNewTime": "rsvpProposeNewTime — เสนอเวลาใหม่",
+        "roomAccepted": "roomAccepted — อนุมัติการจองห้อง",
+        "roomDeclined": "roomDeclined — ปฏิเสธการจองห้อง"
+      },
+      "has_star": {
+        "yellow-star": "ดาวเหลือง",
+        "orange-star": "ดาวส้ม",
+        "red-star": "ดาวแดง",
+        "purple-star": "ดาวม่วง",
+        "blue-star": "ดาวน้ำเงิน",
+        "green-star": "ดาวเขียว",
+        "red-bang": "อัศเจรีย์แดง (!)",
+        "orange-guillemet": "ลูกศรคู่ส้ม (»)",
+        "yellow-bang": "อัศเจรีย์เหลือง (!)",
+        "green-check": "เครื่องหมายถูกเขียว (✓)",
+        "blue-info": "ข้อมูลฟ้า (i)",
+        "purple-question": "ปรัศนีม่วง (?)"
+      }
+    },
+    "to_note": "ใน Gmail ตัวดำเนินการ to: จะค้นทั้ง To, CC และ BCC ที่คุณส่ง ใช้ to:me คู่กับ -cc:me เพื่อหาอีเมลที่ส่งถึงคุณโดยตรง",
+    "bcc_note": "ในตัวกรองขาเข้า bcc: มักจับได้เฉพาะอีเมลที่คุณส่งเอง สำหรับอีเมลที่รับผ่าน BCC ให้ลอง deliveredto:you@gmail.com -to:me -cc:me",
+    "deliveredto_note": "ตรงกับส่วนหัว Delivered-To (+นามแฝงและการส่งต่อ ไม่ครอบคลุมนามแฝงโดเมน Workspace)",
+    "exact_phrase_note": "ค้นหาวลีตรงตัวในเครื่องหมายคำพูด (Gmail ไม่สนใจเครื่องหมายวรรคตอนส่วนใหญ่ยกเว้น _)",
+    "exact_word_note": "ปิดการค้นหาคำใกล้เคียงอัตโนมัติของ Gmail (เช่น +run จะไม่ตรงกับ running)",
+    "around_note": "ค้นหาอีเมลที่คำทั้งสองห่างกันไม่เกิน N คำ ห้ามใช้ OR ภายใน AROUND",
+    "header_calendar_note": "ตัวดำเนินการ header: อย่างเป็นทางการรองรับเฉพาะการแจ้งเตือน Google ปฏิทิน",
+    "category_note": "แท็บอัตโนมัติของ Gmail ใช้ได้ดีในการค้นหา แต่อาจไม่แน่นอนในตัวกรองขาเข้า",
+    "label_note": "ช่องว่างในชื่อป้ายกำกับจะถูกแปลงเป็นขีด (-) และคงเครื่องหมาย (/) ไว้ ใช้เพื่อค้นหาเท่านั้น",
+    "in_note": "การค้นหาปกติจะข้ามสแปมและถังขยะเว้นแต่จะใส่ in:anywhere ไม่มีตัวดำเนินการ in:archive (ใช้ -in:inbox -in:sent -in:drafts -in:spam -in:trash แทน) ใช้ค้นหาเท่านั้น",
+    "label_encryptedmail_note": "ค้นหาเท่านั้น: ข้อความที่เข้ารหัสฝั่งไคลเอนต์ (Workspace)",
+    "is_muted_note": "ค้นหาเท่านั้น: การสนทนาที่ปิดเสียง",
+    "date_after_note": "รวมวันนั้นด้วย (เริ่ม 00:00 น.) ใช้เพื่อค้นหาเท่านั้น",
+    "date_before_note": "ไม่รวมวันนั้น (ก่อน 00:00 น.) ใช้เพื่อค้นหาเท่านั้น"
   },
   "preview": {
     "title": "คำค้นหาที่สร้างขึ้น",
@@ -115,114 +223,175 @@
     "items": [
       {
         "id": "invoices_last_month",
-        "title": "ใบแจ้งหนี้จากผู้ส่งที่ระบุ (เดือนที่แล้ว)",
-        "description": "อีเมลจากผู้ส่งสองรายที่ระบุซึ่งมีคำว่า 'invoice' ในหัวข้อแต่ไม่มี 'draft' และได้รับภายใน 30 วันที่ผ่านมา",
-        "query": "from:(billing@acme.com OR invoices@supplier.com) subject:(invoice -draft) newer_than:1m"
+        "title": "ใบแจ้งหนี้จากผู้ส่งที่กำหนด (เดือนล่าสุด)",
+        "description": "อีเมลจากผู้ส่งสองรายที่มี 'invoice' ในหัวข้อและไม่มี 'draft' ในช่วง 30 วันที่ผ่านมา",
+        "query": ""
       },
       {
         "id": "meeting_cc",
-        "title": "อีเมลการประชุมที่ฉันอยู่ในรายชื่อสำเนา (CC)",
-        "description": "อีเมลที่คุณมีชื่ออยู่ในช่องสำเนา (CC) หัวข้อจดหมายมีคำว่า 'meeting' แต่ไม่มีคำว่า 'cancelled'",
-        "query": "cc:me subject:(meeting -cancelled)"
+        "title": "อีเมลประชุมที่ฉันอยู่ใน CC",
+        "description": "ข้อความที่มีคุณใน CC หัวข้อมี 'meeting' และยกเว้น 'cancelled'",
+        "query": ""
       },
       {
         "id": "pdf_attachments",
-        "title": "ไฟล์แนบ PDF จากผู้ส่งที่ระบุ",
-        "description": "ข้อความจากผู้ส่งรายใดรายหนึ่งที่มีไฟล์ PDF แนบมาด้วย",
-        "query": "from:reports@company.com has:attachment filename:pdf"
+        "title": "ไฟล์แนบ PDF จากผู้ส่งที่กำหนด",
+        "description": "ข้อความจากผู้ส่งรายหนึ่งที่มีไฟล์ PDF แนบมาด้วย",
+        "query": ""
       },
       {
         "id": "unread_starred",
-        "title": "ข้อความที่ยังไม่ได้อ่านซึ่งติดดาวไว้",
-        "description": "ข้อความทั้งหมดที่ติดดาวและยังไม่ได้อ่าน - ตัวกรองด่วนสำหรับกล่องจดหมายสำคัญลำดับแรก",
-        "query": "is:unread is:starred"
+        "title": "ข้อความติดดาวที่ยังไม่ได้อ่าน",
+        "description": "ข้อความทั้งหมดที่ติดดาวและยังไม่ได้อ่าน — ค้นหาด่วนสำหรับงานสำคัญ",
+        "query": ""
       },
       {
         "id": "newsletter_unsubscribe",
-        "title": "จดหมายข่าวสารที่ต้องการยกเลิกรับข้อมูล",
-        "description": "อีเมลในหมวดหมู่โปรโมชันที่มีลิงก์ยกเลิกการสมัครรับข้อมูล (unsubscribe) อยู่ในเนื้อหาจดหมาย",
-        "query": "in:promotions unsubscribe"
+        "title": "โปรโมชันที่มีลิงก์ยกเลิกรับข่าวสาร",
+        "description": "อีเมลในหมวดโปรโมชันที่มีคำว่า 'unsubscribe'",
+        "query": ""
+      },
+      {
+        "id": "or_with_exclusion",
+        "title": "กลุ่ม OR พร้อมการยกเว้นทั้งระบบ",
+        "description": "ตัวอย่างการจัดกลุ่ม 2 ระดับ: ตรงกับ label:work OR subject:urgent โดยยกเว้น subject:Day เสมอ",
+        "query": ""
+      },
+      {
+        "id": "calendar_rsvps",
+        "title": "การตอบรับ Google ปฏิทิน (RSVP)",
+        "description": "จับคำตอบรับ ปฏิเสธ หรืออาจจะ ด้วยตัวดำเนินการ header: อย่างเป็นทางการ",
+        "query": ""
+      },
+      {
+        "id": "bulk_unsub_cleanup",
+        "title": "จดหมายข่าวเก่าจำนวนมาก (ทริคขั้นสูง)",
+        "description": "ใช้ป้ายกำกับภายใน label:^unsub เพื่อค้นหาจดหมายข่าวที่เก่ากว่า 30 วัน",
+        "query": ""
+      },
+      {
+        "id": "direct_to_me",
+        "title": "ส่งถึงฉันโดยตรง (ไม่รวม CC)",
+        "description": "ทางแก้สำหรับ to: (ที่รวม CC ด้วย): อีเมลที่ส่งตรงถึงคุณเท่านั้น",
+        "query": ""
+      },
+      {
+        "id": "received_bcc",
+        "title": "อีเมลที่ได้รับทาง BCC",
+        "description": "ค้นหาอีเมลที่ส่งถึงคุณโดยไม่มีที่อยู่ของคุณใน To หรือ CC",
+        "query": ""
+      },
+      {
+        "id": "unlabeled_drive",
+        "title": "ไฟล์ Google Drive ที่ยังไม่มีป้ายกำกับ",
+        "description": "ค้นหาข้อความที่มีลิงก์ Google Drive แต่ยังไม่มีป้ายกำกับที่กำหนดเอง",
+        "query": ""
       }
     ]
   },
   "help": {
     "title": "คู่มือคำสั่งตัวกรองของ Gmail",
-    "intro": "รายละเอียดคำสั่งตัวกรองที่เครื่องมือนี้รองรับและความหมายในระบบ Gmail แสดงอยู่ด้านล่าง",
+    "intro": "คู่มืออ้างอิงฉบับสมบูรณ์ของตัวดำเนินการค้นหาและตัวกรอง Gmail ข้อจำกัด และพฤติกรรมจริง",
     "operators": [
       {
         "op": "from:",
-        "desc": "จับคู่กับที่อยู่อีเมลของผู้ส่ง"
+        "desc": "ตรงกับอีเมลหรือโดเมนของผู้ส่ง"
       },
       {
         "op": "to:",
-        "desc": "จับคู่กับผู้รับจดหมายหลัก"
+        "desc": "ตรงกับผู้รับใดๆ (To, CC, BCC ที่ส่ง) ใช้ to:me -cc:me สำหรับอีเมลตรง"
       },
       {
         "op": "cc: / bcc:",
-        "desc": "CC = สำเนาจดหมาย (แสดงต่อทุกคน) BCC = สำเนาลับจดหมาย (ซ่อนผู้รับอื่น)"
+        "desc": "CC = สำเนา, BCC = สำเนาลับ (สำหรับอีเมลเข้าใช้ deliveredto:you@gmail.com -to:me -cc:me)"
+      },
+      {
+        "op": "deliveredto:",
+        "desc": "ส่วนหัว Delivered-To (+นามแฝง, การส่งต่อ ยกเว้นนามแฝงโดเมน Workspace)"
+      },
+      {
+        "op": "list:",
+        "desc": "ส่วนหัว List-Id ของรายชื่อผู้รับจดหมาย"
       },
       {
         "op": "subject:",
-        "desc": "ค้นหาในส่วนของหัวข้อจดหมาย"
+        "desc": "ค้นหาในหัวข้ออีเมล"
       },
       {
-        "op": "has:attachment",
-        "desc": "ข้อความที่มีไฟล์แนบใดๆ"
+        "op": "\"วลี\" / +คำ",
+        "desc": "วลีตรงตัวในคำพูด หรือคำตรงตัวไม่ผันรูปด้วย +"
       },
       {
-        "op": "filename:",
-        "desc": "จับคู่กับชื่อหรือนามสกุลไฟล์แนบ (เช่น pdf, *.docx)"
+        "op": "AROUND",
+        "desc": "ระยะใกล้: word1 AROUND 5 word2 (ใส่คำพูดเพื่อเรียงลำดับ; ห้ามมี OR)"
       },
       {
-        "op": "label:",
-        "desc": "จดหมายที่มีป้ายกำกับที่คุณกำหนดขึ้นเองใน Gmail"
+        "op": "has:attachment / filename:",
+        "desc": "ไฟล์แนบและชื่อ/นามสกุลไฟล์ (pdf, docx — ไม่มี *)"
+      },
+      {
+        "op": "has:drive / document / spreadsheet / presentation / youtube",
+        "desc": "ลิงก์ Google Drive, Docs, Sheets, Slides หรือ YouTube"
+      },
+      {
+        "op": "header:X-Google-Calendar-Notification:",
+        "desc": "ตัวดำเนินการทางการสำหรับการแจ้งเตือนปฏิทิน"
+      },
+      {
+        "op": "rfc822msgid:",
+        "desc": "ค้นหาตรงตาม RFC 5322 Message-ID"
+      },
+      {
+        "op": "category:",
+        "desc": "แท็บ: primary, social, promotions, updates, forums, reservations, purchases"
+      },
+      {
+        "op": "label: / has:userlabels / has:nouserlabels",
+        "desc": "ป้ายกำกับของฉัน (ขีดแทนช่องว่าง) — ค้นหาเท่านั้น"
+      },
+      {
+        "op": "label:encryptedmail",
+        "desc": "ข้อความเข้ารหัสฝั่งไคลเอนต์ (Workspace — ค้นหาเท่านั้น)"
       },
       {
         "op": "in:",
-        "desc": "จดหมายในโฟลเดอร์ระบบ Gmail: inbox (กล่องขาเข้า), spam (จดหมายขยะ), trash (ถังขยะ), sent (ส่งแล้ว), promotions (โปรโมชัน)..."
+        "desc": "ตำแหน่ง: inbox, sent, drafts, spam, trash, anywhere, snoozed, scheduled, chats (ไม่มี in:archive)"
       },
       {
-        "op": "is:read / is:unread",
-        "desc": "ตัวกรองตามสถานะการเปิดอ่าน/ยังไม่ได้อ่าน"
-      },
-      {
-        "op": "is:starred / is:important",
-        "desc": "ตัวกรองตามสถานะติดดาว (⭐) หรือความสำคัญ (►)"
+        "op": "is:read / unread / starred / important / muted / has:<star>",
+        "desc": "สถานะหรือไอคอนดาว (ค้นหาเท่านั้น)"
       },
       {
         "op": "after: / before:",
-        "desc": "ช่วงวันที่ ค้นหาโดยใช้รูปแบบ YYYY/MM/DD"
+        "desc": "วันที่ (YYYY/MM/DD หรือ Unix epoch): after: รวมวันนั้น, before: ไม่รวม (ค้นหาเท่านั้น)"
       },
       {
         "op": "newer_than: / older_than:",
-        "desc": "วันที่สัมพัทธ์: 7d (7 วัน), 2m (2 เดือน), 1y (1 ปี)"
+        "desc": "วันที่สัมพัทธ์: 7d, 2m, 1y (ค้นหาเท่านั้น)"
       },
       {
-        "op": "larger: / smaller:",
-        "desc": "ขนาดของข้อความจดหมาย: 5M (5 เมกะไบต์), 500K (500 กิโลไบต์)"
+        "op": "larger: / smaller: / size:",
+        "desc": "ขนาด: 5M, 500K หรือขนาดขั้นต่ำเป็นไบต์ด้วย size: (เช่น size:1048576)"
       },
       {
-        "op": "OR",
-        "desc": "รวมคำค้นหาเพื่อให้ตรงกับเงื่อนไขใดเงื่อนไขหนึ่ง (ตัวพิมพ์ใหญ่ทั้งหมดเท่านั้น)"
-      },
-      {
-        "op": "-คำค้นหา",
-        "desc": "ยกเว้นข้อความที่ตรงกับคำค้นหานั้นๆ (คำสั่งปฏิเสธ NOT)"
-      },
-      {
-        "op": "(…)",
-        "desc": "จัดกลุ่มข้อความค้นหาเพื่อให้คำสั่งส่งผลต่อทั้งกลุ่ม"
+        "op": "OR / { } / -คำ / (…)",
+        "desc": "OR ตัวพิมพ์ใหญ่ (หรือ {a b}), การยกเว้น - และวงเล็บจัดกลุ่ม"
       }
     ],
-    "tips_title": "เคล็ดลับจากผู้เชี่ยวชาญ",
+    "tips_title": "เคล็ดลับขั้นสูงและพฤติกรรมเฉพาะของ Gmail",
     "tips": [
-      "ครอบคำค้นหาที่มีหลายคำด้วยเครื่องหมายอัญประกาศ: subject:\"quarterly report\"",
-      "ใช้ OR ในวงเล็บเพื่อจับคู่กับค่าข้อมูลข้อใดข้อหนึ่ง: from:(a@x.com OR b@x.com)",
-      "คำสั่งค้นหาของ Gmail ไม่แยกแยะพิมพ์เล็กพิมพ์ใหญ่ แต่ OR ต้องเป็นพิมพ์ใหญ่เสมอ",
-      "คัดลอกคำค้นหาที่ได้ไปวางในช่องค้นหาของ Gmail โดยตรง หรือวางในช่อง 'มีคำเหล่านี้' เมื่อทำการตั้งค่าตัวกรองใหม่",
-      "ผสม newer_than และ older_than เข้าด้วยกันเพื่อเจาะจงช่วงเวลาที่ต้องการอย่างถูกต้อง: newer_than:3m older_than:1m",
-      "label: ค้นหาในป้ายกำกับที่คุณสร้างเอง in: ค้นหาในกล่องมาตรฐานของระบบ Gmail (inbox, spam, promotions...)"
-    ]
+      "OR จับคู่แน่นกว่าช่องว่าง (AND): ควรจัดกลุ่มเมื่อผสม OR กับการยกเว้น เช่น (label:work OR subject:urgent) -subject:Day",
+      "Gmail ไม่รองรับตัวอักษรแทน * (*.docx) หรือ regex ให้ใช้นามสกุลตรงๆ (docx) หรือชื่อโดเมน",
+      "Gmail ข้ามเครื่องหมายวรรคตอนส่วนใหญ่ (! ? $ & # *) ยกเว้น _ และแยกตัวเลขที่มีขีดกลาง",
+      "after: นับรวมวันนั้น (ตั้งแต่ 00:00) ส่วน before: ไม่นับรวมวันนั้น รองรับ Unix epoch",
+      "การค้นหาปกติจะข้ามสแปมและถังขยะจนกว่าจะเพิ่ม in:anywhere",
+      "มุมมองการสนทนา: เมื่อเปิดจัดกลุ่ม เธรดจะยังแสดงถ้ามีข้อความอื่นรอดจากการยกเว้น -",
+      "ตัวกรองขาเข้าทำงานตอนจดหมายมาถึง: วันที่ สถานะ และ label: ใช้สำหรับการค้นหาเป็นหลัก",
+      "ทริคขั้นสูง: label:^unsub ค้นหาจดหมายข่าว และ label:^smartlabel_receipt ค้นหาใบเสร็จ",
+      "ขีดจำกัดบัญชี: ควบคุมแต่ละตัวกรองไม่เกิน ~1,469–1,500 ตัวอักษร (สูงสุด 1,000 ตัวกรอง, 500 ป้ายกำกับ, 20 ตัวกรองส่งต่อ)"
+    ],
+    "th_operator": "ตัวดำเนินการ",
+    "th_description": "คำอธิบาย"
   },
   "support": {
     "toast_title": "☕ สนับสนุนโครงการนี้",
@@ -275,7 +444,7 @@
   "summary": {
     "prefix": "ตัวกรองนี้จะถูกใช้กับข้อความจดหมายที่ตรงกับเกณฑ์ต่อไปนี้:",
     "from": "ส่งมาจาก {{value}}",
-    "to": "ส่งตรงถึง {{value}}",
+    "to": "ถึงผู้รับ (To/CC/BCC) {{value}}",
     "cc": "มีชื่อ {{value}} อยู่ในช่อง CC",
     "bcc": "มีชื่อ {{value}} อยู่ในช่อง BCC",
     "subject": "หัวข้อเรื่องจดหมายมีคำว่า {{value}}",
@@ -296,7 +465,28 @@
     "size_smaller": "มีขนาดเล็กกว่า {{value}}",
     "negate_prefix": "ยกเว้น",
     "and_connector": " และ ",
-    "or_connector": " หรือ "
+    "or_connector": " หรือ ",
+    "deliveredto": "ที่ส่งถึงที่อยู่ {{value}}",
+    "list": "จากรายชื่อผู้รับจดหมาย {{value}}",
+    "exact_phrase": "ที่มีวลีตรงตัว \"{{value}}\"",
+    "exact_word": "ที่มีคำตรงตัว {{value}}",
+    "around": "ที่ {{word1}} อยู่ห่างจาก {{word2}} ไม่เกิน {{distance}} คำ",
+    "around_ordered_suffix": "(เรียงลำดับตายตัว)",
+    "has_drive": "ที่มีลิงก์ Google Drive",
+    "has_document": "ที่มีไฟล์ Google Docs",
+    "has_spreadsheet": "ที่มีไฟล์ Google Sheets",
+    "has_presentation": "ที่มีไฟล์ Google Slides",
+    "has_youtube": "ที่มีวิดีโอ YouTube",
+    "header_calendar": "ที่มีการแจ้งเตือน Google ปฏิทิน {{value}}",
+    "rfc822msgid": "ที่มี Message-ID {{value}}",
+    "category": "ในหมวดหมู่ {{value}}",
+    "has_userlabels": "ที่มีป้ายกำกับอย่างน้อยหนึ่งรายการ",
+    "has_nouserlabels": "ที่ไม่มีป้ายกำกับที่กำหนดเอง",
+    "label_encryptedmail": "ที่ส่งด้วยการเข้ารหัสฝั่งไคลเอนต์",
+    "has_star": "ที่มีไอคอนดาว {{value}}",
+    "is_muted": "จากเธรดที่ปิดเสียง",
+    "size_exact": "ที่มีขนาดเกิน {{value}} ไบต์",
+    "negate_group_prefix": "ไม่ใช่รายการใดใน"
   },
   "pwa": {
     "install_btn": "ติดตั้งแอปพลิเคชัน",
@@ -354,7 +544,27 @@
       "p_4_1": "แม้ว่าเราจะไม่ใช้เทคโนโลยีการติดตาม แต่คุณก็สามารถควบคุมข้อมูลที่บันทึกไว้ในเบราว์เซอร์ของคุณได้อย่างสมบูรณ์เสมอ หากคุณต้องการลบตัวกรองที่บันทึกไว้และการตั้งค่าภาพถ่าย คุณสามารถทำได้ง่ายๆ:",
       "li_4_1": "โดยล้างแคชและการจัดเก็บข้อมูลเว็บไซต์ในการตั้งค่าเบราว์เซอร์ของคุณ (Chrome, Firefox, Safari, Edge)",
       "li_4_2": "โดยใช้โหมด \"การเบราว์ส่วนตัว\" หรือ \"ไม่ระบุตัวตน\" ซึ่งจะลบการจัดเก็บข้อมูลในเครื่องนี้โดยอัตโนมัติเมื่อคุณปิดหน้าต่าง",
-      "p_4_2": "สำหรับข้อมูลเพิ่มเติมเกี่ยวกับเราคือใคร โปรดไปที่ <strong><a href=\"#\" id=\"hub-legal-link-2\">ประกาศทางกฎหมายส่วนกลาง</a></strong> ของเรา"
+      "p_4_2": "สำหรับข้อมูลเพิ่มเติมเกี่ยวกับเราคือใคร โปรดไปที่ <strong><a href=\"#\" id=\"hub-legal-link-2\">ประกาศทางกฎหมายส่วนกลาง</a></strong> ของเรา",
+      "td_locale_desc": "จดจำภาษาที่คุณเลือกในตัวเลือกภาษาระหว่างการเข้าชม"
     }
+  },
+  "diagnostics": {
+    "char_limit_warn": "ใกล้ถึงขีดจำกัด ~1,500 ตัวอักษรของ Gmail ({{count}} ตัวอักษร) ควรย่อให้สั้นลงหรือแบ่งตัวกรอง",
+    "char_limit_exceeded": "เกินขีดจำกัด ~1,469–1,500 ตัวอักษรของ Gmail ({{count}} ตัวอักษร) Gmail อาจแจ้งข้อผิดพลาดหรือข้ามไม่ทำงาน — ควรแบ่งเป็นหลายตัวกรอง",
+    "or_negation_trap": "กับดัก OR + ยกเว้น: การใส่เงื่อนไขยกเว้นไว้ในกลุ่ม OR ทำให้เงื่อนไขอื่นข้ามการยกเว้นได้ ควรย้ายการยกเว้นออกนอกกลุ่ม OR",
+    "fix_or_negation_btn": "แก้ไขการจัดกลุ่ม",
+    "search_only_operators": "พบตัวดำเนินการสำหรับค้นหาเท่านั้น ({{operators}}): ใช้ได้ในช่องค้นหา แต่ Gmail เตือนว่ามักไม่ทำงานกับอีเมลเข้าใหม่",
+    "caution_bcc": "หมายเหตุ bcc:: อีเมลเข้าจะซ่อน BCC ของผู้อื่น จึงมักตรงกับอีเมลที่คุณส่งเองเป็นหลัก",
+    "caution_category": "หมายเหตุ category:: Gmail จัดหมวดหมู่แบบไดนามิก เหมาะกับการค้นหา แต่อาจคาดเดาได้ยากในตัวกรองขาเข้า",
+    "wildcard_unsupported": "พบตัวอักษรแทน (*) : Gmail ไม่รองรับ * (เช่น *.docx) ให้ใช้นามสกุลตรงๆ (docx) หรือชื่อโดเมน",
+    "lowercase_or": "พบ \"or\" ตัวพิมพ์เล็ก: Gmail จะค้นหาคำว่า \"or\" ตรงตัวหากไม่พิมพ์ OR เป็นตัวพิมพ์ใหญ่",
+    "unescaped_inner_quote": "พบเครื่องหมายคำพูด (\") เกินภายในวลี: Gmail จะปิดวลีก่อนกำหนด",
+    "negation_inside_operator": "พบเครื่องหมายลบ (-คำ) ภายในช่อง: แนะนำให้เพิ่มแถวแยกแล้วติ๊ก ยกเว้น (NOT)",
+    "around_with_or": "AROUND ไม่รองรับ OR หรือ { } ภายใน ให้สร้างเงื่อนไข AROUND แยก 2 แถวแล้วเชื่อมด้วย หรือ (OR)",
+    "conversation_view_negation": "หมายเหตุมุมมองการสนทนา: เมื่อเปิดจัดกลุ่มเธรด เธรดจะยังแสดงอยู่หากข้อความอื่นในเธรดรอดจากการยกเว้น",
+    "deliveredto_me_unsupported": "Gmail ไม่รองรับ \"me\" ใน deliveredto: — กรุณากรอกอีเมลเต็มหรือนามแฝง (เช่น you@gmail.com)",
+    "in_archive_unsupported": "Gmail ไม่มีตัวดำเนินการ in:archive (เมลที่เก็บถาวรแค่ไม่มีป้าย Inbox) ให้ใช้ -in:inbox -in:sent -in:drafts -in:spam -in:trash แทน",
+    "negated_group_caution": "พบกลุ่มซ้อนที่ถูกยกเว้น -(...): ใช้ได้ในการค้นหา แต่อาจทำงานไม่แน่นอนในตัวกรองอัตโนมัติ แนะนำให้แยกการยกเว้น (-a -b)",
+    "double_negation": "พบการปฏิเสธซ้อน (เงื่อนไขยกเว้นในกลุ่มที่ถูกยกเว้น): Gmail ไม่รองรับ -(-คำ) กรุณาลบการยกเว้นออกหนึ่งรายการ"
   }
 }
